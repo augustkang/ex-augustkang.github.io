@@ -1,3 +1,3 @@
 # augustkang.github.io
 
-Published with hugo and its theme KeepIt
+Published with [Hugo](https://gohugo.io/) and its theme [KeepIt](https://github.com/Fastbyte01/KeepIt)
