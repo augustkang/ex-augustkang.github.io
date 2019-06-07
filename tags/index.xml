@@ -6,46 +6,9 @@
     <description>Recent content in Tags on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Jun 2019 21:23:32 +0900</lastBuildDate>
     
 	<atom:link href="https://augustkang.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>git</title>
-      <link>https://augustkang.github.io/tags/git/</link>
-      <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
-      
-      <guid>https://augustkang.github.io/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>howto</title>
-      <link>https://augustkang.github.io/tags/howto/</link>
-      <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
-      
-      <guid>https://augustkang.github.io/tags/howto/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>blog</title>
-      <link>https://augustkang.github.io/tags/blog/</link>
-      <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
-      
-      <guid>https://augustkang.github.io/tags/blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://augustkang.github.io/tags/hugo/</link>
-      <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
-      
-      <guid>https://augustkang.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>
