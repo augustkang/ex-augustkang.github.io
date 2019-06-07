@@ -5,8 +5,25 @@
     <description>Recent content in augustkang on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 02 Jun 2019 17:40:10 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 03 Jun 2019 21:23:32 +0900</lastBuildDate>
     <atom:link href="https://augustkang.github.io/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to Git Pull With Submodules</title>
+      <link>https://augustkang.github.io/2019/how-to-git-pull-with-submodules/</link>
+      <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
+      
+      <guid>https://augustkang.github.io/2019/how-to-git-pull-with-submodules/</guid>
+      <description>&lt;p&gt;집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
+근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.
+구글링을 좀 해본 결과 &lt;a href=&#34;http://openmetric.org/til/programming/git-pull-with-submodule/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;링크&lt;/a&gt;와 같이&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git submodule update --init --recursive
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>About</title>
