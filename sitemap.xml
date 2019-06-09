@@ -2,9 +2,59 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://augustkang.github.io/2019/2019-books-i-read/</loc>
+      
+      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://augustkang.github.io/categories/</loc>
       
-      <lastmod>2019-06-03T21:23:32+09:00</lastmod>
+      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://augustkang.github.io/posts/</loc>
+      
+      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://augustkang.github.io/</loc>
+      
+      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://augustkang.github.io/categories/book/</loc>
+      
+      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
       
       
       
@@ -23,30 +73,6 @@
       
       
       <priority>0.5</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://augustkang.github.io/posts/</loc>
-      
-      <lastmod>2019-06-03T21:23:32+09:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://augustkang.github.io/</loc>
-      
-      <lastmod>2019-06-03T21:23:32+09:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
       
       
     </url>

@@ -5,8 +5,30 @@
     <description>Recent content in augustkang on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Jun 2019 21:23:32 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 09 Jun 2019 17:57:32 +0900</lastBuildDate>
     <atom:link href="https://augustkang.github.io/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2019 Books I Read</title>
+      <link>https://augustkang.github.io/2019/2019-books-i-read/</link>
+      <pubDate>Sun, 09 Jun 2019 17:57:32 +0900</pubDate>
+      
+      <guid>https://augustkang.github.io/2019/2019-books-i-read/</guid>
+      <description>
+
+&lt;h1 id=&#34;2019년에-읽은-책들을-나열하는-포스트-업데이트중&#34;&gt;2019년에 읽은 책들을 나열하는 포스트(업데이트중)&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;아몬드&lt;/li&gt;
+&lt;li&gt;사람의 아들&lt;/li&gt;
+&lt;li&gt;지방 대사 켜는 스위치온 다이어&lt;/li&gt;
+&lt;li&gt;여행의 이유&lt;/li&gt;
+&lt;li&gt;나는 왜 정치를 하는가&lt;/li&gt;
+&lt;li&gt;히트 리프레시&lt;/li&gt;
+&lt;li&gt;어느 애주가의 고백&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>How to Git Pull With Submodules</title>
