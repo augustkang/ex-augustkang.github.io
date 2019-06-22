@@ -2,23 +2,9 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://augustkang.github.io/2019/2019-books-i-read/</loc>
-      
-      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
-      
-      
-      <changefreq>monthly</changefreq>
-      
-      
-      <priority>0.5</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>https://augustkang.github.io/categories/</loc>
       
-      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      <lastmod>2019-06-22T00:23:40+09:00</lastmod>
       
       
       
@@ -30,7 +16,7 @@
     <url>
       <loc>https://augustkang.github.io/posts/</loc>
       
-      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      <lastmod>2019-06-22T00:23:40+09:00</lastmod>
       
       
       
@@ -40,9 +26,23 @@
     </url>
   
     <url>
+      <loc>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch1/</loc>
+      
+      <lastmod>2019-06-22T00:23:40+09:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://augustkang.github.io/</loc>
       
-      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      <lastmod>2019-06-22T00:23:40+09:00</lastmod>
       
       
       
@@ -54,11 +54,37 @@
     <url>
       <loc>https://augustkang.github.io/categories/book/</loc>
       
-      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      <lastmod>2019-06-22T00:23:40+09:00</lastmod>
       
       
       
       <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://augustkang.github.io/categories/linux/</loc>
+      
+      <lastmod>2019-06-22T00:23:40+09:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://augustkang.github.io/2019/2019-books-i-read/</loc>
+      
+      <lastmod>2019-06-09T17:57:32+09:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
       
       
     </url>

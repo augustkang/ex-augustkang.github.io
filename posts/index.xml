@@ -6,10 +6,19 @@
     <description>Recent content in Posts on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Jun 2019 17:57:32 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Jun 2019 00:23:40 +0900</lastBuildDate>
     
 	<atom:link href="https://augustkang.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 1장</title>
+      <link>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch1/</link>
+      <pubDate>Sat, 22 Jun 2019 00:23:40 +0900</pubDate>
+      
+      <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch1/</guid>
+      <description>커널 정보 확인하기 uname -a # 커널 버전 확인dmesg #커널 디버그 메세지 cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인 cat /boot/config-`uname -r` | grep -i config_function_tracer   ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함  CPU 정보 확인하기 dmidecode -t processor cat /proc/cpuinfo lscpu   socket : number of CPU core : number of cores per CPU 시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)  Memory 정보 확인하기 dmidecode -t memory   Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹 Memory device : 실제로 시스템에 꽂혀있는 메모리.</description>
+    </item>
     
     <item>
       <title>2019 Books I Read</title>
@@ -17,7 +26,7 @@
       <pubDate>Sun, 09 Jun 2019 17:57:32 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/2019-books-i-read/</guid>
-      <description> 2019년에 읽은 책들을 나열하는 포스트(업데이트중)  아몬드(손원평) 사람의 아들(이문열) 지방 대사 켜는 스위치온 다이어트(박용우) 여행의 이유(김영하) 나는 왜 정치를 하는가(유승민) 히트 리프레시(Satya Nadella) 어느 애주가의 고백(Daniel Schreiber) 2019-06-17 더골(Eliyahu Moshe Goldratt) 2019-06-18 한국이 싫어서(장강명) 2019-06-18 인프라 엔지니어의 교과서: 시스템 구축과 관리편  </description>
+      <description> 2019년에 읽은 책들을 나열하는 포스트(업데이트중)  아몬드(손원평) 사람의 아들(이문열) 지방 대사 켜는 스위치온 다이어트(박용우) 여행의 이유(김영하) 나는 왜 정치를 하는가(유승민) 히트 리프레시(Satya Nadella) 어느 애주가의 고백(Daniel Schreiber) 2019-06-17 더골(Eliyahu Moshe Goldratt) 2019-06-18 한국이 싫어서(장강명) 2019-06-18 인프라 엔지니어의 교과서: 시스템 구축과 관리편 2019-06-22 당선, 합격, 계급(장강명)  </description>
     </item>
     
     <item>
