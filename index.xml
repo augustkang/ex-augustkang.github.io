@@ -75,6 +75,8 @@ ethtool -i eth0 # NIC의 커널 모듈 정보 표시
 &lt;li&gt;Ring buffer : 네트워크 카드의 버퍼 공간을 의미. 크기가 maximum으로 세팅 되어있지 않으면 네트워크 성능 저하 발생 가능&lt;/li&gt;
 &lt;li&gt;tcp-offload : MTU 이상의 크기를 가지는 패킷의 분할작업을 CPU 가 아닌 NIC가 직접 처리하여 CPU 성능 부담 줄이고 패킷 처리 성능 높임.&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;출처 : &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788966264049&amp;amp;orderClick=LEA&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DevOps와 SE를 위한 리눅스 커널 이야기&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
