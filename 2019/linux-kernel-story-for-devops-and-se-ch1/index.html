@@ -11,7 +11,7 @@
   
   
   <link rel="prev" href="https://augustkang.github.io/2019/2019-books-i-read/" />
-  
+  <link rel="next" href="https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch2/" />
   <link rel="canonical" href="https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch1/" />
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -36,7 +36,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 1장"/>
-<meta name="twitter:description" content="커널 정보 확인하기 uname -a # 커널 버전 확인dmesg #커널 디버그 메세지 cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인 cat /boot/config-`uname -r` | grep -i config_function_tracer   ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함  CPU 정보 확인하기 dmidecode -t processor cat /proc/cpuinfo lscpu   socket : number of CPU core : number of cores per CPU 시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)  Memory 정보 확인하기 dmidecode -t memory   Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹 Memory device : 실제로 시스템에 꽂혀있는 메모리."/>
+<meta name="twitter:description" content="1장 - 시스템 구성 정보 확인하기 커널 정보 확인하기 uname -a # 커널 버전 확인dmesg #커널 디버그 메세지 cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인 cat /boot/config-`uname -r` | grep -i config_function_tracer   ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함  CPU 정보 확인하기 dmidecode -t processor cat /proc/cpuinfo lscpu   socket : number of CPU core : number of cores per CPU 시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)  Memory 정보 확인하기 dmidecode -t memory   Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹 Memory device : 실제로 시스템에 꽂혀있는 메모리."/>
 
   <script type="application/ld+json">
 {
@@ -55,7 +55,7 @@
   },
   "genre": "posts",
   
-  "wordcount":  251 ,
+  "wordcount":  257 ,
   "url": "https:\/\/augustkang.github.io\/2019\/linux-kernel-story-for-devops-and-se-ch1\/",
   "datePublished": "2019-06-22T00:23:40\x2b09:00",
   "dateModified": "2019-06-22T00:23:40\x2b09:00",
@@ -165,7 +165,9 @@
 
           
 
-<h1 id="커널-정보-확인하기">커널 정보 확인하기</h1>
+<h1 id="1장-시스템-구성-정보-확인하기">1장 - 시스템 구성 정보 확인하기</h1>
+
+<h3 id="커널-정보-확인하기">커널 정보 확인하기</h3>
 
 <pre><code class="language-bash">uname -a # 커널 버전 확인dmesg #커널 디버그 메세지
 cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인
@@ -176,7 +178,7 @@ cat /boot/config-`uname -r` | grep -i config_function_tracer
 <li>ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함</li>
 </ul>
 
-<h1 id="cpu-정보-확인하기">CPU 정보 확인하기</h1>
+<h3 id="cpu-정보-확인하기">CPU 정보 확인하기</h3>
 
 <pre><code class="language-bash">dmidecode -t processor
 cat /proc/cpuinfo
@@ -189,7 +191,7 @@ lscpu
 <li>시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)</li>
 </ul>
 
-<h1 id="memory-정보-확인하기">Memory 정보 확인하기</h1>
+<h3 id="memory-정보-확인하기">Memory 정보 확인하기</h3>
 
 <pre><code class="language-bash">dmidecode -t memory
 </code></pre>
@@ -199,7 +201,7 @@ lscpu
 <li>Memory device : 실제로 시스템에 꽂혀있는 메모리.</li>
 </ul>
 
-<h1 id="디스크-정보-확인하기">디스크 정보 확인하기</h1>
+<h3 id="디스크-정보-확인하기">디스크 정보 확인하기</h3>
 
 <pre><code class="language-bash">df -h
 smartctl -a /dev/sda
@@ -211,7 +213,7 @@ smartctl -a /dev/sda -d cciss,0 # lsmod 를 통해 알아낸 현재 시스템 �
 <li>hda : 개인용 컴퓨터용인 IDE 방식의 디스크</li>
 </ul>
 
-<h1 id="네트워크-정보-확인하기">네트워크 정보 확인하기</h1>
+<h3 id="네트워크-정보-확인하기">네트워크 정보 확인하기</h3>
 
 <pre><code class="language-bash">lspci | grep -i ether
 ethtool eth0
@@ -239,7 +241,7 @@ ethtool -i eth0 # NIC의 커널 모듈 정보 표시
            
             <p class="copyright-item">
                     <span>Words:</span>
-                   <span>251</span>
+                   <span>257</span>
             </p>
             
             <p class="copyright-item">
@@ -304,6 +306,8 @@ ethtool -i eth0 # NIC의 커널 모듈 정보 표시
         
         <a href="https://augustkang.github.io/2019/2019-books-i-read/" class="prev" rel="prev" title="2019 Books I Read"><i class="iconfont icon-dajiantou"></i>&nbsp;2019 Books I Read</a>
          
+        
+        <a href="https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch2/" class="next" rel="next" title="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 2장">[요약]DevOps와 SE를 위한 리눅스 커널 이야기 2장&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
         
     </div>
 
