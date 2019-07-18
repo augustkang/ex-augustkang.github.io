@@ -6,10 +6,20 @@
     <description>Recent content in book on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Jul 2019 21:38:58 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jul 2019 16:12:40 +0900</lastBuildDate>
     
 	<atom:link href="https://augustkang.github.io/categories/book/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장</title>
+      <link>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch4/</link>
+      <pubDate>Wed, 17 Jul 2019 16:12:40 +0900</pubDate>
+      
+      <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch4/</guid>
+      <description>4장 - free 명령이 숨기고 있는 것들 메모리 사용량 확인하기 root@August-PC:~# free -m total used free shared buff/cache available Mem: 8047 6161 1662 17 223 1755 Swap: 24576 214 24361 # 출력 데이터 단위에 따라 옵션이 다르다. # -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위  total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량
+buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌</description>
+    </item>
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장</title>
