@@ -1,15 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>augustkang</title>
+    <title>augustkang on augustkang</title>
     <link>https://augustkang.github.io/</link>
-    <description>Recent content on augustkang</description>
+    <description>Recent content in augustkang on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 04 Jan 2020 09:52:00 +0900</lastBuildDate>
-    
-	<atom:link href="https://augustkang.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="https://augustkang.github.io/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>2020 Books I Read</title>
@@ -17,7 +14,27 @@
       <pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2020/2020-books-i-read/</guid>
-      <description> 2020년에 읽은 책들을 나열하는 포스트(업데이트중)  2020-01-01 고래(천명관) 2020-01-04 페인트(이희영) 2020-03-31 가만한 나날(김세희) 2020-04-01 일의 기쁨과 슬픔(장류진) 2020-04-03 해가 지는 곳으로(최진영) 2020-04-04 우리가 빛의 속도로 갈 수 없다면(김초엽) 2020-04-07 시라노(Edmond Rostand) 2020-04-11 사진을 읽어 드립니다(김경훈) 2020-04-13 동물농장(George Orwell) 2020-04-21 나목 도둑맞은 가난(박완서) 2020-04-24 콜센터(김의경) 2020-04-26 DevOps와 SE를 위한 리눅스 커널 이야기(강진우) 2020-04-27 체리새우: 비밀글입니다(황영미) 2020-04-28 템페스트(William Shakespeare)  </description>
+      <description>
+
+&lt;h1 id=&#34;2020년에-읽은-책들을-나열하는-포스트-업데이트중&#34;&gt;2020년에 읽은 책들을 나열하는 포스트(업데이트중)&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2020-01-01 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788982819278&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;고래(천명관)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-01-04 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788936456894&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;페인트(이희영)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-03-31 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937439742&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;가만한 나날(김세희)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-01 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788936438036&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;일의 기쁨과 슬픔(장류진)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-03 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937473166&amp;amp;orderClick=LEa&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;해가 지는 곳으로(최진영)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-04 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791190090018&amp;amp;orderClick=LEa&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;우리가 빛의 속도로 갈 수 없다면(김초엽)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-07 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788932909400&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;시라노(Edmond Rostand)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-11 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788952798336&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;사진을 읽어 드립니다(김경훈)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-13 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937460050&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;동물농장(George Orwell)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-21 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937420115&amp;amp;orderClick=LEa&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;나목 도둑맞은 가난(박완서)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-24 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788974331290&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;콜센터(김의경)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-26 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788966264049&amp;amp;orderClick=LEa&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DevOps와 SE를 위한 리눅스 커널 이야기(강진우)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-27 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788954654753&amp;amp;orderClick=LEa&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;체리새우: 비밀글입니다(황영미)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2020-04-28 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788954609074&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;템페스트(William Shakespeare)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
     
     <item>
@@ -26,8 +43,133 @@
       <pubDate>Wed, 17 Jul 2019 16:12:40 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch4/</guid>
-      <description>4장 - free 명령이 숨기고 있는 것들 메모리 사용량 확인하기 root@August-PC:~# free -m total used free shared buff/cache available Mem: 8047 6161 1662 17 223 1755 Swap: 24576 214 24361 # 출력 데이터 단위에 따라 옵션이 다르다. # -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위  total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량
-buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌</description>
+      <description>
+
+&lt;h1 id=&#34;4장-free-명령이-숨기고-있는-것들&#34;&gt;4장 - free 명령이 숨기고 있는 것들&lt;/h1&gt;
+
+&lt;h3 id=&#34;메모리-사용량-확인하기&#34;&gt;메모리 사용량 확인하기&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;root@August-PC:~# free -m
+              total        used        free      shared  buff/cache   available
+Mem:           8047        6161        1662          17         223        1755
+Swap:         24576         214       24361
+# 출력 데이터 단위에 따라 옵션이 다르다.
+# -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량&lt;/p&gt;
+
+&lt;p&gt;buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌&lt;/p&gt;
+
+&lt;p&gt;Swap : swap 영역에 대한 내용. 전체, 사용중인 용량, 남는 용량&lt;/p&gt;
+
+&lt;h3 id=&#34;buffers와-cached-영역&#34;&gt;buffers와 cached 영역&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;buffers 영역은 buffer cache 영역을 뜻함.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;super block, inode block 과 같이 파일의 내용이 아닌 파일시스템 관리에 필요한 메타데이터들을 위한 cache&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;cached 영역은 page cache 영역을 뜻함.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;파일 자체의 내용을 저장하는데 쓰이는 cache&lt;/p&gt;
+
+&lt;h3 id=&#34;proc-meminfo-읽기&#34;&gt;/proc/meminfo 읽기&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[root@August-PC ~]# cat /proc/meminfo 
+MemTotal:        7957324 kB
+MemFree:          299176 kB
+MemAvailable:    4854520 kB
+Buffers:          141072 kB
+Cached:          4768400 kB
+SwapCached:        75588 kB
+Active:          4118228 kB
+Inactive:        2813128 kB
+Active(anon):    1330700 kB
+Inactive(anon):  1069180 kB
+Active(file):    2787528 kB
+Inactive(file):  1743948 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       8388604 kB
+SwapFree:        7214696 kB
+Dirty:               136 kB
+
+... 생략
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;SwapCached: swap으로 사용된 영역 중 다시 메모리로 돌아온 영역. Swap으로 빠졌다고 돌아온 영역이 얼마나 되는지 나타냄.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Active(anon): Page Cache 영역을 제외한 메모리 영역을 의미. 주로 프로세스들이 사용하는 메모리 영역 지칭. 그 중에서도 최근에 참조된(active) 영역 나타낸다. Active는 최근에 접근된 이력이 있는 영역이라는 뜻.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Inactive(anon): 참조된 지 오래되어 Swap영역으로 이동할 수도 있는 메모리 영역. Inactive는 말 그대로 active 하지 않은, 접근된지 오래된, 최근에는 접근하지 않은 영역..&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Active(file): 커널이 I/O 성능 향상을 위해 캐시 목적으로 사용하는 영역.  buffer cache, page cache 영역이 여기에 속함. 그 중에서도 자주 접근된 영역&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Inactive(file): 마찬가지로 커널이 캐시 목적으로 사용하는 영역 중에서도 접근한지 오래된 영역.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Dirty: Active(file), Inactive(file)과 비슷한 용도로 I/O 성능 향상을 위해 커널이 캐시 목적으로 사용하는 영역 중  작업이 이루어져서 실제 블록 디바이스의 블록에 씌어져야 할 영역을 의미. 즉 디스크 쓰기 이후 commit이 이루어져야 하는 영역. 보통 block device에 write하면 block device write 연산은 메모리에 쓰는 것 보다 굉장히 latency가 크기 때문에(데이터 쓰는데 오래 걸리기 때문에) 그걸 끝날때까지 기다리기 보단 바로바로 처리 안하고 처리하기로 해놓고 나중에, 미래에 시스템에 여유가 있을때 실질적인 쓰기를 처리 하게 하는데 이 실질적으로 처리가 되어야 하는 영역을 의미.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;code&gt;/fs/proc/meminfo.c&lt;/code&gt; 파일에서 active와 inactive를 구분하는 기준을 확인할 수 있다.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;LRU 기반의 리스트로 관리. 단순히 시간을 기반으로 시간이 지나 오래된 것, 최신의 것으로 나누지는 않음.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;vm.min_free_kbytes 커널 파라미터보다 여유 메모리 공간이 적게 될 경우 kswapd가 실행되면서 active 영역 페이지 중 오래된 페이지를 우선적으로 inactive로 옮긴 후 메모리를 해제(free)하는 작업을 수행한다.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;slab-메모리-영역&#34;&gt;slab 메모리 영역&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;cat /proc/meminfo&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;... 생략
+Slab:             473356 kB
+SReclaimable:     402036 kB
+SUnreclaim:        71320 kB
+... 생략
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;slab: 메모리 영역 중 커널이 직접 사용하는 영역. 여기에는 dentry cache, inode cache 등 커널이 사용하는 메모리가 포함.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;SReclaimable: Slab 영역 중 재사용될 수 없는 영역. 캐시 용도로 사용하는 메모리들이 여기에 포함됨. 메모리 부족 현상 발생하면 해제(free)되어 프로세스에 할당이 가능한 영역&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;SUnreclaim: Slab 영역 중 재사용 될 수 없는 영역. 커널이 현재 사용중이며 해제해서 다른 용도로 쓸 수 없는 영역.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Active / Total Objects (% used)    : 1718090 / 1895312 (90.6%)
+ Active / Total Slabs (% used)      : 48101 / 48101 (100.0%)
+ Active / Total Caches (% used)     : 82 / 106 (77.4%)   
+ Active / Total Size (% used)       : 435110.21K / 469842.19K (92.6%)
+ Minimum / Average / Maximum Object : 0.01K / 0.25K / 12.75K
+
+  OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME
+842205 743124  88%    0.10K  21595       39     86380K buffer_head
+382368 368286  96%    0.19K   9104       42     72832K dentry
+167216 167216 100%    0.94K   4919       34    157408K xfs_inode
+115668 111428  96%    0.57K   4131       28     66096K radix_tree_node
+ 55040  47535  86%    0.06K    860       64      3440K kmalloc-64
+ 28176  28176 100%    0.16K    587       48      4696K xfs_ili
+ 28152  28152 100%    0.12K    828       34      3312K kernfs_node_cache
+ 26344  16899  64%    0.21K    712       37      5696K vm_area_struct
+ 19278  10360  53%    0.19K    459       42      3672K kmalloc-192
+ 16000  15514  96%    0.03K    125      128       500K kmalloc-32
+ 15912  15912 100%    0.04K    156      102       624K selinux_inode_security
+... 생략
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;buddy system : linux에서 메모리를 할당해주는 시스템. 가능한 적당하게 메모리 요청을 만족하도록 메모리를 여러 부분으로 나누는 메모리 할당 시스템.
+메모리의 크기를 절반씩 분할하면서 가장 잘 맞는 크기의 메모리를 찾아 할당해 준다. 2의 거듭제곱 값으로 메모리를 할당.&lt;/li&gt;
+&lt;li&gt;slab allocator : 버디 시스템을 통해 기본 페이지 크기인 4KB 영역을 할당 받은 후에 각각의 캐시 크기에 맞게 영역을 나눠서 사용.&lt;/li&gt;
+&lt;li&gt;slab 영역은 &lt;code&gt;free&lt;/code&gt;명령에서 used 영역에 포함된다. 커널이 사용하기 때문에 buffers/cached에 포함될거라 생각할 수 있지만, 실제로는 used에 포함됨.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;출처 : &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788966264049&amp;amp;orderClick=LEA&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DevOps와 SE를 위한 리눅스 커널 이야기&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -36,8 +178,95 @@ buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌</des
       <pubDate>Sat, 13 Jul 2019 21:38:58 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch3/</guid>
-      <description>3장 - Load average와 시스템 부하 Load average의 정의  Load average는 R(run queue에서 cpu 사용을 위해 대기중인 프로세스들)과 D(네트워크/디스크 i/o 를 위해 wait queue 에서 대기중인 프로세스들)상태에 있는 프로세스 개수의 1분, 5분, 15분마다의 평균값이다.
-CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.  Load average 계산 과정 root@August-PC:~# uptime 21:44:37 up 6 min, 0 users, load average: 0.</description>
+      <description>
+
+&lt;h1 id=&#34;3장-load-average와-시스템-부하&#34;&gt;3장 - Load average와 시스템 부하&lt;/h1&gt;
+
+&lt;h3 id=&#34;load-average의-정의&#34;&gt;Load average의 정의&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Load average는 R(run queue에서 cpu 사용을 위해 대기중인 프로세스들)과 D(네트워크/디스크 i/o 를 위해 wait queue 에서 대기중인 프로세스들)상태에 있는 프로세스 개수의 1분, 5분, 15분마다의 평균값이다.&lt;br /&gt;
+CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;load-average-계산-과정&#34;&gt;Load average 계산 과정&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;root@August-PC:~# uptime
+ 21:44:37 up 6 min,  0 users,  load average: 0.52, 0.58, 0.59
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;root@August-PC:~# strace -s 65535 -f -t -o uptime_dump uptime
+ 05:36:52 up  5:31,  0 users,  load average: 0.52, 0.58, 0.59
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;/proc/loadavg&lt;/code&gt; -&amp;gt; &lt;code&gt;/fs/proc/loadavg.c&lt;/code&gt;에서 &lt;code&gt;loadavg_proc_show()&lt;/code&gt; 함수 -&amp;gt; &lt;code&gt;/kernel/sched.c&lt;/code&gt; 에서 &lt;code&gt;get_avenrun()&lt;/code&gt; 함수 -&amp;gt; &lt;code&gt;avenrun[]&lt;/code&gt; 배열 -&amp;gt; &lt;code&gt;calc_global_load()&lt;/code&gt; 함수 -&amp;gt; &lt;code&gt;calc_load_account_active()&lt;/code&gt; 함수 순으로 추적하다보면 &lt;code&gt;nr_active&lt;/code&gt; 라는 변수에 &lt;code&gt;nr_running&lt;/code&gt; + &lt;code&gt;nr_uninterruptible&lt;/code&gt; 값들을 합하고 이를 1분, 5분, 15분 평균으로 나눠 계산하는 것을 확인할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;nr_running&lt;/code&gt;은 run queue에 있는 R상태의 프로세스들의 갯수이며, &lt;code&gt;nr_uninterruptible&lt;/code&gt;은 wait queue에 있는 D상태의 프로세스들의 갯수이다.&lt;/p&gt;
+
+&lt;h3 id=&#34;cpu-bound-vs-i-o-bound&#34;&gt;CPU Bound vs I/O Bound&lt;/h3&gt;
+
+&lt;p&gt;위에서 확인했듯 Load average는 cpu 사용을 기다리는 프로세스 갯수로만 계산되는 것이 아니라, 디스크/네트워크 I/O를 위해 대기중인 프로세스의 갯수도 계산에 포함된다.  즉, Load average가 높다는 것은 단순히 CPU를 사용하려는 프로세스가 많다는 의미가 아니고, I/O 병목이 생겨 I/O 작업을 대기하는 프로세스가 많을 수도 있다는 의미이다.&lt;br /&gt;
+그러므로 Load average 숫자만 보고 시스템에 정확히 어떤 상태의 부하가 일어나고 있는지 파악하기가 어렵다.&lt;br /&gt;
+그럼 부하의 종류를 어떻게 확인할까?&lt;/p&gt;
+
+&lt;h3 id=&#34;vmstat으로-부하의-정체-확인하기&#34;&gt;vmstat으로 부하의 정체 확인하기&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[root@august-PC ~]# vmstat
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 2  0 1211796 143872 141040 5541164    0    0    15    19    0    0 26  3 69  1  0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;r : The number of processes waiting for run time.&lt;br /&gt;
+실행되기 위해 기다리는 프로세스 갯수(nr_running)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;b : The number of processes in uninterruptible sleep&lt;br /&gt;
+I/O를 위해 기다리는 프로세스 갯수(nr_uninterruptible)&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;/proc/sched_debug&lt;/code&gt; 파일을 확인하면 각 CPU의 Run queue 상태와 스케줄링 정보를 살펴볼 수 있다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;[root@august-PC ~]# cat /proc/sched_debug 
+Sched Debug Version: v0.11, 3.10.0-862.6.3.el7.x86_64 #1
+ktime                                   : 31318815611.994170
+sched_clk                               : 31318700701.301538
+cpu_clk                                 : 31318700701.301627
+jiffies                                 : 35613482909
+
+...중략
+
+cpu#0, 2200.007 MHz
+  .nr_running                    : 0
+  .load                          : 0
+  .nr_switches                   : 6296361526
+  .nr_load_updates               : 15707632257
+  .nr_uninterruptible            : 434324
+  .next_balance                  : 35613.482909
+  .curr-&amp;gt;pid                     : 0
+  .clock                         : 31318700701.633510
+  .cpu_load[0]                   : 0
+  .cpu_load[1]                   : 0
+
+...중략
+
+runnable tasks:
+            task   PID         tree-key  switches  prio     wait-time             sum-exec        sum-sleep
+----------------------------------------------------------------------------------------------------------
+     ksoftirqd/0     3 13546607321.808677 190671117   120         0.000000   1013193.525038         0.000000 0 /
+    kworker/0:0H     5       544.548835         6   100         0.000000         0.029044         0.000000 0 /
+      watchdog/0    12        -3.904516   7829709     0         0.000000    125610.812095         0.000000 0 /
+       kdevtmpfs    51 1877281760.662029       185   120         0.000000         3.293578         0.000000 0 /
+         kswapd0    70 13546604016.431647    923034   120         0.000000    894054.731239         0.000000 0 /
+       scsi_eh_0   282       485.192906         2   120         0.000000         0.012182         0.000000 0 /
+    kworker/0:1H   341 13546605978.612818  37669618   100         0.000000    601004.086434         0.000000 0 /
+              su  4429 13546605952.403489        23   120         0.000000        33.713593         0.000000 0 /
+           mysql  4582 13546606319.488393         5   120         0.000000        15.271120         0.000000 0 /
+             sed  4708 13546607347.312431         2   120         0.000000         1.549732         0.000000 0 /
+...생략
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;출처 : &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788966264049&amp;amp;orderClick=LEA&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DevOps와 SE를 위한 리눅스 커널 이야기&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -46,7 +275,89 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
       <pubDate>Thu, 11 Jul 2019 01:55:00 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch2/</guid>
-      <description>2장 - top을 통해 프로세스 정보 살펴보기 top 명령어 실행 결과 root@August-PC:~# top -b -n 1 top - 01:57:36 up 58 min, 0 users, load average: 0.52, 0.58, 0.59 Tasks: 8 total, 1 running, 7 sleeping, 0 stopped, 0 zombie %Cpu(s): 9.0 us, 23.3 sy, 0.0 ni, 67.4 id, 0.0 wa, 0.3 hi, 0.0 si,KiB Mem : 8240388 total, 2032052 free, 5978984 used, 229352 buff/cKiB Swap: 25165824 total, 24837212 free, 328612 used.</description>
+      <description>
+
+&lt;h1 id=&#34;2장-top을-통해-프로세스-정보-살펴보기&#34;&gt;2장 - top을 통해 프로세스 정보 살펴보기&lt;/h1&gt;
+
+&lt;h3 id=&#34;top-명령어-실행-결과&#34;&gt;top 명령어 실행 결과&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;root@August-PC:~# top -b -n 1
+top - 01:57:36 up 58 min,  0 users,  load average: 0.52, 0.58, 0.59
+Tasks:   8 total,   1 running,   7 sleeping,   0 stopped,   0 zombie   
+%Cpu(s):  9.0 us, 23.3 sy,  0.0 ni, 67.4 id,  0.0 wa,  0.3 hi,  0.0 si,KiB Mem :  8240388 total,  2032052 free,  5978984 used,   229352 buff/cKiB Swap: 25165824 total, 24837212 free,   328612 used.  2127672 avail 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+    
+    1 root      20   0    8916    328    284 S   0.0  0.0   0:00.07    
+  880 root      20   0    8916    228    176 S   0.0  0.0   0:00.01    
+  881 august    20   0   18356   3764   3448 S   0.0  0.0   0:00.38    
+ 1074 root      20   0    8916    232    180 S   0.0  0.0   0:00.00    
+ 1075 august    20   0   18224   3492   3364 S   0.0  0.0   0:00.09    
+ 1087 root      20   0   16260   2116   2088 S   0.0  0.0   0:00.01    
+ 1088 root      20   0   18088   3392   3304 S   0.0  0.0   0:00.06    
+ 1104 root      20   0   18780   1888   1420 R   0.0  0.0   0:00.01
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;line 1: 현재 시스템의 시간과 uptime, 그리고 load average가 나온다&lt;/li&gt;
+&lt;li&gt;line 2: 현재 실행중인 process들&lt;/li&gt;
+&lt;li&gt;line 3: 리소스 사용량 통계&lt;/li&gt;
+&lt;li&gt;PID: process id, PR : Priority, NI : Nice value&lt;/li&gt;
+&lt;li&gt;VIRT : VIRTual memory, 해당 프로세스에게 할당된 가상메모리 전체의 크기&lt;/li&gt;
+&lt;li&gt;RES: RESident memory, 해당 프로세스가 실제로 사용중인 물리메모리의 양&lt;/li&gt;
+&lt;li&gt;S : Process Status&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;memory-commit-의-개념&#34;&gt;Memory Commit 의 개념&lt;/h3&gt;
+
+&lt;p&gt;커널은 프로세스가 메모리를 요청할 때 그에 맞는 크기를 가상으로 할당해준다. 실제로 요청받은 크기 전체만큼 물리메모리에 assign해주지는 않음.
+그렇게 있다가 실제로 사용이 필요할 때마다 물리메모리를 조금씩 더 할당을 해줌(늘려줌). 이를 memory commit 이라고 한다.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;vm.overcommit_memory는 커널의 Memory commit 동작 방식을 변경할 수 있게 해주는 커널 파라미터.&lt;/li&gt;
+&lt;li&gt;0=최댓값 바탕으로 Memory commit, 1=무조건 overcommit, 2=vm.overcommit_ratio에 설정된 비율을 바탕으로 제한적으로 memory commit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;커널-파라미터-보는법-sysctl&#34;&gt;커널 파라미터 보는법? sysctl&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;root@August-PC:~# sysctl -a
+fs.binfmt_misc.status = enabled
+fs.binfmt_misc.WSLInterop = enabled
+fs.binfmt_misc.WSLInterop = interpreter /init
+...
+...
+vm.min_free_kbytes = 45056
+vm.overcommit_memory = 0
+vm.swappiness = 60
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sysctl -a | grep pid_max&lt;/code&gt; 하면 현재 시스템의 생성 가능한 최대 pid 확인 가능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;프로세스-상태&#34;&gt;프로세스 상태&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Process Status 종류 : D, R, S, T, Z&lt;/li&gt;
+&lt;li&gt;D = Uninterruptible sleep - 디스크, 네트워크 디바이스에 작업 요청 후 대기중인 상태(Run queue가 아닌 wait queue에 넣어놓음)&lt;/li&gt;
+&lt;li&gt;R = Running - 현재 CPU에서 실행되고 있는 상태&lt;/li&gt;
+&lt;li&gt;S = Sleep - 그냥 자고있는 애들. D와의 차이는 요청한 리소스를 즉시 사용할 수 있는지 여부이다.&lt;/li&gt;
+&lt;li&gt;T = traced or stopped. strace 등으로 프로세스가 추적되고 있는 상태&lt;/li&gt;
+&lt;li&gt;Z = zombie 상태. parent process가 죽은 child process를 의미&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;프로세스-우선-순위&#34;&gt;프로세스 우선 순위&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;기본 PR값은 20이다.&lt;/li&gt;
+&lt;li&gt;PR값에서 NI값을 뺀 값이 최종 우선순위가 된다. 숫자 0에 가까울수록 우선순위 높은것(뭔개소리죠??? 직접 해보면 안다&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nice -n N command&lt;/code&gt; 명령으로 해당 프로세스 nice 값을 부여해줄 수 있음.(N은 원하는 숫자)&lt;/li&gt;
+&lt;li&gt;RT는 RealTime의 약자로써, RT 스케줄러에 의해 실시간으로 커널에 의해 처리되는 프로세스들임. CFQ(Completely Fair Queueing) 스케줄러보다 먼저 실행된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;em&gt;아 커널 소스 나와서 당황했다. 절대 만만치 않은 책인 듯 싶다.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;출처 : &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788966264049&amp;amp;orderClick=LEA&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DevOps와 SE를 위한 리눅스 커널 이야기&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -55,7 +366,72 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
       <pubDate>Sat, 22 Jun 2019 00:23:40 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch1/</guid>
-      <description>1장 - 시스템 구성 정보 확인하기 커널 정보 확인하기 uname -a # 커널 버전 확인dmesg #커널 디버그 메세지 cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인 cat /boot/config-`uname -r` | grep -i config_function_tracer   ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함  CPU 정보 확인하기 dmidecode -t processor cat /proc/cpuinfo lscpu   socket : number of CPU core : number of cores per CPU 시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)  Memory 정보 확인하기 dmidecode -t memory   Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹 Memory device : 실제로 시스템에 꽂혀있는 메모리.</description>
+      <description>
+
+&lt;h1 id=&#34;1장-시스템-구성-정보-확인하기&#34;&gt;1장 - 시스템 구성 정보 확인하기&lt;/h1&gt;
+
+&lt;h3 id=&#34;커널-정보-확인하기&#34;&gt;커널 정보 확인하기&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;uname -a # 커널 버전 확인dmesg #커널 디버그 메세지
+cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인
+cat /boot/config-`uname -r` | grep -i config_function_tracer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;cpu-정보-확인하기&#34;&gt;CPU 정보 확인하기&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dmidecode -t processor
+cat /proc/cpuinfo
+lscpu
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;socket : number of CPU&lt;/li&gt;
+&lt;li&gt;core : number of cores per CPU&lt;/li&gt;
+&lt;li&gt;시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;memory-정보-확인하기&#34;&gt;Memory 정보 확인하기&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dmidecode -t memory
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹&lt;/li&gt;
+&lt;li&gt;Memory device : 실제로 시스템에 꽂혀있는 메모리.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;디스크-정보-확인하기&#34;&gt;디스크 정보 확인하기&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;df -h
+smartctl -a /dev/sda
+smartctl -a /dev/sda -d cciss,0 # lsmod 를 통해 알아낸 현재 시스템 사용중인 raid 컨트롤러 드라이버를 명시
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;sda : scsi 방식 또는 sata, sas 방식 같은 일반적 디스크&lt;/li&gt;
+&lt;li&gt;hda : 개인용 컴퓨터용인 IDE 방식의 디스크&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;네트워크-정보-확인하기&#34;&gt;네트워크 정보 확인하기&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;lspci | grep -i ether
+ethtool eth0
+ethtool -g eth0 # Ring buffer의 크기를 확인 가능, 볼땐 -g, 설정할땐 -G 옵션
+ethtool -k eth0 # 현재 NIC의 다양한 성능 최적화 옵션 확인, 마찬가지로 볼땐 소문자 -k, 설정할땐 -K
+ethtool -i eth0 # NIC의 커널 모듈 정보 표시
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ring buffer : 네트워크 카드의 버퍼 공간을 의미. 크기가 maximum으로 세팅 되어있지 않으면 네트워크 성능 저하 발생 가능&lt;/li&gt;
+&lt;li&gt;tcp-offload : MTU 이상의 크기를 가지는 패킷의 분할작업을 CPU 가 아닌 NIC가 직접 처리하여 CPU 성능 부담 줄이고 패킷 처리 성능 높임.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;출처 : &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788966264049&amp;amp;orderClick=LEA&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;DevOps와 SE를 위한 리눅스 커널 이야기&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -64,7 +440,37 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
       <pubDate>Sun, 09 Jun 2019 17:57:32 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/2019-books-i-read/</guid>
-      <description>2019년에 읽은 책들을 나열하는 포스트  아몬드(손원평) 사람의 아들(이문열) 지방 대사 켜는 스위치온 다이어트(박용우) 여행의 이유(김영하) 나는 왜 정치를 하는가(유승민) 히트 리프레시(Satya Nadella) 어느 애주가의 고백(Daniel Schreiber) 2019-06-17 더골(Eliyahu Moshe Goldratt) 2019-06-18 한국이 싫어서(장강명) 2019-06-18 인프라 엔지니어의 교과서: 시스템 구축과 관리편 2019-06-22 당선, 합격, 계급(장강명) 2019-06-30 소크라테스의 변론 크리톤 파이돈 향연(Plato) 2019-07-04 Hello Coding 알고리즘(Aditya Y. Bhargava) 2019-07-07 개발자도 궁금한 IT 인프라(정송화, 김영선, 전성민) 2019-07-09 서른의 반격(손원평) 2019-07-12 산 자들(장강명) 2019-07-15 지극히 사적인 초능력(장강명) 2019-07-19 멋진 신세계(Aldous Leonard Huxley) 2019-07-20 인간 실격(다자이 오사무) 2019-08-01 함께 자라기(김창준) 2019-08-04 바닷가 작업실에서는 전혀 다른 시간이 흐른다(김정운) 2019-08-05 열광금지, 에바로드(장강명)  2019년 독서는 8월에서 끝이 났다&amp;hellip;</description>
+      <description>
+
+&lt;h1 id=&#34;2019년에-읽은-책들을-나열하는-포스트&#34;&gt;2019년에 읽은 책들을 나열하는 포스트&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788936434267&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;아몬드(손원평)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937480485&amp;amp;orderClick=LEB&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;사람의 아들(이문열)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791196334703&amp;amp;orderClick=LAH&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;지방 대사 켜는 스위치온 다이어트(박용우)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788954655972&amp;amp;orderClick=LAH&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;여행의 이유(김영하)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791195842032&amp;amp;orderClick=LAH&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;나는 왜 정치를 하는가(유승민)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788965962502&amp;amp;orderClick=LAH&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;히트 리프레시(Satya Nadella)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791188331222&amp;amp;orderClick=LAH&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;어느 애주가의 고백(Daniel Schreiber)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-06-17 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791157031030&amp;amp;orderClick=LAH&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;더골(Eliyahu Moshe Goldratt)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-06-18 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937473074&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;한국이 싫어서(장강명)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-06-18 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791160500165&amp;amp;orderClick=LEA&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;인프라 엔지니어의 교과서: 시스템 구축과 관리편&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-06-22 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937436888&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;당선, 합격, 계급(장강명)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-06-30 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;barcode=9788991290464&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;소크라테스의 변론 크리톤 파이돈 향연(Plato)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-07-04 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788968483547&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Hello Coding 알고리즘(Aditya Y. Bhargava)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-07-07 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791188621224&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;개발자도 궁금한 IT 인프라(정송화, 김영선, 전성민)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-07-09 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791196199807&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;서른의 반격(손원평)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-07-12 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937441912&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;산 자들(장강명)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-07-15 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9791189015657&amp;amp;orderClick=LAH&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;지극히 사적인 초능력(장강명)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-07-19 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788931010831&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;멋진 신세계(Aldous Leonard Huxley)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-07-20 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937461033&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;인간 실격(다자이 오사무)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-08-01 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788966262335&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;함께 자라기(김창준)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-08-04 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788950981082&amp;amp;orderClick=LEB&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;바닷가 작업실에서는 전혀 다른 시간이 흐른다(김정운)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2019-08-05 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788974331146&amp;amp;orderClick=LAG&amp;amp;Kc=&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;열광금지, 에바로드(장강명)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2019년 독서는 8월에서 끝이 났다&amp;hellip;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -73,8 +479,15 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
       <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/how-to-git-pull-with-submodules/</guid>
-      <description>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다. 근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라. 구글링을 좀 해본 결과 링크와 같이
-git submodule update --init --recursive  clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.</description>
+      <description>&lt;p&gt;집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
+근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.
+구글링을 좀 해본 결과 &lt;a href=&#34;http://openmetric.org/til/programming/git-pull-with-submodule/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;링크&lt;/a&gt;와 같이&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git submodule update --init --recursive
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -83,8 +496,10 @@ git submodule update --init --recursive  clone 이후에 해당 repo의 root에�
       <pubDate>Sun, 02 Jun 2019 17:40:10 +0900</pubDate>
       
       <guid>https://augustkang.github.io/about/</guid>
-      <description>Welcome to my blog.
-I am currently working as System engineer.</description>
+      <description>&lt;p&gt;Welcome to my blog.&lt;/p&gt;
+
+&lt;p&gt;I am currently working as System engineer.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -93,7 +508,8 @@ I am currently working as System engineer.</description>
       <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/first-post/</guid>
-      <description>I just created my first blog :D</description>
+      <description>&lt;p&gt;I just created my first blog :D&lt;/p&gt;
+</description>
     </item>
     
   </channel>
