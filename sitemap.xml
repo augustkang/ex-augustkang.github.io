@@ -16,37 +16,15 @@
     </url>
   
     <url>
-      <loc>https://augustkang.github.io/categories/</loc>
-      
-      <lastmod>2020-01-04T09:52:00+09:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
-      <loc>https://augustkang.github.io/posts/</loc>
-      
-      <lastmod>2020-01-04T09:52:00+09:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>https://augustkang.github.io/</loc>
       
       <lastmod>2020-01-04T09:52:00+09:00</lastmod>
       
       
+      <changefreq>monthly</changefreq>
       
-      <priority>0</priority>
+      
+      <priority>0.5</priority>
       
       
     </url>
@@ -57,8 +35,38 @@
       <lastmod>2020-01-04T09:52:00+09:00</lastmod>
       
       
+      <changefreq>monthly</changefreq>
       
-      <priority>0</priority>
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://augustkang.github.io/categories/</loc>
+      
+      <lastmod>2020-01-04T09:52:00+09:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://augustkang.github.io/posts/</loc>
+      
+      <lastmod>2020-01-04T09:52:00+09:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
       
       
     </url>
@@ -83,8 +91,10 @@
       <lastmod>2019-07-17T16:12:40+09:00</lastmod>
       
       
+      <changefreq>monthly</changefreq>
       
-      <priority>0</priority>
+      
+      <priority>0.5</priority>
       
       
     </url>
@@ -146,6 +156,20 @@
     </url>
   
     <url>
+      <loc>https://augustkang.github.io/categories/git/</loc>
+      
+      <lastmod>2019-06-03T21:23:32+09:00</lastmod>
+      
+      
+      <changefreq>monthly</changefreq>
+      
+      
+      <priority>0.5</priority>
+      
+      
+    </url>
+  
+    <url>
       <loc>https://augustkang.github.io/2019/how-to-git-pull-with-submodules/</loc>
       
       <lastmod>2019-06-03T21:23:32+09:00</lastmod>
@@ -160,21 +184,23 @@
     </url>
   
     <url>
-      <loc>https://augustkang.github.io/categories/git/</loc>
+      <loc>https://augustkang.github.io/about/</loc>
       
-      <lastmod>2019-06-03T21:23:32+09:00</lastmod>
+      <lastmod>2019-06-02T17:40:10+09:00</lastmod>
       
       
+      <changefreq>monthly</changefreq>
       
-      <priority>0</priority>
+      
+      <priority>0.5</priority>
       
       
     </url>
   
     <url>
-      <loc>https://augustkang.github.io/about/</loc>
+      <loc>https://augustkang.github.io/categories/blog/</loc>
       
-      <lastmod>2019-06-02T17:40:10+09:00</lastmod>
+      <lastmod>2019-06-02T17:36:40+09:00</lastmod>
       
       
       <changefreq>monthly</changefreq>
@@ -200,23 +226,13 @@
     </url>
   
     <url>
-      <loc>https://augustkang.github.io/categories/blog/</loc>
-      
-      <lastmod>2019-06-02T17:36:40+09:00</lastmod>
-      
-      
-      
-      <priority>0</priority>
-      
-      
-    </url>
-  
-    <url>
       <loc>https://augustkang.github.io/tags/</loc>
       
       
+      <changefreq>monthly</changefreq>
       
-      <priority>0</priority>
+      
+      <priority>0.5</priority>
       
       
     </url>
