@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on augustkang</title>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 17 Jul 2019 16:12:40 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch4/</guid>
-      <description>4장 - free 명령이 숨기고 있는 것들 메모리 사용량 확인하기 root@August-PC:~# free -m total used free shared buff/cache available Mem: 8047 6161 1662 17 223 1755 Swap: 24576 214 24361 # 출력 데이터 단위에 따라 옵션이 다르다. # -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위 total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량
+      <description>4장 - free 명령이 숨기고 있는 것들 메모리 사용량 확인하기 root@August-PC:~# free -m total used free shared buff/cache available Mem: 8047 6161 1662 17 223 1755 Swap: 24576 214 24361 # 출력 데이터 단위에 따라 옵션이 다르다. # -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위  total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량
 buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌</description>
     </item>
     
@@ -28,7 +28,7 @@ buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌</des
       
       <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch3/</guid>
       <description>3장 - Load average와 시스템 부하 Load average의 정의  Load average는 R(run queue에서 cpu 사용을 위해 대기중인 프로세스들)과 D(네트워크/디스크 i/o 를 위해 wait queue 에서 대기중인 프로세스들)상태에 있는 프로세스 개수의 1분, 5분, 15분마다의 평균값이다.
-CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.  Load average 계산 과정 root@August-PC:~# uptime 21:44:37 up 6 min, 0 users, load average: 0.52, 0.</description>
+CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.  Load average 계산 과정 root@August-PC:~# uptime 21:44:37 up 6 min, 0 users, load average: 0.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
       <pubDate>Sat, 22 Jun 2019 00:23:40 +0900</pubDate>
       
       <guid>https://augustkang.github.io/2019/linux-kernel-story-for-devops-and-se-ch1/</guid>
-      <description>1장 - 시스템 구성 정보 확인하기 커널 정보 확인하기 uname -a # 커널 버전 확인dmesg #커널 디버그 메세지 cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인 cat /boot/config-`uname -r` | grep -i config_function_tracer  ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함  CPU 정보 확인하기 dmidecode -t processor cat /proc/cpuinfo lscpu  socket : number of CPU core : number of cores per CPU 시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)  Memory 정보 확인하기 dmidecode -t memory  Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹 Memory device : 실제로 시스템에 꽂혀있는 메모리.</description>
+      <description>1장 - 시스템 구성 정보 확인하기 커널 정보 확인하기 uname -a # 커널 버전 확인dmesg #커널 디버그 메세지 cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인 cat /boot/config-`uname -r` | grep -i config_function_tracer   ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함  CPU 정보 확인하기 dmidecode -t processor cat /proc/cpuinfo lscpu   socket : number of CPU core : number of cores per CPU 시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)  Memory 정보 확인하기 dmidecode -t memory   Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹 Memory device : 실제로 시스템에 꽂혀있는 메모리.</description>
     </item>
     
   </channel>

@@ -57,8 +57,8 @@
   
   "wordcount":  48 ,
   "url": "https:\/\/augustkang.github.io\/2019\/how-to-git-pull-with-submodules\/",
-  "datePublished": "2019-06-03T21:23:32\u002b09:00",
-  "dateModified": "2019-06-03T21:23:32\u002b09:00",
+  "datePublished": "2019-06-03T21:23:32\x2b09:00",
+  "dateModified": "2019-06-03T21:23:32\x2b09:00",
   
   "publisher": {
     "@type": "Organization",
@@ -164,9 +164,12 @@
 
           <p>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
 근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.
-구글링을 좀 해본 결과 <a href="http://openmetric.org/til/programming/git-pull-with-submodule/">링크</a>와 같이</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git submodule update --init --recursive
-</code></pre></div><p>clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.</p>
+구글링을 좀 해본 결과 <a href="http://openmetric.org/til/programming/git-pull-with-submodule/" rel="nofollow noreferrer" target="_blank">링크</a>와 같이</p>
+
+<pre><code class="language-bash">git submodule update --init --recursive
+</code></pre>
+
+<p>clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.</p>
 
     </div>
 
