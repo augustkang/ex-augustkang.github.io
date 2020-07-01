@@ -63,4 +63,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://augustkang.github.io/sitemap.xml
+Sitemap: augustkang.com/sitemap.xml
