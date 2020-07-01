@@ -2,50 +2,50 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>linux on augustkang</title>
-    <link>www.augustkang.com/categories/linux/</link>
+    <link>augustkang.com/categories/linux/</link>
     <description>Recent content in linux on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Wed, 17 Jul 2019 16:12:40 +0900</lastBuildDate>
     
-	<atom:link href="www.augustkang.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="augustkang.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장</title>
-      <link>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch4/</link>
+      <link>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch4/</link>
       <pubDate>Wed, 17 Jul 2019 16:12:40 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch4/</guid>
+      <guid>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch4/</guid>
       <description>4장 - free 명령이 숨기고 있는 것들 메모리 사용량 확인하기 root@August-PC:~# free -m total used free shared buff/cache available Mem: 8047 6161 1662 17 223 1755 Swap: 24576 214 24361 # 출력 데이터 단위에 따라 옵션이 다르다. # -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위  total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량
 buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌</description>
     </item>
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장</title>
-      <link>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch3/</link>
+      <link>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch3/</link>
       <pubDate>Sat, 13 Jul 2019 21:38:58 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch3/</guid>
+      <guid>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch3/</guid>
       <description>3장 - Load average와 시스템 부하 Load average의 정의  Load average는 R(run queue에서 cpu 사용을 위해 대기중인 프로세스들)과 D(네트워크/디스크 i/o 를 위해 wait queue 에서 대기중인 프로세스들)상태에 있는 프로세스 개수의 1분, 5분, 15분마다의 평균값이다.
 CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.  Load average 계산 과정 root@August-PC:~# uptime 21:44:37 up 6 min, 0 users, load average: 0.</description>
     </item>
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 2장</title>
-      <link>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch2/</link>
+      <link>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch2/</link>
       <pubDate>Thu, 11 Jul 2019 01:55:00 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch2/</guid>
+      <guid>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch2/</guid>
       <description>2장 - top을 통해 프로세스 정보 살펴보기 top 명령어 실행 결과 root@August-PC:~# top -b -n 1 top - 01:57:36 up 58 min, 0 users, load average: 0.52, 0.58, 0.59 Tasks: 8 total, 1 running, 7 sleeping, 0 stopped, 0 zombie %Cpu(s): 9.0 us, 23.3 sy, 0.0 ni, 67.4 id, 0.0 wa, 0.3 hi, 0.0 si,KiB Mem : 8240388 total, 2032052 free, 5978984 used, 229352 buff/cKiB Swap: 25165824 total, 24837212 free, 328612 used.</description>
     </item>
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 1장</title>
-      <link>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch1/</link>
+      <link>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch1/</link>
       <pubDate>Sat, 22 Jun 2019 00:23:40 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch1/</guid>
+      <guid>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch1/</guid>
       <description>1장 - 시스템 구성 정보 확인하기 커널 정보 확인하기 uname -a # 커널 버전 확인dmesg #커널 디버그 메세지 cat /boot/config-`uname -r` | more # 커널 컴파일 옵션 확인 cat /boot/config-`uname -r` | grep -i config_function_tracer   ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함  CPU 정보 확인하기 dmidecode -t processor cat /proc/cpuinfo lscpu   socket : number of CPU core : number of cores per CPU 시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)  Memory 정보 확인하기 dmidecode -t memory   Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹 Memory device : 실제로 시스템에 꽂혀있는 메모리.</description>
     </item>
     

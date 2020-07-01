@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on augustkang</title>
-    <link>www.augustkang.com/categories/</link>
+    <link>augustkang.com/categories/</link>
     <description>Recent content in Categories on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 04 Jan 2020 09:52:00 +0900</lastBuildDate>
     
-	<atom:link href="www.augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>book</title>
-      <link>www.augustkang.com/categories/book/</link>
+      <link>augustkang.com/categories/book/</link>
       <pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
       
-      <guid>www.augustkang.com/categories/book/</guid>
+      <guid>augustkang.com/categories/book/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>www.augustkang.com/categories/linux/</link>
+      <link>augustkang.com/categories/linux/</link>
       <pubDate>Wed, 17 Jul 2019 16:12:40 +0900</pubDate>
       
-      <guid>www.augustkang.com/categories/linux/</guid>
+      <guid>augustkang.com/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>www.augustkang.com/categories/git/</link>
+      <link>augustkang.com/categories/git/</link>
       <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
       
-      <guid>www.augustkang.com/categories/git/</guid>
+      <guid>augustkang.com/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blog</title>
-      <link>www.augustkang.com/categories/blog/</link>
+      <link>augustkang.com/categories/blog/</link>
       <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
       
-      <guid>www.augustkang.com/categories/blog/</guid>
+      <guid>augustkang.com/categories/blog/</guid>
       <description></description>
     </item>
     

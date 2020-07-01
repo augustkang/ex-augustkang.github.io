@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>augustkang on augustkang</title>
-    <link>www.augustkang.com/</link>
+    <link>augustkang.com/</link>
     <description>Recent content in augustkang on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 04 Jan 2020 09:52:00 +0900</lastBuildDate>
-    <atom:link href="www.augustkang.com/" rel="self" type="application/rss+xml" />
+    <atom:link href="augustkang.com/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>2020 Books I Read</title>
-      <link>www.augustkang.com/2020/2020-books-i-read/</link>
+      <link>augustkang.com/2020/2020-books-i-read/</link>
       <pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
       
-      <guid>www.augustkang.com/2020/2020-books-i-read/</guid>
+      <guid>augustkang.com/2020/2020-books-i-read/</guid>
       <description>
 
 &lt;h1 id=&#34;2020년에-읽은-책들을-나열하는-포스트-업데이트중&#34;&gt;2020년에 읽은 책들을 나열하는 포스트(업데이트중)&lt;/h1&gt;
@@ -52,10 +52,10 @@
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장</title>
-      <link>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch4/</link>
+      <link>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch4/</link>
       <pubDate>Wed, 17 Jul 2019 16:12:40 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch4/</guid>
+      <guid>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch4/</guid>
       <description>
 
 &lt;h1 id=&#34;4장-free-명령이-숨기고-있는-것들&#34;&gt;4장 - free 명령이 숨기고 있는 것들&lt;/h1&gt;
@@ -187,10 +187,10 @@ SUnreclaim:        71320 kB
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장</title>
-      <link>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch3/</link>
+      <link>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch3/</link>
       <pubDate>Sat, 13 Jul 2019 21:38:58 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch3/</guid>
+      <guid>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch3/</guid>
       <description>
 
 &lt;h1 id=&#34;3장-load-average와-시스템-부하&#34;&gt;3장 - Load average와 시스템 부하&lt;/h1&gt;
@@ -284,10 +284,10 @@ runnable tasks:
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 2장</title>
-      <link>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch2/</link>
+      <link>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch2/</link>
       <pubDate>Thu, 11 Jul 2019 01:55:00 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch2/</guid>
+      <guid>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch2/</guid>
       <description>
 
 &lt;h1 id=&#34;2장-top을-통해-프로세스-정보-살펴보기&#34;&gt;2장 - top을 통해 프로세스 정보 살펴보기&lt;/h1&gt;
@@ -375,10 +375,10 @@ vm.swappiness = 60
     
     <item>
       <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 1장</title>
-      <link>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch1/</link>
+      <link>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch1/</link>
       <pubDate>Sat, 22 Jun 2019 00:23:40 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch1/</guid>
+      <guid>augustkang.com/2019/linux-kernel-story-for-devops-and-se-ch1/</guid>
       <description>
 
 &lt;h1 id=&#34;1장-시스템-구성-정보-확인하기&#34;&gt;1장 - 시스템 구성 정보 확인하기&lt;/h1&gt;
@@ -449,10 +449,10 @@ ethtool -i eth0 # NIC의 커널 모듈 정보 표시
     
     <item>
       <title>2019 Books I Read</title>
-      <link>www.augustkang.com/2019/2019-books-i-read/</link>
+      <link>augustkang.com/2019/2019-books-i-read/</link>
       <pubDate>Sun, 09 Jun 2019 17:57:32 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/2019-books-i-read/</guid>
+      <guid>augustkang.com/2019/2019-books-i-read/</guid>
       <description>
 
 &lt;h1 id=&#34;2019년에-읽은-책들을-나열하는-포스트&#34;&gt;2019년에 읽은 책들을 나열하는 포스트&lt;/h1&gt;
@@ -488,10 +488,10 @@ ethtool -i eth0 # NIC의 커널 모듈 정보 표시
     
     <item>
       <title>How to Git Pull With Submodules</title>
-      <link>www.augustkang.com/2019/how-to-git-pull-with-submodules/</link>
+      <link>augustkang.com/2019/how-to-git-pull-with-submodules/</link>
       <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/how-to-git-pull-with-submodules/</guid>
+      <guid>augustkang.com/2019/how-to-git-pull-with-submodules/</guid>
       <description>&lt;p&gt;집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
 근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.
 구글링을 좀 해본 결과 &lt;a href=&#34;http://openmetric.org/til/programming/git-pull-with-submodule/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;링크&lt;/a&gt;와 같이&lt;/p&gt;
@@ -505,10 +505,10 @@ ethtool -i eth0 # NIC의 커널 모듈 정보 표시
     
     <item>
       <title>About</title>
-      <link>www.augustkang.com/about/</link>
+      <link>augustkang.com/about/</link>
       <pubDate>Sun, 02 Jun 2019 17:40:10 +0900</pubDate>
       
-      <guid>www.augustkang.com/about/</guid>
+      <guid>augustkang.com/about/</guid>
       <description>&lt;p&gt;Welcome to my blog.&lt;/p&gt;
 
 &lt;p&gt;I am currently working as System engineer.&lt;/p&gt;
@@ -517,10 +517,10 @@ ethtool -i eth0 # NIC의 커널 모듈 정보 표시
     
     <item>
       <title>First Post</title>
-      <link>www.augustkang.com/2019/first-post/</link>
+      <link>augustkang.com/2019/first-post/</link>
       <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
       
-      <guid>www.augustkang.com/2019/first-post/</guid>
+      <guid>augustkang.com/2019/first-post/</guid>
       <description>&lt;p&gt;I just created my first blog :D&lt;/p&gt;
 </description>
     </item>
