@@ -1,426 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  <meta http-equiv="content-type" content="text/html;charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noodp"/>
-  
-  
-  
-  
-  
-  <link rel="prev" href="/2019/linux-kernel-story-for-devops-and-se-ch3/" />
-  <link rel="next" href="/2020/2020-books-i-read/" />
-  <link rel="canonical" href="/2019/linux-kernel-story-for-devops-and-se-ch4/" />
-  <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
-  <title>
-       
-       
-           [요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장 | augustkang
-       
-  </title>
-  <meta name="title" content="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장 | augustkang">
-    
-  
-  <link rel="stylesheet" href="/font/iconfont.css">
-  <link rel="stylesheet" href="/css/main.min.css">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장 - augustkang</title><meta name="Description" content="august"><meta property="og:title" content="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장" />
+<meta property="og:description" content="4장 - free 명령이 숨기고 있는 것들 메모리 사용량 확인하기 1 2 3 4 5 6  root@August-PC:~# free -m total used free shared buff/cache available Mem: 8047 6161 1662 17 223 1755 Swap: 24576 214 24361 # 출력 데이터 단위에 따라 옵션이 다르다. # -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위   total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2019/linux-kernel-story-for-devops-and-se-ch4/" />
+<meta property="og:image" content="/static/images/logo.png"/>
+<meta property="article:published_time" content="2019-07-17T16:12:40+09:00" />
+<meta property="article:modified_time" content="2019-07-17T16:12:40+09:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/static/images/logo.png"/>
 
-
-  <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장"/>
-<meta name="twitter:description" content="4장 - free 명령이 숨기고 있는 것들 메모리 사용량 확인하기 root@August-PC:~# free -m total used free shared buff/cache available Mem: 8047 6161 1662 17 223 1755 Swap: 24576 214 24361 # 출력 데이터 단위에 따라 옵션이 다르다. # -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위  total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량
-buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌"/>
-
-  <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "BlogPosting",
-  "headline": "[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "\/2019\/linux-kernel-story-for-devops-and-se-ch4\/"
-  },
-  "image": {
-    "@type": "ImageObject",
-    "url": "\/logo.png",
-    "width":  800 ,
-    "height":  600 
-  },
-  "genre": "posts",
-  
-  "wordcount":  719 ,
-  "url": "\/2019\/linux-kernel-story-for-devops-and-se-ch4\/",
-  "datePublished": "2019-07-17T16:12:40\x2b09:00",
-  "dateModified": "2019-07-17T16:12:40\x2b09:00",
-  
-  "publisher": {
-    "@type": "Organization",
-    "name": "augustkang",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "\/logo.png",
-      "width":  127 ,
-      "height":  40 
+<meta name="twitter:description" content="4장 - free 명령이 숨기고 있는 것들 메모리 사용량 확인하기 1 2 3 4 5 6  root@August-PC:~# free -m total used free shared buff/cache available Mem: 8047 6161 1662 17 223 1755 Swap: 24576 214 24361 # 출력 데이터 단위에 따라 옵션이 다르다. # -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위   total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량"/>
+<meta name="application-name" content="augustkang">
+<meta name="apple-mobile-web-app-title" content="augustkang"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="/2019/linux-kernel-story-for-devops-and-se-ch4/" /><link rel="prev" href="/2019/linux-kernel-story-for-devops-and-se-ch3/" /><link rel="next" href="/2020/2020-books-i-read/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/2019\/linux-kernel-story-for-devops-and-se-ch4\/"
+        },"genre": "posts","wordcount":  769 ,
+        "url": "\/2019\/linux-kernel-story-for-devops-and-se-ch4\/","datePublished": "2019-07-17T16:12:40+09:00","dateModified": "2019-07-17T16:12:40+09:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "augustkang","logo": "\/static\/images\/logo.png"},"author": {
+                "@type": "Person",
+                "name": "augustkang"
+            },"description": ""
     }
-  },
-  "author": {
-    "@type": "Person",
-    "name": "augustkang"
-  },
-  "description": ""
-}
-</script>
-</head>
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
-  
-
-
-
-  <body class="">
-    <div class="wrapper">
-        <nav class="navbar">
-    <div class="container">
-        <div class="navbar-header header-logo">
-        	<a href="/">augustkang</a>
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="augustkang">augustkang</a>
         </div>
-        <div class="menu navbar-right">
-                
-                
-                <a class="menu-item" href="/posts/" title="">Blog</a>
-                
-                <a class="menu-item" href="/categories/" title="">Categories</a>
-                
-                <a class="menu-item" href="/about" title="">About</a>
-                
-                <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
         </div>
     </div>
-</nav>
-<nav class="navbar-mobile" id="nav-mobile" style="display: none">
-     <div class="container">
-        <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-sun"></i></a>&nbsp;<a href="/">augustkang</a></div>
-            <div class="menu-toggle">
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="augustkang">augustkang</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
             </div>
         </div>
-     
-          <div class="menu" id="mobile-menu">
-                
-                
-                <a class="menu-item" href="/posts/" title="">Blog</a>
-                
-                <a class="menu-item" href="/categories/" title="">Categories</a>
-                
-                <a class="menu-item" href="/about" title="">About</a>
-                
-        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
     </div>
-</nav>
-
-    	 <main class="main">
-          <div class="container">
-      		
-<article class="post-warp">
-    <header class="post-header">
-        <h1 class="post-title">[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장</h1>
-        <div class="post-meta">
-            Written by <a href="/" rel="author">augustkang</a> with ♥ 
-                <span class="post-time">
-                    on <time datetime=2019-07-17 >17 July 2019</time>
-                </span>
-                in
-                <i class="iconfont icon-folder"></i>
-                <span class="post-category">
-                        <a href="/categories/book/"> book </a>
-                        <a href="/categories/linux/"> linux </a>
-                        
-                </span>
-                <i class="iconfont icon-timer"></i>
-                4 min
-        </div>
-    </header>
-    <div class="post-content">
-        
-
-        
-
-        
-        
-     
-          
-          
-          
-
-          
-          
-          
-
-          
-
-<h1 id="4장-free-명령이-숨기고-있는-것들">4장 - free 명령이 숨기고 있는 것들</h1>
-
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>augustkang</a></span>&nbsp;<span class="post-category">included in <a href="/categories/book/"><i class="far fa-folder fa-fw"></i>book</a>&nbsp;<a href="/categories/linux/"><i class="far fa-folder fa-fw"></i>linux</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-07-17">2019-07-17</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;769 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;<span id="/2019/linux-kernel-story-for-devops-and-se-ch4/" class="leancloud_visitors" data-flag-title="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#메모리-사용량-확인하기">메모리 사용량 확인하기</a></li>
+        <li><a href="#buffers와-cached-영역">buffers와 cached 영역</a></li>
+        <li><a href="#procmeminfo-읽기">/proc/meminfo 읽기</a></li>
+        <li><a href="#slab-메모리-영역">slab 메모리 영역</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="4장---free-명령이-숨기고-있는-것들">4장 - free 명령이 숨기고 있는 것들</h1>
 <h3 id="메모리-사용량-확인하기">메모리 사용량 확인하기</h3>
-
-<pre><code class="language-bash">root@August-PC:~# free -m
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# free -m
               total        used        free      shared  buff/cache   available
-Mem:           8047        6161        1662          17         223        1755
-Swap:         24576         214       24361
-# 출력 데이터 단위에 따라 옵션이 다르다.
-# -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위
-</code></pre>
-
-<p>total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량</p>
-
+Mem:           <span class="m">8047</span>        <span class="m">6161</span>        <span class="m">1662</span>          <span class="m">17</span>         <span class="m">223</span>        <span class="m">1755</span>
+Swap:         <span class="m">24576</span>         <span class="m">214</span>       <span class="m">24361</span>
+<span class="c1"># 출력 데이터 단위에 따라 옵션이 다르다.</span>
+<span class="c1"># -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량</p>
 <p>buff/cache : buffers와 cache 영역에서 차지하는 용량을 보여줌</p>
-
 <p>Swap : swap 영역에 대한 내용. 전체, 사용중인 용량, 남는 용량</p>
-
 <h3 id="buffers와-cached-영역">buffers와 cached 영역</h3>
-
 <ul>
 <li>buffers 영역은 buffer cache 영역을 뜻함.</li>
 </ul>
-
 <p>super block, inode block 과 같이 파일의 내용이 아닌 파일시스템 관리에 필요한 메타데이터들을 위한 cache</p>
-
 <ul>
 <li>cached 영역은 page cache 영역을 뜻함.</li>
 </ul>
-
 <p>파일 자체의 내용을 저장하는데 쓰이는 cache</p>
-
-<h3 id="proc-meminfo-읽기">/proc/meminfo 읽기</h3>
-
-<pre><code class="language-bash">[root@August-PC ~]# cat /proc/meminfo 
-MemTotal:        7957324 kB
-MemFree:          299176 kB
-MemAvailable:    4854520 kB
-Buffers:          141072 kB
-Cached:          4768400 kB
-SwapCached:        75588 kB
-Active:          4118228 kB
-Inactive:        2813128 kB
-Active(anon):    1330700 kB
-Inactive(anon):  1069180 kB
-Active(file):    2787528 kB
-Inactive(file):  1743948 kB
-Unevictable:           0 kB
-Mlocked:               0 kB
-SwapTotal:       8388604 kB
-SwapFree:        7214696 kB
-Dirty:               136 kB
+<h3 id="procmeminfo-읽기">/proc/meminfo 읽기</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@August-PC ~<span class="o">]</span><span class="c1"># cat /proc/meminfo</span> 
+MemTotal:        <span class="m">7957324</span> kB
+MemFree:          <span class="m">299176</span> kB
+MemAvailable:    <span class="m">4854520</span> kB
+Buffers:          <span class="m">141072</span> kB
+Cached:          <span class="m">4768400</span> kB
+SwapCached:        <span class="m">75588</span> kB
+Active:          <span class="m">4118228</span> kB
+Inactive:        <span class="m">2813128</span> kB
+Active<span class="o">(</span>anon<span class="o">)</span>:    <span class="m">1330700</span> kB
+Inactive<span class="o">(</span>anon<span class="o">)</span>:  <span class="m">1069180</span> kB
+Active<span class="o">(</span>file<span class="o">)</span>:    <span class="m">2787528</span> kB
+Inactive<span class="o">(</span>file<span class="o">)</span>:  <span class="m">1743948</span> kB
+Unevictable:           <span class="m">0</span> kB
+Mlocked:               <span class="m">0</span> kB
+SwapTotal:       <span class="m">8388604</span> kB
+SwapFree:        <span class="m">7214696</span> kB
+Dirty:               <span class="m">136</span> kB
 
 ... 생략
-</code></pre>
-
-<ul>
-<li><p>SwapCached: swap으로 사용된 영역 중 다시 메모리로 돌아온 영역. Swap으로 빠졌다고 돌아온 영역이 얼마나 되는지 나타냄.</p></li>
-
-<li><p>Active(anon): Page Cache 영역을 제외한 메모리 영역을 의미. 주로 프로세스들이 사용하는 메모리 영역 지칭. 그 중에서도 최근에 참조된(active) 영역 나타낸다. Active는 최근에 접근된 이력이 있는 영역이라는 뜻.</p></li>
-
-<li><p>Inactive(anon): 참조된 지 오래되어 Swap영역으로 이동할 수도 있는 메모리 영역. Inactive는 말 그대로 active 하지 않은, 접근된지 오래된, 최근에는 접근하지 않은 영역..</p></li>
-
-<li><p>Active(file): 커널이 I/O 성능 향상을 위해 캐시 목적으로 사용하는 영역.  buffer cache, page cache 영역이 여기에 속함. 그 중에서도 자주 접근된 영역</p></li>
-
-<li><p>Inactive(file): 마찬가지로 커널이 캐시 목적으로 사용하는 영역 중에서도 접근한지 오래된 영역.</p></li>
-
-<li><p>Dirty: Active(file), Inactive(file)과 비슷한 용도로 I/O 성능 향상을 위해 커널이 캐시 목적으로 사용하는 영역 중  작업이 이루어져서 실제 블록 디바이스의 블록에 씌어져야 할 영역을 의미. 즉 디스크 쓰기 이후 commit이 이루어져야 하는 영역. 보통 block device에 write하면 block device write 연산은 메모리에 쓰는 것 보다 굉장히 latency가 크기 때문에(데이터 쓰는데 오래 걸리기 때문에) 그걸 끝날때까지 기다리기 보단 바로바로 처리 안하고 처리하기로 해놓고 나중에, 미래에 시스템에 여유가 있을때 실질적인 쓰기를 처리 하게 하는데 이 실질적으로 처리가 되어야 하는 영역을 의미.</p></li>
-
-<li><p><code>/fs/proc/meminfo.c</code> 파일에서 active와 inactive를 구분하는 기준을 확인할 수 있다.</p></li>
-
-<li><p>LRU 기반의 리스트로 관리. 단순히 시간을 기반으로 시간이 지나 오래된 것, 최신의 것으로 나누지는 않음.</p></li>
-
-<li><p>vm.min_free_kbytes 커널 파라미터보다 여유 메모리 공간이 적게 될 경우 kswapd가 실행되면서 active 영역 페이지 중 오래된 페이지를 우선적으로 inactive로 옮긴 후 메모리를 해제(free)하는 작업을 수행한다.</p></li>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>SwapCached: swap으로 사용된 영역 중 다시 메모리로 돌아온 영역. Swap으로 빠졌다고 돌아온 영역이 얼마나 되는지 나타냄.</p>
+</li>
+<li>
+<p>Active(anon): Page Cache 영역을 제외한 메모리 영역을 의미. 주로 프로세스들이 사용하는 메모리 영역 지칭. 그 중에서도 최근에 참조된(active) 영역 나타낸다. Active는 최근에 접근된 이력이 있는 영역이라는 뜻.</p>
+</li>
+<li>
+<p>Inactive(anon): 참조된 지 오래되어 Swap영역으로 이동할 수도 있는 메모리 영역. Inactive는 말 그대로 active 하지 않은, 접근된지 오래된, 최근에는 접근하지 않은 영역..</p>
+</li>
+<li>
+<p>Active(file): 커널이 I/O 성능 향상을 위해 캐시 목적으로 사용하는 영역.  buffer cache, page cache 영역이 여기에 속함. 그 중에서도 자주 접근된 영역</p>
+</li>
+<li>
+<p>Inactive(file): 마찬가지로 커널이 캐시 목적으로 사용하는 영역 중에서도 접근한지 오래된 영역.</p>
+</li>
+<li>
+<p>Dirty: Active(file), Inactive(file)과 비슷한 용도로 I/O 성능 향상을 위해 커널이 캐시 목적으로 사용하는 영역 중  작업이 이루어져서 실제 블록 디바이스의 블록에 씌어져야 할 영역을 의미. 즉 디스크 쓰기 이후 commit이 이루어져야 하는 영역. 보통 block device에 write하면 block device write 연산은 메모리에 쓰는 것 보다 굉장히 latency가 크기 때문에(데이터 쓰는데 오래 걸리기 때문에) 그걸 끝날때까지 기다리기 보단 바로바로 처리 안하고 처리하기로 해놓고 나중에, 미래에 시스템에 여유가 있을때 실질적인 쓰기를 처리 하게 하는데 이 실질적으로 처리가 되어야 하는 영역을 의미.</p>
+</li>
+<li>
+<p><code>/fs/proc/meminfo.c</code> 파일에서 active와 inactive를 구분하는 기준을 확인할 수 있다.</p>
+</li>
+<li>
+<p>LRU 기반의 리스트로 관리. 단순히 시간을 기반으로 시간이 지나 오래된 것, 최신의 것으로 나누지는 않음.</p>
+</li>
+<li>
+<p>vm.min_free_kbytes 커널 파라미터보다 여유 메모리 공간이 적게 될 경우 kswapd가 실행되면서 active 영역 페이지 중 오래된 페이지를 우선적으로 inactive로 옮긴 후 메모리를 해제(free)하는 작업을 수행한다.</p>
+</li>
 </ul>
-
 <h3 id="slab-메모리-영역">slab 메모리 영역</h3>
-
 <p><code>cat /proc/meminfo</code></p>
-
-<pre><code class="language-bash">... 생략
-Slab:             473356 kB
-SReclaimable:     402036 kB
-SUnreclaim:        71320 kB
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">... 생략
+Slab:             <span class="m">473356</span> kB
+SReclaimable:     <span class="m">402036</span> kB
+SUnreclaim:        <span class="m">71320</span> kB
 ... 생략
-</code></pre>
-
-<ul>
-<li><p>slab: 메모리 영역 중 커널이 직접 사용하는 영역. 여기에는 dentry cache, inode cache 등 커널이 사용하는 메모리가 포함.</p></li>
-
-<li><p>SReclaimable: Slab 영역 중 재사용될 수 없는 영역. 캐시 용도로 사용하는 메모리들이 여기에 포함됨. 메모리 부족 현상 발생하면 해제(free)되어 프로세스에 할당이 가능한 영역</p></li>
-
-<li><p>SUnreclaim: Slab 영역 중 재사용 될 수 없는 영역. 커널이 현재 사용중이며 해제해서 다른 용도로 쓸 수 없는 영역.</p></li>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>slab: 메모리 영역 중 커널이 직접 사용하는 영역. 여기에는 dentry cache, inode cache 등 커널이 사용하는 메모리가 포함.</p>
+</li>
+<li>
+<p>SReclaimable: Slab 영역 중 재사용될 수 없는 영역. 캐시 용도로 사용하는 메모리들이 여기에 포함됨. 메모리 부족 현상 발생하면 해제(free)되어 프로세스에 할당이 가능한 영역</p>
+</li>
+<li>
+<p>SUnreclaim: Slab 영역 중 재사용 될 수 없는 영역. 커널이 현재 사용중이며 해제해서 다른 용도로 쓸 수 없는 영역.</p>
+</li>
 </ul>
-
-<pre><code class="language-bash">Active / Total Objects (% used)    : 1718090 / 1895312 (90.6%)
- Active / Total Slabs (% used)      : 48101 / 48101 (100.0%)
- Active / Total Caches (% used)     : 82 / 106 (77.4%)   
- Active / Total Size (% used)       : 435110.21K / 469842.19K (92.6%)
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">Active / Total Objects <span class="o">(</span>% used<span class="o">)</span>    : <span class="m">1718090</span> / <span class="m">1895312</span> <span class="o">(</span>90.6%<span class="o">)</span>
+ Active / Total Slabs <span class="o">(</span>% used<span class="o">)</span>      : <span class="m">48101</span> / <span class="m">48101</span> <span class="o">(</span>100.0%<span class="o">)</span>
+ Active / Total Caches <span class="o">(</span>% used<span class="o">)</span>     : <span class="m">82</span> / <span class="m">106</span> <span class="o">(</span>77.4%<span class="o">)</span>   
+ Active / Total Size <span class="o">(</span>% used<span class="o">)</span>       : 435110.21K / 469842.19K <span class="o">(</span>92.6%<span class="o">)</span>
  Minimum / Average / Maximum Object : 0.01K / 0.25K / 12.75K
 
   OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME
-842205 743124  88%    0.10K  21595       39     86380K buffer_head
-382368 368286  96%    0.19K   9104       42     72832K dentry
-167216 167216 100%    0.94K   4919       34    157408K xfs_inode
-115668 111428  96%    0.57K   4131       28     66096K radix_tree_node
- 55040  47535  86%    0.06K    860       64      3440K kmalloc-64
- 28176  28176 100%    0.16K    587       48      4696K xfs_ili
- 28152  28152 100%    0.12K    828       34      3312K kernfs_node_cache
- 26344  16899  64%    0.21K    712       37      5696K vm_area_struct
- 19278  10360  53%    0.19K    459       42      3672K kmalloc-192
- 16000  15514  96%    0.03K    125      128       500K kmalloc-32
- 15912  15912 100%    0.04K    156      102       624K selinux_inode_security
+<span class="m">842205</span> <span class="m">743124</span>  88%    0.10K  <span class="m">21595</span>       <span class="m">39</span>     86380K buffer_head
+<span class="m">382368</span> <span class="m">368286</span>  96%    0.19K   <span class="m">9104</span>       <span class="m">42</span>     72832K dentry
+<span class="m">167216</span> <span class="m">167216</span> 100%    0.94K   <span class="m">4919</span>       <span class="m">34</span>    157408K xfs_inode
+<span class="m">115668</span> <span class="m">111428</span>  96%    0.57K   <span class="m">4131</span>       <span class="m">28</span>     66096K radix_tree_node
+ <span class="m">55040</span>  <span class="m">47535</span>  86%    0.06K    <span class="m">860</span>       <span class="m">64</span>      3440K kmalloc-64
+ <span class="m">28176</span>  <span class="m">28176</span> 100%    0.16K    <span class="m">587</span>       <span class="m">48</span>      4696K xfs_ili
+ <span class="m">28152</span>  <span class="m">28152</span> 100%    0.12K    <span class="m">828</span>       <span class="m">34</span>      3312K kernfs_node_cache
+ <span class="m">26344</span>  <span class="m">16899</span>  64%    0.21K    <span class="m">712</span>       <span class="m">37</span>      5696K vm_area_struct
+ <span class="m">19278</span>  <span class="m">10360</span>  53%    0.19K    <span class="m">459</span>       <span class="m">42</span>      3672K kmalloc-192
+ <span class="m">16000</span>  <span class="m">15514</span>  96%    0.03K    <span class="m">125</span>      <span class="m">128</span>       500K kmalloc-32
+ <span class="m">15912</span>  <span class="m">15912</span> 100%    0.04K    <span class="m">156</span>      <span class="m">102</span>       624K selinux_inode_security
 ... 생략
-</code></pre>
-
-<ul>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>buddy system : linux에서 메모리를 할당해주는 시스템. 가능한 적당하게 메모리 요청을 만족하도록 메모리를 여러 부분으로 나누는 메모리 할당 시스템.
 메모리의 크기를 절반씩 분할하면서 가장 잘 맞는 크기의 메모리를 찾아 할당해 준다. 2의 거듭제곱 값으로 메모리를 할당.</li>
 <li>slab allocator : 버디 시스템을 통해 기본 페이지 크기인 4KB 영역을 할당 받은 후에 각각의 캐시 크기에 맞게 영역을 나눠서 사용.</li>
 <li>slab 영역은 <code>free</code>명령에서 used 영역에 포함된다. 커널이 사용하기 때문에 buffers/cached에 포함될거라 생각할 수 있지만, 실제로는 used에 포함됨.</li>
 </ul>
-
-<p>출처 : <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966264049&amp;orderClick=LEA&amp;Kc=" rel="nofollow noreferrer" target="_blank">DevOps와 SE를 위한 리눅스 커널 이야기</a></p>
-
+<p>출처 : <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966264049&amp;orderClick=LEA&amp;Kc=" target="_blank" rel="noopener noreffer">DevOps와 SE를 위한 리눅스 커널 이야기</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2019-07-17</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2019/linux-kernel-story-for-devops-and-se-ch4/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
     </div>
 
-    <div class="post-copyright">
-             
-            <p class="copyright-item">
-                <span>Author:</span>
-                <span>augustkang </span>
-                </p>
-            
-           
-            <p class="copyright-item">
-                    <span>Words:</span>
-                   <span>719</span>
-            </p>
-            
-            <p class="copyright-item">
-                
-                <span>Share:</span>
-                <span>
-
-      
-        <a href="//twitter.com/share?url=%2f2019%2flinux-kernel-story-for-devops-and-se-ch4%2f&amp;text=%5b%ec%9a%94%ec%95%bd%5dDevOps%ec%99%80%20SE%eb%a5%bc%20%ec%9c%84%ed%95%9c%20%eb%a6%ac%eb%88%85%ec%8a%a4%20%ec%bb%a4%eb%84%90%20%ec%9d%b4%ec%95%bc%ea%b8%b0%204%ec%9e%a5&amp;via=" target="_blank" title="Share on Twitter">
-          <i class="iconfont icon-twitter"></i>
-        </a>
-        
-      
-      
-        <a href="//www.facebook.com/sharer/sharer.php?u=%2f2019%2flinux-kernel-story-for-devops-and-se-ch4%2f" target="_blank" title="Share on Facebook">
-          <i class="iconfont icon-facebook"></i>
-        </a>
-        
-      
-      
-      
-      
-        <a href="//www.linkedin.com/shareArticle?url=%2f2019%2flinux-kernel-story-for-devops-and-se-ch4%2f&amp;title=%5b%ec%9a%94%ec%95%bd%5dDevOps%ec%99%80%20SE%eb%a5%bc%20%ec%9c%84%ed%95%9c%20%eb%a6%ac%eb%88%85%ec%8a%a4%20%ec%bb%a4%eb%84%90%20%ec%9d%b4%ec%95%bc%ea%b8%b0%204%ec%9e%a5" target="_blank" title="Share on LinkedIn">
-          <i class="iconfont icon-linkedin"></i>
-        </a>
-        
-      
-      
-        
-      
-        
-      
-
-          
-
-          
-
-          
-
-          
-</span>
-                
-            </p>
-
-             
-            <p class="copyright-item">
-                Released under <a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>
-            </p>
-            
-    </div>
-
-  
-    <div class="post-tags">
-        
+    <div class="post-info-more">
+        <section class="post-tags"></section>
         <section>
-                <a href="javascript:window.history.back();">Back</a></span> · 
-                <span><a href="/">Home</a></span>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav">
-        
-        <a href="/2019/linux-kernel-story-for-devops-and-se-ch3/" class="prev" rel="prev" title="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장"><i class="iconfont icon-dajiantou"></i>&nbsp;[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장</a>
-         
-        
-        <a href="/2020/2020-books-i-read/" class="next" rel="next" title="2020 Books I Read">2020 Books I Read&nbsp;<i class="iconfont icon-xiaojiantou"></i></a>
-        
-    </div>
+    <div class="post-nav"><a href="/2019/linux-kernel-story-for-devops-and-se-ch3/" class="prev" rel="prev" title="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장"><i class="fas fa-angle-left fa-fw"></i>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장</a>
+            <a href="/2020/2020-books-i-read/" class="next" rel="next" title="2020 Books I Read">2020 Books I Read<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">augustkang</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
 
-    <div class="post-comment">
-          
-          
-
- 
-
-          
-    </div>
-</article>
-          </div>
-		   </main>
-      <footer class="footer">
-    <div class="copyright">
-        &copy;
-        
-        <span itemprop="copyrightYear">2019 - 2020</span>
-        
-         
-            <span class="author" itemprop="copyrightHolder"><a href="/">augustkang</a> | </span>
-         
-
-		  <span>Crafted with ❤️ by <a href="https://github.com/Fastbyte01/KeepIt" target="_blank" rel="external nofollow noopener noreffer">KeepIt</a> & <a href="https://gohugo.io/" target="_blank" rel="external nofollow noopener noreffer">Hugo</a></span>
-    </div>
-</footer>
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    <script src="/js/vendor_no_gallery.min.js" async=""></script>
-    
-  
-
-
-
-
-
-
-
-     </div>
-  </body>
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

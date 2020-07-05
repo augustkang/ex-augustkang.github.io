@@ -1,24 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>blog on augustkang</title>
-    <link>/categories/blog/</link>
-    <description>Recent content in blog on augustkang</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 02 Jun 2019 17:36:40 +0900</lastBuildDate>
-    
-	<atom:link href="/categories/blog/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>First Post</title>
-      <link>/2019/first-post/</link>
-      <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
-      
-      <guid>/2019/first-post/</guid>
-      <description>I just created my first blog :D</description>
-    </item>
-    
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>blog - Category - augustkang</title>
+        <link>/categories/blog/</link>
+        <description>blog - Category - augustkang</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamaugustkang@gmail.com (augustkang)</managingEditor>
+            <webMaster>iamaugustkang@gmail.com (augustkang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 02 Jun 2019 17:36:40 &#43;0900</lastBuildDate><atom:link href="/categories/blog/" rel="self" type="application/rss+xml" /><item>
+    <title>First Post</title>
+    <link>/2019/first-post/</link>
+    <pubDate>Sun, 02 Jun 2019 17:36:40 &#43;0900</pubDate>
+    <author>Author</author>
+    <guid>/2019/first-post/</guid>
+    <description><![CDATA[I just created my first blog :D]]></description>
+</item></channel>
 </rss>

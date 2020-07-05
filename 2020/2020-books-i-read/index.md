@@ -1,0 +1,34 @@
+# 2020 Books I Read
+
+
+# 2020년에 읽은 책들을 나열하는 포스트(업데이트중)
+
+* 2020-01-01 [고래(천명관)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788982819278&orderClick=LAG&Kc=)
+* 2020-01-04 [페인트(이희영)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788936456894&orderClick=LAG&Kc=)
+* 2020-03-31 [가만한 나날(김세희)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937439742&orderClick=LAG&Kc=)
+* 2020-04-01 [일의 기쁨과 슬픔(장류진)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788936438036&orderClick=LAG&Kc=)
+* 2020-04-03 [해가 지는 곳으로(최진영)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937473166&orderClick=LEa&Kc=)
+* 2020-04-04 [우리가 빛의 속도로 갈 수 없다면(김초엽)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791190090018&orderClick=LEa&Kc=)
+* 2020-04-07 [시라노(Edmond Rostand)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788932909400&orderClick=LAG&Kc=)
+* 2020-04-11 [사진을 읽어 드립니다(김경훈)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788952798336&orderClick=LAG&Kc=)
+* 2020-04-13 [동물농장(George Orwell)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937460050&orderClick=LAG&Kc=)
+* 2020-04-21 [나목 도둑맞은 가난(박완서)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937420115&orderClick=LEa&Kc=)
+* 2020-04-24 [콜센터(김의경)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788974331290&orderClick=LAG&Kc=)
+* 2020-04-26 [DevOps와 SE를 위한 리눅스 커널 이야기(강진우)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788966264049&orderClick=LEa&Kc=)
+* 2020-04-27 [체리새우: 비밀글입니다(황영미)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788954654753&orderClick=LEa&Kc=)
+* 2020-04-28 [템페스트(William Shakespeare)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788954609074&orderClick=LAG&Kc=)
+* 2020-05-08 [피닉스 프로젝트(Gene Kim, Kevin Behr, George Spafford)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788965400752&orderClick=LAG&Kc=)
+* 2020-05-14 [사서함 110호의 우편물(이도우)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788952782076&orderClick=LEa&Kc=)
+* 2020-05-21 [리추얼(Mason Currey)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788962606317&orderClick=LAG&Kc=)
+* 2020-05-26 [9번의 일(김혜진)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791160403008&orderClick=LAG&Kc=)
+* 2020-05-30 [문장 수집 생활(이유미)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788950974435&orderClick=LAG&Kc=)
+* 2020-06-02 [3기니(Virginia Woolf)](https://en.wikipedia.org/wiki/Three_Guineas)
+* 2020-06-08 [달리기를 말할 때 내가 하고 싶은 이야기(무라카미 하루키)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788970128337&orderClick=LAG&Kc=)
+* 2020-06-10 [누구(아사이 료)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788956607146&orderClick=LAG&Kc=)
+* 2020-06-14 [광대하고 게으르게(문소영)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937441882&orderClick=LAG&Kc=)
+* 2020-06-17 [오늘의 엄마(강진아)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937473258&orderClick=LAG&Kc=)
+* 2020-06-21 [변신 시골의사(Franz Kafka)](http://minumsa.minumsa.com/book/17792/)
+* 2020-06-25 [위대한 개츠비(F. Scott Fitzgerald)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937460753&orderClick=LAG&Kc=#)
+* 2020-06-29 [꾸뻬씨의 행복여행(François Lelord)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788995501443&orderClick=LEa&Kc=)
+
+
