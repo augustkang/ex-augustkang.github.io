@@ -33,5 +33,6 @@
 * 2020-07-09 [자존가들(김지수)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791189385095&orderClick=LAG&Kc=)
 * 2020-07-13 [웹 엔지니어가 알아야 할 인프라의 기본(바바 토시아키)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788968482014&orderClick=LAG&Kc=)
 * 2020-07-26 [인생의 발견(Theodore Zeldin)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791160560060&orderClick=LAG&Kc=)
+* 2020-07-29 [나는 LINE 개발자입니다(강윤신, 김영환, 김재석, ...)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791162242162&orderClick=LEa&Kc=)
 
 
