@@ -3,7 +3,6 @@
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
             <loc>/2020/2020-books-i-read/</loc><lastmod>2020-01-04T09:52:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>/</loc><lastmod>2020-01-04T09:52:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/categories/book/</loc><lastmod>2020-01-04T09:52:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/categories/</loc><lastmod>2020-01-04T09:52:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/posts/</loc><lastmod>2020-01-04T09:52:00&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -16,6 +15,7 @@
             <loc>/categories/git/</loc><lastmod>2019-06-03T21:23:32&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/2019/how-to-git-pull-with-submodules/</loc><lastmod>2019-06-03T21:23:32&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/about/</loc><lastmod>2019-06-02T17:40:10&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>/</loc><lastmod>2019-06-02T17:40:10&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/categories/blog/</loc><lastmod>2019-06-02T17:36:40&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/2019/first-post/</loc><lastmod>2019-06-02T17:36:40&#43;09:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
