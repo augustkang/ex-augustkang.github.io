@@ -38,5 +38,6 @@
 * 2020-08-07 [보통의 언어들(김이나)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791190786355&orderClick=LEa&Kc=)
 * 2020-08-13 [모두 거짓말을 한다(Seth Stephens-Davidowitz)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791160504576&orderClick=LAG&Kc=)
 * 2020-08-21 [글자풍경(유지원)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788932473956&orderClick=LAG&Kc=)
+* 2020-08-29 [노르웨이의 숲(무라카미 하루키)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937434488&orderClick=LEa&Kc=)
 
 
