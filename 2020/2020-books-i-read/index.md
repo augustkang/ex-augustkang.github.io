@@ -40,5 +40,6 @@
 * 2020-08-21 [글자풍경(유지원)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788932473956&orderClick=LAG&Kc=)
 * 2020-08-29 [노르웨이의 숲(무라카미 하루키)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937434488&orderClick=LEa&Kc=)
 * 2020-08-31 [두 방문객(김희진)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937473227&orderClick=LAG&Kc=)
+* 2020-09-05 [쇼룸(김의경)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937438998&orderClick=LAG&Kc=)
 
 
