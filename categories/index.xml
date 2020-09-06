@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on augustkang</title>
-    <link>https://augustkang.com/categories/</link>
+    <link>http://augustkang.com/categories/</link>
     <description>Recent content in Categories on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jan 2020 09:52:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Jan 2020 09:52:00 +0900</lastBuildDate><atom:link href="http://augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>book</title>
-      <link>https://augustkang.com/categories/book/</link>
+      <link>http://augustkang.com/categories/book/</link>
       <pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
       
-      <guid>https://augustkang.com/categories/book/</guid>
+      <guid>http://augustkang.com/categories/book/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>https://augustkang.com/categories/linux/</link>
+      <link>http://augustkang.com/categories/linux/</link>
       <pubDate>Wed, 17 Jul 2019 16:12:40 +0900</pubDate>
       
-      <guid>https://augustkang.com/categories/linux/</guid>
+      <guid>http://augustkang.com/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>git</title>
-      <link>https://augustkang.com/categories/git/</link>
+      <link>http://augustkang.com/categories/git/</link>
       <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
       
-      <guid>https://augustkang.com/categories/git/</guid>
+      <guid>http://augustkang.com/categories/git/</guid>
       <description></description>
     </item>
     
     <item>
       <title>blog</title>
-      <link>https://augustkang.com/categories/blog/</link>
+      <link>http://augustkang.com/categories/blog/</link>
       <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
       
-      <guid>https://augustkang.com/categories/blog/</guid>
+      <guid>http://augustkang.com/categories/blog/</guid>
       <description></description>
     </item>
     

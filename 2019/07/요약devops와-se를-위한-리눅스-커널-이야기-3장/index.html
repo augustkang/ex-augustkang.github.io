@@ -17,8 +17,8 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
 <meta property="og:type" content="article">
 <meta property="og:title" content="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장">
 <meta name="twitter:title" content="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장">
-<meta property="og:url" content="https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
-<meta property="twitter:url" content="https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+<meta property="og:url" content="http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+<meta property="twitter:url" content="http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
 <meta property="og:site_name" content="augustkang">
 <meta property="og:description" content="3장 - Load average와 시스템 부하 Load average의 정의  Load average는 R(run queue에서 cpu 사용을 위해 대기중인 프로세스들)과 D(네트워크/디스크 i/o 를 위해 wait queue 에서 대기중인 프로세스들)상태에 있는 프로세스 개수의 1분, 5분, 15분마다의 평균값이다.
 CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.  Load average 계산 과정 root@August-PC:~# uptime 21:44:37 up 6 min, 0 users, load average: 0.52, 0.">
@@ -61,12 +61,12 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
 
     <title>[요약]DevOps와 SE를 위한 리눅스 커널 이야기 3장</title>
 
-    <link rel="icon" href="https://augustkang.com/favicon.png">
+    <link rel="icon" href="http://augustkang.com/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+    <link rel="canonical" href="http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
@@ -74,7 +74,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
     
     
-    <link rel="stylesheet" href="https://augustkang.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
+    <link rel="stylesheet" href="http://augustkang.com/css/style-twzjdbqhmnnacqs0pwwdzcdbt8yhv8giawvjqjmyfoqnvazl0dalmnhdkvp7.min.css" />
     
     
 
@@ -89,12 +89,12 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
       <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="https://augustkang.com/">augustkang</a>
+    <a class="header-title-link" href="http://augustkang.com/">augustkang</a>
   </div>
   
     
       <a class="header-right-picture "
-         href="https://augustkang.com/#about">
+         href="http://augustkang.com/#about">
     
     
     
@@ -110,7 +110,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
-        <a href="https://augustkang.com/#about">
+        <a href="http://augustkang.com/#about">
           <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/d09dc2d7aa5c467519e8af89f7b3d94c?s=110" alt="Author&#39;s picture" />
         </a>
         <h4 class="sidebar-profile-name">Donghyun Kang</h4>
@@ -123,7 +123,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://augustkang.com/">
+      <a class="sidebar-button-link " href="http://augustkang.com/">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
@@ -133,7 +133,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://augustkang.com/categories">
+      <a class="sidebar-button-link " href="http://augustkang.com/categories">
     
       <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
       
@@ -143,7 +143,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://augustkang.com/tags">
+      <a class="sidebar-button-link " href="http://augustkang.com/tags">
     
       <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
       
@@ -153,7 +153,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://augustkang.com/archives">
+      <a class="sidebar-button-link " href="http://augustkang.com/archives">
     
       <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
       
@@ -163,7 +163,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://augustkang.com/#about">
+      <a class="sidebar-button-link " href="http://augustkang.com/#about">
     
       <i class="sidebar-button-icon fa fa-lg fa-question"></i>
       
@@ -191,7 +191,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="https://augustkang.com/index.xml">
+      <a class="sidebar-button-link " href="http://augustkang.com/index.xml">
     
       <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
@@ -233,9 +233,9 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
   
     <span>in</span>
     
-      <a class="category-link" href="https://augustkang.com/categories/book">book</a>, 
+      <a class="category-link" href="http://augustkang.com/categories/book">book</a>, 
     
-      <a class="category-link" href="https://augustkang.com/categories/linux">linux</a>
+      <a class="category-link" href="http://augustkang.com/categories/linux">linux</a>
     
   
 
@@ -327,7 +327,7 @@ runnable tasks:
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-4%EC%9E%A5/" data-tooltip="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-4%EC%9E%A5/" data-tooltip="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -335,7 +335,7 @@ runnable tasks:
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-2%EC%9E%A5/" data-tooltip="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 2장">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-2%EC%9E%A5/" data-tooltip="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 2장">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -353,19 +353,19 @@ runnable tasks:
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -413,7 +413,7 @@ runnable tasks:
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-4%EC%9E%A5/" data-tooltip="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-4%EC%9E%A5/" data-tooltip="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 4장">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
@@ -421,7 +421,7 @@ runnable tasks:
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-2%EC%9E%A5/" data-tooltip="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 2장">
+                <a class="post-action-btn btn btn--default tooltip--top" href="http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-2%EC%9E%A5/" data-tooltip="[요약]DevOps와 SE를 위한 리눅스 커널 이야기 2장">
               
                   <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
                   <i class="fa fa-angle-right"></i>
@@ -439,19 +439,19 @@ runnable tasks:
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://augustkang.com/2019/07/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -481,19 +481,19 @@ runnable tasks:
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faugustkang.com%2F2019%2F07%2F%25EC%259A%2594%25EC%2595%25BDdevops%25EC%2599%2580-se%25EB%25A5%25BC-%25EC%259C%2584%25ED%2595%259C-%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4-%25EC%25BB%25A4%25EB%2584%2590-%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0-3%25EC%259E%25A5%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Faugustkang.com%2F2019%2F07%2F%25EC%259A%2594%25EC%2595%25BDdevops%25EC%2599%2580-se%25EB%25A5%25BC-%25EC%259C%2584%25ED%2595%259C-%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4-%25EC%25BB%25A4%25EB%2584%2590-%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0-3%25EC%259E%25A5%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Faugustkang.com%2F2019%2F07%2F%25EC%259A%2594%25EC%2595%25BDdevops%25EC%2599%2580-se%25EB%25A5%25BC-%25EC%259C%2584%25ED%2595%259C-%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4-%25EC%25BB%25A4%25EB%2584%2590-%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0-3%25EC%259E%25A5%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http%3A%2F%2Faugustkang.com%2F2019%2F07%2F%25EC%259A%2594%25EC%2595%25BDdevops%25EC%2599%2580-se%25EB%25A5%25BC-%25EC%259C%2584%25ED%2595%259C-%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4-%25EC%25BB%25A4%25EB%2584%2590-%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0-3%25EC%259E%25A5%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Faugustkang.com%2F2019%2F07%2F%25EC%259A%2594%25EC%2595%25BDdevops%25EC%2599%2580-se%25EB%25A5%25BC-%25EC%259C%2584%25ED%2595%259C-%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4-%25EC%25BB%25A4%25EB%2584%2590-%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0-3%25EC%259E%25A5%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http%3A%2F%2Faugustkang.com%2F2019%2F07%2F%25EC%259A%2594%25EC%2595%25BDdevops%25EC%2599%2580-se%25EB%25A5%25BC-%25EC%259C%2584%25ED%2595%259C-%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4-%25EC%25BB%25A4%25EB%2584%2590-%25EC%259D%25B4%25EC%2595%25BC%25EA%25B8%25B0-3%25EC%259E%25A5%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -537,7 +537,7 @@ runnable tasks:
     
   
     
-      <div id="cover" style="background-image:url('https://augustkang.com/images/cover.jpg');"></div>
+      <div id="cover" style="background-image:url('http://augustkang.com/images/cover.jpg');"></div>
     
   
 
@@ -550,7 +550,7 @@ runnable tasks:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 
 
-<script src="https://augustkang.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
+<script src="http://augustkang.com/js/script-pcw6v3xilnxydl1vddzazdverrnn9ctynvnxgwho987mfyqkuylcb1nlt.min.js"></script>
 
 
 <script lang="javascript">
@@ -585,7 +585,7 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/augustkang.com\/2019\/07\/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5\/';
+          this.page.url = 'http:\/\/augustkang.com\/2019\/07\/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5\/';
           
             this.page.identifier = '\/2019\/07\/%EC%9A%94%EC%95%BDdevops%EC%99%80-se%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A6%AC%EB%88%85%EC%8A%A4-%EC%BB%A4%EB%84%90-%EC%9D%B4%EC%95%BC%EA%B8%B0-3%EC%9E%A5\/'
           
