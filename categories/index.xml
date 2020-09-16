@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on augustkang</title>
+    <link>http://www.augustkang.com/categories/</link>
+    <description>Recent content in Categories on augustkang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 04 Jan 2020 09:52:00 +0900</lastBuildDate><atom:link href="http://www.augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>book</title>
+      <link>http://www.augustkang.com/categories/book/</link>
+      <pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
+      
+      <guid>http://www.augustkang.com/categories/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>http://www.augustkang.com/categories/git/</link>
+      <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
+      
+      <guid>http://www.augustkang.com/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>http://www.augustkang.com/categories/blog/</link>
+      <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
+      
+      <guid>http://www.augustkang.com/categories/blog/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
