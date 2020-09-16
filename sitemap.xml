@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://augustkang.com/2020/01/2020-books-i-read/</loc>
+    <loc>http://augustkang.com/posts/2020-books-i-read/</loc>
     <lastmod>2020-01-04T09:52:00+09:00</lastmod>
   </url>
   
@@ -23,12 +23,12 @@
   </url>
   
   <url>
-    <loc>http://augustkang.com/post/</loc>
+    <loc>http://augustkang.com/posts/</loc>
     <lastmod>2020-01-04T09:52:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://augustkang.com/2019/06/2019-books-i-read/</loc>
+    <loc>http://augustkang.com/posts/2019-books-i-read/</loc>
     <lastmod>2019-06-09T17:57:32+09:00</lastmod>
   </url>
   
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>http://augustkang.com/2019/06/how-to-git-pull-with-submodules/</loc>
+    <loc>http://augustkang.com/posts/how-to-git-pull-with-submodules/</loc>
     <lastmod>2019-06-03T21:23:32+09:00</lastmod>
   </url>
   
@@ -53,12 +53,8 @@
   </url>
   
   <url>
-    <loc>http://augustkang.com/2019/06/first-post/</loc>
+    <loc>http://augustkang.com/posts/first-post/</loc>
     <lastmod>2019-06-02T17:36:40+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://augustkang.com/archives/</loc>
   </url>
   
   <url>
