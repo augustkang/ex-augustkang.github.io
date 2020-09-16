@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>git on A Hugo Site</title>
+    <title>git on augustkang</title>
     <link>http://augustkang.com/categories/git/</link>
-    <description>Recent content in git on A Hugo Site</description>
+    <description>Recent content in git on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 03 Jun 2019 21:23:32 +0900</lastBuildDate><atom:link href="http://augustkang.com/categories/git/index.xml" rel="self" type="application/rss+xml" />

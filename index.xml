@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>A Hugo Site</title>
+    <title>augustkang</title>
     <link>http://augustkang.com/</link>
-    <description>Recent content on A Hugo Site</description>
+    <description>Recent content on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 04 Jan 2020 09:52:00 +0900</lastBuildDate>
@@ -17,7 +17,7 @@
         <pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
         
         <guid>http://augustkang.com/posts/2020-books-i-read/</guid>
-        <description>A Hugo Site http://augustkang.com/posts/2020-books-i-read/ -&lt;h1 id=&#34;2020년에-읽은-책들을-나열하는-포스트업데이트중&#34;&gt;2020년에 읽은 책들을 나열하는 포스트(업데이트중)&lt;/h1&gt;
+        <description>augustkang http://augustkang.com/posts/2020-books-i-read/ -&lt;h1 id=&#34;2020년에-읽은-책들을-나열하는-포스트업데이트중&#34;&gt;2020년에 읽은 책들을 나열하는 포스트(업데이트중)&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;2020-01-01 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788982819278&amp;amp;orderClick=LAG&amp;amp;Kc=&#34;&gt;고래(천명관)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;2020-01-04 &lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788936456894&amp;amp;orderClick=LAG&amp;amp;Kc=&#34;&gt;페인트(이희영)&lt;/a&gt;&lt;/li&gt;
@@ -71,7 +71,7 @@
         <pubDate>Sun, 09 Jun 2019 17:57:32 +0900</pubDate>
         
         <guid>http://augustkang.com/posts/2019-books-i-read/</guid>
-        <description>A Hugo Site http://augustkang.com/posts/2019-books-i-read/ -&lt;h1 id=&#34;2019년에-읽은-책들을-나열하는-포스트&#34;&gt;2019년에 읽은 책들을 나열하는 포스트&lt;/h1&gt;
+        <description>augustkang http://augustkang.com/posts/2019-books-i-read/ -&lt;h1 id=&#34;2019년에-읽은-책들을-나열하는-포스트&#34;&gt;2019년에 읽은 책들을 나열하는 포스트&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788936434267&amp;amp;orderClick=LAG&amp;amp;Kc=&#34;&gt;아몬드(손원평)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;amp;mallGb=KOR&amp;amp;barcode=9788937480485&amp;amp;orderClick=LEB&amp;amp;Kc=&#34;&gt;사람의 아들(이문열)&lt;/a&gt;&lt;/li&gt;
@@ -108,7 +108,7 @@
         <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
         
         <guid>http://augustkang.com/posts/how-to-git-pull-with-submodules/</guid>
-        <description>A Hugo Site http://augustkang.com/posts/how-to-git-pull-with-submodules/ -&lt;p&gt;집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
+        <description>augustkang http://augustkang.com/posts/how-to-git-pull-with-submodules/ -&lt;p&gt;집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
 근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.
 구글링을 좀 해본 결과 &lt;a href=&#34;http://openmetric.org/til/programming/git-pull-with-submodule/&#34;&gt;링크&lt;/a&gt;와 같이&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git submodule update --init --recursive
@@ -124,7 +124,7 @@
         <pubDate>Sun, 02 Jun 2019 17:40:10 +0900</pubDate>
         
         <guid>http://augustkang.com/about/</guid>
-        <description>A Hugo Site http://augustkang.com/about/ -&lt;p&gt;Welcome to my blog.&lt;/p&gt;
+        <description>augustkang http://augustkang.com/about/ -&lt;p&gt;Welcome to my blog.&lt;/p&gt;
 &lt;p&gt;I am currently working as System engineer.&lt;/p&gt;
 - http://augustkang.com/about/ - </description>
         </item>
@@ -137,7 +137,7 @@
         <pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
         
         <guid>http://augustkang.com/posts/first-post/</guid>
-        <description>A Hugo Site http://augustkang.com/posts/first-post/ -&lt;p&gt;I just created my first blog :D&lt;/p&gt;
+        <description>augustkang http://augustkang.com/posts/first-post/ -&lt;p&gt;I just created my first blog :D&lt;/p&gt;
 - http://augustkang.com/posts/first-post/ - </description>
         </item>
     

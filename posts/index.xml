@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on A Hugo Site</title>
+    <title>Posts on augustkang</title>
     <link>http://augustkang.com/posts/</link>
-    <description>Recent content in Posts on A Hugo Site</description>
+    <description>Recent content in Posts on augustkang</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 04 Jan 2020 09:52:00 +0900</lastBuildDate><atom:link href="http://augustkang.com/posts/index.xml" rel="self" type="application/rss+xml" />
