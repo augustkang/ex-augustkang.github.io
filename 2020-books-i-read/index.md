@@ -43,5 +43,6 @@
 * 2020-09-05 [쇼룸(김의경)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937438998&orderClick=LAG&Kc=)
 * 2020-09-14 [절대 성공하지 못할 거야(Mark Randolph)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791185716923&orderClick=LEa&Kc=)
 * 2020-09-16 [내가 말하고 있잖아(정용준)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788937473289&orderClick=LEa&Kc=)
+* 2020-09-25 [다크호스(Todd Rose, Ogi Ogas)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788950982256&orderClick=LAG&Kc=)
 
 
