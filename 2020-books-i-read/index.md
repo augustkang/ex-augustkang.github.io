@@ -47,5 +47,6 @@
 * 2020-09-28 [프리즘(손원평)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791191071030&orderClick=LAG&Kc=)
 * 2020-10-09 [번역가 모모씨의 일일(노승영, 박산호)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788984077348&orderClick=LAG&Kc=)
 * 2020-10-13 [당신 옆을 스쳐간 그 소녀의 이름은(최진영)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788984314146&orderClick=LEa&Kc=)
+* 2020-10-21 [비밀의 화원(Frances Hodgson Burnett)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791159099557&orderClick=LAG&Kc=)
 
 
