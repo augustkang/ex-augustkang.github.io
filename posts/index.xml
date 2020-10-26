@@ -1,37 +1,143 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>All Posts - augustkang</title>
-        <link>http://augustkang.com/posts/</link>
-        <description>All Posts | augustkang</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamaugustkang@gmail.com (augustkang)</managingEditor>
-            <webMaster>iamaugustkang@gmail.com (augustkang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 04 Jan 2020 09:52:00 &#43;0900</lastBuildDate><atom:link href="http://augustkang.com/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>2020 Books I Read</title>
-    <link>http://augustkang.com/2020-books-i-read/</link>
-    <pubDate>Sat, 04 Jan 2020 09:52:00 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>http://augustkang.com/2020-books-i-read/</guid>
-    <description><![CDATA[2020년에 읽은 책들을 나열하는 포스트(업데이트중)  2020-01-01 고래(천명관) 2020-01-04 페인트(이희영) 2020-03-31 가만한 나날(김세희) 2020-04-01 일의 기쁨과 슬픔(장류진) 2020-04-03 해가 지는 곳으로(최진영) 2020-04-04 우리가 빛의 속도로 갈 수 없다면(김초엽) 2020-04-07 시라노(Edmond Rostand) 2020-04-11 사진을 읽어 드립니다(김경훈) 2020-04-13 동물농장(George Orwell) 2020-04-21 나목 도둑맞은 가난(박완서) 2020-04-24 콜센터(김의경) 2020-04-26 DevOps와 SE를 위한 리눅스 커널 이야기(강진우) 2020-04-27 체리새우: 비밀글입니다(황영미) 2020-04-28 템페스트(William Shakespeare) 2020-05-08 피닉스 프로젝트(Gene Kim, Kevin Behr, George Spafford) 2020-05-14 사서함 110호의 우편물(이도우) 2020-05-21 리추얼(Mason Currey) 2020-05-26 9번의 일(김혜진) 2020-05-30 문장 수집 생활(이유미) 2020-06-02 3기니(Virginia Woolf) 2020-06-08 달리기를 말할 때 내가 하고 싶은 이야기(무라카미 하루키) 2020-06-10 누구(아사이 료) 2020-06-14 광대하고 게으르게(문소영) 2020-06-17 오늘의 엄마(강진아) 2020-06-21 변신 시골의사(Franz Kafka) 2020-06-25 위대한 개츠비(F.]]></description>
-</item><item>
-    <title>2019 Books I Read</title>
-    <link>http://augustkang.com/2019-books-i-read/</link>
-    <pubDate>Sun, 09 Jun 2019 17:57:32 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>http://augustkang.com/2019-books-i-read/</guid>
-    <description><![CDATA[2019년에 읽은 책들을 나열하는 포스트  아몬드(손원평) 사람의 아들(이문열) 지방 대사 켜는 스위치온 다이어트(박용우) 여행의 이유(김영하) 나는 왜 정치를 하는가(유승민) 히트 리프레시(Satya Nadella) 어느 애주가의 고백(Daniel Schreiber) 2019-06-17 더골(Eliyahu Moshe Goldratt) 2019-06-18 한국이 싫어서(장강명) 2019-06-18 인프라 엔지니어의 교과서: 시스템 구축과 관리편 2019-06-22 당선, 합격, 계급(장강명) 2019-06-30 소크라테스의 변론 크리톤 파이돈 향연(Plato) 2019-07-04 Hello Coding 알고리즘(Aditya Y. Bhargava) 2019-07-07 개발자도 궁금한 IT 인프라(정송화, 김영선, 전성민) 2019-07-09 서른의 반격(손원평) 2019-07-12 산 자들(장강명) 2019-07-15 지극히 사적인 초능력(장강명) 2019-07-19 멋진 신세계(Aldous Leonard Huxley) 2019-07-20 인간 실격(다자이 오사무) 2019-08-01 함께 자라기(김창준) 2019-08-04 바닷가 작업실에서는 전혀 다른 시간이 흐른다(김정운) 2019-08-05 열광금지, 에바로드(장강명)  2019년 독서는 8월에서 끝이 났다&hellip;]]></description>
-</item><item>
-    <title>How to Git Pull With Submodules</title>
-    <link>http://augustkang.com/how-to-git-pull-with-submodules/</link>
-    <pubDate>Mon, 03 Jun 2019 21:23:32 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>http://augustkang.com/how-to-git-pull-with-submodules/</guid>
-    <description><![CDATA[집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다. 근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라. 구글링을 좀 해본 결과 링크와 같이
-1  git submodule update --init --recursive   clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.]]></description>
-</item><item>
-    <title>First Post</title>
-    <link>http://augustkang.com/first-post/</link>
-    <pubDate>Sun, 02 Jun 2019 17:36:40 &#43;0900</pubDate>
-    <author>Author</author>
-    <guid>http://augustkang.com/first-post/</guid>
-    <description><![CDATA[I just created my first blog :D]]></description>
-</item></channel>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on augustkang</title>
+		<link>https://augustkang.com/posts/</link>
+		<description>Recent content in Posts on augustkang</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>en-us</language>
+		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+		<lastBuildDate>Tue, 27 Oct 2020 00:10:00 +0900</lastBuildDate>
+		<atom:link href="https://augustkang.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>CKA(2020) 후기</title>
+			<link>https://augustkang.com/posts/cka-experience/</link>
+			<pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/cka-experience/</guid>
+			<description></description>
+			<content type="html"><![CDATA[]]></content>
+		</item>
+		
+		<item>
+			<title>2020 Books I Read</title>
+			<link>https://augustkang.com/posts/2020-books-i-read/</link>
+			<pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/2020-books-i-read/</guid>
+			<description>2020년에 읽은 책들을 나열하는 포스트(업데이트중) 2020-01-01 고래(천명관) 2020-01-04 페인트(이희영) 2020-03-31 가만한 나날(김세희) 2020-04-01 일의 기쁨과 슬픔(장류진) 2020-04-03 해가 지</description>
+			<content type="html"><![CDATA[<h1 id="2020년에-읽은-책들을-나열하는-포스트업데이트중">2020년에 읽은 책들을 나열하는 포스트(업데이트중)</h1>
+<ul>
+<li>2020-01-01 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788982819278&amp;orderClick=LAG&amp;Kc=">고래(천명관)</a></li>
+<li>2020-01-04 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788936456894&amp;orderClick=LAG&amp;Kc=">페인트(이희영)</a></li>
+<li>2020-03-31 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937439742&amp;orderClick=LAG&amp;Kc=">가만한 나날(김세희)</a></li>
+<li>2020-04-01 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788936438036&amp;orderClick=LAG&amp;Kc=">일의 기쁨과 슬픔(장류진)</a></li>
+<li>2020-04-03 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937473166&amp;orderClick=LEa&amp;Kc=">해가 지는 곳으로(최진영)</a></li>
+<li>2020-04-04 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791190090018&amp;orderClick=LEa&amp;Kc=">우리가 빛의 속도로 갈 수 없다면(김초엽)</a></li>
+<li>2020-04-07 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788932909400&amp;orderClick=LAG&amp;Kc=">시라노(Edmond Rostand)</a></li>
+<li>2020-04-11 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788952798336&amp;orderClick=LAG&amp;Kc=">사진을 읽어 드립니다(김경훈)</a></li>
+<li>2020-04-13 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937460050&amp;orderClick=LAG&amp;Kc=">동물농장(George Orwell)</a></li>
+<li>2020-04-21 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937420115&amp;orderClick=LEa&amp;Kc=">나목 도둑맞은 가난(박완서)</a></li>
+<li>2020-04-24 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788974331290&amp;orderClick=LAG&amp;Kc=">콜센터(김의경)</a></li>
+<li>2020-04-26 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966264049&amp;orderClick=LEa&amp;Kc=">DevOps와 SE를 위한 리눅스 커널 이야기(강진우)</a></li>
+<li>2020-04-27 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788954654753&amp;orderClick=LEa&amp;Kc=">체리새우: 비밀글입니다(황영미)</a></li>
+<li>2020-04-28 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788954609074&amp;orderClick=LAG&amp;Kc=">템페스트(William Shakespeare)</a></li>
+<li>2020-05-08 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788965400752&amp;orderClick=LAG&amp;Kc=">피닉스 프로젝트(Gene Kim, Kevin Behr, George Spafford)</a></li>
+<li>2020-05-14 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788952782076&amp;orderClick=LEa&amp;Kc=">사서함 110호의 우편물(이도우)</a></li>
+<li>2020-05-21 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788962606317&amp;orderClick=LAG&amp;Kc=">리추얼(Mason Currey)</a></li>
+<li>2020-05-26 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791160403008&amp;orderClick=LAG&amp;Kc=">9번의 일(김혜진)</a></li>
+<li>2020-05-30 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788950974435&amp;orderClick=LAG&amp;Kc=">문장 수집 생활(이유미)</a></li>
+<li>2020-06-02 <a href="https://en.wikipedia.org/wiki/Three_Guineas">3기니(Virginia Woolf)</a></li>
+<li>2020-06-08 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788970128337&amp;orderClick=LAG&amp;Kc=">달리기를 말할 때 내가 하고 싶은 이야기(무라카미 하루키)</a></li>
+<li>2020-06-10 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788956607146&amp;orderClick=LAG&amp;Kc=">누구(아사이 료)</a></li>
+<li>2020-06-14 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937441882&amp;orderClick=LAG&amp;Kc=">광대하고 게으르게(문소영)</a></li>
+<li>2020-06-17 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937473258&amp;orderClick=LAG&amp;Kc=">오늘의 엄마(강진아)</a></li>
+<li>2020-06-21 <a href="http://minumsa.minumsa.com/book/17792/">변신 시골의사(Franz Kafka)</a></li>
+<li>2020-06-25 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937460753&amp;orderClick=LAG&amp;Kc=#">위대한 개츠비(F. Scott Fitzgerald)</a></li>
+<li>2020-06-29 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788995501443&amp;orderClick=LEa&amp;Kc=">꾸뻬씨의 행복여행(François Lelord)</a></li>
+<li>2020-07-09 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791189385095&amp;orderClick=LAG&amp;Kc=">자존가들(김지수)</a></li>
+<li>2020-07-13 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788968482014&amp;orderClick=LAG&amp;Kc=">웹 엔지니어가 알아야 할 인프라의 기본(바바 토시아키)</a></li>
+<li>2020-07-26 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791160560060&amp;orderClick=LAG&amp;Kc=">인생의 발견(Theodore Zeldin)</a></li>
+<li>2020-07-29 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162242162&amp;orderClick=LEa&amp;Kc=">나는 LINE 개발자입니다(강윤신, 김영환, 김재석, &hellip;)</a></li>
+<li>2020-08-02 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791157843183&amp;orderClick=LEa&amp;Kc=">나는 아마존에서 미래를 다녔다(박정준)</a></li>
+<li>2020-08-07 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791190786355&amp;orderClick=LEa&amp;Kc=">보통의 언어들(김이나)</a></li>
+<li>2020-08-13 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791160504576&amp;orderClick=LAG&amp;Kc=">모두 거짓말을 한다(Seth Stephens-Davidowitz)</a></li>
+<li>2020-08-21 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788932473956&amp;orderClick=LAG&amp;Kc=">글자풍경(유지원)</a></li>
+<li>2020-08-29 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937434488&amp;orderClick=LEa&amp;Kc=">노르웨이의 숲(무라카미 하루키)</a></li>
+<li>2020-08-31 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937473227&amp;orderClick=LAG&amp;Kc=">두 방문객(김희진)</a></li>
+<li>2020-09-05 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937438998&amp;orderClick=LAG&amp;Kc=">쇼룸(김의경)</a></li>
+<li>2020-09-14 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791185716923&amp;orderClick=LEa&amp;Kc=">절대 성공하지 못할 거야(Mark Randolph)</a></li>
+<li>2020-09-16 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937473289&amp;orderClick=LEa&amp;Kc=">내가 말하고 있잖아(정용준)</a></li>
+<li>2020-09-25 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788950982256&amp;orderClick=LAG&amp;Kc=">다크호스(Todd Rose, Ogi Ogas)</a></li>
+<li>2020-09-28 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791191071030&amp;orderClick=LAG&amp;Kc=">프리즘(손원평)</a></li>
+<li>2020-10-09 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788984077348&amp;orderClick=LAG&amp;Kc=">번역가 모모씨의 일일(노승영, 박산호)</a></li>
+<li>2020-10-13 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788984314146&amp;orderClick=LEa&amp;Kc=">당신 옆을 스쳐간 그 소녀의 이름은(최진영)</a></li>
+<li>2020-10-21 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791159099557&amp;orderClick=LAG&amp;Kc=">비밀의 화원(Frances Hodgson Burnett)</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>2019 Books I Read</title>
+			<link>https://augustkang.com/posts/2019-books-i-read/</link>
+			<pubDate>Sun, 09 Jun 2019 17:57:32 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/2019-books-i-read/</guid>
+			<description>2019년에 읽은 책들을 나열하는 포스트 아몬드(손원평) 사람의 아들(이문열) 지방 대사 켜는 스위치온 다이어트(박용우) 여행의 이유(김영하) 나는 왜 정치</description>
+			<content type="html"><![CDATA[<h1 id="2019년에-읽은-책들을-나열하는-포스트">2019년에 읽은 책들을 나열하는 포스트</h1>
+<ul>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788936434267&amp;orderClick=LAG&amp;Kc=">아몬드(손원평)</a></li>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937480485&amp;orderClick=LEB&amp;Kc=">사람의 아들(이문열)</a></li>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791196334703&amp;orderClick=LAH&amp;Kc=">지방 대사 켜는 스위치온 다이어트(박용우)</a></li>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788954655972&amp;orderClick=LAH&amp;Kc=">여행의 이유(김영하)</a></li>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791195842032&amp;orderClick=LAH&amp;Kc=">나는 왜 정치를 하는가(유승민)</a></li>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788965962502&amp;orderClick=LAH&amp;Kc=">히트 리프레시(Satya Nadella)</a></li>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791188331222&amp;orderClick=LAH&amp;Kc=">어느 애주가의 고백(Daniel Schreiber)</a></li>
+<li>2019-06-17 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791157031030&amp;orderClick=LAH&amp;Kc=">더골(Eliyahu Moshe Goldratt)</a></li>
+<li>2019-06-18 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937473074&amp;orderClick=LAG&amp;Kc=">한국이 싫어서(장강명)</a></li>
+<li>2019-06-18 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791160500165&amp;orderClick=LEA&amp;Kc=">인프라 엔지니어의 교과서: 시스템 구축과 관리편</a></li>
+<li>2019-06-22 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937436888&amp;orderClick=LAG&amp;Kc=">당선, 합격, 계급(장강명)</a></li>
+<li>2019-06-30 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;barcode=9788991290464">소크라테스의 변론 크리톤 파이돈 향연(Plato)</a></li>
+<li>2019-07-04 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788968483547&amp;orderClick=LAG&amp;Kc=">Hello Coding 알고리즘(Aditya Y. Bhargava)</a></li>
+<li>2019-07-07 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791188621224&amp;orderClick=LAG&amp;Kc=">개발자도 궁금한 IT 인프라(정송화, 김영선, 전성민)</a></li>
+<li>2019-07-09 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791196199807&amp;orderClick=LAG&amp;Kc=">서른의 반격(손원평)</a></li>
+<li>2019-07-12 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937441912&amp;orderClick=LAG&amp;Kc=">산 자들(장강명)</a></li>
+<li>2019-07-15 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791189015657&amp;orderClick=LAH&amp;Kc=">지극히 사적인 초능력(장강명)</a></li>
+<li>2019-07-19 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788931010831&amp;orderClick=LAG&amp;Kc=">멋진 신세계(Aldous Leonard Huxley)</a></li>
+<li>2019-07-20 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937461033&amp;orderClick=LAG&amp;Kc=">인간 실격(다자이 오사무)</a></li>
+<li>2019-08-01 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966262335&amp;orderClick=LAG&amp;Kc=">함께 자라기(김창준)</a></li>
+<li>2019-08-04 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788950981082&amp;orderClick=LEB&amp;Kc=">바닷가 작업실에서는 전혀 다른 시간이 흐른다(김정운)</a></li>
+<li>2019-08-05 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788974331146&amp;orderClick=LAG&amp;Kc=">열광금지, 에바로드(장강명)</a></li>
+</ul>
+<p>2019년 독서는 8월에서 끝이 났다&hellip;</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>How to Git Pull With Submodules</title>
+			<link>https://augustkang.com/posts/how-to-git-pull-with-submodules/</link>
+			<pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/how-to-git-pull-with-submodules/</guid>
+			<description>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다. 근데 그냥 clone을 하니 submodule로 등록</description>
+			<content type="html"><![CDATA[<p>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
+근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.
+구글링을 좀 해본 결과 <a href="http://openmetric.org/til/programming/git-pull-with-submodule/">링크</a>와 같이</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git submodule update --init --recursive
+</code></pre></div><p>clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>First Post</title>
+			<link>https://augustkang.com/posts/first-post/</link>
+			<pubDate>Sun, 02 Jun 2019 17:36:40 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/first-post/</guid>
+			<description>I just created my first blog :D</description>
+			<content type="html"><![CDATA[<p>I just created my first blog :D</p>
+]]></content>
+		</item>
+		
+	</channel>
 </rss>
