@@ -15,20 +15,17 @@
 			<pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
 			
 			<guid>https://augustkang.com/posts/cka-experience/</guid>
-			<description>다른 분들의 CKA 후기가 제게는 큰 도움이 되었던 기억이 있어 저도 CKA(2020년 9월 개정)를 준비하시는 분들께 도움이 되길 바라며.. (soonbee님 정말</description>
+			<description>다른 분들의 CKA 후기가 제게는 큰 도움이 되었던 기억이 있어 저도 CKA(2020년 9월 개정)를 준비하시는 분들께 도움이 되길 바라며.. 2번째 응시(free r</description>
 			<content type="html"><![CDATA[<figure>
     <img src="/images/cert.png"/> 
 </figure>
 
 <p>다른 분들의 CKA 후기가 제게는 큰 도움이 되었던 기억이 있어 저도 CKA(2020년 9월 개정)를 준비하시는 분들께 도움이 되길 바라며..</p>
-<p>(<a href="https://blog.dudaji.com/kubernetes/2019/06/24/cka-acceptance-review-soonbee.html">soonbee</a>님 정말 감사합니다!!!)</p>
 <p>2번째 응시(free retake)에 턱걸이로 겨우 통과한 후기를 공유합니다.</p>
 <h2 id="준비하게-된-계기">준비하게 된 계기</h2>
 <p>쿠버네티스. 요즘 여기저기서 많이 나오는 이름이라 많이 들어봤으나 아는게 없었습니다. 마침 관련 업무가 생겨서 어떻게 알아가면 좋을까 하다가 개인적으로 AWS <a href="https://aws.amazon.com/ko/certification/certified-solutions-architect-associate/">SAA</a> 준비하면서 정말 많은 공부가 됐던 경험이 있어서 쿠버네티스는 자격증 없나~? 하고 찾아봤더니</p>
 <p>관리자들을 대상으로 하는 <a href="https://www.cncf.io/certification/cka/">Certified Kubernetes Administrator</a> 라는게 있다는걸 알게되었고 이걸 준비하면 자연스럽게 쿠버네티스 공부가 되겠구나~ 생각하고 준비를 시작하게 되었습니다.</p>
 <h2 id="준비-과정">준비 과정</h2>
-<h3 id="공식-문서를-정말-열심히-봐야-하는-것-같습니다">공식 문서를 정말 열심히 봐야 하는 것 같습니다.</h3>
-<h3 id="udemy-practice-test에서-나오는거만-해볼게-아니고-공식-문서에-있는걸-직접-하나하나-해봐야-좋은-점수를-받을-수-있을-것-같아요">udemy practice test에서 나오는거만 해볼게 아니고 공식 문서에 있는걸 직접 하나하나 해봐야 좋은 점수를 받을 수 있을 것 같아요.</h3>
 <p>저는 Udemy에서 Mumshad Mannambath 형님의 <a href="https://www.udemy.com/course/certified-kubernetes-administrator-with-practice-tests/">Certified Kubernetes Administrator(CKA) with Practice Tests</a> 강의를 들으며 준비했습니다.(할인할 때 약 2만원 정도)</p>
 <p>CKA 시험이 커맨드라인 환경에서 진행되는데, 해당 강의는 각 강의마다 직접 실습해볼 수 있는 실습 환경을 함께 제공해줘서 좋았습니다.</p>
 <p>첫 번째 응시할때는 해당 강의 외에 별다른 수단이나 자료들을 참고하지 않았습니다. 대신 각 강의 끝나고 제공되는 practice test를 최소 5번씩은 반복했던 것 같습니다.</p>
@@ -56,14 +53,20 @@
 <p>어쨌든 아는건 최대한 풀면서 시험을 마치게 되었고 64%로 탈락했습니다.</p>
 <h2 id="재시험">재시험</h2>
 <p>두 번째 시험에서도 첫 번째 시험과 문제가 거의 똑같았습니다. killer.sh 통해서 context 변경하는 환경에 익숙해졌기에 당황하지는 않았고, 첫 번째 보단 자신있게 시험을 진행할 수 있었습니다.</p>
-<p>두번째 시험에서 아쉬웠던건 첫 시험때 두 번째 시험 들어오기 전에 알아보려 하지 않았다는 점&hellip;?</p>
+<p>두번째 시험에서 아쉬웠던건 첫 시험때 몰랐던 부분을 두 번째 시험 들어오기 전에 알아보려 하지 않았다는 점..?</p>
 <p>자신이 있었는데 정말 턱걸이 (66%&hellip; 2% 오름..)로 통과하였습니다.</p>
+<h2 id="시험-팁">시험 팁</h2>
+<h3 id="공식-문서를-정말-꼼꼼히-봐야-좋을-것-같습니다">공식 문서를 정말 꼼꼼히 봐야 좋을 것 같습니다.</h3>
+<p>시험 볼 때 <a href="https://kubernetes.io/docs/home/">공식문서</a>를 봐야 하기 때문에 공식 문서에서 내가 필요한 내용이 어디 있는지 충분히 익히셔야 합니다.</p>
+<p>또한, Udemy 강의(2020년 10월 26일 기준)에는 안나오지만 공식 문서에는 다루는 내용(ex. Network Policy의 namespaceSelector) 들도 직접 해보셔야 시험때 마주하더라도 당황하시지 않을 것 같아요. 저는 그런 내용을 마주하고 너무 당황했던 기억이 있습니다..</p>
+<p>그 외 auto completion 관련해서는 <a href="https://blog.dudaji.com/kubernetes/2019/06/24/cka-acceptance-review-soonbee.html">다른 분의 상세한 후기</a>가 더 도움이 될 것 같네요.</p>
+<p>잘 준비하셔서 저처럼 탈탈 털린 기분 느끼지 않고 통과하시길..!</p>
 <h2 id="개인적인-감상">개인적인 감상</h2>
 <p>턱걸이로 통과하니까 너무 부끄럽습니다. 이름은 Certified Kubernetes Administrator인데, 제가 생각하는 제 자신은 Kubernetes Practitioner 느낌..?</p>
 <p>개인적인 생각이지만, 실제 서비스 환경에서 클러스터를 운영하시는 분들은 제가 가진 이 자격이 쿠버네티스에 대한 깊은 이해를 증명하지는 않는다는걸 아실 것 같아요.</p>
 <p>하지만 제게 CKA는 쿠버네티스를 알아가는데 좋은 출발점이 된 것 같습니다. 컨테이너 오케스트레이션 관련 경험이 전혀 없었는데, CKA 준비하면서 그래도 정말정말 쌩기초는 챙긴 느낌..?입니다.</p>
 <p>계속 공부하면서 부족한 부분들을 채워나가야겠어요.</p>
-<p>후기를 작성해보는게 처음이라 두서가 없는 느낌이네요.. 궁금한 부분은 댓글 남겨주시면 최대한 답변 드리겠습니다.</p>
+<p>읽어주셔서 감사합니다.</p>
 ]]></content>
 		</item>
 		
