@@ -59,7 +59,7 @@
 <h3 id="공식-문서를-정말-꼼꼼히-봐야-좋을-것-같습니다">공식 문서를 정말 꼼꼼히 봐야 좋을 것 같습니다.</h3>
 <p>시험 볼 때 <a href="https://kubernetes.io/docs/home/">공식문서</a>를 봐야 하기 때문에 공식 문서에서 내가 필요한 내용이 어디 있는지 충분히 익히셔야 합니다.</p>
 <p>또한, Udemy 강의(2020년 10월 26일 기준)에는 안나오지만 공식 문서에는 다루는 내용(ex. Network Policy의 namespaceSelector) 들도 직접 해보셔야 시험때 마주하더라도 당황하시지 않을 것 같아요. 저는 그런 내용을 마주하고 너무 당황했던 기억이 있습니다..</p>
-<p>그 외 auto completion 관련해서는 <a href="https://blog.dudaji.com/kubernetes/2019/06/24/cka-acceptance-review-soonbee.html">다른 분의 상세한 후기</a>가 더 도움이 될 것 같네요.</p>
+<p>그 외 시험 세팅(auto completion 적용) 관련해서는 <a href="https://blog.dudaji.com/kubernetes/2019/06/24/cka-acceptance-review-soonbee.html">soonbe님의 상세한 후기</a>가 더 도움이 될 것 같네요.</p>
 <p>잘 준비하셔서 저처럼 탈탈 털린 기분 느끼지 않고 통과하시길..!</p>
 <h2 id="개인적인-감상">개인적인 감상</h2>
 <p>턱걸이로 통과하니까 너무 부끄럽습니다. 이름은 Certified Kubernetes Administrator인데, 제가 생각하는 제 자신은 Kubernetes Practitioner 느낌..?</p>
