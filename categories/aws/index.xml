@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aws on augustkang</title>
+    <link>https://augustkang.com/categories/aws/</link>
+    <description>Recent content in aws on augustkang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 17 Jun 2021 12:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/categories/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[AWS] S3 Storage class - Glacier의 개념과 사용법</title>
+      <link>https://augustkang.com/posts/aws/s3-glacier/</link>
+      <pubDate>Thu, 17 Jun 2021 12:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/aws/s3-glacier/</guid>
+      <description>S3의 Glacier storage class를 적용할 일이 있어 공부하였습니다. 공부한 내용을 정리해보았습니다! Glacier란? Glacier는 오랜 세월동안 안전하게 보관</description>
+    </item>
+    
+    <item>
+      <title>[AWS] Default DNS Configuration of VPC(DHCP Options Set)</title>
+      <link>https://augustkang.com/posts/aws/vpc-dns-configuration/</link>
+      <pubDate>Fri, 30 Apr 2021 14:20:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/aws/vpc-dns-configuration/</guid>
+      <description>깡통 EC2 인스턴스 기본 설정을 살펴보다가 /etc/resolv.conf 에 10.101.1.2 라는 ip가 nameserver로 설정되어 있는걸 보고 &amp;ldquo;이게 뭘까 난 이런걸 넣어주질 않았는데. A</description>
+    </item>
+    
+    <item>
+      <title>[AWS] CloudFront Certificate Region</title>
+      <link>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</link>
+      <pubDate>Wed, 21 Apr 2021 14:02:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</guid>
+      <description>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] 이유는 CloudFront 서비</description>
+    </item>
+    
+  </channel>
+</rss>

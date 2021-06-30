@@ -7,22 +7,49 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 27 Oct 2020 00:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jun 2021 12:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>kubernetes</title>
-      <link>https://augustkang.com/categories/kubernetes/</link>
-      <pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
+      <title>aws</title>
+      <link>https://augustkang.com/categories/aws/</link>
+      <pubDate>Thu, 17 Jun 2021 12:10:00 +0900</pubDate>
       
-      <guid>https://augustkang.com/categories/kubernetes/</guid>
+      <guid>https://augustkang.com/categories/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>review</title>
+      <link>https://augustkang.com/categories/review/</link>
+      <pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/categories/review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://augustkang.com/categories/linux/</link>
+      <pubDate>Sun, 31 Jan 2021 13:40:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/categories/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>book</title>
       <link>https://augustkang.com/categories/book/</link>
-      <pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
+      <pubDate>Fri, 08 Jan 2021 21:37:00 +0900</pubDate>
       
       <guid>https://augustkang.com/categories/book/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kubernetes</title>
+      <link>https://augustkang.com/categories/kubernetes/</link>
+      <pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/categories/kubernetes/</guid>
       <description></description>
     </item>
     

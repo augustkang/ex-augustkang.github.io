@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>review on augustkang</title>
+    <link>https://augustkang.com/tags/review/</link>
+    <description>Recent content in review on augustkang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 15 May 2021 01:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Certified DevOps Engineer Professional 후기</title>
+      <link>https://augustkang.com/posts/review/dop-experience/</link>
+      <pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/review/dop-experience/</guid>
+      <description>AWS Certified DevOps Engineer - Professional 자격증을 취득했습니다! 호우! 누군가에게 도움이 되길 바라며! (사실 이 뽕맛을 잊지 않기 위해) 준비한 경험을 정리 (자랑) 합니다. AWS Certified DevOps Engineer - Professional</description>
+    </item>
+    
+    <item>
+      <title>너라는 생활(김혜진)</title>
+      <link>https://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/</link>
+      <pubDate>Fri, 08 Jan 2021 21:37:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/</guid>
+      <description>소설 &amp;lsquo;9번의 일&amp;rsquo;을 쓴 작가, 김혜진 작가의 소설집 &amp;lsquo;너라는 생활&amp;rsquo;을 읽었다. 소감 이 책은 장편 소설은 아니</description>
+    </item>
+    
+    <item>
+      <title>페스트(알베르 카뮈)</title>
+      <link>https://augustkang.com/posts/book/pest/</link>
+      <pubDate>Mon, 04 Jan 2021 21:37:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/book/pest/</guid>
+      <description>군대에서 너무나도 재밌게 읽었던 소설 이방인을 쓴 작가, 알베르 카뮈의 소설 페스트를 읽었다. 줄거리 소설은 프랑스의 한적한 오랑이라는 도시를 배경으로, 페스트라</description>
+    </item>
+    
+    <item>
+      <title>CKA 시험 후기</title>
+      <link>https://augustkang.com/posts/review/cka-experience/</link>
+      <pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/review/cka-experience/</guid>
+      <description>Certified Kubernetes administrator(CKA, 2020년 9월 개정) 시험을 준비하시는 분들께 도움이 되길 바라며.. (2번째 응시(free retake)끝에 턱걸이로 겨우 취득한) CKA 경험을 공유</description>
+    </item>
+    
+  </channel>
+</rss>

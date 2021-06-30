@@ -6,15 +6,1038 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Tue, 27 Oct 2020 00:10:00 +0900</lastBuildDate>
+		<lastBuildDate>Thu, 17 Jun 2021 12:10:00 +0900</lastBuildDate>
 		<atom:link href="https://augustkang.com/posts/index.xml" rel="self" type="application/rss+xml" />
 		
 		<item>
+			<title>[AWS] S3 Storage class - Glacier의 개념과 사용법</title>
+			<link>https://augustkang.com/posts/aws/s3-glacier/</link>
+			<pubDate>Thu, 17 Jun 2021 12:10:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/aws/s3-glacier/</guid>
+			<description>S3의 Glacier storage class를 적용할 일이 있어 공부하였습니다. 공부한 내용을 정리해보았습니다! Glacier란? Glacier는 오랜 세월동안 안전하게 보관</description>
+			<content type="html"><![CDATA[<p>S3의 Glacier storage class를 적용할 일이 있어 공부하였습니다. 공부한 내용을 정리해보았습니다!</p>
+<h2 id="glacier란"><strong>Glacier란?</strong></h2>
+<p>Glacier는 오랜 세월동안 안전하게 보관이 필요한 데이터, 한번 저장해두면 자주 접근하지 않을 보존용 데이터 등을 저장하는데 좋은 스토리지 서비스 입니다.</p>
+<p>Glacier에서는 S3와 (비슷한 개념이라고 생각하지만) 다른 용어를 사용합니다.</p>
+<ul>
+<li>데이터를 저장하기 위한 개별 저장소는 Vault라고 부릅니다(S3의 Bucket에 대응).</li>
+<li>Vault에 저장되는 개별 데이터는 Archive 라고 부릅니다(S3의 Object에 대응)</li>
+</ul>
+<p>간단히 이야기하자면 Glacier는 Vault(≈Bucket)에 Archive(≈Object)를 저장하는 식으로 이용하는 서비스라고 할 수 있습니다.</p>
+<h2 id="glacier의-특징"><strong>Glacier의 특징</strong></h2>
+<p>Glacier는 S3보다 저렴한 가격으로 더 많은 양의 데이터를 저장할 수 있으나, 자주 접근하지 않을 데이터 저장에 적합한 서비스 입니다.</p>
+<p>S3에서는 사용자가 원하면 특정 오브젝트를 바로 다운로드(GetObject)받을 수 있지만, Glacier는 그렇지 않습니다.</p>
+<p><strong>Glacier에서 사용하는 용어로 데이터를 다운로드할 수 있게 요청, 준비하는 과정을 Retrieval(반출, 검색, 탐색) 이라고 합니다.</strong></p>
+<p>처음에 공부할 때 어느 분 블로그에서 &lsquo;반출&rsquo; 이라는 표현을 봤었는데, 그때 아! 이거다! 하는 생각이 들었었습니다. 반출 이라는 표현이 제일 와닿았습니다.
+Glacier 서비스 자체가 지하 깊숙한 저장고에 보관해놨다가 필요할때 꺼내 쓰는 느낌..!</p>
+<p>저장된 데이터를 다운로드 받기 위한 기본적인 사용 흐름은 아래와 같습니다.
+(아마 뒷단의 스토리지에서 사용자가 다운로드 가능한 앞단까지 가져다놓는 작업을 수행하지 않을까 추측됩니다.)</p>
+<ol>
+<li>
+<p>사용자가 저장된 데이터의 반출(Retrieval)을 요청</p>
+</li>
+<li>
+<p>요청이 완료되면 해당 데이터를 일정 시간동안만 내려받을 수 있게됨.</p>
+</li>
+</ol>
+<p><strong>저장된 데이터의 Retrieval(반출)에 소요되는 시간과 비용은 반출을 요청하는 타입에 따라 아래와 같이 달라집니다.</strong></p>
+<p>사용자가 해당 데이터가 급히 필요한지, 또는 데이터가 조금 늦게 준비되어도 되는지 여부에 따라 아래 3개 등급 중 선택해서 요청할 수 있습니다.</p>
+<ul>
+<li>Expedited(긴급) - 요청시 1~5분 이내에 이용(다운로드) 가능 → 가장 비쌉니다.</li>
+<li>Standard(표준) - 요청시 3~5시간 이내에 이용(다운로드) 가능 → 중간 가격입니다.</li>
+<li>Bulk(대량) - 요청시 5~12시간 이내에 이용(다운로드) 가능 → 가장 저렴합니다.</li>
+</ul>
+<p>반출 요청을 한다고 바로 다운로드 가능한게 아닙니다. 반출 요청 이후 일정 시간 기다려야 다운로드가 가능해집니다.</p>
+<p>표준으로 요청하면 3~5시간 뒤에야 비로소 다운로드 버튼을 클릭할 수 있게 된다고 생각하시면 이해에 도움이 될 것 같습니다.</p>
+<p><strong>(상황 예시)</strong></p>
+<p><strong>1GB의 데이터 다운로드</strong>에 1시간이 걸린다고 해봅시다.(1GB/hour). 1GB를 표준(3~5시간) 유형으로 반출 요청한다고 가정해보겠습니다.
+여기서는 <strong>반출 요청 처리</strong>에 5시간이 걸린다고 해보겠습니다.</p>
+<p>위와 같은 상황에 Glacier 사용자 입장에서 다운로드에 총 소요되는 시간은 다음과 같습니다.</p>
+<p><strong>5시간(반출 요청 처리) + 1시간(1GB의 데이터 다운로드) = 6시간</strong></p>
+<h2 id="glacier를-사용하는-방법"><strong>Glacier를 사용하는 방법</strong></h2>
+<h3 id="s3의-storage-class로써-glacier-사용-vs-amazon-s3-glacier-서비스-사용"><strong>S3의 Storage Class로써 Glacier 사용 vs Amazon S3 Glacier 서비스 사용</strong></h3>
+<p>AWS에서 Glacier를 사용하는 방법에는 2가지가 있습니다. (저도 처음에 이게 무슨말인가 싶었습니다.)</p>
+<p>아래와 같은 유래가 있다고 하네요.(<a href="https://stackoverflow.com/a/65929235/11584183">https://stackoverflow.com/a/65929235/11584183</a>)</p>
+<ul>
+<li>초기에 AWS의 스토리지 서비스로 S3가 있었다.</li>
+<li>S3와 별개의, 백업용 데이터를 저장하기 위한 컨셉으로 Amazon Glacier라는 스토리지 서비스도 있었다.</li>
+<li>S3 사용자 중 Glacier와 같은 스토리지 사용도 원하는 수요가 있었다.</li>
+<li>Amazon Glacier는 사용자 입장에서 직접 사용하기 불편하다. (불편함의 예시 : 데이터 업로드 하고 업로드한 데이터가 잘 들어갔는지 &lsquo;목록&rsquo;을 확인할 수 있으려면 24시간을 기다려야 함)</li>
+<li><strong>S3의 Storage Class로써 Glacier 사용할 수 있게 제공!</strong></li>
+</ul>
+<p>즉, Amazon S3 Glacier는 다른 AWS 서비스들처럼(ex. SNS, SQS, &hellip;) 원래 별도의 서비스 입니다. 콘솔에서 검색하면 나오는 S3 Glacier 라고 나오는 그 서비스인데요.</p>
+<p>이 서비스 - Glacier API를 직접 이용하는 방식이 Amazon S3 Glacier 방식이고,</p>
+<p><strong>S3 api를 통해서 Glacier 서비스를 이용하게 해주는 방식이 S3의 Storage Class - Glacier 를 이용하는 방식입니다.</strong></p>
+<p>각 방법은 이런 특징이 있습니다.</p>
+<p><strong>1. S3 Storage Class - Glacier</strong></p>
+<ul>
+<li>편리한 S3 콘솔, 인터페이스, api 등을 그대로 이용하여 Glacier 서비스를 사용할 수 있습니다.</li>
+<li>S3 버킷에서 버킷 내 오브젝트에 대해 Storage Class를 Glacier로 설정하는 방식입니다.</li>
+<li>Download 해야 할 경우 위에 이야기 한 Retrieval type(검색 유형)을 설정하고 요청을 먼저 해야 합니다.</li>
+<li>(몇일간 다운로드가 필요할지 명시해서) 요청을 하면 요청한 유형에 따라 다운로드를 할 수 있게 됩니다. (예: Expedited로 요청했으면 1~5분 내에 다운로드 가능. Standard로 요청했으면 최소 3시간~5시간 후에 요청한 데이터 다운로드 가능)</li>
+<li>(반출을 요청하면 내부적으로는 Glacier Storage Class에서 Reduced Redundancy Storage(RRS) Class로 객체를 요청한 기간 만큼만 복제해줍니다. 사용자는 RRS에 복제되어 있는 객체에 접근하는 식으로 다운로드 할 수 있게 됩니다.)</li>
+</ul>
+<p>이 방식의 장점은 기존 S3 콘솔(s3 api)을 이용하여 Glacier로 객체를 보내고 꺼내고 할 수 있다는 점 입니다. S3를 통해 Glacier를 이용하기 때문에 큰 불편함이 없습니다.</p>
+<p>참고로, Glacier 서비스에서 직접 vault를 만들고 archive를 올리고 하는 식으로 이용할 경우, 객체를 업로드하면 객체 목록(버킷 내 파일 목록)에 반영되는데
+약24시간이 소요됩니다. (업로드를 하면 업로드한게 목록에 바로 뜨지가 않습니다.)</p>
+<p><strong>2. Amazon S3 Glacier(AWS 콘솔에서 Glacier 검색하면 나오는 서비스)</strong></p>
+<ul>
+<li>별도로 나왔던 서비스인 Glacier를 직접 이용하는 방법입니다. S3와 다른 별도의 콘솔로 서비스를 제공합니다.</li>
+<li>독립적인 glacier api를 사용하고, S3를 통해서 사용하면 이용할 수 없는 Vault Lock과 같은 Glacier 고유의 기능 등을 이용할 수 있습니다.</li>
+<li>Vault에 저장된 archive의 목록은 inventory라고 합니다.</li>
+<li>지금 저장된 archive 목록을 보고 싶으면 inventory를 요청해야 합니다.(glacier api 이용)</li>
+<li>inventory를 요청하면 수시간 내에 vault 내에 저장된 archive의 목록을 확인할 수 있게 됩니다.</li>
+<li><strong>즉!! 현재 저장되어 있는 목록만 보는데도 몇 시간이 걸립니다.. (사용하기 불편..)</strong></li>
+</ul>
+<p><strong>고유 기능 - Vault Lock</strong></p>
+<ul>
+<li>이 기능은 policy를 정의해서 붙이면 해당 정책을 삭제하지 않는 이상 수정이 불가한 기능이라고 합니다.(bucket policy와 역할은 비슷한데 수정이 불가한 특성)</li>
+<li>한번 정의한 정책은 제거하고 다시 만들지 않는 이상 수정이 불가!</li>
+</ul>
+<p>강력한 보안 요구사항이 있는 조직에서 유용하게 사용할 수 있다고 합니다.</p>
+<h2 id="예시"><strong>예시</strong></h2>
+<p>아래는 CloudFormation으로 작성한 Glacier 템플릿 예시 입니다.</p>
+<p>Glacier storage class에 저장해둔 오브젝트의 반출에는 시간이 오래 걸리므로, 반출 완료될 시 알림을 받게 설정할 수 있습니다.</p>
+<p>아래 예시에서는 MS Teams의 webhook을 이용해 noti를 받게 하였습니다.</p>
+<p>MS Teams가 아닌 Slack이나 다른 메신저 서비스의 경우에도 Webhook을 사용할 수 있다면 request를 날리도록 Lambda를  작성한 뒤,
+S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에서 webhook url에 request를 날리도록 하는 식으로 할 수 있습니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># CloudFormation Parameter for MS Teams webhook URL</span><span class="w">
+</span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">WebhookUrl</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
+</span><span class="w">    </span><span class="nt">AllowedPattern</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;.+&#34;</span><span class="w"> </span><span class="c"># Set as mandatory</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">S3Bucket</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::Bucket</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">BucketName</span><span class="p">:</span><span class="w"> </span><span class="l">my-glacier-bucket</span><span class="w">
+</span><span class="w">      </span><span class="nt">LifecycleConfiguration</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Rules</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Id</span><span class="p">:</span><span class="w"> </span><span class="l">DefaultAsGlacier</span><span class="w">
+</span><span class="w">          </span><span class="nt">Status</span><span class="p">:</span><span class="w"> </span><span class="l">Enabled</span><span class="w">
+</span><span class="w">          </span><span class="nt">Transitions</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">TransitionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="w">            </span><span class="nt">StorageClass</span><span class="p">:</span><span class="w"> </span><span class="l">GLACIER # Objects will be stored as GLACIER Storage Class</span><span class="w">
+</span><span class="w">      </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">LambdaConfigurations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Event</span><span class="p">:</span><span class="w"> </span><span class="l">s3:ObjectRestore:Completed</span><span class="w">
+</span><span class="w">          </span><span class="nt">Function</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaFunction.Arn</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaPermission</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">S3BucketPolicy</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::BucketPolicy</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">Bucket</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref S3Bucket</span><span class="w">
+</span><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="c"># put bucket policies as per your requirements</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">LambdaPermission</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Permission</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l">lambda:InvokeFunction</span><span class="w">
+</span><span class="w">      </span><span class="nt">Principal</span><span class="p">:</span><span class="w"> </span><span class="l">s3.amazonaws.com</span><span class="w">
+</span><span class="w">      </span><span class="nt">SourceArn</span><span class="p">:</span><span class="w"> </span><span class="l">arn:aws:s3:::my-glacier-bucket</span><span class="w">
+</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref LambdaFunction</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">LambdaRole</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::Role</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
+</span><span class="w">          </span><span class="nt">Principal</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">Service</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="l">lambda.amazonaws.com</span><span class="w">
+</span><span class="w">          </span><span class="nt">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="l">sts:AssumeRole</span><span class="w">
+</span><span class="w">      </span><span class="nt">ManagedPolicyArns</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole</span><span class="w">
+</span><span class="w">      </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaRole</span><span class="w">
+</span><span class="w">      </span><span class="nt">RoleName</span><span class="p">:</span><span class="w"> </span><span class="l">my-lambda-role</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">LambdaFunction</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Function</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="sd">          import json
+</span><span class="sd">          import os
+</span><span class="sd">          import logging
+</span><span class="sd">          import boto3
+</span><span class="sd">          from urllib.request import Request, urlopen
+</span><span class="sd">          from urllib.error import URLError, HTTPError
+</span><span class="sd">
+</span><span class="sd">          def lambda_handler(event, context):
+</span><span class="sd">              webhook_url = os.environ.get(&#39;Webhook&#39;)
+</span><span class="sd">              bucket = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;bucket&#39;][&#39;name&#39;]
+</span><span class="sd">              archive = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;key&#39;]
+</span><span class="sd">              size = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;size&#39;]
+</span><span class="sd">
+</span><span class="sd">              teams_message = {
+</span><span class="sd">                  &#34;@context&#34;: &#34;https://schema.org/extensions&#34;,
+</span><span class="sd">                  &#34;@type&#34;: &#34;MessageCard&#34;,
+</span><span class="sd">                  &#34;themeColor&#34;: &#34;64a837&#34;,
+</span><span class="sd">                  &#34;title&#34;: &#34;Glacier 객체 복원 완료&#34;,
+</span><span class="sd">                  &#34;text&#34;: f&#34;복원된 객체 정보는 아래와 같습니다.&#34;,
+</span><span class="sd">                  &#34;sections&#34;: [
+</span><span class="sd">                      {
+</span><span class="sd">                          &#34;facts&#34;: [
+</span><span class="sd">                              {
+</span><span class="sd">                                  &#34;name&#34;: &#34;Bucket&#34;,
+</span><span class="sd">                                  &#34;value&#34;: f&#34;{bucket}&#34;
+</span><span class="sd">                              },
+</span><span class="sd">                              {
+</span><span class="sd">                                  &#34;name&#34;: &#34;Archive name : &#34;,
+</span><span class="sd">                                  &#34;value&#34;: f&#34;{archive}&#34;
+</span><span class="sd">                              },
+</span><span class="sd">                              {
+</span><span class="sd">                                  &#34;name&#34;: &#34;Size: &#34;,
+</span><span class="sd">                                  &#34;value&#34;: f&#34;{size}&#34;
+</span><span class="sd">                              }
+</span><span class="sd">                          ]
+</span><span class="sd">                      }
+</span><span class="sd">                  ]
+</span><span class="sd">              }
+</span><span class="sd">              request = Request(webhook_url, json.dumps(teams_message).encode(&#39;utf-8&#39;))
+</span><span class="sd">              try:
+</span><span class="sd">                  response = urlopen(request)
+</span><span class="sd">                  response.read()
+</span><span class="sd">                  print(&#34;Success&#34;)
+</span><span class="sd">              except HTTPError as err:
+</span><span class="sd">                  print(&#34;Fail&#34;)
+</span><span class="sd">              except URLError as err:
+</span><span class="sd">                  print(&#34;Fail&#34;)
+</span><span class="sd">      FunctionName: LambdaWebhook
+</span><span class="sd">      Handler: index.lambda_handler
+</span><span class="sd">      Role: !GetAtt LambdaRole.Arn
+</span><span class="sd">      Runtime: python3.8
+</span><span class="sd">      Environment:
+</span><span class="sd">        Variables:
+</span><span class="sd">          Webhook: !Ref WebhookUrl
+</span><span class="sd">
+</span></code></pre></div><h2 id="glacier-storage-class를-aws-cli로-이용하는-방법"><strong>Glacier storage class를 AWS CLI로 이용하는 방법</strong></h2>
+<h3 id="버킷에-아카이브-올리는-명령어-예시">버킷에 아카이브 올리는 명령어 예시</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
+<span class="c1"># --storage-class GLACIER 옵션을 줘야 합니다.</span>
+</code></pre></div><h3 id="s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시">s3api로 Glacier에 있는 데이터를 Retrieval(반출) 요청하는 명령어 예시</h3>
+<p><code>--restore-request</code> 옵션을 줘야 합니다. 해당 옵션에는 반출한 오브젝트가 몇 일간 필요한지를 명시하는 <code>Days</code> 와, Retrieval 옵션을 명시해줘야 합니다.</p>
+<p>retrieval option은 <code>GlacierJobParameters={&quot;Tier&quot;=&quot;Standard&quot;}</code> 형태로 명시해주면 됩니다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+<span class="c1"># Tier를 원하는 Type으로 설정. 여기서는 Standard로 해보았습니다.</span>
+<span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Expedited&#34;}</span>
+<span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Bulk&#34;}</span>
+
+</code></pre></div><ul>
+<li>Days=1로 하면 Retrieval 처리 완료되고 하루 동안 해당 Archive를 다운 받을 수 있게됩니다. 7로 하면 일주일동안 받을 수 있게 됩니다.</li>
+<li>Tier가 위에서 설명한 Retrieval 옵션을 뜻합니다.</li>
+<li>
+<ul>
+<li>Expedited : 1~5분 내에 반출 가능해짐</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Standard : 3~5시간 내에 반출 가능해짐</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Bulk : 5~12시간 내에 반출 가능해짐</li>
+</ul>
+</li>
+<li>참고 사항으로, 위 템플릿 예시에서는 Notification을 설정해서 Retrieval이 완료되면 teams로 알림을 받습니다.</li>
+</ul>
+<h3 id="실제-retrieval-요청-실행">실제 Retrieval 요청 실행</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+</code></pre></div><h3 id="retrieval이-진행중인지-확인하는-명령어">Retrieval이 진행중인지 확인하는 명령어</h3>
+<ul>
+<li>Progress는 보여주지 않고 진행중인지 완료되었는지 여부만 보여줍니다.</li>
+<li>이런 기약없는? 불편함으로 인해 사용할 경우 Notification이 있으면 좋다고 생각합니다.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+<span class="o">{</span>
+    <span class="s2">&#34;AcceptRanges&#34;</span>: <span class="s2">&#34;bytes&#34;</span>,
+    <span class="s2">&#34;Restore&#34;</span>: <span class="s2">&#34;ongoing-request=\&#34;true\&#34;&#34;</span>, <span class="c1"># 현재 Retrieval이 진행중이라는걸 보여줌(ongoing-request=true)</span>
+    <span class="s2">&#34;LastModified&#34;</span>: <span class="s2">&#34;2021-03-24T02:13:16+00:00&#34;</span>,
+    <span class="s2">&#34;ContentLength&#34;</span>: 3,
+    <span class="s2">&#34;ETag&#34;</span>: <span class="s2">&#34;\&#34;abcdefghijklmnopqrstuzwxyz1234567890\&#34;&#34;</span>,
+    <span class="s2">&#34;ContentType&#34;</span>: <span class="s2">&#34;text/plain&#34;</span>,
+    <span class="s2">&#34;Metadata&#34;</span>: <span class="o">{}</span>,
+    <span class="s2">&#34;StorageClass&#34;</span>: <span class="s2">&#34;GLACIER&#34;</span>
+<span class="o">}</span>
+</code></pre></div><h3 id="retrieva이-완료되었을-때-head-object-결과">Retrieva이 완료되었을 때 head-object 결과</h3>
+<pre><code>[august@dummy-pc ~]$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+{
+    &quot;AcceptRanges&quot;: &quot;bytes&quot;,
+    # ongoing-request = false(완료됨) Expiry Date가 위에 restore-object 명령어에서 명시한 Days의 결과입니다.
+    &quot;Restore&quot;: &quot;ongoing-request=\&quot;false\&quot;, expiry-date=\&quot;Fri, 26 Mar 2021 00:00:00 GMT\&quot;&quot;,
+    &quot;LastModified&quot;: &quot;2021-03-24T02:13:16+00:00&quot;,
+    &quot;ContentLength&quot;: 3,
+    &quot;ETag&quot;: &quot;\&quot;abcdefghijklmnopqrstuzwxyz1234567890\&quot;&quot;,
+    &quot;ContentType&quot;: &quot;text/plain&quot;,
+    &quot;Metadata&quot;: {},
+    &quot;StorageClass&quot;: &quot;GLACIER&quot;
+}
+</code></pre><h2 id="그래서-s3-glacier-storage-class-사용하면-좋은가요">그래서 S3 Glacier storage class 사용하면 좋은가요?</h2>
+<p>비용을 대폭 아낄 수 있습니다.</p>
+<p>저의 경우 대략 <a href="https://calculator.aws/">비용 계산</a> 해봤을때, 동일한 양의 데이터를 S3 standard storage class에 저장할 때보다
+80% 정도 저렴하게 이용하고 있다고 계산이 나왔었습니다.</p>
+<p>계속 보관되어야 하지만 한번 저장되면 거의 데이터를 찾을 일이 없다! 라는 요구사항이 확실하다면 고려해보시면 좋을 것 같습니다.</p>
+<p>읽어주셔서 감사합니다!</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>AWS Certified DevOps Engineer Professional 후기</title>
+			<link>https://augustkang.com/posts/review/dop-experience/</link>
+			<pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/review/dop-experience/</guid>
+			<description>AWS Certified DevOps Engineer - Professional 자격증을 취득했습니다! 호우! 누군가에게 도움이 되길 바라며! (사실 이 뽕맛을 잊지 않기 위해) 준비한 경험을 정리 (자랑) 합니다. AWS Certified DevOps Engineer - Professional</description>
+			<content type="html"><![CDATA[<figure>
+    <img src="/images/dop.png"/> 
+</figure>
+
+<figure>
+    <img src="/images/dop2.png"/> 
+</figure>
+
+<p>AWS Certified DevOps Engineer - Professional 자격증을 취득했습니다! 호우!</p>
+<p>누군가에게 도움이 되길 바라며! <del>(사실 이 뽕맛을 잊지 않기 위해)</del> 준비한 경험을 정리 <del>(자랑)</del> 합니다.</p>
+<h2 id="aws-certified-devops-engineer---professional-시험-간략-소개">AWS Certified DevOps Engineer - Professional 시험 간략 소개</h2>
+<p><a href="https://aws.amazon.com/certification/certified-devops-engineer-professional/">AWS Certified DevOps Engineer - Professional</a> 시험 공식 소개에 의하면 아래와 같은 능력들을 검증한다고 합니다.</p>
+<ul>
+<li>AWS 상에서 CI/CD 구축하는 방법</li>
+<li>Security control, governance processes, and compliance validation 등을 구현하고 자동화 하는 방법</li>
+<li>각종 지표, 로그를 AWS상에서 정의하고 모니터링 하는 방법</li>
+<li>Highly available, Scalable, and self-healing 되는 시스템을 AWS상에서 구현하는 방법</li>
+<li>다양한 tool을 활용하여 운영 프로세스들을 자동화하는 방법</li>
+</ul>
+<p>제가 느끼기로는 AWS 상에서 DevOps를 실현하기 위해 다양한 서비스들을 묶거나 연결하여 운영 자동화를 하는 방법들을 알고 있는지?를 시험하는 것 같았습니다.</p>
+<p><a href="https://d1.awsstatic.com/ko_KR/training-and-certification/docs-devops-pro/AWS-Certified-DevOps-Engineer-Professional_Exam-Guide.pdf">공식 시험 안내서</a>에 출제되는 도메인과 비율이 자세히 나와 있습니다.</p>
+<ul>
+<li>도메인 1: SDLC 자동화 - 22%</li>
+<li>도메인 2: 구성 관리 및 Infrastructure as Code - 19%</li>
+<li>도메인 3: 모니터링 및 로깅 - 15%</li>
+<li>도메인 4: 정책 및 표준 자동화 - 10%</li>
+<li>도메인 5: 인시던트 및 이벤트 대응 - 18%</li>
+<li>도메인 6: 고가용성, 내결함성 및 재해 복구 - 16%
+합계 100%</li>
+</ul>
+<h3 id="3시간-짜리-시험">3시간 짜리 시험..</h3>
+<p>3시간 동안 75 문제를 풀어야 하는 시험입니다&hellip; 1000점 만점으로 750점 이상이 나와야 합격이구요.</p>
+<p>문제가 많다 보니 시험 시간이 길더라구요. 계산해보면 1문제를 대충 3분 내에 풀어야 하는데요, 저는 영어 원어민이 아니면 제공해주는 30분 추가 시간을 추가하여 시험을 신청했습니다.</p>
+<p>AWS 시험을 본 경험이 있다면 아시겠지만, 시험을 결제할 때 영어 원어민이 아니면 &lsquo;시험 편의사항&rsquo;으로 30분의 추가 시간을 요청할 수 있습니다.
+30분 추가 시간을 요청하는 방법은 잘 정리해주신 분이 있어 <a href="https://tell-mia.tistory.com/25">링크</a>로 대체하겠습니다!</p>
+<p>기본 응시 비용은 300$ 입니다. 기존에 AWS 자격증을 취득하신적이 있다면 혜택으로 제공되는 다음 시험 50% 할인 코드를 사용하여 150$에 응시하실 수 있습니다.</p>
+<p>시험 장소는 온라인 또는 오프라인 선택하여 응시하실 수 있는데요. 저는 온라인으로 PSI를 선택해서 응시했습니다.</p>
+<h2 id="준비-과정">준비 과정</h2>
+<p>저는 시험을 준비하기 전에 인터넷을 검색해보고 다른 분들은 어떻게 준비하시나 확인해보고 시작하는 편인데요.
+DevOps Engineer Professional(DOP) 자격증은 한국에서 인기가 없는지 후기가 잘 안보이더라구요.</p>
+<p>그래서 영어 후기들을 찾아보게 되었습니다. 영어권의 유명한 커뮤니티? 사이트인 Reddit의 AWS 자격증 관련 서브레딧
+<a href="https://www.reddit.com/r/AWSCertifications/">r/awscertifications</a> 에서 DOP 관련 후기들을 검색해보면 하나같이 추천해주시는 조합이 있었습니다.</p>
+<p>강의 : Stephane Maarek 형님의 <a href="https://www.udemy.com/course/aws-certified-devops-engineer-professional-hands-on/">AWS Certified DevOps Engineer Professional 2021 - Hands On!</a> 강의</p>
+<p>연습문제 : Jon Bonso 형님의 <a href="https://tutorialsdojo.com/courses/aws-certified-devops-engineer-professional-practice-exams/">AWS Certified DevOps Engineer Professional Practice Exams</a></p>
+<p>시험 Pass 후기를 보면 이 조합을 거의 국룰(?)처럼 추천해주시더라구요. 그래서 저도 위 조합을 택해서 준비했습니다.</p>
+<h3 id="강의-연습문제-후기">강의, 연습문제 후기</h3>
+<p><a href="https://aws.amazon.com/certification/certified-solutions-architect-associate/">AWS Certified Solutions Architect - Associate</a> 시험을 준비하며
+Stephane Maarek 형님께 푹 빠졌기 때문에(Linkedin follow도 함!) 스테판 형님의 강의는 믿고 들었습니다. 가격은 20$ 정도 였던 것 같네요.</p>
+<p>시험 범위에 나오는 각 도메인 별로 개념을 설명해주고, 서비스들을 어떻게 연결, 자동화 할 수 있는지 알려줍니다. 해당 서비스들을 꼭 직접 사용해보는 실습 과정도 포함되어 있습니다.</p>
+<p>강의를 전부 듣고나서는 Jon Bonso 형님의 연습문제를 풀었습니다. 가격은 14.99$ 입니다.</p>
+<p>75문제를 시험처럼 풀로 보는 Practice exam을 총 5회 제공해주고, 영역별로 나눠서 볼 수 있는 문제도 제공해니다. 구성이 재밌습니다.</p>
+<ul>
+<li>시간을 재며 볼 수 있는 Timed mode 2회</li>
+<li>한 문제 한 문제 풀 때마다 바로 정답 여부를 알 수 있고 관련 개념들을 볼 수 있는 Review mode 2회</li>
+<li>공식 문서 소개에 나온 시험 Domain 별로 나눠서 문제를 풀 수 있는 Section based 문제들</li>
+<li>최종 시험 전에 각 잡고 연습해보라는 느낌의 Final test 1회</li>
+</ul>
+<p><a href="tutorialsdojo.com">tutorialsdojo.com</a>을 이용해본게 처음이였는데 개인적으로 사용성? UX/UI?가 유려하진 않은 것 같아서 아쉬웠으나 연습문제들은 정말 좋았습니다.
+사이트 자체에 AWS 개념들을 잘 정리해놓은 <a href="https://tutorialsdojo.com/aws-cheat-sheets/">AWS Cheat Sheets</a>도 있어서 기억 안나는 개념이 있으면 보고 공부하기 좋습니다.</p>
+<p>첫 연습문제는 63% 정도 나와서 좌절했는데 다음 회차로 갈수록 문제가 중복되기도 하고 이해도 늘고 해서 마지막 회차 쯤엔 800점 후반이였던 것 같아요. 연습문제 다 푼 다음 시험을 응시했습니다.</p>
+<h2 id="시험-진행-방식">시험 진행 방식</h2>
+<p>PSI 온라인 시험은 PSI에서 만든 시험용 브라우저를 설치해야 하는데요, 이게 조금 불편합니다. 전체화면이 안됩니다..;
+(설치는 시험 결제하면 PSI에서 보내주는 메일 안내를 통해 공식 사이트에 들어가서 진행할 수 있습니다.)</p>
+<p>화면 크기에 맞춰지기는 하는데 완전한 전체화면이 아닌 느낌? 이라고 생각하시면 될 것 같아요.</p>
+<p>맥북(13인치)으로 응시했는데 화면이 작아서 아쉬웠어요</p>
+<p>시험 시작 10분 전부터 입장할 수 있습니다. 입장할 때 캠으로 본인 사진을 한번 찍습니다.</p>
+<p>그리고 신원 확인이 되는 신분증도 사진을 찍어야 합니다. 저는 여권을 사용했어요. 여권 사진을 찍고 기다리면 감독관님이 신원 검증(?)을 한 다음 들어와서 채팅으로 인사해주십니다.</p>
+<p>(시험 응시 장소를 확인하는 과정은 CKA 시험과 똑같았어서 CKA때 작성했던 내용을 복붙하고 조금 수정..!)</p>
+<p>이후에는 웹캠으로 시험을 응시중인 공간에 대한 확인을 진행합니다. 책상위에서 360도로 노트북을 돌리며 방을 보여줘야 하고, 책상 아래도 보여줘야 합니다.</p>
+<p>저는 집에서 응시했는데 시험 안내 링크에 보면 책상에 뭐가 있으면 안된다 그래서 그냥 책상 위에 모든 물건을 다른 곳으로 아예 치우고 정말 맥북만 올려놓고 응시했습니다.</p>
+<p>확인 과정에서 시험 시작시간을 넘어갈 수 있는데 내게 허용된 시험 시간이 줄어드는건 아닌지 걱정 안하셔도 됩니다.</p>
+<p>확인하느라 소요된 시간은 제외하고 실제로 시험을 시작하는 순간부터 3시간동안 시험을 보실 수 있습니다.</p>
+<p>(예시: 오전 9시 시험 예약. 입장해서 확인하느라 9시 20분이 되서 시작 -&gt; 9시 20분부터 12시 20분까지 시험 진행)</p>
+<p>진짜 시험 내내 너무 지치고 힘들고 어려워서 심신이 너무 괴로웠어요.</p>
+<p>다 풀고 제출 클릭하고 진짜 속으로 제발&hellip;. 제발&hellip;&hellip; 되뇌이면서 고개 숙이고 눈 감고 있다가 몇 초 뒤에 고개 들고 화면 다시 봤는데 Passed 떠있어서 의자에서 펄쩍 뛰고 난리를 쳤어요.</p>
+<p>감독관님한테 채팅으로 &ldquo;omg I made it!!!&rdquo; 보내니까 감독관님도 &ldquo;Congratulations Donghyun!!&rdquo; 해주셔서 너무 행복했어요</p>
+<p>(Can I take a picture of this result? 하니까 바로 칼같이 No 하시더라구요 ㅋㅋㅋㅋ)</p>
+<p>점수도 잘 나와서 너무 뿌듯했습니다.</p>
+<h2 id="기억에-남는-시험에서-나오는-서비스들">기억에 남는 시험에서 나오는 서비스들</h2>
+<p>기억나는 시험에 많이 나왔던 서비스들을 아래에 나열해보자면..</p>
+<ul>
+<li>Elastic Beanstalk</li>
+<li>CodeCommit, CodeBuild, CodeDeploy, CodePipeline 시리즈</li>
+<li>Elastic Container Service</li>
+<li>Lambda</li>
+<li>AWS Config</li>
+</ul>
+<p>등이 기억에 남습니다. 개인차가 있겠지만 저는 SDLC 영역은 쉬웠고 Highly Available 영역이 어려웠어요.</p>
+<p>Multi-region 상황에서 고가용성을 보장하면서도 RTO, RPO 낮은 Fail over 가능한 그런 야무진 구조는 무엇일까요? 같은 문제들&hellip;</p>
+<h2 id="개인적인-감상">개인적인 감상</h2>
+<p>첫 Professional 도전이였는데 이뤄내서 기분이 너무 좋아요.<del>(저는 이걸 뽕맛이라고 표현합니다)</del></p>
+<p>성취감도 성취감인데 이 시험 준비하면서 활용도 높은 자동화 패턴, 방안들을 익힌게 너무 뿌듯합니다(CloudWatch Event + Lambda 만세!)</p>
+<p>제가 겪어본 AWS 자격증 시험 문제들은 주로 특정 시나리오를 주고 &ldquo;이런 시나리오에서 ~를 하기 위해 어떻게 해야 할까요?&rdquo; 같은 느낌인데 준비하면서 너무 많이 배웠습니다.</p>
+<p>일하면서 어떤 풀어야 할 귀찮은 문제가 발생했을때 &lsquo;어? 그거 ~~로 이렇게 저렇게 붙여서 하면 될 것 같은데!?&rsquo; 하고 금방 떠올릴 수 있게 된다는게 정말 큰 장점인 것 같아요.</p>
+<p>일하다 보면 어디부터 손대야 할지 모르겠는.. 내가 뭘 모르는지 모르는 그런 상황에 봉착할 때가 있는데,</p>
+<p>뭔가 미래에 문제를 마주치게 되더라도 이번에 학습하면서 익힌 해결 방안들을 이리 저리 조합하면 뭐든 능히 풀 수 있을 것 같다! 하는 자신감도 많이 얻었습니다.</p>
+<p>DOP보다 SAP가 어렵다던데.. 준비할때만 해도 DOP만 보면 더는 안해야지 생각했었는데..
+왜 패스하고 나니까 SAP도 도전해보고 싶은걸까요.. 으!!</p>
+<p>읽어주셔서 감사합니다!</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>[AWS] Default DNS Configuration of VPC(DHCP Options Set)</title>
+			<link>https://augustkang.com/posts/aws/vpc-dns-configuration/</link>
+			<pubDate>Fri, 30 Apr 2021 14:20:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/aws/vpc-dns-configuration/</guid>
+			<description>깡통 EC2 인스턴스 기본 설정을 살펴보다가 /etc/resolv.conf 에 10.101.1.2 라는 ip가 nameserver로 설정되어 있는걸 보고 &amp;ldquo;이게 뭘까 난 이런걸 넣어주질 않았는데. A</description>
+			<content type="html"><![CDATA[<p>깡통 EC2 인스턴스 기본 설정을 살펴보다가 <code>/etc/resolv.conf</code> 에 <code>10.101.1.2</code> 라는 ip가 nameserver로 설정되어 있는걸 보고
+&ldquo;이게 뭘까 난 이런걸 넣어주질 않았는데. AWS가 넣어줄텐데 이걸 뭐라 하나&rdquo; 같은 생각이 들었습니다.</p>
+<p>궁금해서 한참을 찾아봤습니다. 너무 당연하게 모르면서도 궁금해하지 않고 지나갔던 것 같습니다..;</p>
+<p>관련해서 검색을 하다가 DHCP Options Set 이라는 공식 문서에서 설명을 찾을 수 있었습니다.</p>
+<p><a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html#AmazonDNS">공식 문서</a>에 의하면 우리가 VPC를 생성하면 자동으로 DHCP Options Set이 같이 생성되고 우리가 만든 VPC와 연결된다고 합니다.</p>
+<p>이 DHCP Options Set이 VPC 내에서 필요한 설정 정보(DNS 서버, NTP, NETBIOS 등)를 전달받을 수 있게 해준다고 합니다.
+(VPC 생성할때 같이 생성되는 DHCP Options Set에는 Domain name과 Domain name servers 만 기본으로 들어가있음)</p>
+<p>제가 궁금했던/etc/resolv.conf 에 있던 IP에 대한 내용도 해당 문서의 AmazonDNS 항목에 나와 있습니다.</p>
+<blockquote>
+<p>AmazonProvidedDNS is an Amazon Route 53 Resolver server, and this option enables DNS for instances that need to communicate over the VPC&rsquo;s internet gateway.
+The string AmazonProvidedDNS maps to a DNS server running on a reserved IP address at the base of the VPC IPv4 network range, plus two.
+For example, the DNS Server on a 10.0.0.0/16 network is located at 10.0.0.2.
+For VPCs with multiple IPv4 CIDR blocks, the DNS server IP address is located in the primary CIDR block.
+The DNS server does not reside within a specific subnet or Availability Zone in a VPC</p>
+</blockquote>
+<p>DHCP Options Set 항목 중 제공되는 <em>AmazonProvidedDNS</em> 라는 항목이 AWS에서(Route53) VPC에 제공해주는 DNS 서버의 IP이고(VPC의 CIDR에서 2번 ip를 써서 제공)
+이 DNS 서버 제공 덕분에 ec2에서 dns 질의를 할 수 있게 된다는 내용입니다.</p>
+<p>(Route53 콘솔에서 보면 Resolver항목에 Internet Resolver들이 VPC와 연결된 것을 볼 수 있는데, VPC 생성할때 여기에 자동으로 규칙이 생성되는 걸 볼 수 있어요!)</p>
+<p>저는 정말 모르는게 너무 많은 것 같아요. 열심히 공부해야겠습니다!</p>
+<p>참고 :</p>
+<ul>
+<li>[1] DHCP Options Sets - <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html">https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>[AWS] CloudFront Certificate Region</title>
+			<link>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</link>
+			<pubDate>Wed, 21 Apr 2021 14:02:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</guid>
+			<description>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] 이유는 CloudFront 서비</description>
+			<content type="html"><![CDATA[<p>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1]</p>
+<p>이유는 CloudFront 서비스용 certificate의 경우 해당 리전에서 다른 Edge locations로 배포하기 때문이라고 한다.</p>
+<p>또한, 한 Region의 ACM 에서 만들은 Certificate는 다른 리전으로 직접적인? migration 불가능하다.</p>
+<p>생성했던 Region과 다른 Region에서 사용하려면 새 Region에서 기존 Region의 Certificate를 Import(안해봐서 정확히 Import와 새로 만드는 것의 차이가 뭔지 모르겠다)하거나 해당 Region에서 새로 Certificate를 만들어야 한다.[2]</p>
+<p>다른 Region꺼를 바로 가져다 쓰는게 안되는 이유는 ACM Certificate의 private key를 encrypt하는데 사용하는 default KMS customer master key(CMK)가 각 AWS account, region 별로 고유하기 때문이라고 한다.[3]</p>
+<p>참고 :</p>
+<ul>
+<li>[1] CloudFront를 위한 Certificate 리전 - <a href="https://docs.aws.amazon.com/acm/latest/userguide/acm-regions.html">https://docs.aws.amazon.com/acm/latest/userguide/acm-regions.html</a></li>
+<li>[2] ACM Certificate 리전 간 마이그레이션 불가 - <a href="https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/">https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/</a></li>
+<li>[3] ACM Certificate 다른 Region, 계정으로 옮기기 불가 - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/">https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>OS가 무엇일까</title>
+			<link>https://augustkang.com/posts/linux/os-role/</link>
+			<pubDate>Sun, 31 Jan 2021 13:40:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/linux/os-role/</guid>
+			<description>리얼 리눅스 - 리눅스 SW 기본 강의를 듣고 정리하는 OS의 역할 OS가 하는 역할의 정수 2가지 역할을 한다. 어플리케이션 관리 하드웨어 자원 관리 Core 부분 PM(Process Management) MM(Memory Management) IRQ(Interrupt ReQuest)</description>
+			<content type="html"><![CDATA[<p><a href="https://reallinux.co.kr/sw.html">리얼 리눅스 - 리눅스 SW 기본 강의</a>를 듣고 정리하는 OS의 역할</p>
+<h2 id="os가-하는-역할의-정수">OS가 하는 역할의 정수</h2>
+<p>2가지 역할을 한다.</p>
+<ol>
+<li>
+<p>어플리케이션 관리</p>
+</li>
+<li>
+<p>하드웨어 자원 관리</p>
+</li>
+<li>
+<p>Core 부분</p>
+</li>
+</ol>
+<ul>
+<li>PM(Process Management)</li>
+<li>MM(Memory Management)</li>
+<li>IRQ(Interrupt ReQuest) / exception 처리 / locking 등</li>
+</ul>
+<p><strong>Interrupt</strong>란?</p>
+<p>HW의 전기적인 신호이다.(예. USB, SSD, Network, &hellip;) 이러한 인터럽트가 왔을때 인터럽트 처리를 해주는 함수들이
+IRQ에 들어있다.</p>
+<p><strong>Exception</strong>이란?</p>
+<p>프로그램 자체가 잘못 만들어진 정말로 극히 만나기 힘든 예외적인 케이스들을 Exception이라고 표현한다.</p>
+<p>시스템콜, 페이지 폴트 등이 이러한 Exception에 해당한다.</p>
+<p><strong>Page Fault</strong>란?
+물리적으로 메모리를 Page라는 단위로 관리하는데, 물리 메모리가 부재되어있다 라고 해서 page fault 라는
+exception이 발생할 수 있다.</p>
+<p>메모리를 management할때 가상메모리 메커니즘으로 관리하는데, 가상메모리를 썼는데 그 가상메모리가
+물리메모리에 연결이 되어있지 않으면 Page fault가 발생한다.</p>
+<p>Segmentation fault는 Page fault의 하위 항목이다.</p>
+<p><strong>Locking</strong> 이란?</p>
+<p>CPU가 여러개일때, 공유 변수가 있을때 lock을 걸어놓고 쓰고 lock을 풀어놓고 함으로써 여러 CPU들이 공유된 자원을 점유하려 하면서 발생할 수 있는 문제를 막기 위한 함수들이 모여있는 부분이다.</p>
+<p>예시 : mm_struct → 부모 프로세스가 fork를 해서 자식 프로세스가 생겼을때 메모리 관리를 위해 mm_struct 라는 자료구조를 공유해서 사용한다</p>
+<h3 id="2-io-처리">2. I/O 처리</h3>
+<ul>
+<li>네트워크 스택(L4: TCP, L3: IP, L2: Device Driver, 벤더별로 NIC 카드 드라이버 제작)</li>
+<li>스토리지 스택(VFS/FS/Block layer)
+<ul>
+<li>
+<p>VFS = Virtual File System</p>
+<p>거의 Core파트라고 볼 수 있음. 리눅스는 모든걸 파일로 보고 read,write,open을 통해 제어하게 되는데
+이런걸 가능하게 하기 위해 Virtual File System이 존재한다.</p>
+</li>
+<li>
+<p>FS = File System</p>
+<p>논리적으로 파일들을 어떻게 관리할건지, 디스크 안에 어떻게 물리적으로 어떻게 블록들을 관리할건지 등의
+전략이 File System layer에 있다.</p>
+</li>
+<li>
+<p>Block Layer</p>
+<p>SSD, HDD를 실질적으로 block 단위로 read,write 할 수 있게 처리해주는 layer</p>
+</li>
+<li>
+<p>Device Driver</p>
+<p>Block device, GPU, 등 다양한 것들이 device driver로 구현되어 들어있음. 결국은 하드웨어를 제어하기 위한 부분.
+하드웨어 벤더들은 리눅스 커널 메인라인에 디바이스 드라이버 코드가 들어가는게 되게 중요함.
+내가 만든 디바이스 드라이버 코드를 넣어야하는데 진입이 빡셈</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-기타---security보안-tools성능분석-함수-추적-sounds소리-처리">3. 기타 - security(보안), tools(성능분석, 함수 추적), sounds(소리 처리)</h3>
+]]></content>
+		</item>
+		
+		<item>
+			<title>free command, /proc/meminfo</title>
+			<link>https://augustkang.com/posts/linux/free-command/</link>
+			<pubDate>Sun, 17 Jan 2021 01:12:40 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/linux/free-command/</guid>
+			<description>메모리 사용 정보를 보여주는 free 명령어와 /proc/meminfo 에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;</description>
+			<content type="html"><![CDATA[<p>메모리 사용 정보를 보여주는 free 명령어와 /proc/meminfo 에 대해</p>
+<p>&ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
+<h3 id="메모리-사용량-확인하기">메모리 사용량 확인하기</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# free -m
+              total        used        free      shared  buff/cache   available
+Mem:           <span class="m">8047</span>        <span class="m">6161</span>        <span class="m">1662</span>          <span class="m">17</span>         <span class="m">223</span>        <span class="m">1755</span>
+Swap:         <span class="m">24576</span>         <span class="m">214</span>       <span class="m">24361</span>
+<span class="c1"># 출력 데이터 단위에 따라 옵션이 다르다.</span>
+<span class="c1"># -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위</span>
+</code></pre></div><ul>
+<li>
+<p>total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량</p>
+</li>
+<li>
+<p>buff/cache : buffers와 cached 영역에서 차지하는 용량.</p>
+</li>
+</ul>
+<p>부끄럽지만 used, free는 잘 알았지만(그냥 읽으면 딱 알 수 있는 부분이니까) buff/cache는 대충 캐시 영역이겠거니~ 하고 정확히는 모르고 있었다.</p>
+<p>대충 캐시해놓은 부분이라고만 넘어갔었는데 실제로 buffers, cached 영역은 뭘까?</p>
+<p>buffers/cached 영역은 원본이 원래는 디스크에 있으나 성능 이점을 위해 그 디스크 내용을 메모리에 캐싱 목적으로 올려놓은 부분이라고 한다.</p>
+<p>그럼 대체 디스크에 수많은 데이터들 중에 어떤걸 캐싱 목적으로 메모리에 올려놓는데??????</p>
+<p><code>cat /proc/meminfo</code> 로 buffers, cached를 나눠서 보면</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">august@august-PC~$ cat /proc/meminfo <span class="p">|</span> head -5
+MemTotal:        <span class="m">2035676</span> kB
+MemFree:          <span class="m">784432</span> kB
+MemAvailable:    <span class="m">1890044</span> kB
+Buffers:            <span class="m">6596</span> kB
+Cached:          <span class="m">1021344</span> kB
+</code></pre></div><p>Buffers : 좀 더 작음. Why? 디스크에 있던 File의 메타데이터(inode)를 읽어놓는 영역이다. 메타데이터는 파일의 access time, owner 등등 정보를 의미한다. 크기가 작다.</p>
+<p>Cached : 크기가 buffers에 비해 훨씬 크다. Why? 디스크에 있던 File의 실제 데이터 내용(data block)을 페이지 단위로 읽어놓는 영역이다.</p>
+<p>일단 buffers, cached 이 영역들은 기본적으로 원본이 이미 디스크에 있는 내용이다.</p>
+<p>성능 이점을 위해 메모리에 읽어놓은 형태이기 때문에 해제해버려도 프로그램 구동에 치명적인 위협은 되지 않는다.
+(write 생긴 내용은 디스크에 flush만 했다면)</p>
+<ul>
+<li>total의 계산방식 -&gt; total = free + used + buff/cache</li>
+</ul>
+<p>available : 어떤 프로세스가 지금 처음 시작되면 사용 가능한 최대 메모리의 양(영끌)을 뜻한다.</p>
+<p>buff/cache 일부와 free를 합한거라고 보면 된다고 한다. free랑 헷갈리면 안된다.</p>
+<p>Swap : swap 영역에 대한 내용. 전체, 사용중인 용량, 남는 용량</p>
+<p>Swap 영역은 메모리에 있는 내용을 임시로 저장해 둘 수 있는 Disk 공간의 양을 뜻한다. 결국 i/o latency가 메모리보다 높은 디스크 공간을 뜻한다.</p>
+<p>메모리가 꽉 찼을 정도로 부족할 때 현재 메모리에 있는 내용을 swap(디스크)에 임시로 옮겨두고 사용할 메모리(RAM) 공간을 확보한다.</p>
+<p>참고 : kswapd 라는 커널 태스크는 워터마크라는 지표를 기반으로 메모리에 있는 내용을 swap 영역으로 옮긴다.</p>
+<h3 id="buffers와-cached-영역">buffers와 cached 영역</h3>
+<ul>
+<li>buffers 영역은 buffer cache 영역을 뜻함.</li>
+</ul>
+<p>super block, inode block 과 같이 파일의 내용이 아닌 파일시스템 관리에 필요한 메타데이터들을 위한 cache</p>
+<ul>
+<li>cached 영역은 page cache 영역을 뜻함.</li>
+</ul>
+<p>파일 자체의 내용을 저장하는데 쓰이는 cache</p>
+<h3 id="procmeminfo-읽기">/proc/meminfo 읽기</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@August-PC ~<span class="o">]</span><span class="c1"># cat /proc/meminfo </span>
+MemTotal:        <span class="m">7957324</span> kB
+MemFree:          <span class="m">299176</span> kB
+MemAvailable:    <span class="m">4854520</span> kB
+Buffers:          <span class="m">141072</span> kB
+Cached:          <span class="m">4768400</span> kB
+SwapCached:        <span class="m">75588</span> kB
+Active:          <span class="m">4118228</span> kB
+Inactive:        <span class="m">2813128</span> kB
+Active<span class="o">(</span>anon<span class="o">)</span>:    <span class="m">1330700</span> kB
+Inactive<span class="o">(</span>anon<span class="o">)</span>:  <span class="m">1069180</span> kB
+Active<span class="o">(</span>file<span class="o">)</span>:    <span class="m">2787528</span> kB
+Inactive<span class="o">(</span>file<span class="o">)</span>:  <span class="m">1743948</span> kB
+Unevictable:           <span class="m">0</span> kB
+Mlocked:               <span class="m">0</span> kB
+SwapTotal:       <span class="m">8388604</span> kB
+SwapFree:        <span class="m">7214696</span> kB
+Dirty:               <span class="m">136</span> kB
+
+... 생략
+</code></pre></div><ul>
+<li>
+<p>SwapCached: swap으로 사용된 영역 중 다시 메모리로 돌아온 영역. Swap으로 빠졌다고 돌아온 영역이 얼마나 되는지 나타냄.</p>
+</li>
+<li>
+<p>Active(anon): Page Cache 영역을 제외한 메모리 영역을 의미. 주로 프로세스들이 사용하는 메모리 영역 지칭. 그 중에서도 최근에 참조된(active) 영역 나타낸다. Active는 최근에 접근된 이력이 있는 영역이라는 뜻.</p>
+</li>
+<li>
+<p>Inactive(anon): 참조된 지 오래되어 Swap영역으로 이동할 수도 있는 메모리 영역. Inactive는 말 그대로 active 하지 않은, 접근된지 오래된, 최근에는 접근하지 않은 영역..</p>
+</li>
+<li>
+<p>Active(file): 커널이 I/O 성능 향상을 위해 캐시 목적으로 사용하는 영역.  buffer cache, page cache 영역이 여기에 속함. 그 중에서도 자주 접근된 영역</p>
+</li>
+<li>
+<p>Inactive(file): 마찬가지로 커널이 캐시 목적으로 사용하는 영역 중에서도 접근한지 오래된 영역.</p>
+</li>
+<li>
+<p>Dirty: Active(file), Inactive(file)과 비슷한 용도로 I/O 성능 향상을 위해 커널이 캐시 목적으로 사용하는 영역 중  작업이 이루어져서 실제 블록 디바이스의 블록에 씌어져야 할 영역을 의미. 즉 디스크 쓰기 이후 commit이 이루어져야 하는 영역. 보통 block device에 write하면 block device write 연산은 메모리에 쓰는 것 보다 굉장히 latency가 크기 때문에(데이터 쓰는데 오래 걸리기 때문에) 그걸 끝날때까지 기다리기 보단 바로바로 처리 안하고 처리하기로 해놓고 나중에, 미래에 시스템에 여유가 있을때 실질적인 쓰기를 처리 하게 하는데 이 실질적으로 처리가 되어야 하는 영역을 의미.</p>
+</li>
+<li>
+<p><code>/fs/proc/meminfo.c</code> 파일에서 active와 inactive를 구분하는 기준을 확인할 수 있다.</p>
+</li>
+<li>
+<p>LRU 기반의 리스트로 관리. 단순히 시간을 기반으로 시간이 지나 오래된 것, 최신의 것으로 나누지는 않음.</p>
+</li>
+<li>
+<p>vm.min_free_kbytes 커널 파라미터보다 여유 메모리 공간이 적게 될 경우 kswapd가 실행되면서 active 영역 페이지 중 오래된 페이지를 우선적으로 inactive로 옮긴 후 메모리를 해제(free)하는 작업을 수행한다.</p>
+</li>
+</ul>
+<h3 id="slab-메모리-영역">slab 메모리 영역</h3>
+<p><code>cat /proc/meminfo</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">... 생략
+Slab:             <span class="m">473356</span> kB
+SReclaimable:     <span class="m">402036</span> kB
+SUnreclaim:        <span class="m">71320</span> kB
+... 생략
+</code></pre></div><ul>
+<li>
+<p>slab: 메모리 영역 중 커널이 직접 사용하는 영역. 여기에는 dentry cache, inode cache 등 커널이 사용하는 메모리가 포함.</p>
+</li>
+<li>
+<p>SReclaimable: Slab 영역 중 재사용될 수 없는 영역. 캐시 용도로 사용하는 메모리들이 여기에 포함됨. 메모리 부족 현상 발생하면 해제(free)되어 프로세스에 할당이 가능한 영역</p>
+</li>
+<li>
+<p>SUnreclaim: Slab 영역 중 재사용 될 수 없는 영역. 커널이 현재 사용중이며 해제해서 다른 용도로 쓸 수 없는 영역.</p>
+</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Active / Total Objects <span class="o">(</span>% used<span class="o">)</span>    : <span class="m">1718090</span> / <span class="m">1895312</span> <span class="o">(</span>90.6%<span class="o">)</span>
+ Active / Total Slabs <span class="o">(</span>% used<span class="o">)</span>      : <span class="m">48101</span> / <span class="m">48101</span> <span class="o">(</span>100.0%<span class="o">)</span>
+ Active / Total Caches <span class="o">(</span>% used<span class="o">)</span>     : <span class="m">82</span> / <span class="m">106</span> <span class="o">(</span>77.4%<span class="o">)</span>   
+ Active / Total Size <span class="o">(</span>% used<span class="o">)</span>       : 435110.21K / 469842.19K <span class="o">(</span>92.6%<span class="o">)</span>
+ Minimum / Average / Maximum Object : 0.01K / 0.25K / 12.75K
+
+  OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME
+<span class="m">842205</span> <span class="m">743124</span>  88%    0.10K  <span class="m">21595</span>       <span class="m">39</span>     86380K buffer_head
+<span class="m">382368</span> <span class="m">368286</span>  96%    0.19K   <span class="m">9104</span>       <span class="m">42</span>     72832K dentry
+<span class="m">167216</span> <span class="m">167216</span> 100%    0.94K   <span class="m">4919</span>       <span class="m">34</span>    157408K xfs_inode
+<span class="m">115668</span> <span class="m">111428</span>  96%    0.57K   <span class="m">4131</span>       <span class="m">28</span>     66096K radix_tree_node
+ <span class="m">55040</span>  <span class="m">47535</span>  86%    0.06K    <span class="m">860</span>       <span class="m">64</span>      3440K kmalloc-64
+ <span class="m">28176</span>  <span class="m">28176</span> 100%    0.16K    <span class="m">587</span>       <span class="m">48</span>      4696K xfs_ili
+ <span class="m">28152</span>  <span class="m">28152</span> 100%    0.12K    <span class="m">828</span>       <span class="m">34</span>      3312K kernfs_node_cache
+ <span class="m">26344</span>  <span class="m">16899</span>  64%    0.21K    <span class="m">712</span>       <span class="m">37</span>      5696K vm_area_struct
+ <span class="m">19278</span>  <span class="m">10360</span>  53%    0.19K    <span class="m">459</span>       <span class="m">42</span>      3672K kmalloc-192
+ <span class="m">16000</span>  <span class="m">15514</span>  96%    0.03K    <span class="m">125</span>      <span class="m">128</span>       500K kmalloc-32
+ <span class="m">15912</span>  <span class="m">15912</span> 100%    0.04K    <span class="m">156</span>      <span class="m">102</span>       624K selinux_inode_security
+<span class="c1"># ... 생략</span>
+</code></pre></div><ul>
+<li>buddy system : linux에서 메모리를 할당해주는 시스템. 가능한 적당하게 메모리 요청을 만족하도록 메모리를 여러 부분으로 나누는 메모리 할당 시스템.
+메모리의 크기를 절반씩 분할하면서 가장 잘 맞는 크기의 메모리를 찾아 할당해 준다. 2의 거듭제곱 값으로 메모리를 할당.</li>
+<li>slab allocator : 버디 시스템을 통해 기본 페이지 크기인 4KB 영역을 할당 받은 후에 각각의 캐시 크기에 맞게 영역을 나눠서 사용.</li>
+<li>slab 영역은 <code>free</code>명령에서 used 영역에 포함된다. 커널이 사용하기 때문에 buffers/cached에 포함될거라 생각할 수 있지만, 실제로는 used에 포함됨.</li>
+</ul>
+<p>출처</p>
+<ul>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966264049&amp;orderClick=LEA&amp;Kc=">DevOps와 SE를 위한 리눅스 커널 이야기</a></li>
+<li><a href="https://reallinux.co.kr/sw.html">리얼 리눅스 SW 기본반</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>Load average</title>
+			<link>https://augustkang.com/posts/linux/load-average-calculation/</link>
+			<pubDate>Sun, 17 Jan 2021 01:06:58 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/linux/load-average-calculation/</guid>
+			<description>Load average에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;리얼 리눅스 SW 기본반&amp;</description>
+			<content type="html"><![CDATA[<p>Load average에 대해 &ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
+<h3 id="load-average의-정의">Load average의 정의</h3>
+<ul>
+<li>Load average는 R(run queue에서 cpu 사용을 위해 대기중인 프로세스들)과 D(네트워크/디스크 i/o 를 위해 wait queue 에서 대기중인 프로세스들)상태에 있는 프로세스 개수의 1분, 5분, 15분마다의 평균값이다.<br>
+CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.</li>
+</ul>
+<h3 id="load-average-계산-과정">Load average 계산 과정</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# uptime
+ 21:44:37 up <span class="m">6</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# strace -s <span class="m">65535</span> -f -t -o uptime_dump uptime
+ 05:36:52 up  5:31,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
+</code></pre></div><p><code>/proc/loadavg</code> -&gt; <code>/fs/proc/loadavg.c</code>에서 <code>loadavg_proc_show()</code> 함수 -&gt; <code>/kernel/sched.c</code> 에서 <code>get_avenrun()</code> 함수 -&gt; <code>avenrun[]</code> 배열 -&gt; <code>calc_global_load()</code> 함수 -&gt; <code>calc_load_account_active()</code> 함수 순으로 추적하다보면 <code>nr_active</code> 라는 변수에 <code>nr_running</code> + <code>nr_uninterruptible</code> 값들을 합하고 이를 1분, 5분, 15분 평균으로 나눠 계산하는 것을 확인할 수 있다.</p>
+<p><code>nr_running</code>은 run queue에 있는 R상태의 프로세스들의 갯수이며, <code>nr_uninterruptible</code>은 wait queue에 있는 D상태의 프로세스들의 갯수이다.</p>
+<h3 id="cpu-bound-vs-io-bound">CPU Bound vs I/O Bound</h3>
+<p>위에서 확인했듯 Load average는 cpu 사용을 기다리는 프로세스 갯수로만 계산되는 것이 아니라, 디스크/네트워크 I/O를 위해 대기중인 프로세스의 갯수도 계산에 포함된다.  즉, Load average가 높다는 것은 단순히 CPU를 사용하려는 프로세스가 많다는 의미가 아니고, I/O 병목이 생겨 I/O 작업을 대기하는 프로세스가 많을 수도 있다는 의미이다.<br>
+그러므로 Load average 숫자만 보고 시스템에 정확히 어떤 상태의 부하가 일어나고 있는지 파악하기가 어렵다.<br>
+그럼 부하의 종류를 어떻게 확인할까?</p>
+<h3 id="vmstat으로-부하의-정체-확인하기">vmstat으로 부하의 정체 확인하기</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># vmstat</span>
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ <span class="m">2</span>  <span class="m">0</span> <span class="m">1211796</span> <span class="m">143872</span> <span class="m">141040</span> <span class="m">5541164</span>    <span class="m">0</span>    <span class="m">0</span>    <span class="m">15</span>    <span class="m">19</span>    <span class="m">0</span>    <span class="m">0</span> <span class="m">26</span>  <span class="m">3</span> <span class="m">69</span>  <span class="m">1</span>  <span class="m">0</span>
+</code></pre></div><ul>
+<li>r : The number of processes waiting for run time.<br>
+실행되기 위해 기다리는 프로세스 갯수(nr_running)</li>
+<li>b : The number of processes in uninterruptible sleep<br>
+I/O를 위해 기다리는 프로세스 갯수(nr_uninterruptible)</li>
+</ul>
+<p><code>/proc/sched_debug</code> 파일을 확인하면 각 CPU의 Run queue 상태와 스케줄링 정보를 살펴볼 수 있다.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># cat /proc/sched_debug </span>
+Sched Debug Version: v0.11, 3.10.0-862.6.3.el7.x86_64 <span class="c1">#1</span>
+ktime                                   : 31318815611.994170
+sched_clk                               : 31318700701.301538
+cpu_clk                                 : 31318700701.301627
+jiffies                                 : <span class="m">35613482909</span>
+
+...중략
+
+cpu#0, 2200.007 MHz
+  .nr_running                    : <span class="m">0</span>
+  .load                          : <span class="m">0</span>
+  .nr_switches                   : <span class="m">6296361526</span>
+  .nr_load_updates               : <span class="m">15707632257</span>
+  .nr_uninterruptible            : <span class="m">434324</span>
+  .next_balance                  : 35613.482909
+  .curr-&gt;pid                     : <span class="m">0</span>
+  .clock                         : 31318700701.633510
+  .cpu_load<span class="o">[</span>0<span class="o">]</span>                   : <span class="m">0</span>
+  .cpu_load<span class="o">[</span>1<span class="o">]</span>                   : <span class="m">0</span>
+
+...중략
+
+runnable tasks:
+            task   PID         tree-key  switches  prio     wait-time             sum-exec        sum-sleep
+----------------------------------------------------------------------------------------------------------
+     ksoftirqd/0     <span class="m">3</span> 13546607321.808677 <span class="m">190671117</span>   <span class="m">120</span>         0.000000   1013193.525038         0.000000 <span class="m">0</span> /
+    kworker/0:0H     <span class="m">5</span>       544.548835         <span class="m">6</span>   <span class="m">100</span>         0.000000         0.029044         0.000000 <span class="m">0</span> /
+      watchdog/0    <span class="m">12</span>        -3.904516   <span class="m">7829709</span>     <span class="m">0</span>         0.000000    125610.812095         0.000000 <span class="m">0</span> /
+       kdevtmpfs    <span class="m">51</span> 1877281760.662029       <span class="m">185</span>   <span class="m">120</span>         0.000000         3.293578         0.000000 <span class="m">0</span> /
+         kswapd0    <span class="m">70</span> 13546604016.431647    <span class="m">923034</span>   <span class="m">120</span>         0.000000    894054.731239         0.000000 <span class="m">0</span> /
+       scsi_eh_0   <span class="m">282</span>       485.192906         <span class="m">2</span>   <span class="m">120</span>         0.000000         0.012182         0.000000 <span class="m">0</span> /
+    kworker/0:1H   <span class="m">341</span> 13546605978.612818  <span class="m">37669618</span>   <span class="m">100</span>         0.000000    601004.086434         0.000000 <span class="m">0</span> /
+              su  <span class="m">4429</span> 13546605952.403489        <span class="m">23</span>   <span class="m">120</span>         0.000000        33.713593         0.000000 <span class="m">0</span> /
+           mysql  <span class="m">4582</span> 13546606319.488393         <span class="m">5</span>   <span class="m">120</span>         0.000000        15.271120         0.000000 <span class="m">0</span> /
+             sed  <span class="m">4708</span> 13546607347.312431         <span class="m">2</span>   <span class="m">120</span>         0.000000         1.549732         0.000000 <span class="m">0</span> /
+...생략
+</code></pre></div><p>출처</p>
+<ul>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966264049&amp;orderClick=LEA&amp;Kc=">DevOps와 SE를 위한 리눅스 커널 이야기</a></li>
+<li><a href="https://reallinux.co.kr/sw.html">리얼 리눅스 SW 기본반</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>top command</title>
+			<link>https://augustkang.com/posts/linux/top-command/</link>
+			<pubDate>Sun, 17 Jan 2021 01:05:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/linux/top-command/</guid>
+			<description>top command에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;리얼 리눅스 SW 기본반&amp;</description>
+			<content type="html"><![CDATA[<p>top command에 대해 &ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
+<h3 id="top-명령어-실행-결과">top 명령어 실행 결과</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# top -b -n <span class="m">1</span>
+top - 01:57:36 up <span class="m">58</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
+Tasks:   <span class="m">8</span> total,   <span class="m">1</span> running,   <span class="m">7</span> sleeping,   <span class="m">0</span> stopped,   <span class="m">0</span> zombie   
+%Cpu<span class="o">(</span>s<span class="o">)</span>:  9.0 us, 23.3 sy,  0.0 ni, 67.4 id,  0.0 wa,  0.3 hi,  0.0 si, 0.0 st
+KiB Mem :  <span class="m">8240388</span> total,  <span class="m">2032052</span> free,  <span class="m">5978984</span> used,   <span class="m">229352</span> buff/cache
+KiB Swap: <span class="m">25165824</span> total, <span class="m">24837212</span> free,   <span class="m">328612</span> used.  <span class="m">2127672</span> avail Mem
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+    
+    <span class="m">1</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">328</span>    <span class="m">284</span> S   0.0  0.0   0:00.07    
+  <span class="m">880</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">228</span>    <span class="m">176</span> S   0.0  0.0   0:00.01    
+  <span class="m">881</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18356</span>   <span class="m">3764</span>   <span class="m">3448</span> S   0.0  0.0   0:00.38    
+ <span class="m">1074</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">232</span>    <span class="m">180</span> S   0.0  0.0   0:00.00    
+ <span class="m">1075</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18224</span>   <span class="m">3492</span>   <span class="m">3364</span> S   0.0  0.0   0:00.09    
+ <span class="m">1087</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">16260</span>   <span class="m">2116</span>   <span class="m">2088</span> S   0.0  0.0   0:00.01    
+ <span class="m">1088</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18088</span>   <span class="m">3392</span>   <span class="m">3304</span> S   0.0  0.0   0:00.06    
+ <span class="m">1104</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18780</span>   <span class="m">1888</span>   <span class="m">1420</span> R   0.0  0.0   0:00.01
+</code></pre></div><ul>
+<li>line 1: 현재 시스템의 시간과 uptime, 그리고 load average가 나온다</li>
+</ul>
+<p><code>top - 01:57:36 up 58 min,  0 users,  load average: 0.52, 0.58, 0.59</code></p>
+<blockquote>
+<p>Load average란?</p>
+<p>시스템 부하 정도를 나타내는 지표이다. 보이는 숫자 3개는 각각 1분, 5분, 15분 간의 시스템 부하 평균값이다.</p>
+<p>코어가 4개인 서버에서 맨 앞의 load가 4.0이라면 그 서버는 지난 1분 평균으로 CPU를 100% 쓰고있다는 뜻이다.</p>
+<p>100%는 부하가 높긴 하지만 처리가 밀리지는 않은 상태이다.</p>
+<p>또 다른 예로 코어가 4개일 때, 맨 앞의 load가 2.0이라면 그 서버는 지난 1분 평균으로 cpu를 50% 쓰고 있다는 뜻이다.</p>
+</blockquote>
+<ul>
+<li>line 2: 현재 실행중인 process들</li>
+</ul>
+<p><code>Tasks:   8 total,   1 running,   7 sleeping,   0 stopped,   0 zombie</code></p>
+<pre><code>total : 전체 프로세스 수 이다.
+running : 실행중인 프로세스의 수이다.
+sleeping : I/O 나 event를 기다리는 프로세스의 수를 나타낸다
+stopped : ctrl + z 와 같은 STOP 시그널을 받은 프로세스의 수이다. `top` 실행하고 ctrl+z 누른다음 다시 `top` 보면 늘어난 것 볼 수 있음.
+zombie : 프로세스가 종료 되었지만 OS 내부 자원(자료구조)의 메모리 해제가 안된 프로세스
+</code></pre>
+<ul>
+<li>line 3: 프로세스 타입? 별로 CPU를 차지했던 시간의 비율(%)</li>
+</ul>
+<p><code>%Cpu(s):  9.0 us, 23.3 sy,  0.0 ni, 67.4 id,  0.0 wa,  0.3 hi,  0.0 si, 0.0 st</code></p>
+<pre><code>us : 실행 우선 순위가 높은 프로세스(user mode, 높은 우선순위 process)가 CPU를 차지한 시간의 비율
+sy : 시스템 프로세스(kernel mode)가 CPU를 차지한 시간의 비율
+ni : nice한 프로세스(user mode, 우선순위가 낮은)가 CPU를 차지한 시간의 비율
+id : CPU가 idle했던 시간의 비율 (시스템이 얼마나 여유로운지 나타낸다)
+wa : CPU가 I/O wait 상태였던(디스크 I/O를 기다렸던) 시간의 비율
+hi : hardware interrupt 처리에 CPU가 사용된 시간의 비율
+(hard irq. irq는 Interrupt ReQuest를 나타낸다. hard irq는 키보드 입력 같은, 전기 신호에 의해 발생하는 하드웨어 인터럽트를 뜻함)
+si : software interrupt 처리에 CPU가 사용된 시간의 비율
+(soft irq. soft irq는 소프트웨어 인터럽트를 뜻함)
+st : CPU가 처리할 일이 있는데 VM한테 CPU를 뺐겨서 일을 못한 시간의 비율
+(st는 steal을 뜻한다고 한다. VM이 CPU를 훔쳐가서 일을 못한 시간의 비율이라는 듯)
+</code></pre>
+<ul>
+<li>PID: process id, PR : Priority, NI : Nice value</li>
+</ul>
+<blockquote>
+<p>Nice value가 뭘까?</p>
+<p>Process의 우선순위를 나타내는 값이다.</p>
+<p>Nice 하다는 것은 이타적이라는, CPU 양보를 잘한다는 의미로 보면 될 것 같다.</p>
+<p>어떤 Process의 Nice값이 높다는 것은 곧 그 process는 CPU 양보를 잘하는 프로세스라는, 실행 우선순위가 낮은 프로세스라는 뜻이다.</p>
+<p>반대로 Nice값이 낮다는 것은 CPU 양보를 안할려고 하는, 실행 우선순위가 높은 프로세스 라는 뜻이다.</p>
+</blockquote>
+<ul>
+<li>VIRT : VIRTual memory, 해당 프로세스에게 할당된 가상메모리 전체의 크기</li>
+<li>RES: RESident memory, 해당 프로세스가 실제로 사용중인 물리메모리의 양</li>
+<li>S : Process Status</li>
+</ul>
+<h3 id="memory-commit-의-개념">Memory Commit 의 개념</h3>
+<p>커널은 프로세스가 메모리를 요청할 때 그에 맞는 크기를 가상으로 할당해준다. 실제로 요청받은 크기 전체만큼 물리메모리에 assign해주지는 않음.
+그렇게 있다가 실제로 사용이 필요할 때마다 물리메모리를 조금씩 더 할당을 해줌(늘려줌). 이를 memory commit 이라고 한다.</p>
+<ul>
+<li>vm.overcommit_memory는 커널의 Memory commit 동작 방식을 변경할 수 있게 해주는 커널 파라미터.</li>
+<li>0=최댓값 바탕으로 Memory commit, 1=무조건 overcommit, 2=vm.overcommit_ratio에 설정된 비율을 바탕으로 제한적으로 memory commit</li>
+</ul>
+<h4 id="커널-파라미터-보는법-sysctl">커널 파라미터 보는법? sysctl</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# sysctl -a
+fs.binfmt_misc.status <span class="o">=</span> enabled
+fs.binfmt_misc.WSLInterop <span class="o">=</span> enabled
+fs.binfmt_misc.WSLInterop <span class="o">=</span> interpreter /init
+...
+...
+vm.min_free_kbytes <span class="o">=</span> <span class="m">45056</span>
+vm.overcommit_memory <span class="o">=</span> <span class="m">0</span>
+vm.swappiness <span class="o">=</span> <span class="m">60</span>
+</code></pre></div><ul>
+<li><code>sysctl -a | grep pid_max</code> 하면 현재 시스템의 생성 가능한 최대 pid 확인 가능</li>
+</ul>
+<h3 id="프로세스-상태">프로세스 상태</h3>
+<ul>
+<li>Process Status 종류 : D, R, S, T, Z</li>
+<li>D = Uninterruptible sleep - 디스크, 네트워크 디바이스에 작업 요청 후 대기중인 상태(Run queue가 아닌 wait queue에 넣어놓음)</li>
+<li>R = Running - 현재 CPU에서 실행되고 있는 상태</li>
+<li>S = Sleep - 그냥 자고있는 애들. D와의 차이는 요청한 리소스를 즉시 사용할 수 있는지 여부이다.</li>
+<li>T = traced or stopped. strace 등으로 프로세스가 추적되고 있는 상태</li>
+<li>Z = zombie 상태. parent process가 죽은 child process를 의미</li>
+</ul>
+<h3 id="프로세스-우선-순위">프로세스 우선 순위</h3>
+<ul>
+<li>
+<p>기본 PR값은 20이다.</p>
+</li>
+<li>
+<p>PR값에서 NI값을 뺀 값이 최종 우선순위가 된다. 숫자 0에 가까울수록 우선순위 높은것이다.</p>
+</li>
+<li>
+<p>nice 값이 낮다는 것은 프로세스가 나이스하지 않다는 뜻이다(무슨소리세요..?)</p>
+</li>
+<li>
+<p>위에 설명했듯, 프로세스가 nice하지 않은 녀석이라 다른 프로세스들에게 CPU 양보를 안하려고 함 -&gt; 프로세스 우선순위가 높다.</p>
+</li>
+<li>
+<p>반대로 nice 값이 높다는 것은 프로세스가 nice해서 CPU 양보를 잘해준다 -&gt; 우선 순위가 낮다</p>
+</li>
+<li>
+<p><code>nice -n N command</code> 명령으로 해당 프로세스 nice 값을 부여해줄 수 있음.(N은 원하는 숫자)</p>
+</li>
+<li>
+<p>RT는 RealTime의 약자로써, RT 스케줄러에 의해 실시간으로 커널에 의해 처리되는 프로세스들임. CFQ(Completely Fair Queueing) 스케줄러보다 먼저 실행된다.</p>
+</li>
+</ul>
+<p>출처</p>
+<ul>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966264049&amp;orderClick=LEA&amp;Kc=">DevOps와 SE를 위한 리눅스 커널 이야기</a></li>
+<li><a href="https://reallinux.co.kr/sw.html">리얼 리눅스 SW 기본반</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>linux system info</title>
+			<link>https://augustkang.com/posts/linux/linux-system-info/</link>
+			<pubDate>Sun, 17 Jan 2021 00:55:40 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/linux/linux-system-info/</guid>
+			<description>Linux 시스템 정보 확인 방법에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;리얼 리눅스 SW 기본</description>
+			<content type="html"><![CDATA[<p>Linux 시스템 정보 확인 방법에 대해</p>
+<p>&ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&rdquo; 에서 배운 내용을 정리하였습니다.</p>
+<h3 id="커널-정보-확인하기">커널 정보 확인하기</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">uname -a <span class="c1"># 커널 버전 확인dmesg #커널 디버그 메세지</span>
+cat /boot/config-<span class="sb">`</span>uname -r<span class="sb">`</span> <span class="p">|</span> more <span class="c1"># 커널 컴파일 옵션 확인</span>
+cat /boot/config-<span class="sb">`</span>uname -r<span class="sb">`</span> <span class="p">|</span> grep -i config_function_tracer
+</code></pre></div><ul>
+<li>ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함</li>
+</ul>
+<h3 id="cpu-정보-확인하기">CPU 정보 확인하기</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dmidecode -t processor
+cat /proc/cpuinfo
+lscpu
+nproc <span class="c1"># core 개수</span>
+</code></pre></div><ul>
+<li>socket : number of CPU</li>
+<li>core : number of cores per CPU</li>
+<li>시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)</li>
+</ul>
+<h3 id="memory-정보-확인하기">Memory 정보 확인하기</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dmidecode -t memory
+</code></pre></div><ul>
+<li>Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹</li>
+<li>Memory device : 실제로 시스템에 꽂혀있는 메모리.</li>
+</ul>
+<h3 id="디스크-정보-확인하기">디스크 정보 확인하기</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">df -h
+smartctl -a /dev/sda
+smartctl -a /dev/sda -d cciss,0 <span class="c1"># lsmod 를 통해 알아낸 현재 시스템 사용중인 raid 컨트롤러 드라이버를 명시</span>
+</code></pre></div><ul>
+<li>sda : scsi 방식 또는 sata, sas 방식 같은 일반적 디스크</li>
+<li>hda : 개인용 컴퓨터용인 IDE 방식의 디스크</li>
+</ul>
+<h3 id="네트워크-정보-확인하기">네트워크 정보 확인하기</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">lspci <span class="p">|</span> grep -i ether
+ethtool eth0
+ethtool -g eth0 <span class="c1"># Ring buffer의 크기를 확인 가능, 볼땐 -g, 설정할땐 -G 옵션</span>
+ethtool -k eth0 <span class="c1"># 현재 NIC의 다양한 성능 최적화 옵션 확인, 마찬가지로 볼땐 소문자 -k, 설정할땐 -K</span>
+ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
+</code></pre></div><ul>
+<li>Ring buffer : 네트워크 카드의 버퍼 공간을 의미. 크기가 maximum으로 세팅 되어있지 않으면 네트워크 성능 저하 발생 가능</li>
+<li>tcp-offload : MTU 이상의 크기를 가지는 패킷의 분할작업을 CPU 가 아닌 NIC가 직접 처리하여 CPU 성능 부담 줄이고 패킷 처리 성능 높임.</li>
+</ul>
+<p>출처</p>
+<ul>
+<li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966264049&amp;orderClick=LEA&amp;Kc=">DevOps와 SE를 위한 리눅스 커널 이야기</a></li>
+<li><a href="https://reallinux.co.kr/sw.html">리얼 리눅스 SW 기본반</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
+			<title>너라는 생활(김혜진)</title>
+			<link>https://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/</link>
+			<pubDate>Fri, 08 Jan 2021 21:37:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/</guid>
+			<description>소설 &amp;lsquo;9번의 일&amp;rsquo;을 쓴 작가, 김혜진 작가의 소설집 &amp;lsquo;너라는 생활&amp;rsquo;을 읽었다. 소감 이 책은 장편 소설은 아니</description>
+			<content type="html"><![CDATA[<figure>
+    <img src="/images/%eb%84%88%eb%9d%bc%eb%8a%94%ec%83%9d%ed%99%9c.jpg"/> 
+</figure>
+
+<p>소설 &lsquo;9번의 일&rsquo;을 쓴 작가, 김혜진 작가의 소설집 &lsquo;너라는 생활&rsquo;을 읽었다.</p>
+<h3 id="소감">소감</h3>
+<p>이 책은 장편 소설은 아니고 단편들을 묶은 소설집이다.
+책을 크게 알아보지 않고 고민없이 구입하는 성격인데, &lsquo;9번의 일&rsquo;을 쓴 작가님 작품이라길래 장편이겠거니 하고 구입해서 받아보니 소설집이였다.</p>
+<p>나오는 작품들은 공통적으로 주인공의 시각에서 주인공과 가까운 사이인 &lsquo;너&rsquo;라는 사람과 지내는 것에 대해 서술하는 방식이다.</p>
+<p>각 작품의 &lsquo;너&rsquo;들은 폭력적인 자기만의 시각으로 &lsquo;나&rsquo;들을 대하는 사람처럼 묘사되고, &lsquo;나&rsquo;들은 상대적으로 사회에서 소수라거나 취약하다거나 하는 사람들로 설정된 것 같다는 느낌을 받았다.</p>
+<p>전체적으로 &lsquo;너&rsquo;로 인해 고통받는 &lsquo;나&rsquo;들의 이야기들 같았다.</p>
+<p>읽고 나서 &lsquo;나도 나 혼자만의 시각으로 다른 사람들을 바라보고, 내 딴에는 배려라는 이름으로 다른 사람들한테 폭력을 가하면서 살고 있는 것은 아닐까?&rsquo; 하는 생각이 들었다. 조심해야지.</p>
+<p>근데 개인적으로 크게 재미는 없었다.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>페스트(알베르 카뮈)</title>
+			<link>https://augustkang.com/posts/book/pest/</link>
+			<pubDate>Mon, 04 Jan 2021 21:37:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/book/pest/</guid>
+			<description>군대에서 너무나도 재밌게 읽었던 소설 이방인을 쓴 작가, 알베르 카뮈의 소설 페스트를 읽었다. 줄거리 소설은 프랑스의 한적한 오랑이라는 도시를 배경으로, 페스트라</description>
+			<content type="html"><![CDATA[<p>군대에서 너무나도 재밌게 읽었던 소설 이방인을 쓴 작가, 알베르 카뮈의 소설 페스트를 읽었다.</p>
+<h3 id="줄거리">줄거리</h3>
+<p>소설은 프랑스의 한적한 오랑이라는 도시를 배경으로, 페스트라는 전염병이 창궐하는 상황에 인간들의 삶이 어떻게 변하는지 묘사하고 있다.
+당국에 의해 도시는 나가지도 들어오지도 못하게 엄격하게 폐쇄된다.
+인간이 병에 의해 너무나도 쉽고 허무하게 죽어나가는 잔혹한 상황속에서 도시 안에 갇힌 사람들은 낙심하고 좌절하는 사람,
+병에 걸린 사람들의 치료를 돕는 방식으로 전염병에 대한 투쟁을 하는 사람,
+자신의 일이 아니라고 나몰라라 하는 사람 등의 다양한 모습을 보인다.</p>
+<h3 id="소감">소감</h3>
+<p>코로나 바이러스로 인해 일상 생활에 많은 제약이 생긴 상황에서 읽어서 그런지 이 책에 묘사된 사람들의 모습에 뭔가 많은 공감을 하였다.
+처음엔 상황과 사람들의 심리 변화에 대한 묘사가 상세하기도 하고, 내가 살고 있는 현재와 흡사한 면이 많다고 생각되어 흥미롭게 읽었으나
+중간쯤부터는 아무래도 그런 묘사만 계속되다 보니 많이 지루해서 읽기가 힘들었다.
+이건 아마 시작부터 충격적이고 흥미로워서 읽는걸 멈추기 어려웠던 이방인과 같은 전개를 내가 기대해서 지루하게 느껴졌던 것 같다. <del>이방인은 진짜 시작부터 뚜두려 맞는 느낌이였다</del></p>
+<p>책에서는 병의 세력이 점점 약해지다가 결국 사라지게 되고(인간의 승리) 오랑 시는 다시 밝은 날을 맞이하게 된다.
+우리 사는 세상도 얼른 코로나 바이러스를 물리치고 다시 자유로운 곳이 되었으면 좋겠다.</p>
+]]></content>
+		</item>
+		
+		<item>
+			<title>2021 Books I Read</title>
+			<link>https://augustkang.com/posts/book/2021-books-i-read/</link>
+			<pubDate>Sat, 02 Jan 2021 12:10:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/book/2021-books-i-read/</guid>
+			<description>2021년에 읽은 책들(업데이트중) 2021-01-04 페스트(알베르 카뮈) 2021-01-08 너라는 생활(김혜진) 2021-01-18 [피터 드러커 자기경영노트(Peter Drucker)] 2021-01-28 [무진기행(김승옥)</description>
+			<content type="html"><![CDATA[<h1 id="2021년에-읽은-책들업데이트중">2021년에 읽은 책들(업데이트중)</h1>
+<ul>
+<li>2021-01-04 <a href="http://augustkang.com/posts/book/pest/">페스트(알베르 카뮈)</a></li>
+<li>2021-01-08 <a href="http://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/">너라는 생활(김혜진)</a></li>
+<li>2021-01-18 [피터 드러커 자기경영노트(Peter Drucker)]</li>
+<li>2021-01-28 [무진기행(김승옥)]</li>
+<li>2021-02-08 [보건교사 안은영(정세랑)]</li>
+<li>2021-02-18 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162242797&amp;orderClick=LAG&amp;Kc=">Head First Go(Jay McGavren 지음, 권민재 옮김)</a></li>
+</ul>
+]]></content>
+		</item>
+		
+		<item>
 			<title>CKA 시험 후기</title>
-			<link>https://augustkang.com/posts/cka-experience/</link>
+			<link>https://augustkang.com/posts/review/cka-experience/</link>
 			<pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
 			
-			<guid>https://augustkang.com/posts/cka-experience/</guid>
+			<guid>https://augustkang.com/posts/review/cka-experience/</guid>
 			<description>Certified Kubernetes administrator(CKA, 2020년 9월 개정) 시험을 준비하시는 분들께 도움이 되길 바라며.. (2번째 응시(free retake)끝에 턱걸이로 겨우 취득한) CKA 경험을 공유</description>
 			<content type="html"><![CDATA[<figure>
     <img src="/images/cka.png"/> 
@@ -53,7 +1076,7 @@
 <p>또한, udemy 강의의 practice test 에서는 환경이 시작되면 기본이 root였던걸로 기억하는데 시험 환경은 그렇지가 않았습니다.</p>
 <p>root 전환은 sudo -i 명령어로 할 수 있는데, 이것 또한 유의사항을 제대로 안보고 들어가서 크게 당황했었습니다.</p>
 <p>문제 수준은 제게는 꽤나 어려웠습니다. 단순 resource 생성, label 붙이기, service 노출 등등 간단한 문제들도 많았으나,
-강의에서 안다뤄졌던 부분이 나오는 문제나 해석이 잘 안되는 문제는 당황해서 붙잡고 계속 헤맸습니다.
+강의에서 안다뤄졌던 부분이 나오는 문제(ex. network policy에서 namespace selector 사용), 해석이 잘 안되는 문제는 당황해서 붙잡고 계속 헤맸습니다.
 그러느라 시간도 많이 소요됐고 뒤로 갈수록 시간이 부족해서 초조해지더라구요.. 준비가 너무 부족했던 ㅜㅜ</p>
 <p>어쨌든 아는건 최대한 풀면서 시험을 마치게 되었고 64%로 탈락했습니다.</p>
 <h2 id="재시험">재시험</h2>
@@ -68,7 +1091,7 @@
 <p>잘 준비하셔서 저처럼 탈탈 털린 기분 느끼지 않고 통과하시길..!</p>
 <h2 id="개인적인-감상">개인적인 감상</h2>
 <p>턱걸이로 통과하니까 너무 부끄럽습니다. 이름은 Certified Kubernetes Administrator인데, 제가 생각하는 제 자신은 Kubernetes Practitioner 느낌..?</p>
-<p>개인적인 생각이지만, 실제 서비스 환경에서 클러스터를 운영하시는 분들은 제가 가진 이 자격이 쿠버네티스에 대한 깊은 이해를 증명하지는 않는다는걸 아실 것 같아요.</p>
+<p>개인적인 생각이지만, 실제 서비스 환경에서 어느 정도 클러스터를 운영해오신 분들은 제가 가진 이 자격이 쿠버네티스에 대한 깊은 이해를 증명하지는 않는다는걸 아실 것 같아요.</p>
 <p>하지만 제게 CKA는 쿠버네티스를 알아가는데 좋은 출발점이 된 것 같습니다. 컨테이너 오케스트레이션 관련 경험이 전혀 없었는데, CKA 준비하면서 그래도 정말정말 쌩기초는 챙긴 느낌..?입니다.</p>
 <p>계속 공부하면서 부족한 부분들을 채워나가야겠어요.</p>
 <p>읽어주셔서 감사합니다.</p>
@@ -77,12 +1100,15 @@
 		
 		<item>
 			<title>2020 Books I Read</title>
-			<link>https://augustkang.com/posts/2020-books-i-read/</link>
+			<link>https://augustkang.com/posts/book/2020-books-i-read/</link>
 			<pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
 			
-			<guid>https://augustkang.com/posts/2020-books-i-read/</guid>
-			<description>2020년에 읽은 책들을 나열하는 포스트(업데이트중) 2020-01-01 고래(천명관) 2020-01-04 페인트(이희영) 2020-03-31 가만한 나날(김세희) 2020-04-01 일의 기쁨과 슬픔(장류진) 2020-04-03 해가 지</description>
-			<content type="html"><![CDATA[<h1 id="2020년에-읽은-책들을-나열하는-포스트업데이트중">2020년에 읽은 책들을 나열하는 포스트(업데이트중)</h1>
+			<guid>https://augustkang.com/posts/book/2020-books-i-read/</guid>
+			<description>2020년에는 52권의 책을 읽었다. 주로 출,퇴근 시간에만 지하철에서 책을 읽는데(정말 재밌는 책 아니면 집에서는 안봄), 하루 이틀 시간이 쌓이니까 읽은 권수</description>
+			<content type="html"><![CDATA[<p>2020년에는 52권의 책을 읽었다.</p>
+<p>주로 출,퇴근 시간에만 지하철에서 책을 읽는데(정말 재밌는 책 아니면 집에서는 안봄), 하루 이틀 시간이 쌓이니까 읽은 권수가 정말 많아진 것 같다. 재택근무 아니였다면 더 많았을 것 같다.</p>
+<p>아쉬웠던 것은 읽었던걸 짧게라도 글로 정리하지 않고 너무 읽는 행위에만 급급했던 것 아닌가 싶다.</p>
+<p>2021년에는 읽었던 내용을 반드시 정리하는 방향으로 독서를 해봐야겠다.</p>
 <ul>
 <li>2020-01-01 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788982819278&amp;orderClick=LAG&amp;Kc=">고래(천명관)</a></li>
 <li>2020-01-04 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788936456894&amp;orderClick=LAG&amp;Kc=">페인트(이희영)</a></li>
@@ -132,16 +1158,20 @@
 <li>2020-10-29 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788950991678&amp;orderClick=LAG&amp;Kc=">책, 이게 뭐라고(장강명)</a></li>
 <li>2020-10-31 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788937461699&amp;orderClick=LAG&amp;Kc=">포스트맨은 벨을 두 번 울린다(James Mallahan Cain)</a></li>
 <li>2020-11-09 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162243282&amp;orderClick=LAG&amp;Kc=">유닉스의 탄생(Brian Kernighan)</a></li>
+<li>2020-11-25 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791164050277&amp;orderClick=LAG&amp;Kc=">숨(Ted Chiang)</a></li>
+<li>2020-12-03 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788936456962&amp;orderClick=LAG&amp;Kc=">유원(백온유)</a></li>
+<li>2020-12-13 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162541760&amp;orderClick=LAG&amp;Kc=">스포티파이 플레이(Sven Carlsson, Jonas Leijonhufvud)</a></li>
+<li>2020-12-14 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791191056273&amp;orderClick=LEa&amp;Kc=">변두리 로켓(이케이도 준)</a></li>
 </ul>
 ]]></content>
 		</item>
 		
 		<item>
 			<title>2019 Books I Read</title>
-			<link>https://augustkang.com/posts/2019-books-i-read/</link>
+			<link>https://augustkang.com/posts/book/2019-books-i-read/</link>
 			<pubDate>Sun, 09 Jun 2019 17:57:32 +0900</pubDate>
 			
-			<guid>https://augustkang.com/posts/2019-books-i-read/</guid>
+			<guid>https://augustkang.com/posts/book/2019-books-i-read/</guid>
 			<description>2019년에 읽은 책들을 나열하는 포스트 아몬드(손원평) 사람의 아들(이문열) 지방 대사 켜는 스위치온 다이어트(박용우) 여행의 이유(김영하) 나는 왜 정치</description>
 			<content type="html"><![CDATA[<h1 id="2019년에-읽은-책들을-나열하는-포스트">2019년에 읽은 책들을 나열하는 포스트</h1>
 <ul>
@@ -174,10 +1204,10 @@
 		
 		<item>
 			<title>How to Git Pull With Submodules</title>
-			<link>https://augustkang.com/posts/how-to-git-pull-with-submodules/</link>
+			<link>https://augustkang.com/posts/git/how-to-git-pull-with-submodules/</link>
 			<pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
 			
-			<guid>https://augustkang.com/posts/how-to-git-pull-with-submodules/</guid>
+			<guid>https://augustkang.com/posts/git/how-to-git-pull-with-submodules/</guid>
 			<description>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다. 근데 그냥 clone을 하니 submodule로 등록</description>
 			<content type="html"><![CDATA[<p>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
 근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.

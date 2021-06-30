@@ -7,13 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 27 Oct 2020 00:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/certification/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 May 2021 01:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/certification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Certified DevOps Engineer Professional 후기</title>
+      <link>https://augustkang.com/posts/review/dop-experience/</link>
+      <pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/review/dop-experience/</guid>
+      <description>AWS Certified DevOps Engineer - Professional 자격증을 취득했습니다! 호우! 누군가에게 도움이 되길 바라며! (사실 이 뽕맛을 잊지 않기 위해) 준비한 경험을 정리 (자랑) 합니다. AWS Certified DevOps Engineer - Professional</description>
+    </item>
+    
     <item>
       <title>CKA 시험 후기</title>
-      <link>https://augustkang.com/posts/cka-experience/</link>
+      <link>https://augustkang.com/posts/review/cka-experience/</link>
       <pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
       
-      <guid>https://augustkang.com/posts/cka-experience/</guid>
+      <guid>https://augustkang.com/posts/review/cka-experience/</guid>
       <description>Certified Kubernetes administrator(CKA, 2020년 9월 개정) 시험을 준비하시는 분들께 도움이 되길 바라며.. (2번째 응시(free retake)끝에 턱걸이로 겨우 취득한) CKA 경험을 공유</description>
     </item>
     

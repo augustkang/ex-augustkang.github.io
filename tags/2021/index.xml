@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2021 on augustkang</title>
+    <link>https://augustkang.com/tags/2021/</link>
+    <description>Recent content in 2021 on augustkang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 02 Jan 2021 12:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/2021/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021 Books I Read</title>
+      <link>https://augustkang.com/posts/book/2021-books-i-read/</link>
+      <pubDate>Sat, 02 Jan 2021 12:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/book/2021-books-i-read/</guid>
+      <description>2021년에 읽은 책들(업데이트중) 2021-01-04 페스트(알베르 카뮈) 2021-01-08 너라는 생활(김혜진) 2021-01-18 [피터 드러커 자기경영노트(Peter Drucker)] 2021-01-28 [무진기행(김승옥)</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 03 Jun 2019 21:23:32 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Git Pull With Submodules</title>
-      <link>https://augustkang.com/posts/how-to-git-pull-with-submodules/</link>
+      <link>https://augustkang.com/posts/git/how-to-git-pull-with-submodules/</link>
       <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
       
-      <guid>https://augustkang.com/posts/how-to-git-pull-with-submodules/</guid>
+      <guid>https://augustkang.com/posts/git/how-to-git-pull-with-submodules/</guid>
       <description>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다. 근데 그냥 clone을 하니 submodule로 등록</description>
     </item>
     
