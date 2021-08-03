@@ -1,205 +1,137 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
+    <loc>https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/bash/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/categories/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/linux/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/categories/linux/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/posts/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/shell-script/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/</loc>
+    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://augustkang.com/posts/aws/s3-glacier/</loc>
     <lastmod>2021-06-17T12:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://augustkang.com/</loc>
-    <lastmod>2021-06-17T12:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/categories/aws/</loc>
     <lastmod>2021-06-17T12:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://augustkang.com/categories/</loc>
-    <lastmod>2021-06-17T12:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://augustkang.com/posts/</loc>
-    <lastmod>2021-06-17T12:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/aws/</loc>
     <lastmod>2021-05-15T01:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/review/dop-experience/</loc>
     <lastmod>2021-05-15T01:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/certification/</loc>
     <lastmod>2021-05-15T01:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/devops/</loc>
     <lastmod>2021-05-15T01:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/review/</loc>
     <lastmod>2021-05-15T01:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/categories/review/</loc>
     <lastmod>2021-05-15T01:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://augustkang.com/tags/</loc>
-    <lastmod>2021-05-15T01:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/aws/vpc-dns-configuration/</loc>
     <lastmod>2021-04-30T14:20:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</loc>
     <lastmod>2021-04-21T14:02:00+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://augustkang.com/categories/linux/</loc>
-    <lastmod>2021-01-31T13:40:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/linux/os-role/</loc>
     <lastmod>2021-01-31T13:40:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/linux/free-command/</loc>
     <lastmod>2021-01-17T01:12:40+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/linux/load-average-calculation/</loc>
     <lastmod>2021-01-17T01:06:58+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/linux/top-command/</loc>
     <lastmod>2021-01-17T01:05:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/linux/linux-system-info/</loc>
     <lastmod>2021-01-17T00:55:40+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/book/</loc>
     <lastmod>2021-01-08T21:37:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/categories/book/</loc>
     <lastmod>2021-01-08T21:37:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/</loc>
     <lastmod>2021-01-08T21:37:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/book/pest/</loc>
     <lastmod>2021-01-04T21:37:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/2021/</loc>
     <lastmod>2021-01-02T12:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/book/2021-books-i-read/</loc>
     <lastmod>2021-01-02T12:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/review/cka-experience/</loc>
     <lastmod>2020-10-27T00:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/kubernetes/</loc>
     <lastmod>2020-10-27T00:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/categories/kubernetes/</loc>
     <lastmod>2020-10-27T00:10:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/2020/</loc>
     <lastmod>2020-01-04T09:52:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/book/2020-books-i-read/</loc>
     <lastmod>2020-01-04T09:52:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/2019/</loc>
     <lastmod>2019-06-09T17:57:32+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/book/2019-books-i-read/</loc>
     <lastmod>2019-06-09T17:57:32+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/git/</loc>
     <lastmod>2019-06-03T21:23:32+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/categories/git/</loc>
     <lastmod>2019-06-03T21:23:32+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/git/how-to-git-pull-with-submodules/</loc>
     <lastmod>2019-06-03T21:23:32+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/tags/submodule/</loc>
     <lastmod>2019-06-03T21:23:32+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/about/</loc>
     <lastmod>2019-06-02T17:40:10+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/categories/blog/</loc>
     <lastmod>2019-06-02T17:36:40+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://augustkang.com/posts/first-post/</loc>
     <lastmod>2019-06-02T17:36:40+09:00</lastmod>
   </url>
-  
 </urlset>

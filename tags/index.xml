@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 15 May 2021 01:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Aug 2021 15:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bash</title>
+      <link>https://augustkang.com/tags/bash/</link>
+      <pubDate>Tue, 03 Aug 2021 15:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://augustkang.com/tags/linux/</link>
+      <pubDate>Tue, 03 Aug 2021 15:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>shell script</title>
+      <link>https://augustkang.com/tags/shell-script/</link>
+      <pubDate>Tue, 03 Aug 2021 15:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/shell-script/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>aws</title>
       <link>https://augustkang.com/tags/aws/</link>
@@ -68,33 +95,6 @@
       <pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
       
       <guid>https://augustkang.com/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2020</title>
-      <link>https://augustkang.com/tags/2020/</link>
-      <pubDate>Sat, 04 Jan 2020 09:52:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/2020/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>2019</title>
-      <link>https://augustkang.com/tags/2019/</link>
-      <pubDate>Sun, 09 Jun 2019 17:57:32 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/2019/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://augustkang.com/tags/git/</link>
-      <pubDate>Mon, 03 Jun 2019 21:23:32 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/git/</guid>
       <description></description>
     </item>
     

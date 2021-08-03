@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 31 Jan 2021 13:40:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Aug 2021 15:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[shell script]파일에 특정 라인이 없을때 &#39;만&#39; append하는 방법</title>
+      <link>https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/</link>
+      <pubDate>Tue, 03 Aug 2021 15:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/</guid>
+      <description>Systems manager - document를 작성하다가 찾아본 idempotent 하게 텍스트 파일에 라인을 추가하는 방법[1] (특정 라인이 해당 파일에 존재하지 않는 경우에만 파일에 라인을 추가</description>
+    </item>
+    
     <item>
       <title>OS가 무엇일까</title>
       <link>https://augustkang.com/posts/linux/os-role/</link>

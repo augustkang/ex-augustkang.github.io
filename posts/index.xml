@@ -6,8 +6,85 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Thu, 17 Jun 2021 12:10:00 +0900</lastBuildDate>
+		<lastBuildDate>Tue, 03 Aug 2021 15:00:00 +0900</lastBuildDate>
 		<atom:link href="https://augustkang.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>[shell script]파일에 특정 라인이 없을때 &#39;만&#39; append하는 방법</title>
+			<link>https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/</link>
+			<pubDate>Tue, 03 Aug 2021 15:00:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/</guid>
+			<description>Systems manager - document를 작성하다가 찾아본 idempotent 하게 텍스트 파일에 라인을 추가하는 방법[1] (특정 라인이 해당 파일에 존재하지 않는 경우에만 파일에 라인을 추가</description>
+			<content type="html"><![CDATA[<p>Systems manager - document를 작성하다가 찾아본 idempotent 하게 텍스트 파일에 라인을 추가하는 방법[1]</p>
+<p>(특정 라인이 해당 파일에 존재하지 않는 경우에만 파일에 라인을 추가하게 하는 방법)</p>
+<p>결론 : <code>grep -qxF &quot;특정 라인&quot; file.txt || echo &quot;특정 라인&quot; &gt;&gt; file.txt</code></p>
+<p>적어두고 생각 안나면 찾아보고 싶어 정리.</p>
+<h3 id="hello-라는-라인이-없을-경우에만-hello를-맨-아래에-append-하려면">hello 라는 라인이 없을 경우에만 hello를 맨 아래에 append 하려면?</h3>
+<p>아래와 같은 <code>file.txt</code> 라는 텍스트 파일을 예시로 생각해보자.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# cat file.txt
+my
+name
+is
+augustkang
+</code></pre></div><p>이 텍스트 파일에 hello 라인이 없을때만 hello 라인을 추가하려면 아래 명령어 조합을 이용하면 된다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# grep -qxF <span class="s2">&#34;hello&#34;</span> file.txt <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;hello&#34;</span> &gt;&gt; file.txt
+root@dummy-pc:~# cat file.txt
+my
+name
+is
+augustkang
+hello
+</code></pre></div><p><code>grep -qxF &quot;hello&quot; file.txt || echo &quot;hello&quot; &gt;&gt; file.txt</code></p>
+<p>명령어 작동 방식</p>
+<ul>
+<li>
+<p><code>file.txt</code>에 hello 라인이 없으면 앞의 command(<code>grep -qxF &quot;hello&quot; file.txt</code>) 결과는 false가 된다.</p>
+</li>
+<li>
+<p><code>||</code> 조건식의 앞쪽 결과가 false 이므로 뒤의 command가 실행된다.(뒤의 command 결과가 true 인지 확인을 위해)</p>
+</li>
+<li>
+<p>결과적으로 <code>file.txt</code>에 hello 라는 라인이 추가된다.</p>
+</li>
+</ul>
+<h3 id="텍스트-파일에-hello-라는-라인이-있을-경우엔-어떻게-될까">텍스트 파일에 hello 라는 라인이 있을 경우엔 어떻게 될까?</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# cat file.txt
+hello
+my
+name
+is
+augustkang
+</code></pre></div><p>위 파일에 대해 똑같이 명령어를 실행해도 이미 hello가 있기 때문에 변화가 없다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# grep -qxF <span class="s2">&#34;hello&#34;</span> file.txt <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;hello&#34;</span> &gt;&gt; file.txt
+root@dummy-pc:~# cat file.txt
+my
+name
+is
+augustkang
+hello
+</code></pre></div><p>명령어 작동 방식</p>
+<ul>
+<li>
+<p><code>grep -qxF &quot;hello&quot; file.txt</code> 는 file.txt에 hello라는 라인이 있으면 true를 반환.</p>
+</li>
+<li>
+<p><code>||</code> (OR)는 앞의 명령어가 true면 뒤에는 실행하지 않음.</p>
+</li>
+<li>
+<p>결론적으로, <code>file.txt</code>에 hello 라인이 있으면 앞의 조건이 true가 되므로, 뒤의 command의 실행 여부에 관계없이 전체 command의 결과는 true가 된다. 그러므로 뒤의 command(<code>echo &quot;hello&quot; &gt;&gt; file.txt</code>)는 실행 안한다.</p>
+</li>
+</ul>
+<h3 id="shell에서-exit-code를-보고-true-false를-어떻게-판단할까">Shell에서 exit code를 보고 true, false를 어떻게 판단할까?</h3>
+<p>shell에서 command를 실행하면 exit code를 반환한다.</p>
+<p>0이 아닌 값(non-zero)이 false이고, 0이 true이다.[2]</p>
+<p>참고 :</p>
+<p>[1] <a href="https://stackoverflow.com/questions/3557037/appending-a-line-to-a-file-only-if-it-does-not-already-exist">Appending a line to a file only if it does not already exist</a></p>
+<p>[2] <a href="https://stackoverflow.com/questions/2933843/why-0-is-true-but-false-is-1-in-the-shell">Why 0 is true but false is 1 in the shell?</a></p>
+<p>추천 : <a href="https://explainshell.com/">explainshell.com</a></p>
+<p>복잡한 shell 명령어 조합을 나눠서 설명 보게 해주는 사이트. 너무 좋아요.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>[AWS] S3 Storage class - Glacier의 개념과 사용법</title>
@@ -102,7 +179,7 @@ Glacier 서비스 자체가 지하 깊숙한 저장고에 보관해놨다가 필
 <p>아래 예시에서는 MS Teams의 webhook을 이용해 noti를 받게 하였습니다.</p>
 <p>MS Teams가 아닌 Slack이나 다른 메신저 서비스의 경우에도 Webhook을 사용할 수 있다면 request를 날리도록 Lambda를  작성한 뒤,
 S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에서 webhook url에 request를 날리도록 하는 식으로 할 수 있습니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c"># CloudFormation Parameter for MS Teams webhook URL</span><span class="w">
 </span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
@@ -121,7 +198,7 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 </span><span class="w">          </span><span class="nt">Status</span><span class="p">:</span><span class="w"> </span><span class="l">Enabled</span><span class="w">
 </span><span class="w">          </span><span class="nt">Transitions</span><span class="p">:</span><span class="w">
 </span><span class="w">          </span>- <span class="nt">TransitionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
-</span><span class="w">            </span><span class="nt">StorageClass</span><span class="p">:</span><span class="w"> </span><span class="l">GLACIER # Objects will be stored as GLACIER Storage Class</span><span class="w">
+</span><span class="w">            </span><span class="nt">StorageClass</span><span class="p">:</span><span class="w"> </span><span class="l">GLACIER</span><span class="w"> </span><span class="c"># Objects will be stored as GLACIER Storage Class</span><span class="w">
 </span><span class="w">      </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span><span class="nt">LambdaConfigurations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- <span class="nt">Event</span><span class="p">:</span><span class="w"> </span><span class="l">s3:ObjectRestore:Completed</span><span class="w">
@@ -166,7 +243,7 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 </span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Function</span><span class="w">
 </span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="sd">|
+</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span><span class="sd">          import json
 </span><span class="sd">          import os
 </span><span class="sd">          import logging
@@ -213,23 +290,23 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 </span><span class="sd">              except HTTPError as err:
 </span><span class="sd">                  print(&#34;Fail&#34;)
 </span><span class="sd">              except URLError as err:
-</span><span class="sd">                  print(&#34;Fail&#34;)
-</span><span class="sd">      FunctionName: LambdaWebhook
-</span><span class="sd">      Handler: index.lambda_handler
-</span><span class="sd">      Role: !GetAtt LambdaRole.Arn
-</span><span class="sd">      Runtime: python3.8
-</span><span class="sd">      Environment:
-</span><span class="sd">        Variables:
-</span><span class="sd">          Webhook: !Ref WebhookUrl
-</span><span class="sd">
+</span><span class="sd">                  print(&#34;Fail&#34;)</span><span class="w">          
+</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaWebhook</span><span class="w">
+</span><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">index.lambda_handler</span><span class="w">
+</span><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaRole.Arn</span><span class="w">
+</span><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">python3.8</span><span class="w">
+</span><span class="w">      </span><span class="nt">Environment</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">Webhook</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref WebhookUrl</span><span class="w">
+</span><span class="w">
 </span></code></pre></div><h2 id="glacier-storage-class를-aws-cli로-이용하는-방법"><strong>Glacier storage class를 AWS CLI로 이용하는 방법</strong></h2>
 <h3 id="버킷에-아카이브-올리는-명령어-예시">버킷에 아카이브 올리는 명령어 예시</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
 <span class="c1"># --storage-class GLACIER 옵션을 줘야 합니다.</span>
 </code></pre></div><h3 id="s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시">s3api로 Glacier에 있는 데이터를 Retrieval(반출) 요청하는 명령어 예시</h3>
 <p><code>--restore-request</code> 옵션을 줘야 합니다. 해당 옵션에는 반출한 오브젝트가 몇 일간 필요한지를 명시하는 <code>Days</code> 와, Retrieval 옵션을 명시해줘야 합니다.</p>
 <p>retrieval option은 <code>GlacierJobParameters={&quot;Tier&quot;=&quot;Standard&quot;}</code> 형태로 명시해주면 됩니다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
 <span class="c1"># Tier를 원하는 Type으로 설정. 여기서는 Standard로 해보았습니다.</span>
 <span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Expedited&#34;}</span>
 <span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Bulk&#34;}</span>
@@ -255,13 +332,13 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 <li>참고 사항으로, 위 템플릿 예시에서는 Notification을 설정해서 Retrieval이 완료되면 teams로 알림을 받습니다.</li>
 </ul>
 <h3 id="실제-retrieval-요청-실행">실제 Retrieval 요청 실행</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
 </code></pre></div><h3 id="retrieval이-진행중인지-확인하는-명령어">Retrieval이 진행중인지 확인하는 명령어</h3>
 <ul>
 <li>Progress는 보여주지 않고 진행중인지 완료되었는지 여부만 보여줍니다.</li>
 <li>이런 기약없는? 불편함으로 인해 사용할 경우 Notification이 있으면 좋다고 생각합니다.</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
 <span class="o">{</span>
     <span class="s2">&#34;AcceptRanges&#34;</span>: <span class="s2">&#34;bytes&#34;</span>,
     <span class="s2">&#34;Restore&#34;</span>: <span class="s2">&#34;ongoing-request=\&#34;true\&#34;&#34;</span>, <span class="c1"># 현재 Retrieval이 진행중이라는걸 보여줌(ongoing-request=true)</span>
@@ -301,12 +378,10 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 			
 			<guid>https://augustkang.com/posts/review/dop-experience/</guid>
 			<description>AWS Certified DevOps Engineer - Professional 자격증을 취득했습니다! 호우! 누군가에게 도움이 되길 바라며! (사실 이 뽕맛을 잊지 않기 위해) 준비한 경험을 정리 (자랑) 합니다. AWS Certified DevOps Engineer - Professional</description>
-			<content type="html"><![CDATA[<figure>
-    <img src="/images/dop.png"/> 
+			<content type="html"><![CDATA[<figure><img src="/images/dop.png"/>
 </figure>
 
-<figure>
-    <img src="/images/dop2.png"/> 
+<figure><img src="/images/dop2.png"/>
 </figure>
 
 <p>AWS Certified DevOps Engineer - Professional 자격증을 취득했습니다! 호우!</p>
@@ -540,7 +615,7 @@ exception이 발생할 수 있다.</p>
 			<content type="html"><![CDATA[<p>메모리 사용 정보를 보여주는 free 명령어와 /proc/meminfo 에 대해</p>
 <p>&ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
 <h3 id="메모리-사용량-확인하기">메모리 사용량 확인하기</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# free -m
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# free -m
               total        used        free      shared  buff/cache   available
 Mem:           <span class="m">8047</span>        <span class="m">6161</span>        <span class="m">1662</span>          <span class="m">17</span>         <span class="m">223</span>        <span class="m">1755</span>
 Swap:         <span class="m">24576</span>         <span class="m">214</span>       <span class="m">24361</span>
@@ -559,7 +634,7 @@ Swap:         <span class="m">24576</span>         <span class="m">214</span>   
 <p>buffers/cached 영역은 원본이 원래는 디스크에 있으나 성능 이점을 위해 그 디스크 내용을 메모리에 캐싱 목적으로 올려놓은 부분이라고 한다.</p>
 <p>그럼 대체 디스크에 수많은 데이터들 중에 어떤걸 캐싱 목적으로 메모리에 올려놓는데??????</p>
 <p><code>cat /proc/meminfo</code> 로 buffers, cached를 나눠서 보면</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">august@august-PC~$ cat /proc/meminfo <span class="p">|</span> head -5
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">august@august-PC~$ cat /proc/meminfo <span class="p">|</span> head -5
 MemTotal:        <span class="m">2035676</span> kB
 MemFree:          <span class="m">784432</span> kB
 MemAvailable:    <span class="m">1890044</span> kB
@@ -589,7 +664,7 @@ Cached:          <span class="m">1021344</span> kB
 </ul>
 <p>파일 자체의 내용을 저장하는데 쓰이는 cache</p>
 <h3 id="procmeminfo-읽기">/proc/meminfo 읽기</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@August-PC ~<span class="o">]</span><span class="c1"># cat /proc/meminfo </span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@August-PC ~<span class="o">]</span><span class="c1"># cat /proc/meminfo </span>
 MemTotal:        <span class="m">7957324</span> kB
 MemFree:          <span class="m">299176</span> kB
 MemAvailable:    <span class="m">4854520</span> kB
@@ -640,7 +715,7 @@ Dirty:               <span class="m">136</span> kB
 </ul>
 <h3 id="slab-메모리-영역">slab 메모리 영역</h3>
 <p><code>cat /proc/meminfo</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">... 생략
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">... 생략
 Slab:             <span class="m">473356</span> kB
 SReclaimable:     <span class="m">402036</span> kB
 SUnreclaim:        <span class="m">71320</span> kB
@@ -656,7 +731,7 @@ SUnreclaim:        <span class="m">71320</span> kB
 <p>SUnreclaim: Slab 영역 중 재사용 될 수 없는 영역. 커널이 현재 사용중이며 해제해서 다른 용도로 쓸 수 없는 영역.</p>
 </li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Active / Total Objects <span class="o">(</span>% used<span class="o">)</span>    : <span class="m">1718090</span> / <span class="m">1895312</span> <span class="o">(</span>90.6%<span class="o">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Active / Total Objects <span class="o">(</span>% used<span class="o">)</span>    : <span class="m">1718090</span> / <span class="m">1895312</span> <span class="o">(</span>90.6%<span class="o">)</span>
  Active / Total Slabs <span class="o">(</span>% used<span class="o">)</span>      : <span class="m">48101</span> / <span class="m">48101</span> <span class="o">(</span>100.0%<span class="o">)</span>
  Active / Total Caches <span class="o">(</span>% used<span class="o">)</span>     : <span class="m">82</span> / <span class="m">106</span> <span class="o">(</span>77.4%<span class="o">)</span>   
  Active / Total Size <span class="o">(</span>% used<span class="o">)</span>       : 435110.21K / 469842.19K <span class="o">(</span>92.6%<span class="o">)</span>
@@ -703,9 +778,9 @@ SUnreclaim:        <span class="m">71320</span> kB
 CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.</li>
 </ul>
 <h3 id="load-average-계산-과정">Load average 계산 과정</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# uptime
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# uptime
  21:44:37 up <span class="m">6</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# strace -s <span class="m">65535</span> -f -t -o uptime_dump uptime
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# strace -s <span class="m">65535</span> -f -t -o uptime_dump uptime
  05:36:52 up  5:31,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
 </code></pre></div><p><code>/proc/loadavg</code> -&gt; <code>/fs/proc/loadavg.c</code>에서 <code>loadavg_proc_show()</code> 함수 -&gt; <code>/kernel/sched.c</code> 에서 <code>get_avenrun()</code> 함수 -&gt; <code>avenrun[]</code> 배열 -&gt; <code>calc_global_load()</code> 함수 -&gt; <code>calc_load_account_active()</code> 함수 순으로 추적하다보면 <code>nr_active</code> 라는 변수에 <code>nr_running</code> + <code>nr_uninterruptible</code> 값들을 합하고 이를 1분, 5분, 15분 평균으로 나눠 계산하는 것을 확인할 수 있다.</p>
 <p><code>nr_running</code>은 run queue에 있는 R상태의 프로세스들의 갯수이며, <code>nr_uninterruptible</code>은 wait queue에 있는 D상태의 프로세스들의 갯수이다.</p>
@@ -714,7 +789,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
 그러므로 Load average 숫자만 보고 시스템에 정확히 어떤 상태의 부하가 일어나고 있는지 파악하기가 어렵다.<br>
 그럼 부하의 종류를 어떻게 확인할까?</p>
 <h3 id="vmstat으로-부하의-정체-확인하기">vmstat으로 부하의 정체 확인하기</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># vmstat</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># vmstat</span>
 procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
  <span class="m">2</span>  <span class="m">0</span> <span class="m">1211796</span> <span class="m">143872</span> <span class="m">141040</span> <span class="m">5541164</span>    <span class="m">0</span>    <span class="m">0</span>    <span class="m">15</span>    <span class="m">19</span>    <span class="m">0</span>    <span class="m">0</span> <span class="m">26</span>  <span class="m">3</span> <span class="m">69</span>  <span class="m">1</span>  <span class="m">0</span>
@@ -725,7 +800,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 I/O를 위해 기다리는 프로세스 갯수(nr_uninterruptible)</li>
 </ul>
 <p><code>/proc/sched_debug</code> 파일을 확인하면 각 CPU의 Run queue 상태와 스케줄링 정보를 살펴볼 수 있다.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># cat /proc/sched_debug </span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># cat /proc/sched_debug </span>
 Sched Debug Version: v0.11, 3.10.0-862.6.3.el7.x86_64 <span class="c1">#1</span>
 ktime                                   : 31318815611.994170
 sched_clk                               : 31318700701.301538
@@ -779,7 +854,7 @@ runnable tasks:
 			<description>top command에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;리얼 리눅스 SW 기본반&amp;</description>
 			<content type="html"><![CDATA[<p>top command에 대해 &ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
 <h3 id="top-명령어-실행-결과">top 명령어 실행 결과</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# top -b -n <span class="m">1</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# top -b -n <span class="m">1</span>
 top - 01:57:36 up <span class="m">58</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
 Tasks:   <span class="m">8</span> total,   <span class="m">1</span> running,   <span class="m">7</span> sleeping,   <span class="m">0</span> stopped,   <span class="m">0</span> zombie   
 %Cpu<span class="o">(</span>s<span class="o">)</span>:  9.0 us, 23.3 sy,  0.0 ni, 67.4 id,  0.0 wa,  0.3 hi,  0.0 si, 0.0 st
@@ -855,7 +930,7 @@ st : CPU가 처리할 일이 있는데 VM한테 CPU를 뺐겨서 일을 못한 �
 <li>0=최댓값 바탕으로 Memory commit, 1=무조건 overcommit, 2=vm.overcommit_ratio에 설정된 비율을 바탕으로 제한적으로 memory commit</li>
 </ul>
 <h4 id="커널-파라미터-보는법-sysctl">커널 파라미터 보는법? sysctl</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# sysctl -a
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# sysctl -a
 fs.binfmt_misc.status <span class="o">=</span> enabled
 fs.binfmt_misc.WSLInterop <span class="o">=</span> enabled
 fs.binfmt_misc.WSLInterop <span class="o">=</span> interpreter /init
@@ -918,14 +993,14 @@ vm.swappiness <span class="o">=</span> <span class="m">60</span>
 			<content type="html"><![CDATA[<p>Linux 시스템 정보 확인 방법에 대해</p>
 <p>&ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&rdquo; 에서 배운 내용을 정리하였습니다.</p>
 <h3 id="커널-정보-확인하기">커널 정보 확인하기</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">uname -a <span class="c1"># 커널 버전 확인dmesg #커널 디버그 메세지</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">uname -a <span class="c1"># 커널 버전 확인dmesg #커널 디버그 메세지</span>
 cat /boot/config-<span class="sb">`</span>uname -r<span class="sb">`</span> <span class="p">|</span> more <span class="c1"># 커널 컴파일 옵션 확인</span>
 cat /boot/config-<span class="sb">`</span>uname -r<span class="sb">`</span> <span class="p">|</span> grep -i config_function_tracer
 </code></pre></div><ul>
 <li>ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함</li>
 </ul>
 <h3 id="cpu-정보-확인하기">CPU 정보 확인하기</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dmidecode -t processor
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dmidecode -t processor
 cat /proc/cpuinfo
 lscpu
 nproc <span class="c1"># core 개수</span>
@@ -935,13 +1010,13 @@ nproc <span class="c1"># core 개수</span>
 <li>시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)</li>
 </ul>
 <h3 id="memory-정보-확인하기">Memory 정보 확인하기</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">dmidecode -t memory
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dmidecode -t memory
 </code></pre></div><ul>
 <li>Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹</li>
 <li>Memory device : 실제로 시스템에 꽂혀있는 메모리.</li>
 </ul>
 <h3 id="디스크-정보-확인하기">디스크 정보 확인하기</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">df -h
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">df -h
 smartctl -a /dev/sda
 smartctl -a /dev/sda -d cciss,0 <span class="c1"># lsmod 를 통해 알아낸 현재 시스템 사용중인 raid 컨트롤러 드라이버를 명시</span>
 </code></pre></div><ul>
@@ -949,7 +1024,7 @@ smartctl -a /dev/sda -d cciss,0 <span class="c1"># lsmod 를 통해 알아낸 �
 <li>hda : 개인용 컴퓨터용인 IDE 방식의 디스크</li>
 </ul>
 <h3 id="네트워크-정보-확인하기">네트워크 정보 확인하기</h3>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">lspci <span class="p">|</span> grep -i ether
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">lspci <span class="p">|</span> grep -i ether
 ethtool eth0
 ethtool -g eth0 <span class="c1"># Ring buffer의 크기를 확인 가능, 볼땐 -g, 설정할땐 -G 옵션</span>
 ethtool -k eth0 <span class="c1"># 현재 NIC의 다양한 성능 최적화 옵션 확인, 마찬가지로 볼땐 소문자 -k, 설정할땐 -K</span>
@@ -973,8 +1048,7 @@ ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
 			
 			<guid>https://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/</guid>
 			<description>소설 &amp;lsquo;9번의 일&amp;rsquo;을 쓴 작가, 김혜진 작가의 소설집 &amp;lsquo;너라는 생활&amp;rsquo;을 읽었다. 소감 이 책은 장편 소설은 아니</description>
-			<content type="html"><![CDATA[<figure>
-    <img src="/images/%eb%84%88%eb%9d%bc%eb%8a%94%ec%83%9d%ed%99%9c.jpg"/> 
+			<content type="html"><![CDATA[<figure><img src="/images/%eb%84%88%eb%9d%bc%eb%8a%94%ec%83%9d%ed%99%9c.jpg"/>
 </figure>
 
 <p>소설 &lsquo;9번의 일&rsquo;을 쓴 작가, 김혜진 작가의 소설집 &lsquo;너라는 생활&rsquo;을 읽었다.</p>
@@ -1029,6 +1103,7 @@ ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
 <li>2021-02-08 [보건교사 안은영(정세랑)]</li>
 <li>2021-02-18 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791162242797&amp;orderClick=LAG&amp;Kc=">Head First Go(Jay McGavren 지음, 권민재 옮김)</a></li>
 <li>2021-08-01 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791197149801&amp;orderClick=LEa&amp;Kc=">Tucker의 Go언어 프로그래밍(공봉식)</a></li>
+<li>2021-08-02 <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9791165341909&amp;orderClick=LAG&amp;Kc=">달러구트 꿈 백화점(이미예)</a></li>
 </ul>
 ]]></content>
 		</item>
@@ -1040,8 +1115,7 @@ ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
 			
 			<guid>https://augustkang.com/posts/review/cka-experience/</guid>
 			<description>Certified Kubernetes administrator(CKA, 2020년 9월 개정) 시험을 준비하시는 분들께 도움이 되길 바라며.. (2번째 응시(free retake)끝에 턱걸이로 겨우 취득한) CKA 경험을 공유</description>
-			<content type="html"><![CDATA[<figure>
-    <img src="/images/cka.png"/> 
+			<content type="html"><![CDATA[<figure><img src="/images/cka.png"/>
 </figure>
 
 <p>Certified Kubernetes administrator(CKA, 2020년 9월 개정) 시험을 준비하시는 분들께 도움이 되길 바라며..</p>
@@ -1213,7 +1287,7 @@ ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
 			<content type="html"><![CDATA[<p>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
 근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.
 구글링을 좀 해본 결과 <a href="http://openmetric.org/til/programming/git-pull-with-submodule/">링크</a>와 같이</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">git submodule update --init --recursive
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git submodule update --init --recursive
 </code></pre></div><p>clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.</p>
 ]]></content>
 		</item>

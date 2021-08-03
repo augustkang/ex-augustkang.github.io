@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 17 Jun 2021 12:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Aug 2021 15:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[shell script]파일에 특정 라인이 없을때 &#39;만&#39; append하는 방법</title>
+      <link>https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/</link>
+      <pubDate>Tue, 03 Aug 2021 15:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/</guid>
+      <description>Systems manager - document를 작성하다가 찾아본 idempotent 하게 텍스트 파일에 라인을 추가하는 방법[1] (특정 라인이 해당 파일에 존재하지 않는 경우에만 파일에 라인을 추가</description>
+    </item>
+    
     <item>
       <title>[AWS] S3 Storage class - Glacier의 개념과 사용법</title>
       <link>https://augustkang.com/posts/aws/s3-glacier/</link>
@@ -87,15 +96,6 @@
       
       <guid>https://augustkang.com/posts/linux/linux-system-info/</guid>
       <description>Linux 시스템 정보 확인 방법에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;리얼 리눅스 SW 기본</description>
-    </item>
-    
-    <item>
-      <title>너라는 생활(김혜진)</title>
-      <link>https://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/</link>
-      <pubDate>Fri, 08 Jan 2021 21:37:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/posts/book/%EB%84%88%EB%9D%BC%EB%8A%94%EC%83%9D%ED%99%9C/</guid>
-      <description>소설 &amp;lsquo;9번의 일&amp;rsquo;을 쓴 작가, 김혜진 작가의 소설집 &amp;lsquo;너라는 생활&amp;rsquo;을 읽었다. 소감 이 책은 장편 소설은 아니</description>
     </item>
     
   </channel>
