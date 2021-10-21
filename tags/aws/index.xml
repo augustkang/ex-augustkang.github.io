@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sat, 15 May 2021 01:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Jun 2021 12:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[AWS] S3 Storage class - Glacier의 개념과 사용법</title>
+      <link>https://augustkang.com/posts/aws/s3-glacier/</link>
+      <pubDate>Thu, 17 Jun 2021 12:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/aws/s3-glacier/</guid>
+      <description>S3의 Glacier storage class를 적용할 일이 있어 공부하였습니다. 공부한 내용을 정리해보았습니다! Glacier란? Glacier는 오랜 세월동안 안전하게 보관</description>
+    </item>
+    
     <item>
       <title>AWS Certified DevOps Engineer Professional 후기</title>
       <link>https://augustkang.com/posts/review/dop-experience/</link>

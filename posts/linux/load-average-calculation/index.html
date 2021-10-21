@@ -8,15 +8,15 @@
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="Load average">
-<meta itemprop="description" content="Load average에 대해 &ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&"><meta itemprop="datePublished" content="2021-01-17T01:06:58+09:00" />
-<meta itemprop="dateModified" content="2021-01-17T01:06:58+09:00" />
+<meta itemprop="description" content="Load average에 대해 &ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&"><meta itemprop="datePublished" content="2021-01-17T01:06:58&#43;09:00" />
+<meta itemprop="dateModified" content="2021-01-17T01:06:58&#43;09:00" />
 <meta itemprop="wordCount" content="1054">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="Load average" />
 <meta property="og:description" content="Load average에 대해 &ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://augustkang.com/posts/linux/load-average-calculation/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-01-17T01:06:58+09:00" />
-<meta property="article:modified_time" content="2021-01-17T01:06:58+09:00" />
+<meta property="article:published_time" content="2021-01-17T01:06:58&#43;09:00" />
+<meta property="article:modified_time" content="2021-01-17T01:06:58&#43;09:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Load average"/>
@@ -80,9 +80,9 @@
 CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.</li>
 </ul>
 <h3 id="load-average-계산-과정">Load average 계산 과정<a href="#load-average-계산-과정" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# uptime
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# uptime
  21:44:37 up <span class="m">6</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# strace -s <span class="m">65535</span> -f -t -o uptime_dump uptime
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# strace -s <span class="m">65535</span> -f -t -o uptime_dump uptime
  05:36:52 up  5:31,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
 </code></pre></div><p><code>/proc/loadavg</code> -&gt; <code>/fs/proc/loadavg.c</code>에서 <code>loadavg_proc_show()</code> 함수 -&gt; <code>/kernel/sched.c</code> 에서 <code>get_avenrun()</code> 함수 -&gt; <code>avenrun[]</code> 배열 -&gt; <code>calc_global_load()</code> 함수 -&gt; <code>calc_load_account_active()</code> 함수 순으로 추적하다보면 <code>nr_active</code> 라는 변수에 <code>nr_running</code> + <code>nr_uninterruptible</code> 값들을 합하고 이를 1분, 5분, 15분 평균으로 나눠 계산하는 것을 확인할 수 있다.</p>
 <p><code>nr_running</code>은 run queue에 있는 R상태의 프로세스들의 갯수이며, <code>nr_uninterruptible</code>은 wait queue에 있는 D상태의 프로세스들의 갯수이다.</p>
@@ -91,7 +91,7 @@ CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프�
 그러므로 Load average 숫자만 보고 시스템에 정확히 어떤 상태의 부하가 일어나고 있는지 파악하기가 어렵다.<br>
 그럼 부하의 종류를 어떻게 확인할까?</p>
 <h3 id="vmstat으로-부하의-정체-확인하기">vmstat으로 부하의 정체 확인하기<a href="#vmstat으로-부하의-정체-확인하기" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># vmstat</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># vmstat</span>
 procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
  <span class="m">2</span>  <span class="m">0</span> <span class="m">1211796</span> <span class="m">143872</span> <span class="m">141040</span> <span class="m">5541164</span>    <span class="m">0</span>    <span class="m">0</span>    <span class="m">15</span>    <span class="m">19</span>    <span class="m">0</span>    <span class="m">0</span> <span class="m">26</span>  <span class="m">3</span> <span class="m">69</span>  <span class="m">1</span>  <span class="m">0</span>
@@ -102,7 +102,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 I/O를 위해 기다리는 프로세스 갯수(nr_uninterruptible)</li>
 </ul>
 <p><code>/proc/sched_debug</code> 파일을 확인하면 각 CPU의 Run queue 상태와 스케줄링 정보를 살펴볼 수 있다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># cat /proc/sched_debug </span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># cat /proc/sched_debug </span>
 Sched Debug Version: v0.11, 3.10.0-862.6.3.el7.x86_64 <span class="c1">#1</span>
 ktime                                   : 31318815611.994170
 sched_clk                               : 31318700701.301538

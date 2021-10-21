@@ -8,15 +8,15 @@
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="[AWS] S3 Storage class - Glacier의 개념과 사용법">
-<meta itemprop="description" content="S3의 Glacier storage class를 적용할 일이 있어 공부하였습니다. 공부한 내용을 정리해보았습니다! Glacier란? Glacier는 오랜 세월동안 안전하게 보관"><meta itemprop="datePublished" content="2021-06-17T12:10:00+09:00" />
-<meta itemprop="dateModified" content="2021-06-17T12:10:00+09:00" />
+<meta itemprop="description" content="S3의 Glacier storage class를 적용할 일이 있어 공부하였습니다. 공부한 내용을 정리해보았습니다! Glacier란? Glacier는 오랜 세월동안 안전하게 보관"><meta itemprop="datePublished" content="2021-06-17T12:10:00&#43;09:00" />
+<meta itemprop="dateModified" content="2021-06-17T12:10:00&#43;09:00" />
 <meta itemprop="wordCount" content="4022">
-<meta itemprop="keywords" content="" /><meta property="og:title" content="[AWS] S3 Storage class - Glacier의 개념과 사용법" />
+<meta itemprop="keywords" content="aws,s3,glacier," /><meta property="og:title" content="[AWS] S3 Storage class - Glacier의 개념과 사용법" />
 <meta property="og:description" content="S3의 Glacier storage class를 적용할 일이 있어 공부하였습니다. 공부한 내용을 정리해보았습니다! Glacier란? Glacier는 오랜 세월동안 안전하게 보관" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://augustkang.com/posts/aws/s3-glacier/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-17T12:10:00+09:00" />
-<meta property="article:modified_time" content="2021-06-17T12:10:00+09:00" />
+<meta property="article:published_time" content="2021-06-17T12:10:00&#43;09:00" />
+<meta property="article:modified_time" content="2021-06-17T12:10:00&#43;09:00" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[AWS] S3 Storage class - Glacier의 개념과 사용법"/>
@@ -159,7 +159,7 @@ Glacier 서비스 자체가 지하 깊숙한 저장고에 보관해놨다가 필
 <p>아래 예시에서는 MS Teams의 webhook을 이용해 noti를 받게 하였습니다.</p>
 <p>MS Teams가 아닌 Slack이나 다른 메신저 서비스의 경우에도 Webhook을 사용할 수 있다면 request를 날리도록 Lambda를  작성한 뒤,
 S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에서 webhook url에 request를 날리도록 하는 식으로 할 수 있습니다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c"># CloudFormation Parameter for MS Teams webhook URL</span><span class="w">
 </span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
@@ -281,12 +281,12 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 </span><span class="w">
 </span></code></pre></div><h2 id="glacier-storage-class를-aws-cli로-이용하는-방법"><strong>Glacier storage class를 AWS CLI로 이용하는 방법</strong><a href="#glacier-storage-class를-aws-cli로-이용하는-방법" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <h3 id="버킷에-아카이브-올리는-명령어-예시">버킷에 아카이브 올리는 명령어 예시<a href="#버킷에-아카이브-올리는-명령어-예시" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
 <span class="c1"># --storage-class GLACIER 옵션을 줘야 합니다.</span>
 </code></pre></div><h3 id="s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시">s3api로 Glacier에 있는 데이터를 Retrieval(반출) 요청하는 명령어 예시<a href="#s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p><code>--restore-request</code> 옵션을 줘야 합니다. 해당 옵션에는 반출한 오브젝트가 몇 일간 필요한지를 명시하는 <code>Days</code> 와, Retrieval 옵션을 명시해줘야 합니다.</p>
 <p>retrieval option은 <code>GlacierJobParameters={&quot;Tier&quot;=&quot;Standard&quot;}</code> 형태로 명시해주면 됩니다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
 <span class="c1"># Tier를 원하는 Type으로 설정. 여기서는 Standard로 해보았습니다.</span>
 <span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Expedited&#34;}</span>
 <span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Bulk&#34;}</span>
@@ -312,13 +312,13 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 <li>참고 사항으로, 위 템플릿 예시에서는 Notification을 설정해서 Retrieval이 완료되면 teams로 알림을 받습니다.</li>
 </ul>
 <h3 id="실제-retrieval-요청-실행">실제 Retrieval 요청 실행<a href="#실제-retrieval-요청-실행" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
 </code></pre></div><h3 id="retrieval이-진행중인지-확인하는-명령어">Retrieval이 진행중인지 확인하는 명령어<a href="#retrieval이-진행중인지-확인하는-명령어" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <ul>
 <li>Progress는 보여주지 않고 진행중인지 완료되었는지 여부만 보여줍니다.</li>
 <li>이런 기약없는? 불편함으로 인해 사용할 경우 Notification이 있으면 좋다고 생각합니다.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
 <span class="o">{</span>
     <span class="s2">&#34;AcceptRanges&#34;</span>: <span class="s2">&#34;bytes&#34;</span>,
     <span class="s2">&#34;Restore&#34;</span>: <span class="s2">&#34;ongoing-request=\&#34;true\&#34;&#34;</span>, <span class="c1"># 현재 Retrieval이 진행중이라는걸 보여줌(ongoing-request=true)</span>
@@ -352,6 +352,9 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://augustkang.com/tags/aws">aws</a></span><span class="tag"><a href="https://augustkang.com/tags/s3">s3</a></span><span class="tag"><a href="https://augustkang.com/tags/glacier">glacier</a></span>
+				</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>4022 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-06-17 12:10 &#43;0900</p>
 			</footer>
