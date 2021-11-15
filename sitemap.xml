@@ -2,16 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://augustkang.com/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/aws/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/categories/aws/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/aws-dna/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/posts/review/aws-dna-3th-review/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/categories/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/dna/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/posts/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/review/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://augustkang.com/tags/</loc>
+    <lastmod>2021-11-16T00:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/</loc>
     <lastmod>2021-08-03T15:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://augustkang.com/</loc>
-    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://augustkang.com/tags/bash/</loc>
-    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://augustkang.com/categories/</loc>
     <lastmod>2021-08-03T15:00:00+09:00</lastmod>
   </url><url>
     <loc>https://augustkang.com/tags/linux/</loc>
@@ -20,22 +44,10 @@
     <loc>https://augustkang.com/categories/linux/</loc>
     <lastmod>2021-08-03T15:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://augustkang.com/posts/</loc>
-    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://augustkang.com/tags/shell-script/</loc>
     <lastmod>2021-08-03T15:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://augustkang.com/tags/</loc>
-    <lastmod>2021-08-03T15:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://augustkang.com/posts/aws/s3-glacier/</loc>
-    <lastmod>2021-06-17T12:10:00+09:00</lastmod>
-  </url><url>
-    <loc>https://augustkang.com/tags/aws/</loc>
-    <lastmod>2021-06-17T12:10:00+09:00</lastmod>
-  </url><url>
-    <loc>https://augustkang.com/categories/aws/</loc>
     <lastmod>2021-06-17T12:10:00+09:00</lastmod>
   </url><url>
     <loc>https://augustkang.com/tags/glacier/</loc>
@@ -51,9 +63,6 @@
     <lastmod>2021-05-15T01:10:00+09:00</lastmod>
   </url><url>
     <loc>https://augustkang.com/tags/devops/</loc>
-    <lastmod>2021-05-15T01:10:00+09:00</lastmod>
-  </url><url>
-    <loc>https://augustkang.com/tags/review/</loc>
     <lastmod>2021-05-15T01:10:00+09:00</lastmod>
   </url><url>
     <loc>https://augustkang.com/categories/review/</loc>

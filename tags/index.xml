@@ -7,7 +7,43 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 03 Aug 2021 15:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Nov 2021 00:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>aws</title>
+      <link>https://augustkang.com/tags/aws/</link>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aws dna</title>
+      <link>https://augustkang.com/tags/aws-dna/</link>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/aws-dna/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dna</title>
+      <link>https://augustkang.com/tags/dna/</link>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/dna/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>review</title>
+      <link>https://augustkang.com/tags/review/</link>
+      <pubDate>Tue, 16 Nov 2021 00:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/review/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>bash</title>
       <link>https://augustkang.com/tags/bash/</link>
@@ -36,15 +72,6 @@
     </item>
     
     <item>
-      <title>aws</title>
-      <link>https://augustkang.com/tags/aws/</link>
-      <pubDate>Thu, 17 Jun 2021 12:10:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/aws/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>glacier</title>
       <link>https://augustkang.com/tags/glacier/</link>
       <pubDate>Thu, 17 Jun 2021 12:10:00 +0900</pubDate>
@@ -68,33 +95,6 @@
       <pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
       
       <guid>https://augustkang.com/tags/certification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>devops</title>
-      <link>https://augustkang.com/tags/devops/</link>
-      <pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/devops/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>review</title>
-      <link>https://augustkang.com/tags/review/</link>
-      <pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>book</title>
-      <link>https://augustkang.com/tags/book/</link>
-      <pubDate>Fri, 08 Jan 2021 21:37:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/book/</guid>
       <description></description>
     </item>
     
