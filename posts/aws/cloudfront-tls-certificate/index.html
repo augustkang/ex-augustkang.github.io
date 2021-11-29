@@ -8,11 +8,11 @@
 	<meta name="theme-color" content="#494f5c">
 	<meta name="msapplication-TileColor" content="#494f5c">
 <meta itemprop="name" content="[AWS] CloudFront Certificate Region">
-<meta itemprop="description" content="CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] 이유는 CloudFront 서비"><meta itemprop="datePublished" content="2021-04-21T14:02:00+09:00" />
+<meta itemprop="description" content="CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] SO(StackOverflow) 답변에 의하"><meta itemprop="datePublished" content="2021-04-21T14:02:00+09:00" />
 <meta itemprop="dateModified" content="2021-04-21T14:02:00+09:00" />
-<meta itemprop="wordCount" content="440">
+<meta itemprop="wordCount" content="466">
 <meta itemprop="keywords" content="" /><meta property="og:title" content="[AWS] CloudFront Certificate Region" />
-<meta property="og:description" content="CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] 이유는 CloudFront 서비" />
+<meta property="og:description" content="CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] SO(StackOverflow) 답변에 의하" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://augustkang.com/posts/aws/cloudfront-tls-certificate/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-21T14:02:00+09:00" />
@@ -20,7 +20,7 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[AWS] CloudFront Certificate Region"/>
-<meta name="twitter:description" content="CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] 이유는 CloudFront 서비"/>
+<meta name="twitter:description" content="CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] SO(StackOverflow) 답변에 의하"/>
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -74,21 +74,22 @@
 			</header>
 			<div class="content">
 				<p>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1]</p>
-<p>이유는 CloudFront 서비스용 certificate의 경우 해당 리전에서 다른 Edge locations로 배포하기 때문이라고 한다.</p>
+<p>SO(StackOverflow) 답변에 의하면 이유는 CloudFront 서비스용 certificate의 경우 해당 리전에서 다른 Edge locations로 배포하기 때문이라고 한다.[2]</p>
 <p>또한, 한 Region의 ACM 에서 만들은 Certificate는 다른 리전으로 직접적인? migration 불가능하다.</p>
-<p>생성했던 Region과 다른 Region에서 사용하려면 새 Region에서 기존 Region의 Certificate를 Import(안해봐서 정확히 Import와 새로 만드는 것의 차이가 뭔지 모르겠다)하거나 해당 Region에서 새로 Certificate를 만들어야 한다.[2]</p>
-<p>다른 Region꺼를 바로 가져다 쓰는게 안되는 이유는 ACM Certificate의 private key를 encrypt하는데 사용하는 default KMS customer master key(CMK)가 각 AWS account, region 별로 고유하기 때문이라고 한다.[3]</p>
+<p>생성했던 Region과 다른 Region에서 사용하려면 새 Region에서 기존 Region의 Certificate를 Import(안해봐서 정확히 Import와 새로 만드는 것의 차이가 뭔지 모르겠다)하거나 해당 Region에서 새로 Certificate를 만들어야 한다.[3]</p>
+<p>다른 Region꺼를 바로 가져다 쓰는게 안되는 이유는 ACM Certificate의 private key를 encrypt하는데 사용하는 default KMS customer master key(CMK)가 각 AWS account, region 별로 고유하기 때문이라고 한다.[4]</p>
 <p>참고 :</p>
 <ul>
 <li>[1] CloudFront를 위한 Certificate 리전 - <a href="https://docs.aws.amazon.com/acm/latest/userguide/acm-regions.html">https://docs.aws.amazon.com/acm/latest/userguide/acm-regions.html</a></li>
-<li>[2] ACM Certificate 리전 간 마이그레이션 불가 - <a href="https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/">https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/</a></li>
-<li>[3] ACM Certificate 다른 Region, 계정으로 옮기기 불가 - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/">https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/</a></li>
+<li>[2] N.Virgninia 인증서만 가능한 이유..? - <a href="https://stackoverflow.com/a/56419436/11584183">https://stackoverflow.com/a/56419436/11584183</a></li>
+<li>[3] ACM Certificate 리전 간 마이그레이션 불가 - <a href="https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/">https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/</a></li>
+<li>[4] ACM Certificate 다른 Region, 계정으로 옮기기 불가 - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/">https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/</a></li>
 </ul>
 
 			</div>
 			<hr class="post-end">
 			<footer class="post-info">
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>440 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>466 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-04-21 14:02 &#43;0900</p>
 			</footer>
 		</article>

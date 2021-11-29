@@ -391,7 +391,7 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
     <span class="s2">&#34;StorageClass&#34;</span>: <span class="s2">&#34;GLACIER&#34;</span>
 <span class="o">}</span>
 </code></pre></div><h3 id="retrieva이-완료되었을-때-head-object-결과">Retrieva이 완료되었을 때 head-object 결과</h3>
-<pre><code>[august@dummy-pc ~]$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+<pre tabindex="0"><code>[august@dummy-pc ~]$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
 {
     &quot;AcceptRanges&quot;: &quot;bytes&quot;,
     # ongoing-request = false(완료됨) Expiry Date가 위에 restore-object 명령어에서 명시한 Days의 결과입니다.
@@ -558,17 +558,18 @@ The DNS server does not reside within a specific subnet or Availability Zone in 
 			<pubDate>Wed, 21 Apr 2021 14:02:00 +0900</pubDate>
 			
 			<guid>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</guid>
-			<description>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] 이유는 CloudFront 서비</description>
+			<description>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] SO(StackOverflow) 답변에 의하</description>
 			<content type="html"><![CDATA[<p>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1]</p>
-<p>이유는 CloudFront 서비스용 certificate의 경우 해당 리전에서 다른 Edge locations로 배포하기 때문이라고 한다.</p>
+<p>SO(StackOverflow) 답변에 의하면 이유는 CloudFront 서비스용 certificate의 경우 해당 리전에서 다른 Edge locations로 배포하기 때문이라고 한다.[2]</p>
 <p>또한, 한 Region의 ACM 에서 만들은 Certificate는 다른 리전으로 직접적인? migration 불가능하다.</p>
-<p>생성했던 Region과 다른 Region에서 사용하려면 새 Region에서 기존 Region의 Certificate를 Import(안해봐서 정확히 Import와 새로 만드는 것의 차이가 뭔지 모르겠다)하거나 해당 Region에서 새로 Certificate를 만들어야 한다.[2]</p>
-<p>다른 Region꺼를 바로 가져다 쓰는게 안되는 이유는 ACM Certificate의 private key를 encrypt하는데 사용하는 default KMS customer master key(CMK)가 각 AWS account, region 별로 고유하기 때문이라고 한다.[3]</p>
+<p>생성했던 Region과 다른 Region에서 사용하려면 새 Region에서 기존 Region의 Certificate를 Import(안해봐서 정확히 Import와 새로 만드는 것의 차이가 뭔지 모르겠다)하거나 해당 Region에서 새로 Certificate를 만들어야 한다.[3]</p>
+<p>다른 Region꺼를 바로 가져다 쓰는게 안되는 이유는 ACM Certificate의 private key를 encrypt하는데 사용하는 default KMS customer master key(CMK)가 각 AWS account, region 별로 고유하기 때문이라고 한다.[4]</p>
 <p>참고 :</p>
 <ul>
 <li>[1] CloudFront를 위한 Certificate 리전 - <a href="https://docs.aws.amazon.com/acm/latest/userguide/acm-regions.html">https://docs.aws.amazon.com/acm/latest/userguide/acm-regions.html</a></li>
-<li>[2] ACM Certificate 리전 간 마이그레이션 불가 - <a href="https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/">https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/</a></li>
-<li>[3] ACM Certificate 다른 Region, 계정으로 옮기기 불가 - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/">https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/</a></li>
+<li>[2] N.Virgninia 인증서만 가능한 이유..? - <a href="https://stackoverflow.com/a/56419436/11584183">https://stackoverflow.com/a/56419436/11584183</a></li>
+<li>[3] ACM Certificate 리전 간 마이그레이션 불가 - <a href="https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/">https://aws.amazon.com/ko/premiumsupport/knowledge-center/migrate-ssl-cert-us-east/</a></li>
+<li>[4] ACM Certificate 다른 Region, 계정으로 옮기기 불가 - <a href="https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/">https://aws.amazon.com/premiumsupport/knowledge-center/acm-export-certificate/</a></li>
 </ul>
 ]]></content>
 		</item>

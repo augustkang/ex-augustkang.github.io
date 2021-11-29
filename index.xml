@@ -59,7 +59,7 @@
       <pubDate>Wed, 21 Apr 2021 14:02:00 +0900</pubDate>
       
       <guid>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</guid>
-      <description>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] 이유는 CloudFront 서비</description>
+      <description>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] SO(StackOverflow) 답변에 의하</description>
     </item>
     
     <item>
