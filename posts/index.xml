@@ -1159,6 +1159,43 @@ ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
 		</item>
 		
 		<item>
+			<title>2020년 리뷰</title>
+			<link>https://augustkang.com/posts/review/2020-review/</link>
+			<pubDate>Wed, 23 Dec 2020 16:40:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/review/2020-review/</guid>
+			<description>우선 연 초에 내가 뭘 목표했는지 기억이 잘 안난다ㅠㅠ 그나마 기록해뒀던 이직은 했고, 달리기 목표는 어느새 흐지부지 됐고.. 커리어와 사생활로 나눠서 적어보자. 커</description>
+			<content type="html"><![CDATA[<p>우선 연 초에 내가 뭘 목표했는지 기억이 잘 안난다ㅠㅠ 그나마 기록해뒀던 이직은 했고, 달리기 목표는 어느새 흐지부지 됐고.. 커리어와 사생활로 나눠서 적어보자.</p>
+<h2 id="커리어너무-단촐한데">커리어(너무 단촐한데..?)</h2>
+<ul>
+<li>AWS, Kubernetes, Nginx, Apache HTTP 경험 매우 조금</li>
+<li>취득한 업무 관련 자격증 2개(AWS SAA, CKA)</li>
+<li>이직</li>
+</ul>
+<h2 id="사생활">사생활</h2>
+<h3 id="게임">게임</h3>
+<p>(이제는 전 직장이 되어버린) 아프리카TV 사내 롤대회에서 우승을 했다. 2019년 사내 롤대회에서 준우승으로 마무리했던게 너무 아쉬웠는데, 팀원들과 재도전해서 우승을 이뤄냈다. 적지만 상금도 받았다!</p>
+<figure><img src="/images/victory.png"/>
+</figure>
+
+<p><del>(PC방과 방구석에서 솔랭만 하던 백수시절의 내가 인생을 내주고 게임 실력을 얻긴 했구나)</del></p>
+<p><strong>그리고 얼마 뒤에 리그오브레전드 모든 계정을 삭제하고 게임을 접었다.</strong></p>
+<p>컴퓨터 공부를 열심히해서 성장하고 싶었는데 게임이 너무 재밌어서 병행할 수 없을 것 같아 접었다. 게임에 쏟던 시간 만큼을 전부 공부에 쓰진 않지만, 그래도 공부하며 성장하는 내 모습이 매우 만족스럽기 때문에 당분간 다시 하지는 않을 것 같다.</p>
+<h3 id="독서">독서</h3>
+<p>52권의 책을 읽었다.<a href="https://augustkang.com/posts/book/2020-books-i-read/">읽은 책 목록</a></p>
+<p>안타깝게도 읽은 책에 대해 서평이나 독후감을 작성하지 않아서 뭔가 남은건 읽은 책 목록 말고는 없는 것 같다.</p>
+<p>올해 읽었던 책 중 가장 좋았던 책은 최근에 읽은 이케이도 준 작가의 <strong>변두리 로켓</strong> 이라는 소설.</p>
+<p>과거에 이루는데 실패하고 도망쳤던 꿈에 우연한 계기로 다시 도전하고 이루어내는 주인공의 모습에서 좋은 에너지를 많이 받았다.</p>
+<h3 id="건강">건강..?</h3>
+<p>금주 (2020.10.01 ~)</p>
+<p>달리기는 하다 말았고..</p>
+<hr>
+<h2 id="소감">소감</h2>
+<p>당장 생각나는대로 적어보았는데, 코로나로 인해 생활에 불편함이 많긴 했지만 만족스러운 한 해 였다.</p>
+]]></content>
+		</item>
+		
+		<item>
 			<title>CKA 시험 후기</title>
 			<link>https://augustkang.com/posts/review/cka-experience/</link>
 			<pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
