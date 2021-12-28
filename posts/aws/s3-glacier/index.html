@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="[AWS] S3 Glacier Flexible Retrieval storage class의 개념과 사용법">
+<meta itemprop="description" content="2021년 11월 30일 Amazon S3 Glacier Instant Retrieval storage class가 공개됨에 따라 기존 S3 Glacier storage class의 이름이 Amazon S3 Glacier Flexible Retrieval storage class로 변경되었습니다. 이에 기존에 작성"><meta itemprop="datePublished" content="2021-06-17T12:10:00+09:00" />
+<meta itemprop="dateModified" content="2021-06-17T12:10:00+09:00" />
+<meta itemprop="wordCount" content="4393">
+<meta itemprop="keywords" content="aws,s3,glacier," /><meta property="og:title" content="[AWS] S3 Glacier Flexible Retrieval storage class의 개념과 사용법" />
+<meta property="og:description" content="2021년 11월 30일 Amazon S3 Glacier Instant Retrieval storage class가 공개됨에 따라 기존 S3 Glacier storage class의 이름이 Amazon S3 Glacier Flexible Retrieval storage class로 변경되었습니다. 이에 기존에 작성" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://augustkang.com/posts/aws/s3-glacier-flexible-retrieval-storage-class/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-17T12:10:00+09:00" />
+<meta property="article:modified_time" content="2021-06-17T12:10:00+09:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[AWS] S3 Glacier Flexible Retrieval storage class의 개념과 사용법"/>
+<meta name="twitter:description" content="2021년 11월 30일 Amazon S3 Glacier Instant Retrieval storage class가 공개됨에 따라 기존 S3 Glacier storage class의 이름이 Amazon S3 Glacier Flexible Retrieval storage class로 변경되었습니다. 이에 기존에 작성"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>[AWS] S3 Glacier Flexible Retrieval storage class의 개념과 사용법</title>
+	<link rel="stylesheet" href="https://augustkang.com/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css" integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://augustkang.com">augustkang</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://augustkang.com/posts/">Posts</a>
+				<a href="https://augustkang.com/categories/">Categories</a>
+				<a href="https://augustkang.com/tags/">Tags</a>
+				<a href="https://augustkang.com/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://github.com/augustkang" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a><a href="https://www.linkedin.com/in/augustkang/" target="_blank" rel="noopener me" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a><a href="mailto:iamaugustkang@gmail.com" target="_blank" rel="noopener me" title="Email"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://augustkang.com/posts/">Posts</a></li>
+			<li><a href="https://augustkang.com/categories/">Categories</a></li>
+			<li><a href="https://augustkang.com/tags/">Tags</a></li>
+			<li><a href="https://augustkang.com/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jun 17, 2021</span></div>
+				<h1>[AWS] S3 Glacier Flexible Retrieval storage class의 개념과 사용법</h1>
+			</header>
+			<div class="content">
+				<blockquote>
+<p>2021년 11월 30일 <a href="https://aws.amazon.com/about-aws/whats-new/2021/11/amazon-s3-glacier-instant-retrieval-storage-class/">Amazon S3 Glacier Instant Retrieval storage class</a>가 공개됨에 따라 기존 S3 Glacier storage class의 이름이 Amazon S3 Glacier Flexible Retrieval storage class로 변경되었습니다.</p>
+<p>이에 기존에 작성했던 포스트를 업데이트하였습니다. 참고 부탁 드립니다!
+(참고 : 이 포스트는 S3 Glacier Instant Retrieval storage class, S3 Glacier Deep Archive storage class에 대해서는 다루지 않습니다..!)</p>
+</blockquote>
+<hr>
+<p>S3의 Glacier Flexible Retrieval storage class를 적용할 일이 있어 공부하였습니다. 공부한 내용을 정리해보았습니다!</p>
+<h2 id="amazon-s3-glacier란"><strong>Amazon S3 Glacier란?</strong><a href="#amazon-s3-glacier란" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>Amazon S3 Glacier는 오랜 세월동안 안전하게 보관이 필요한 데이터, 한번 저장해두면 자주 접근하지 않을 보존용 데이터 등을 저장하는데 좋은 스토리지 서비스 입니다. (정식 명칭은 Amazon S3 Glacier 이지만 편의상 지금부터는 S3 Glacier라고 표현하겠습니다.)</p>
+<p>S3 Glacier에서는 S3와 (비슷한 개념이라고 생각하지만) 다른 용어를 사용합니다.</p>
+<ul>
+<li>데이터를 저장하기 위한 개별 저장소는 Vault라고 부릅니다(S3의 Bucket에 대응).</li>
+<li>Vault에 저장되는 개별 데이터는 Archive 라고 부릅니다(S3의 Object에 대응)</li>
+</ul>
+<p>간단히 이야기하자면 S3 Glacier는 Vault(≈Bucket)에 Archive(≈Object)를 저장하는 식으로 이용하는 서비스라고 할 수 있습니다.</p>
+<h2 id="amazon-s3-glacier의-특징"><strong>Amazon S3 Glacier의 특징</strong><a href="#amazon-s3-glacier의-특징" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>S3 Glacier는 S3보다 저렴한 가격으로 더 많은 양의 데이터를 저장할 수 있으나, 자주 접근하지 않을 데이터 저장에 적합한 서비스 입니다.</p>
+<p>일반적인 S3에서는 사용자가 원하면 특정 오브젝트를 바로 다운로드(GetObject)받을 수 있지만, S3 Glacier는 그렇지가 않습니다.</p>
+<p><strong>S3 Glacier에서 사용하는 용어로 데이터를 다운로드할 수 있게 요청, 준비하는 과정을 Retrieval(반출, 검색, 탐색) 이라고 합니다.</strong></p>
+<p>처음에 공부할 때 어느 분 블로그에서 &lsquo;반출&rsquo; 이라는 표현을 봤었는데, 그때 아! 이거다! 하는 생각이 들었었습니다. 반출 이라는 표현이 제일 와닿았습니다.
+S3 Glacier 서비스 자체가 지하 깊숙한 저장고에 보관해놨다가 필요할때 꺼내 쓰는 느낌..!</p>
+<p>저장된 데이터를 다운로드 받기 위한 기본적인 사용 흐름은 아래와 같습니다.
+(아마 뒷단의 스토리지에서 사용자가 다운로드 가능한 앞단까지 가져다놓는 작업을 수행하지 않을까 추측됩니다.)</p>
+<ol>
+<li>
+<p>사용자가 저장된 데이터의 반출(Retrieval)을 요청</p>
+</li>
+<li>
+<p>요청이 완료되면 해당 데이터를 일정 시간동안만 내려받을 수 있게됨.</p>
+</li>
+</ol>
+<p><strong>저장된 데이터의 Retrieval(반출)에 소요되는 시간과 비용은 반출을 요청하는 타입에 따라 아래와 같이 달라집니다.</strong></p>
+<p>사용자가 해당 데이터가 급히 필요한지, 또는 데이터가 조금 늦게 준비되어도 되는지 여부에 따라 아래 3개 등급 중 선택해서 요청할 수 있습니다.</p>
+<ul>
+<li>Expedited(긴급) - 요청시 1~5분 이내에 이용(다운로드) 가능 → 가장 비쌉니다.</li>
+<li>Standard(표준) - 요청시 3~5시간 이내에 이용(다운로드) 가능 → 중간 가격입니다.</li>
+<li>Bulk(대량) - 요청시 5~12시간 이내에 이용(다운로드) 가능 → 가장 저렴합니다.</li>
+</ul>
+<p>반출 요청을 한다고 바로 다운로드 가능한게 아닙니다. 반출 요청 이후 일정 시간 기다려야 다운로드가 가능해집니다.</p>
+<p>표준으로 요청하면 3 ~ 5시간 뒤에야 비로소 다운로드 버튼을 클릭할 수 있게 된다고 생각하시면 이해에 도움이 될 것 같습니다.</p>
+<p><strong>(상황 예시)</strong></p>
+<p><strong>1GB의 데이터 다운로드</strong>에 1시간이 걸린다고 해봅시다.(1GB/hour). 1GB를 표준(3~5시간) 유형으로 반출 요청한다고 가정해보겠습니다.
+여기서는 <strong>반출 요청 처리</strong>에 5시간이 걸린다고 해보겠습니다.</p>
+<p>위와 같은 상황에 S3 Glacier 사용자 입장에서 다운로드에 총 소요되는 시간은 다음과 같습니다.</p>
+<p><strong>5시간(반출 요청 처리) + 1시간(1GB의 데이터 다운로드) = 6시간</strong></p>
+<h2 id="glacier를-사용하는-방법"><strong>Glacier를 사용하는 방법</strong><a href="#glacier를-사용하는-방법" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="s3의-storage-class로써-glacier-사용-vs-amazon-s3-glacier-서비스-사용"><strong>S3의 Storage Class로써 Glacier 사용 vs Amazon S3 Glacier 서비스 사용</strong><a href="#s3의-storage-class로써-glacier-사용-vs-amazon-s3-glacier-서비스-사용" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>AWS에서 Glacier를 사용하는 방법에는 2가지가 있습니다. (저도 처음에 이게 무슨말인가 싶었습니다.)</p>
+<p>아래와 같은 유래가 있다고 하네요.(<a href="https://stackoverflow.com/a/65929235/11584183">https://stackoverflow.com/a/65929235/11584183</a>)</p>
+<ul>
+<li>초기에 AWS의 스토리지 서비스로 S3가 있었다.</li>
+<li>S3와 별개의, 백업용 데이터를 저장하기 위한 컨셉으로 Amazon Glacier라는 스토리지 서비스도 있었다.</li>
+<li>S3 사용자 중 Glacier와 같은 스토리지 사용도 원하는 수요가 있었다.</li>
+<li>Amazon Glacier는 사용자 입장에서 직접 사용하기 불편하다. (불편함의 예시 : 데이터 업로드 하고 업로드한 데이터가 잘 들어갔는지 &lsquo;목록&rsquo;을 확인할 수 있으려면 24시간을 기다려야 함)</li>
+<li><strong>S3의 Storage Class로써 S3 Glacier를 사용할 수 있게 제공 시작됨!</strong></li>
+</ul>
+<p>즉, Amazon S3 Glacier는 다른 AWS 서비스들처럼(ex. SNS, SQS, &hellip;) 원래 별도의 서비스 입니다. 콘솔에서 Glacier로 검색하면 나오는 S3 Glacier 라고 나오는 그 서비스인데요.</p>
+<p>이 서비스 - Glacier API를 직접 이용하는 방식이 Amazon S3 Glacier 방식이고,</p>
+<p><strong>S3 api를 통해서 S3 Glacier 서비스를 이용하게 해주는 방식이 S3의 Glacier Flexible Retrieval storage class를 이용하는 방식입니다.</strong></p>
+<p>각 방법은 이런 특징이 있습니다.</p>
+<p><strong>1. S3 Glacier Flexible Retrieval storage class</strong></p>
+<ul>
+<li>편리한 S3 콘솔, 인터페이스, api 등을 그대로 이용하여 Glacier를 사용할 수 있습니다.</li>
+<li>S3 버킷에서 버킷 내 오브젝트에 대해 Storage Class를 Glacier Flexible Retrieval로 설정하는 방식입니다.</li>
+<li>Download 해야 할 경우 위에 이야기 한 Retrieval type(검색 유형)을 설정하고 요청을 먼저 해야 합니다.</li>
+<li>(몇일간 다운로드가 필요할지 명시해서) 요청을 하면 요청한 유형에 따라 다운로드를 할 수 있게 됩니다. (예: Expedited로 요청했으면 1~5분 내에 다운로드 가능. Standard로 요청했으면 최소 3시간~5시간 후에 요청한 데이터 다운로드 가능)</li>
+<li>반출을 요청하면 내부적으로는 Glacier Flexible Retrieval storage slass에서 S3 Standard-IA storage class로 객체를 요청한 기간 만큼만 복제해줍니다. 이후 사용자는 S3 Standard-IA storage class에 복제되어 있는 객체에 접근하는 식으로 다운로드 할 수 있게 됩니다.(아래 링크에서 작동에 대한 설명 확인 가능)</li>
+<li><a href="https://aws.amazon.com/s3/faqs/#Storage_Classes">Reference : S3 FAQs - How can I retrieve my objects that are archived in S3 Glacier Flexible Retrieval and will I be notified when the object is restored?</a></li>
+</ul>
+<p>(이전에 포스트 작성할 때 Reduced Redundancy storage class로 복제한다고 봤었는데, Glacier Instant Retrieval storage class 출시 이후 다시 찾아보니 S3 Standard-IA storage class라고 되어있네요&hellip;)</p>
+<p>이 방식의 장점은 기존 S3 콘솔(s3 api)을 이용하여 Glacier로 객체를 보내고 꺼내고 할 수 있다는 점 입니다. S3를 통해 Glacier를 이용하기 때문에 큰 불편함이 없습니다.</p>
+<p>참고로, S3 Glacier 서비스에서 직접 vault를 만들고 archive를 올리고 하는 식으로 이용할 경우, 객체를 업로드하면 객체 목록(버킷 내 파일 목록)에 반영되는데
+약24시간이 소요됩니다. (업로드를 하면 업로드한게 목록에 바로 뜨지가 않습니다.)</p>
+<p><strong>2. Amazon S3 Glacier(AWS 콘솔에서 Glacier 검색하면 나오는 서비스)</strong></p>
+<ul>
+<li>별도로 나왔던 서비스인 Glacier를 직접 이용하는 방법입니다. S3와 다른 별도의 콘솔로 서비스를 제공합니다.</li>
+<li>독립적인 glacier api를 사용하고, S3를 통해서 사용하면 이용할 수 없는 Vault Lock과 같은 Glacier 고유의 기능 등을 이용할 수 있습니다.</li>
+<li>Vault에 저장된 archive의 목록은 inventory라고 합니다.</li>
+<li>지금 저장된 archive 목록을 보고 싶으면 inventory를 요청해야 합니다.(glacier api 이용)</li>
+<li>inventory를 요청하면 수시간 내에 vault 내에 저장된 archive의 목록을 확인할 수 있게 됩니다.</li>
+<li><strong>즉!! 현재 저장되어 있는 목록만 보는데도 몇 시간이 걸립니다.. (사용하기 불편..)</strong></li>
+</ul>
+<p><strong>고유 기능 - Vault Lock</strong></p>
+<ul>
+<li>이 기능은 policy를 정의해서 붙이면 해당 정책을 삭제하지 않는 이상 수정이 불가한 기능이라고 합니다.(bucket policy와 역할은 비슷한데 수정이 불가한 특성)</li>
+<li>한번 정의한 정책은 제거하고 다시 만들지 않는 이상 수정이 불가!</li>
+</ul>
+<p>강력한 보안 요구사항이 있는 조직에서 유용하게 사용할 수 있다고 합니다.</p>
+<h2 id="예시"><strong>예시</strong><a href="#예시" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>아래는 CloudFormation으로 작성한 S3 Glacier Flexible Retrieval storage class를 사용하는 템플릿 예시 입니다.</p>
+<p>Glacier Flexible Retrieval storage class에 저장해둔 오브젝트의 반출에는 시간이 오래 걸리므로, 반출 완료될 시 알림을 받게 설정할 수 있습니다.</p>
+<p>아래 예시에서는 MS Teams의 webhook을 이용해 noti를 받게 하였습니다.</p>
+<p>MS Teams가 아닌 Slack이나 다른 메신저 서비스의 경우에도 Webhook을 사용할 수 있다면 request를 날리도록 Lambda를  작성한 뒤,
+S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에서 webhook url에 request를 날리도록 하는 식으로 할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># CloudFormation Parameter for MS Teams webhook URL</span><span class="w">
+</span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">WebhookUrl</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
+</span><span class="w">    </span><span class="nt">AllowedPattern</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;.+&#34;</span><span class="w"> </span><span class="c"># Set as mandatory</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">S3Bucket</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::Bucket</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">BucketName</span><span class="p">:</span><span class="w"> </span><span class="l">my-glacier-bucket</span><span class="w">
+</span><span class="w">      </span><span class="nt">LifecycleConfiguration</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Rules</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Id</span><span class="p">:</span><span class="w"> </span><span class="l">DefaultAsGlacier</span><span class="w">
+</span><span class="w">          </span><span class="nt">Status</span><span class="p">:</span><span class="w"> </span><span class="l">Enabled</span><span class="w">
+</span><span class="w">          </span><span class="nt">Transitions</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="nt">TransitionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span><span class="w">            </span><span class="nt">StorageClass</span><span class="p">:</span><span class="w"> </span><span class="l">GLACIER</span><span class="w"> </span><span class="c"># Objects will be stored as GLACIER Storage Class</span><span class="w">
+</span><span class="w">      </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">LambdaConfigurations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Event</span><span class="p">:</span><span class="w"> </span><span class="l">s3:ObjectRestore:Completed</span><span class="w">
+</span><span class="w">          </span><span class="nt">Function</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaFunction.Arn</span><span class="w">
+</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaPermission</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">S3BucketPolicy</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::BucketPolicy</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">Bucket</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref S3Bucket</span><span class="w">
+</span><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="c"># put bucket policies as per your requirements</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">LambdaPermission</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Permission</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l">lambda:InvokeFunction</span><span class="w">
+</span><span class="w">      </span><span class="nt">Principal</span><span class="p">:</span><span class="w"> </span><span class="l">s3.amazonaws.com</span><span class="w">
+</span><span class="w">      </span><span class="nt">SourceArn</span><span class="p">:</span><span class="w"> </span><span class="l">arn:aws:s3:::my-glacier-bucket</span><span class="w">
+</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref LambdaFunction</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">LambdaRole</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::Role</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
+</span><span class="w">          </span><span class="nt">Principal</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span><span class="nt">Service</span><span class="p">:</span><span class="w">
+</span><span class="w">            </span>- <span class="l">lambda.amazonaws.com</span><span class="w">
+</span><span class="w">          </span><span class="nt">Action</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span>- <span class="l">sts:AssumeRole</span><span class="w">
+</span><span class="w">      </span><span class="nt">ManagedPolicyArns</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span>- <span class="l">arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole</span><span class="w">
+</span><span class="w">      </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/&#34;</span><span class="w">
+</span><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaRole</span><span class="w">
+</span><span class="w">      </span><span class="nt">RoleName</span><span class="p">:</span><span class="w"> </span><span class="l">my-lambda-role</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="nt">LambdaFunction</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Function</span><span class="w">
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span><span class="sd">          import json
+</span><span class="sd">          import os
+</span><span class="sd">          import logging
+</span><span class="sd">          import boto3
+</span><span class="sd">          from urllib.request import Request, urlopen
+</span><span class="sd">          from urllib.error import URLError, HTTPError
+</span><span class="sd">
+</span><span class="sd">          def lambda_handler(event, context):
+</span><span class="sd">              webhook_url = os.environ.get(&#39;Webhook&#39;)
+</span><span class="sd">              bucket = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;bucket&#39;][&#39;name&#39;]
+</span><span class="sd">              archive = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;key&#39;]
+</span><span class="sd">              size = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;size&#39;]
+</span><span class="sd">
+</span><span class="sd">              teams_message = {
+</span><span class="sd">                  &#34;@context&#34;: &#34;https://schema.org/extensions&#34;,
+</span><span class="sd">                  &#34;@type&#34;: &#34;MessageCard&#34;,
+</span><span class="sd">                  &#34;themeColor&#34;: &#34;64a837&#34;,
+</span><span class="sd">                  &#34;title&#34;: &#34;Glacier 객체 복원 완료&#34;,
+</span><span class="sd">                  &#34;text&#34;: f&#34;복원된 객체 정보는 아래와 같습니다.&#34;,
+</span><span class="sd">                  &#34;sections&#34;: [
+</span><span class="sd">                      {
+</span><span class="sd">                          &#34;facts&#34;: [
+</span><span class="sd">                              {
+</span><span class="sd">                                  &#34;name&#34;: &#34;Bucket&#34;,
+</span><span class="sd">                                  &#34;value&#34;: f&#34;{bucket}&#34;
+</span><span class="sd">                              },
+</span><span class="sd">                              {
+</span><span class="sd">                                  &#34;name&#34;: &#34;Archive name : &#34;,
+</span><span class="sd">                                  &#34;value&#34;: f&#34;{archive}&#34;
+</span><span class="sd">                              },
+</span><span class="sd">                              {
+</span><span class="sd">                                  &#34;name&#34;: &#34;Size: &#34;,
+</span><span class="sd">                                  &#34;value&#34;: f&#34;{size}&#34;
+</span><span class="sd">                              }
+</span><span class="sd">                          ]
+</span><span class="sd">                      }
+</span><span class="sd">                  ]
+</span><span class="sd">              }
+</span><span class="sd">              request = Request(webhook_url, json.dumps(teams_message).encode(&#39;utf-8&#39;))
+</span><span class="sd">              try:
+</span><span class="sd">                  response = urlopen(request)
+</span><span class="sd">                  response.read()
+</span><span class="sd">                  print(&#34;Success&#34;)
+</span><span class="sd">              except HTTPError as err:
+</span><span class="sd">                  print(&#34;Fail&#34;)
+</span><span class="sd">              except URLError as err:
+</span><span class="sd">                  print(&#34;Fail&#34;)</span><span class="w">          
+</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaWebhook</span><span class="w">
+</span><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">index.lambda_handler</span><span class="w">
+</span><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaRole.Arn</span><span class="w">
+</span><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">python3.8</span><span class="w">
+</span><span class="w">      </span><span class="nt">Environment</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w">
+</span><span class="w">          </span><span class="nt">Webhook</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref WebhookUrl</span><span class="w">
+</span><span class="w">
+</span></code></pre></div><h2 id="glacier-storage-class를-aws-cli로-이용하는-방법"><strong>Glacier storage class를 AWS CLI로 이용하는 방법</strong><a href="#glacier-storage-class를-aws-cli로-이용하는-방법" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<h3 id="버킷에-아카이브-올리는-명령어-예시">버킷에 아카이브 올리는 명령어 예시<a href="#버킷에-아카이브-올리는-명령어-예시" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
+<span class="c1"># --storage-class GLACIER 옵션을 줘야 합니다.</span>
+</code></pre></div><h3 id="s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시">s3api로 Glacier에 있는 데이터를 Retrieval(반출) 요청하는 명령어 예시<a href="#s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p><code>--restore-request</code> 옵션을 줘야 합니다. 해당 옵션에는 반출한 오브젝트가 몇 일간 필요한지를 명시하는 <code>Days</code> 와, Retrieval 옵션을 명시해줘야 합니다.</p>
+<p>retrieval option은 <code>GlacierJobParameters={&quot;Tier&quot;=&quot;Standard&quot;}</code> 형태로 명시해주면 됩니다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+<span class="c1"># Tier를 원하는 Type으로 설정. 여기서는 Standard로 해보았습니다.</span>
+<span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Expedited&#34;}</span>
+<span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Bulk&#34;}</span>
+
+</code></pre></div><ul>
+<li>Days=1로 하면 Retrieval 처리 완료되고 하루 동안 해당 Archive를 다운 받을 수 있게됩니다. 7로 하면 일주일동안 받을 수 있게 됩니다.</li>
+<li>Tier가 위에서 설명한 Retrieval 옵션을 뜻합니다.</li>
+<li>
+<ul>
+<li>Expedited : 1~5분 내에 반출 가능해짐</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Standard : 3~5시간 내에 반출 가능해짐</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>Bulk : 5~12시간 내에 반출 가능해짐</li>
+</ul>
+</li>
+<li>참고 사항으로, 위 템플릿 예시에서는 Notification을 설정해서 Retrieval이 완료되면 teams로 알림을 받습니다.</li>
+</ul>
+<h3 id="실제-retrieval-요청-실행">실제 Retrieval 요청 실행<a href="#실제-retrieval-요청-실행" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+</code></pre></div><h3 id="retrieval이-진행중인지-확인하는-명령어">Retrieval이 진행중인지 확인하는 명령어<a href="#retrieval이-진행중인지-확인하는-명령어" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<ul>
+<li>Progress는 보여주지 않고 진행중인지 완료되었는지 여부만 보여줍니다.</li>
+<li>이런 기약없는? 불편함으로 인해 사용할 경우 Notification이 있으면 좋다고 생각합니다.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+<span class="o">{</span>
+    <span class="s2">&#34;AcceptRanges&#34;</span>: <span class="s2">&#34;bytes&#34;</span>,
+    <span class="s2">&#34;Restore&#34;</span>: <span class="s2">&#34;ongoing-request=\&#34;true\&#34;&#34;</span>, <span class="c1"># 현재 Retrieval이 진행중이라는걸 보여줌(ongoing-request=true)</span>
+    <span class="s2">&#34;LastModified&#34;</span>: <span class="s2">&#34;2021-03-24T02:13:16+00:00&#34;</span>,
+    <span class="s2">&#34;ContentLength&#34;</span>: 3,
+    <span class="s2">&#34;ETag&#34;</span>: <span class="s2">&#34;\&#34;abcdefghijklmnopqrstuzwxyz1234567890\&#34;&#34;</span>,
+    <span class="s2">&#34;ContentType&#34;</span>: <span class="s2">&#34;text/plain&#34;</span>,
+    <span class="s2">&#34;Metadata&#34;</span>: <span class="o">{}</span>,
+    <span class="s2">&#34;StorageClass&#34;</span>: <span class="s2">&#34;GLACIER&#34;</span>
+<span class="o">}</span>
+</code></pre></div><h3 id="retrieva이-완료되었을-때-head-object-결과">Retrieva이 완료되었을 때 head-object 결과<a href="#retrieva이-완료되었을-때-head-object-결과" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<pre tabindex="0"><code>[august@dummy-pc ~]$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+{
+    &quot;AcceptRanges&quot;: &quot;bytes&quot;,
+    # ongoing-request = false(완료됨) Expiry Date가 위에 restore-object 명령어에서 명시한 Days의 결과입니다.
+    &quot;Restore&quot;: &quot;ongoing-request=\&quot;false\&quot;, expiry-date=\&quot;Fri, 26 Mar 2021 00:00:00 GMT\&quot;&quot;,
+    &quot;LastModified&quot;: &quot;2021-03-24T02:13:16+00:00&quot;,
+    &quot;ContentLength&quot;: 3,
+    &quot;ETag&quot;: &quot;\&quot;abcdefghijklmnopqrstuzwxyz1234567890\&quot;&quot;,
+    &quot;ContentType&quot;: &quot;text/plain&quot;,
+    &quot;Metadata&quot;: {},
+    &quot;StorageClass&quot;: &quot;GLACIER&quot;
+}
+</code></pre><h2 id="그래서-s3-glacier-flexible-retrieval-storage-class-사용하면-좋은가요">그래서 S3 Glacier Flexible Retrieval storage class 사용하면 좋은가요?<a href="#그래서-s3-glacier-flexible-retrieval-storage-class-사용하면-좋은가요" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<p>비용을 대폭 아낄 수 있습니다.</p>
+<p>저의 경우 대략 <a href="https://calculator.aws/">비용 계산</a> 해봤을때, 동일한 양의 데이터를 S3 standard storage class에 저장할 때보다
+80% 정도 저렴하게 이용하고 있다고 계산이 나왔었습니다.</p>
+<p>계속 보관되어야 하지만 한번 저장되면 거의 데이터를 찾을 일이 없다! 라는 요구사항이 확실하다면 고려해보시면 좋을 것 같습니다.</p>
+<p>읽어주셔서 감사합니다!</p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://augustkang.com/tags/aws">aws</a></span><span class="tag"><a href="https://augustkang.com/tags/s3">s3</a></span><span class="tag"><a href="https://augustkang.com/tags/glacier">glacier</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>4393 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-06-17 12:10 &#43;0900</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://augustkang.com/posts/linux/append-line-only-if-not-exist-in-file/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>[shell script]파일에 특정 라인이 없을때 &#39;만&#39; append하는 방법</span>
+			</a>
+			<a class="prev-post" href="https://augustkang.com/posts/review/dop-experience/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>AWS Certified DevOps Engineer Professional 후기</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "augustkang-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="https://augustkang.com">augustkang</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://augustkang.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://augustkang.com/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-181887145-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+</body>
+
+</html>
