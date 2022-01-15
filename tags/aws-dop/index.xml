@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aws dop on augustkang</title>
+    <link>https://augustkang.com/tags/aws-dop/</link>
+    <description>Recent content in aws dop on augustkang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 15 May 2021 01:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/aws-dop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Certified DevOps Engineer Professional 후기</title>
+      <link>https://augustkang.com/posts/review/dop-experience/</link>
+      <pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/review/dop-experience/</guid>
+      <description>AWS Certified DevOps Engineer - Professional 자격증을 취득했습니다! 호우! 누군가에게 도움이 되길 바라며! (사실 이 뽕맛을 잊지 않기 위해) 준비한 경험을 정리 (자랑) 합니다. AWS Certified DevOps Engineer - Professional</description>
+    </item>
+    
+  </channel>
+</rss>
