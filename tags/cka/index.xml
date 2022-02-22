@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cka on augustkang</title>
+    <link>https://augustkang.com/tags/cka/</link>
+    <description>Recent content in cka on augustkang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 27 Oct 2020 00:10:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/cka/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CKA 시험 후기</title>
+      <link>https://augustkang.com/posts/review/cka-experience/</link>
+      <pubDate>Tue, 27 Oct 2020 00:10:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/review/cka-experience/</guid>
+      <description>Certified Kubernetes administrator(CKA, 2020년 9월 개정) 시험을 준비하시는 분들께 도움이 되길 바라며.. (2번째 응시(free retake)끝에 턱걸이로 겨우 취득한) CKA 경험을 공유</description>
+    </item>
+    
+  </channel>
+</rss>
