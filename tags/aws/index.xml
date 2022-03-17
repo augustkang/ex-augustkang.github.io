@@ -35,5 +35,14 @@
       <description>AWS Certified DevOps Engineer - Professional 자격증을 취득했습니다! 호우! 누군가에게 도움이 되길 바라며! (사실 이 뽕맛을 잊지 않기 위해) 준비한 경험을 정리 (자랑) 합니다. AWS Certified DevOps Engineer - Professional</description>
     </item>
     
+    <item>
+      <title>[AWS] CloudFront Certificate Region</title>
+      <link>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</link>
+      <pubDate>Wed, 21 Apr 2021 14:02:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/aws/cloudfront-tls-certificate/</guid>
+      <description>CloudFront distribution 생성할 때 tls termination 이용할 경우 사용할 certificate는 US east region (N. Virginia)의 certificate만 이용할 수 있다.[1] SO(StackOverflow) 답변에 의하</description>
+    </item>
+    
   </channel>
 </rss>
