@@ -115,11 +115,11 @@ augustkang
 </code></pre></div><p>위 파일에 대해 똑같이 명령어를 실행해도 이미 hello가 있기 때문에 변화가 없다.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# grep -qxF <span class="s2">&#34;hello&#34;</span> file.txt <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;hello&#34;</span> &gt;&gt; file.txt
 root@dummy-pc:~# cat file.txt
+hello
 my
 name
 is
 augustkang
-hello
 </code></pre></div><p>명령어 작동 방식</p>
 <ul>
 <li>
