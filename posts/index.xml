@@ -155,7 +155,7 @@ hello
 </ul>
 <h3 id="텍스트-파일에-hello-라는-라인이-있을-경우엔-어떻게-될까">텍스트 파일에 hello 라는 라인이 있을 경우엔 어떻게 될까?</h3>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# cat file.txt
-hello
+hello <span class="c1"># hello 라는 라인이 이미 있는 상황</span>
 my
 name
 is
@@ -167,7 +167,7 @@ hello
 my
 name
 is
-augustkang
+augustkang <span class="c1"># 아래에 라인이 추가되지 않음</span>
 </code></pre></div><p>명령어 작동 방식</p>
 <ul>
 <li>
