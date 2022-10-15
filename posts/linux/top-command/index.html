@@ -75,23 +75,23 @@
 			<div class="content">
 				<p>top command에 대해 &ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
 <h3 id="top-명령어-실행-결과">top 명령어 실행 결과<a href="#top-명령어-실행-결과" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# top -b -n <span class="m">1</span>
-top - 01:57:36 up <span class="m">58</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
-Tasks:   <span class="m">8</span> total,   <span class="m">1</span> running,   <span class="m">7</span> sleeping,   <span class="m">0</span> stopped,   <span class="m">0</span> zombie   
-%Cpu<span class="o">(</span>s<span class="o">)</span>:  9.0 us, 23.3 sy,  0.0 ni, 67.4 id,  0.0 wa,  0.3 hi,  0.0 si, 0.0 st
-KiB Mem :  <span class="m">8240388</span> total,  <span class="m">2032052</span> free,  <span class="m">5978984</span> used,   <span class="m">229352</span> buff/cache
-KiB Swap: <span class="m">25165824</span> total, <span class="m">24837212</span> free,   <span class="m">328612</span> used.  <span class="m">2127672</span> avail Mem
-
-  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+    
-    <span class="m">1</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">328</span>    <span class="m">284</span> S   0.0  0.0   0:00.07    
-  <span class="m">880</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">228</span>    <span class="m">176</span> S   0.0  0.0   0:00.01    
-  <span class="m">881</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18356</span>   <span class="m">3764</span>   <span class="m">3448</span> S   0.0  0.0   0:00.38    
- <span class="m">1074</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">232</span>    <span class="m">180</span> S   0.0  0.0   0:00.00    
- <span class="m">1075</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18224</span>   <span class="m">3492</span>   <span class="m">3364</span> S   0.0  0.0   0:00.09    
- <span class="m">1087</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">16260</span>   <span class="m">2116</span>   <span class="m">2088</span> S   0.0  0.0   0:00.01    
- <span class="m">1088</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18088</span>   <span class="m">3392</span>   <span class="m">3304</span> S   0.0  0.0   0:00.06    
- <span class="m">1104</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18780</span>   <span class="m">1888</span>   <span class="m">1420</span> R   0.0  0.0   0:00.01
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@August-PC:~# top -b -n <span class="m">1</span>
+</span></span><span class="line"><span class="cl">top - 01:57:36 up <span class="m">58</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
+</span></span><span class="line"><span class="cl">Tasks:   <span class="m">8</span> total,   <span class="m">1</span> running,   <span class="m">7</span> sleeping,   <span class="m">0</span> stopped,   <span class="m">0</span> zombie   
+</span></span><span class="line"><span class="cl">%Cpu<span class="o">(</span>s<span class="o">)</span>:  9.0 us, 23.3 sy,  0.0 ni, 67.4 id,  0.0 wa,  0.3 hi,  0.0 si, 0.0 st
+</span></span><span class="line"><span class="cl">KiB Mem :  <span class="m">8240388</span> total,  <span class="m">2032052</span> free,  <span class="m">5978984</span> used,   <span class="m">229352</span> buff/cache
+</span></span><span class="line"><span class="cl">KiB Swap: <span class="m">25165824</span> total, <span class="m">24837212</span> free,   <span class="m">328612</span> used.  <span class="m">2127672</span> avail Mem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+    
+</span></span><span class="line"><span class="cl">    <span class="m">1</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">328</span>    <span class="m">284</span> S   0.0  0.0   0:00.07    
+</span></span><span class="line"><span class="cl">  <span class="m">880</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">228</span>    <span class="m">176</span> S   0.0  0.0   0:00.01    
+</span></span><span class="line"><span class="cl">  <span class="m">881</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18356</span>   <span class="m">3764</span>   <span class="m">3448</span> S   0.0  0.0   0:00.38    
+</span></span><span class="line"><span class="cl"> <span class="m">1074</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">232</span>    <span class="m">180</span> S   0.0  0.0   0:00.00    
+</span></span><span class="line"><span class="cl"> <span class="m">1075</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18224</span>   <span class="m">3492</span>   <span class="m">3364</span> S   0.0  0.0   0:00.09    
+</span></span><span class="line"><span class="cl"> <span class="m">1087</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">16260</span>   <span class="m">2116</span>   <span class="m">2088</span> S   0.0  0.0   0:00.01    
+</span></span><span class="line"><span class="cl"> <span class="m">1088</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18088</span>   <span class="m">3392</span>   <span class="m">3304</span> S   0.0  0.0   0:00.06    
+</span></span><span class="line"><span class="cl"> <span class="m">1104</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18780</span>   <span class="m">1888</span>   <span class="m">1420</span> R   0.0  0.0   0:00.01
+</span></span></code></pre></div><ul>
 <li>line 1: 현재 시스템의 시간과 uptime, 그리고 load average가 나온다</li>
 </ul>
 <p><code>top - 01:57:36 up 58 min,  0 users,  load average: 0.52, 0.58, 0.59</code></p>
@@ -151,16 +151,16 @@ st : CPU가 처리할 일이 있는데 VM한테 CPU를 뺐겨서 일을 못한 �
 <li>0=최댓값 바탕으로 Memory commit, 1=무조건 overcommit, 2=vm.overcommit_ratio에 설정된 비율을 바탕으로 제한적으로 memory commit</li>
 </ul>
 <h4 id="커널-파라미터-보는법-sysctl">커널 파라미터 보는법? sysctl<a href="#커널-파라미터-보는법-sysctl" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# sysctl -a
-fs.binfmt_misc.status <span class="o">=</span> enabled
-fs.binfmt_misc.WSLInterop <span class="o">=</span> enabled
-fs.binfmt_misc.WSLInterop <span class="o">=</span> interpreter /init
-...
-...
-vm.min_free_kbytes <span class="o">=</span> <span class="m">45056</span>
-vm.overcommit_memory <span class="o">=</span> <span class="m">0</span>
-vm.swappiness <span class="o">=</span> <span class="m">60</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@August-PC:~# sysctl -a
+</span></span><span class="line"><span class="cl">fs.binfmt_misc.status <span class="o">=</span> enabled
+</span></span><span class="line"><span class="cl">fs.binfmt_misc.WSLInterop <span class="o">=</span> enabled
+</span></span><span class="line"><span class="cl">fs.binfmt_misc.WSLInterop <span class="o">=</span> interpreter /init
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">vm.min_free_kbytes <span class="o">=</span> <span class="m">45056</span>
+</span></span><span class="line"><span class="cl">vm.overcommit_memory <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">vm.swappiness <span class="o">=</span> <span class="m">60</span>
+</span></span></code></pre></div><ul>
 <li><code>sysctl -a | grep pid_max</code> 하면 현재 시스템의 생성 가능한 최대 pid 확인 가능</li>
 </ul>
 <h3 id="프로세스-상태">프로세스 상태<a href="#프로세스-상태" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
@@ -220,7 +220,7 @@ vm.swappiness <span class="o">=</span> <span class="m">60</span>
 		<div id="comments" class="thin">
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -250,7 +250,7 @@ vm.swappiness <span class="o">=</span> <span class="m">60</span>
 
 
 
-	<script src="https://augustkang.com/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	<script src="https://augustkang.com/js/bundle.min.580988ed2982bcbb74a1773c7abea97b43e4c43b9324e10cda0813ec6ec4bb67.js" integrity="sha256-WAmI7SmCvLt0oXc8er6pe0PkxDuTJOEM2ggT7G7Eu2c=" crossorigin="anonymous"></script>
 	
 <script type="application/javascript">
 var doNotTrack = false;

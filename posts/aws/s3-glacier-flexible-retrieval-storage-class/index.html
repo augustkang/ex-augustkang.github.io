@@ -10,7 +10,7 @@
 <meta itemprop="name" content="[AWS] S3 Glacier Flexible Retrieval storage class의 개념과 사용법">
 <meta itemprop="description" content="2021년 11월 30일 Amazon S3 Glacier Instant Retrieval storage class가 공개됨에 따라 기존 S3 Glacier storage class의 이름이 Amazon S3 Glacier Flexible Retrieval storage class로 변경되었습니다. 이에 기존에 작성"><meta itemprop="datePublished" content="2021-06-17T12:10:00+09:00" />
 <meta itemprop="dateModified" content="2021-06-17T12:10:00+09:00" />
-<meta itemprop="wordCount" content="4393">
+<meta itemprop="wordCount" content="4494">
 <meta itemprop="keywords" content="aws,s3,glacier," /><meta property="og:title" content="[AWS] S3 Glacier Flexible Retrieval storage class의 개념과 사용법" />
 <meta property="og:description" content="2021년 11월 30일 Amazon S3 Glacier Instant Retrieval storage class가 공개됨에 따라 기존 S3 Glacier storage class의 이름이 Amazon S3 Glacier Flexible Retrieval storage class로 변경되었습니다. 이에 기존에 작성" />
 <meta property="og:type" content="article" />
@@ -167,139 +167,137 @@ S3 Glacier 서비스 자체가 지하 깊숙한 저장고에 보관해놨다가 
 <p>아래 예시에서는 MS Teams의 webhook을 이용해 noti를 받게 하였습니다.</p>
 <p>MS Teams가 아닌 Slack이나 다른 메신저 서비스의 경우에도 Webhook을 사용할 수 있다면 request를 날리도록 Lambda를  작성한 뒤,
 S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에서 webhook url에 request를 날리도록 하는 식으로 할 수 있습니다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># CloudFormation Parameter for MS Teams webhook URL</span><span class="w">
-</span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">WebhookUrl</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
-</span><span class="w">    </span><span class="nt">AllowedPattern</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;.+&#34;</span><span class="w"> </span><span class="c"># Set as mandatory</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">S3Bucket</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::Bucket</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">BucketName</span><span class="p">:</span><span class="w"> </span><span class="l">my-glacier-bucket</span><span class="w">
-</span><span class="w">      </span><span class="nt">LifecycleConfiguration</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">Rules</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">Id</span><span class="p">:</span><span class="w"> </span><span class="l">DefaultAsGlacier</span><span class="w">
-</span><span class="w">          </span><span class="nt">Status</span><span class="p">:</span><span class="w"> </span><span class="l">Enabled</span><span class="w">
-</span><span class="w">          </span><span class="nt">Transitions</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="nt">TransitionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
-</span><span class="w">            </span><span class="nt">StorageClass</span><span class="p">:</span><span class="w"> </span><span class="l">GLACIER</span><span class="w"> </span><span class="c"># Objects will be stored as GLACIER Storage Class</span><span class="w">
-</span><span class="w">      </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">LambdaConfigurations</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">Event</span><span class="p">:</span><span class="w"> </span><span class="l">s3:ObjectRestore:Completed</span><span class="w">
-</span><span class="w">          </span><span class="nt">Function</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaFunction.Arn</span><span class="w">
-</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaPermission</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">S3BucketPolicy</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::BucketPolicy</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">Bucket</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref S3Bucket</span><span class="w">
-</span><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="c"># put bucket policies as per your requirements</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">LambdaPermission</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Permission</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l">lambda:InvokeFunction</span><span class="w">
-</span><span class="w">      </span><span class="nt">Principal</span><span class="p">:</span><span class="w"> </span><span class="l">s3.amazonaws.com</span><span class="w">
-</span><span class="w">      </span><span class="nt">SourceArn</span><span class="p">:</span><span class="w"> </span><span class="l">arn:aws:s3:::my-glacier-bucket</span><span class="w">
-</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref LambdaFunction</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">LambdaRole</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::Role</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
-</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
-</span><span class="w">          </span><span class="nt">Principal</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="nt">Service</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span>- <span class="l">lambda.amazonaws.com</span><span class="w">
-</span><span class="w">          </span><span class="nt">Action</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="l">sts:AssumeRole</span><span class="w">
-</span><span class="w">      </span><span class="nt">ManagedPolicyArns</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole</span><span class="w">
-</span><span class="w">      </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/&#34;</span><span class="w">
-</span><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaRole</span><span class="w">
-</span><span class="w">      </span><span class="nt">RoleName</span><span class="p">:</span><span class="w"> </span><span class="l">my-lambda-role</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">LambdaFunction</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Function</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span><span class="sd">          import json
-</span><span class="sd">          import os
-</span><span class="sd">          import logging
-</span><span class="sd">          import boto3
-</span><span class="sd">          from urllib.request import Request, urlopen
-</span><span class="sd">          from urllib.error import URLError, HTTPError
-</span><span class="sd">
-</span><span class="sd">          def lambda_handler(event, context):
-</span><span class="sd">              webhook_url = os.environ.get(&#39;Webhook&#39;)
-</span><span class="sd">              bucket = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;bucket&#39;][&#39;name&#39;]
-</span><span class="sd">              archive = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;key&#39;]
-</span><span class="sd">              size = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;size&#39;]
-</span><span class="sd">
-</span><span class="sd">              teams_message = {
-</span><span class="sd">                  &#34;@context&#34;: &#34;https://schema.org/extensions&#34;,
-</span><span class="sd">                  &#34;@type&#34;: &#34;MessageCard&#34;,
-</span><span class="sd">                  &#34;themeColor&#34;: &#34;64a837&#34;,
-</span><span class="sd">                  &#34;title&#34;: &#34;Glacier 객체 복원 완료&#34;,
-</span><span class="sd">                  &#34;text&#34;: f&#34;복원된 객체 정보는 아래와 같습니다.&#34;,
-</span><span class="sd">                  &#34;sections&#34;: [
-</span><span class="sd">                      {
-</span><span class="sd">                          &#34;facts&#34;: [
-</span><span class="sd">                              {
-</span><span class="sd">                                  &#34;name&#34;: &#34;Bucket&#34;,
-</span><span class="sd">                                  &#34;value&#34;: f&#34;{bucket}&#34;
-</span><span class="sd">                              },
-</span><span class="sd">                              {
-</span><span class="sd">                                  &#34;name&#34;: &#34;Archive name : &#34;,
-</span><span class="sd">                                  &#34;value&#34;: f&#34;{archive}&#34;
-</span><span class="sd">                              },
-</span><span class="sd">                              {
-</span><span class="sd">                                  &#34;name&#34;: &#34;Size: &#34;,
-</span><span class="sd">                                  &#34;value&#34;: f&#34;{size}&#34;
-</span><span class="sd">                              }
-</span><span class="sd">                          ]
-</span><span class="sd">                      }
-</span><span class="sd">                  ]
-</span><span class="sd">              }
-</span><span class="sd">              request = Request(webhook_url, json.dumps(teams_message).encode(&#39;utf-8&#39;))
-</span><span class="sd">              try:
-</span><span class="sd">                  response = urlopen(request)
-</span><span class="sd">                  response.read()
-</span><span class="sd">                  print(&#34;Success&#34;)
-</span><span class="sd">              except HTTPError as err:
-</span><span class="sd">                  print(&#34;Fail&#34;)
-</span><span class="sd">              except URLError as err:
-</span><span class="sd">                  print(&#34;Fail&#34;)</span><span class="w">          
-</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaWebhook</span><span class="w">
-</span><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">index.lambda_handler</span><span class="w">
-</span><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaRole.Arn</span><span class="w">
-</span><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">python3.8</span><span class="w">
-</span><span class="w">      </span><span class="nt">Environment</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="nt">Webhook</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref WebhookUrl</span><span class="w">
-</span><span class="w">
-</span></code></pre></div><h2 id="glacier-storage-class를-aws-cli로-이용하는-방법"><strong>Glacier storage class를 AWS CLI로 이용하는 방법</strong><a href="#glacier-storage-class를-aws-cli로-이용하는-방법" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># CloudFormation Parameter for MS Teams webhook URL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">WebhookUrl</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">AllowedPattern</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;.+&#34;</span><span class="w"> </span><span class="c"># Set as mandatory</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">S3Bucket</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::Bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">BucketName</span><span class="p">:</span><span class="w"> </span><span class="l">my-glacier-bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">LifecycleConfiguration</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Rules</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">Id</span><span class="p">:</span><span class="w"> </span><span class="l">DefaultAsGlacier</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Status</span><span class="p">:</span><span class="w"> </span><span class="l">Enabled</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Transitions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="nt">TransitionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">StorageClass</span><span class="p">:</span><span class="w"> </span><span class="l">GLACIER</span><span class="w"> </span><span class="c"># Objects will be stored as GLACIER Storage Class</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">LambdaConfigurations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">Event</span><span class="p">:</span><span class="w"> </span><span class="l">s3:ObjectRestore:Completed</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Function</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaFunction.Arn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaPermission</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">S3BucketPolicy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::BucketPolicy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Bucket</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref S3Bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c"># put bucket policies as per your requirements</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">LambdaPermission</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Permission</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l">lambda:InvokeFunction</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Principal</span><span class="p">:</span><span class="w"> </span><span class="l">s3.amazonaws.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">SourceArn</span><span class="p">:</span><span class="w"> </span><span class="l">arn:aws:s3:::my-glacier-bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref LambdaFunction</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">LambdaRole</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::Role</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Principal</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">Service</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">lambda.amazonaws.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Action</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="l">sts:AssumeRole</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ManagedPolicyArns</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaRole</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">RoleName</span><span class="p">:</span><span class="w"> </span><span class="l">my-lambda-role</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">LambdaFunction</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Function</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          import json
+</span></span></span><span class="line"><span class="cl"><span class="sd">          import os
+</span></span></span><span class="line"><span class="cl"><span class="sd">          import logging
+</span></span></span><span class="line"><span class="cl"><span class="sd">          import boto3
+</span></span></span><span class="line"><span class="cl"><span class="sd">          from urllib.request import Request, urlopen
+</span></span></span><span class="line"><span class="cl"><span class="sd">          from urllib.error import URLError, HTTPError
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          def lambda_handler(event, context):
+</span></span></span><span class="line"><span class="cl"><span class="sd">              webhook_url = os.environ.get(&#39;Webhook&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">              bucket = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;bucket&#39;][&#39;name&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="sd">              archive = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;key&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="sd">              size = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;size&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">              teams_message = {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;@context&#34;: &#34;https://schema.org/extensions&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;@type&#34;: &#34;MessageCard&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;themeColor&#34;: &#34;64a837&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;title&#34;: &#34;Glacier 객체 복원 완료&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;text&#34;: f&#34;복원된 객체 정보는 아래와 같습니다.&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;sections&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="sd">                      {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                          &#34;facts&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;name&#34;: &#34;Bucket&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;value&#34;: f&#34;{bucket}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              },
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;name&#34;: &#34;Archive name : &#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;value&#34;: f&#34;{archive}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              },
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;name&#34;: &#34;Size: &#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;value&#34;: f&#34;{size}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              }
+</span></span></span><span class="line"><span class="cl"><span class="sd">                          ]
+</span></span></span><span class="line"><span class="cl"><span class="sd">                      }
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  ]
+</span></span></span><span class="line"><span class="cl"><span class="sd">              }
+</span></span></span><span class="line"><span class="cl"><span class="sd">              request = Request(webhook_url, json.dumps(teams_message).encode(&#39;utf-8&#39;))
+</span></span></span><span class="line"><span class="cl"><span class="sd">              try:
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  response = urlopen(request)
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  response.read()
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  print(&#34;Success&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">              except HTTPError as err:
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  print(&#34;Fail&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">              except URLError as err:
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  print(&#34;Fail&#34;)</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaWebhook</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">index.lambda_handler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaRole.Arn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">python3.8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Webhook</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref WebhookUrl</span><span class="w">
+</span></span></span></code></pre></div><h2 id="glacier-storage-class를-aws-cli로-이용하는-방법"><strong>Glacier storage class를 AWS CLI로 이용하는 방법</strong><a href="#glacier-storage-class를-aws-cli로-이용하는-방법" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <h3 id="버킷에-아카이브-올리는-명령어-예시">버킷에 아카이브 올리는 명령어 예시<a href="#버킷에-아카이브-올리는-명령어-예시" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
-<span class="c1"># --storage-class GLACIER 옵션을 줘야 합니다.</span>
-</code></pre></div><h3 id="s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시">s3api로 Glacier에 있는 데이터를 Retrieval(반출) 요청하는 명령어 예시<a href="#s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
+</span></span><span class="line"><span class="cl"><span class="c1"># --storage-class GLACIER 옵션을 줘야 합니다.</span>
+</span></span></code></pre></div><h3 id="s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시">s3api로 Glacier에 있는 데이터를 Retrieval(반출) 요청하는 명령어 예시<a href="#s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p><code>--restore-request</code> 옵션을 줘야 합니다. 해당 옵션에는 반출한 오브젝트가 몇 일간 필요한지를 명시하는 <code>Days</code> 와, Retrieval 옵션을 명시해줘야 합니다.</p>
 <p>retrieval option은 <code>GlacierJobParameters={&quot;Tier&quot;=&quot;Standard&quot;}</code> 형태로 명시해주면 됩니다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
-<span class="c1"># Tier를 원하는 Type으로 설정. 여기서는 Standard로 해보았습니다.</span>
-<span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Expedited&#34;}</span>
-<span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Bulk&#34;}</span>
-
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Tier를 원하는 Type으로 설정. 여기서는 Standard로 해보았습니다.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Expedited&#34;}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Bulk&#34;}</span>
+</span></span></code></pre></div><ul>
 <li>Days=1로 하면 Retrieval 처리 완료되고 하루 동안 해당 Archive를 다운 받을 수 있게됩니다. 7로 하면 일주일동안 받을 수 있게 됩니다.</li>
 <li>Tier가 위에서 설명한 Retrieval 옵션을 뜻합니다.</li>
 <li>
@@ -320,35 +318,35 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 <li>참고 사항으로, 위 템플릿 예시에서는 Notification을 설정해서 Retrieval이 완료되면 teams로 알림을 받습니다.</li>
 </ul>
 <h3 id="실제-retrieval-요청-실행">실제 Retrieval 요청 실행<a href="#실제-retrieval-요청-실행" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
-</code></pre></div><h3 id="retrieval이-진행중인지-확인하는-명령어">Retrieval이 진행중인지 확인하는 명령어<a href="#retrieval이-진행중인지-확인하는-명령어" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+</span></span></code></pre></div><h3 id="retrieval이-진행중인지-확인하는-명령어">Retrieval이 진행중인지 확인하는 명령어<a href="#retrieval이-진행중인지-확인하는-명령어" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <ul>
 <li>Progress는 보여주지 않고 진행중인지 완료되었는지 여부만 보여줍니다.</li>
 <li>이런 기약없는? 불편함으로 인해 사용할 경우 Notification이 있으면 좋다고 생각합니다.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
-<span class="o">{</span>
-    <span class="s2">&#34;AcceptRanges&#34;</span>: <span class="s2">&#34;bytes&#34;</span>,
-    <span class="s2">&#34;Restore&#34;</span>: <span class="s2">&#34;ongoing-request=\&#34;true\&#34;&#34;</span>, <span class="c1"># 현재 Retrieval이 진행중이라는걸 보여줌(ongoing-request=true)</span>
-    <span class="s2">&#34;LastModified&#34;</span>: <span class="s2">&#34;2021-03-24T02:13:16+00:00&#34;</span>,
-    <span class="s2">&#34;ContentLength&#34;</span>: 3,
-    <span class="s2">&#34;ETag&#34;</span>: <span class="s2">&#34;\&#34;abcdefghijklmnopqrstuzwxyz1234567890\&#34;&#34;</span>,
-    <span class="s2">&#34;ContentType&#34;</span>: <span class="s2">&#34;text/plain&#34;</span>,
-    <span class="s2">&#34;Metadata&#34;</span>: <span class="o">{}</span>,
-    <span class="s2">&#34;StorageClass&#34;</span>: <span class="s2">&#34;GLACIER&#34;</span>
-<span class="o">}</span>
-</code></pre></div><h3 id="retrieva이-완료되었을-때-head-object-결과">Retrieva이 완료되었을 때 head-object 결과<a href="#retrieva이-완료되었을-때-head-object-결과" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;AcceptRanges&#34;</span>: <span class="s2">&#34;bytes&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Restore&#34;</span>: <span class="s2">&#34;ongoing-request=\&#34;true\&#34;&#34;</span>, <span class="c1"># 현재 Retrieval이 진행중이라는걸 보여줌(ongoing-request=true)</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;LastModified&#34;</span>: <span class="s2">&#34;2021-03-24T02:13:16+00:00&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ContentLength&#34;</span>: 3,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ETag&#34;</span>: <span class="s2">&#34;\&#34;abcdefghijklmnopqrstuzwxyz1234567890\&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ContentType&#34;</span>: <span class="s2">&#34;text/plain&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Metadata&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;StorageClass&#34;</span>: <span class="s2">&#34;GLACIER&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="retrieva이-완료되었을-때-head-object-결과">Retrieva이 완료되었을 때 head-object 결과<a href="#retrieva이-완료되었을-때-head-object-결과" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <pre tabindex="0"><code>[august@dummy-pc ~]$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
 {
-    &quot;AcceptRanges&quot;: &quot;bytes&quot;,
+    &#34;AcceptRanges&#34;: &#34;bytes&#34;,
     # ongoing-request = false(완료됨) Expiry Date가 위에 restore-object 명령어에서 명시한 Days의 결과입니다.
-    &quot;Restore&quot;: &quot;ongoing-request=\&quot;false\&quot;, expiry-date=\&quot;Fri, 26 Mar 2021 00:00:00 GMT\&quot;&quot;,
-    &quot;LastModified&quot;: &quot;2021-03-24T02:13:16+00:00&quot;,
-    &quot;ContentLength&quot;: 3,
-    &quot;ETag&quot;: &quot;\&quot;abcdefghijklmnopqrstuzwxyz1234567890\&quot;&quot;,
-    &quot;ContentType&quot;: &quot;text/plain&quot;,
-    &quot;Metadata&quot;: {},
-    &quot;StorageClass&quot;: &quot;GLACIER&quot;
+    &#34;Restore&#34;: &#34;ongoing-request=\&#34;false\&#34;, expiry-date=\&#34;Fri, 26 Mar 2021 00:00:00 GMT\&#34;&#34;,
+    &#34;LastModified&#34;: &#34;2021-03-24T02:13:16+00:00&#34;,
+    &#34;ContentLength&#34;: 3,
+    &#34;ETag&#34;: &#34;\&#34;abcdefghijklmnopqrstuzwxyz1234567890\&#34;&#34;,
+    &#34;ContentType&#34;: &#34;text/plain&#34;,
+    &#34;Metadata&#34;: {},
+    &#34;StorageClass&#34;: &#34;GLACIER&#34;
 }
 </code></pre><h2 id="그래서-s3-glacier-flexible-retrieval-storage-class-사용하면-좋은가요">그래서 S3 Glacier Flexible Retrieval storage class 사용하면 좋은가요?<a href="#그래서-s3-glacier-flexible-retrieval-storage-class-사용하면-좋은가요" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h2>
 <p>비용을 대폭 아낄 수 있습니다.</p>
@@ -363,7 +361,7 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 				<p>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://augustkang.com/tags/aws">aws</a></span><span class="tag"><a href="https://augustkang.com/tags/s3">s3</a></span><span class="tag"><a href="https://augustkang.com/tags/glacier">glacier</a></span>
 				</p>
-				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>4393 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>4494 Words</p>
 				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-06-17 12:10 &#43;0900</p>
 			</footer>
 		</article>
@@ -378,7 +376,7 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 		<div id="comments" class="thin">
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -408,7 +406,7 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 
 
 
-	<script src="https://augustkang.com/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	<script src="https://augustkang.com/js/bundle.min.580988ed2982bcbb74a1773c7abea97b43e4c43b9324e10cda0813ec6ec4bb67.js" integrity="sha256-WAmI7SmCvLt0oXc8er6pe0PkxDuTJOEM2ggT7G7Eu2c=" crossorigin="anonymous"></script>
 	
 <script type="application/javascript">
 var doNotTrack = false;

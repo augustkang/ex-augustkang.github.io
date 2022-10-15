@@ -76,13 +76,13 @@
 				<p>메모리 사용 정보를 보여주는 free 명령어와 /proc/meminfo 에 대해</p>
 <p>&ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
 <h3 id="메모리-사용량-확인하기">메모리 사용량 확인하기<a href="#메모리-사용량-확인하기" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# free -m
-              total        used        free      shared  buff/cache   available
-Mem:           <span class="m">8047</span>        <span class="m">6161</span>        <span class="m">1662</span>          <span class="m">17</span>         <span class="m">223</span>        <span class="m">1755</span>
-Swap:         <span class="m">24576</span>         <span class="m">214</span>       <span class="m">24361</span>
-<span class="c1"># 출력 데이터 단위에 따라 옵션이 다르다.</span>
-<span class="c1"># -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@August-PC:~# free -m
+</span></span><span class="line"><span class="cl">              total        used        free      shared  buff/cache   available
+</span></span><span class="line"><span class="cl">Mem:           <span class="m">8047</span>        <span class="m">6161</span>        <span class="m">1662</span>          <span class="m">17</span>         <span class="m">223</span>        <span class="m">1755</span>
+</span></span><span class="line"><span class="cl">Swap:         <span class="m">24576</span>         <span class="m">214</span>       <span class="m">24361</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 출력 데이터 단위에 따라 옵션이 다르다.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위</span>
+</span></span></code></pre></div><ul>
 <li>
 <p>total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량</p>
 </li>
@@ -95,13 +95,13 @@ Swap:         <span class="m">24576</span>         <span class="m">214</span>   
 <p>buffers/cached 영역은 원본이 원래는 디스크에 있으나 성능 이점을 위해 그 디스크 내용을 메모리에 캐싱 목적으로 올려놓은 부분이라고 한다.</p>
 <p>그럼 대체 디스크에 수많은 데이터들 중에 어떤걸 캐싱 목적으로 메모리에 올려놓는데??????</p>
 <p><code>cat /proc/meminfo</code> 로 buffers, cached를 나눠서 보면</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">august@august-PC~$ cat /proc/meminfo <span class="p">|</span> head -5
-MemTotal:        <span class="m">2035676</span> kB
-MemFree:          <span class="m">784432</span> kB
-MemAvailable:    <span class="m">1890044</span> kB
-Buffers:            <span class="m">6596</span> kB
-Cached:          <span class="m">1021344</span> kB
-</code></pre></div><p>Buffers : 좀 더 작음. Why? 디스크에 있던 File의 메타데이터(inode)를 읽어놓는 영역이다. 메타데이터는 파일의 access time, owner 등등 정보를 의미한다. 크기가 작다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">august@august-PC~$ cat /proc/meminfo <span class="p">|</span> head -5
+</span></span><span class="line"><span class="cl">MemTotal:        <span class="m">2035676</span> kB
+</span></span><span class="line"><span class="cl">MemFree:          <span class="m">784432</span> kB
+</span></span><span class="line"><span class="cl">MemAvailable:    <span class="m">1890044</span> kB
+</span></span><span class="line"><span class="cl">Buffers:            <span class="m">6596</span> kB
+</span></span><span class="line"><span class="cl">Cached:          <span class="m">1021344</span> kB
+</span></span></code></pre></div><p>Buffers : 좀 더 작음. Why? 디스크에 있던 File의 메타데이터(inode)를 읽어놓는 영역이다. 메타데이터는 파일의 access time, owner 등등 정보를 의미한다. 크기가 작다.</p>
 <p>Cached : 크기가 buffers에 비해 훨씬 크다. Why? 디스크에 있던 File의 실제 데이터 내용(data block)을 페이지 단위로 읽어놓는 영역이다.</p>
 <p>일단 buffers, cached 이 영역들은 기본적으로 원본이 이미 디스크에 있는 내용이다.</p>
 <p>성능 이점을 위해 메모리에 읽어놓은 형태이기 때문에 해제해버려도 프로그램 구동에 치명적인 위협은 되지 않는다.
@@ -125,27 +125,27 @@ Cached:          <span class="m">1021344</span> kB
 </ul>
 <p>파일 자체의 내용을 저장하는데 쓰이는 cache</p>
 <h3 id="procmeminfo-읽기">/proc/meminfo 읽기<a href="#procmeminfo-읽기" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@August-PC ~<span class="o">]</span><span class="c1"># cat /proc/meminfo </span>
-MemTotal:        <span class="m">7957324</span> kB
-MemFree:          <span class="m">299176</span> kB
-MemAvailable:    <span class="m">4854520</span> kB
-Buffers:          <span class="m">141072</span> kB
-Cached:          <span class="m">4768400</span> kB
-SwapCached:        <span class="m">75588</span> kB
-Active:          <span class="m">4118228</span> kB
-Inactive:        <span class="m">2813128</span> kB
-Active<span class="o">(</span>anon<span class="o">)</span>:    <span class="m">1330700</span> kB
-Inactive<span class="o">(</span>anon<span class="o">)</span>:  <span class="m">1069180</span> kB
-Active<span class="o">(</span>file<span class="o">)</span>:    <span class="m">2787528</span> kB
-Inactive<span class="o">(</span>file<span class="o">)</span>:  <span class="m">1743948</span> kB
-Unevictable:           <span class="m">0</span> kB
-Mlocked:               <span class="m">0</span> kB
-SwapTotal:       <span class="m">8388604</span> kB
-SwapFree:        <span class="m">7214696</span> kB
-Dirty:               <span class="m">136</span> kB
-
-... 생략
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@August-PC ~<span class="o">]</span><span class="c1"># cat /proc/meminfo </span>
+</span></span><span class="line"><span class="cl">MemTotal:        <span class="m">7957324</span> kB
+</span></span><span class="line"><span class="cl">MemFree:          <span class="m">299176</span> kB
+</span></span><span class="line"><span class="cl">MemAvailable:    <span class="m">4854520</span> kB
+</span></span><span class="line"><span class="cl">Buffers:          <span class="m">141072</span> kB
+</span></span><span class="line"><span class="cl">Cached:          <span class="m">4768400</span> kB
+</span></span><span class="line"><span class="cl">SwapCached:        <span class="m">75588</span> kB
+</span></span><span class="line"><span class="cl">Active:          <span class="m">4118228</span> kB
+</span></span><span class="line"><span class="cl">Inactive:        <span class="m">2813128</span> kB
+</span></span><span class="line"><span class="cl">Active<span class="o">(</span>anon<span class="o">)</span>:    <span class="m">1330700</span> kB
+</span></span><span class="line"><span class="cl">Inactive<span class="o">(</span>anon<span class="o">)</span>:  <span class="m">1069180</span> kB
+</span></span><span class="line"><span class="cl">Active<span class="o">(</span>file<span class="o">)</span>:    <span class="m">2787528</span> kB
+</span></span><span class="line"><span class="cl">Inactive<span class="o">(</span>file<span class="o">)</span>:  <span class="m">1743948</span> kB
+</span></span><span class="line"><span class="cl">Unevictable:           <span class="m">0</span> kB
+</span></span><span class="line"><span class="cl">Mlocked:               <span class="m">0</span> kB
+</span></span><span class="line"><span class="cl">SwapTotal:       <span class="m">8388604</span> kB
+</span></span><span class="line"><span class="cl">SwapFree:        <span class="m">7214696</span> kB
+</span></span><span class="line"><span class="cl">Dirty:               <span class="m">136</span> kB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">... 생략
+</span></span></code></pre></div><ul>
 <li>
 <p>SwapCached: swap으로 사용된 영역 중 다시 메모리로 돌아온 영역. Swap으로 빠졌다고 돌아온 영역이 얼마나 되는지 나타냄.</p>
 </li>
@@ -176,12 +176,12 @@ Dirty:               <span class="m">136</span> kB
 </ul>
 <h3 id="slab-메모리-영역">slab 메모리 영역<a href="#slab-메모리-영역" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
 <p><code>cat /proc/meminfo</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">... 생략
-Slab:             <span class="m">473356</span> kB
-SReclaimable:     <span class="m">402036</span> kB
-SUnreclaim:        <span class="m">71320</span> kB
-... 생략
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">... 생략
+</span></span><span class="line"><span class="cl">Slab:             <span class="m">473356</span> kB
+</span></span><span class="line"><span class="cl">SReclaimable:     <span class="m">402036</span> kB
+</span></span><span class="line"><span class="cl">SUnreclaim:        <span class="m">71320</span> kB
+</span></span><span class="line"><span class="cl">... 생략
+</span></span></code></pre></div><ul>
 <li>
 <p>slab: 메모리 영역 중 커널이 직접 사용하는 영역. 여기에는 dentry cache, inode cache 등 커널이 사용하는 메모리가 포함.</p>
 </li>
@@ -192,26 +192,26 @@ SUnreclaim:        <span class="m">71320</span> kB
 <p>SUnreclaim: Slab 영역 중 재사용 될 수 없는 영역. 커널이 현재 사용중이며 해제해서 다른 용도로 쓸 수 없는 영역.</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Active / Total Objects <span class="o">(</span>% used<span class="o">)</span>    : <span class="m">1718090</span> / <span class="m">1895312</span> <span class="o">(</span>90.6%<span class="o">)</span>
- Active / Total Slabs <span class="o">(</span>% used<span class="o">)</span>      : <span class="m">48101</span> / <span class="m">48101</span> <span class="o">(</span>100.0%<span class="o">)</span>
- Active / Total Caches <span class="o">(</span>% used<span class="o">)</span>     : <span class="m">82</span> / <span class="m">106</span> <span class="o">(</span>77.4%<span class="o">)</span>   
- Active / Total Size <span class="o">(</span>% used<span class="o">)</span>       : 435110.21K / 469842.19K <span class="o">(</span>92.6%<span class="o">)</span>
- Minimum / Average / Maximum Object : 0.01K / 0.25K / 12.75K
-
-  OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME
-<span class="m">842205</span> <span class="m">743124</span>  88%    0.10K  <span class="m">21595</span>       <span class="m">39</span>     86380K buffer_head
-<span class="m">382368</span> <span class="m">368286</span>  96%    0.19K   <span class="m">9104</span>       <span class="m">42</span>     72832K dentry
-<span class="m">167216</span> <span class="m">167216</span> 100%    0.94K   <span class="m">4919</span>       <span class="m">34</span>    157408K xfs_inode
-<span class="m">115668</span> <span class="m">111428</span>  96%    0.57K   <span class="m">4131</span>       <span class="m">28</span>     66096K radix_tree_node
- <span class="m">55040</span>  <span class="m">47535</span>  86%    0.06K    <span class="m">860</span>       <span class="m">64</span>      3440K kmalloc-64
- <span class="m">28176</span>  <span class="m">28176</span> 100%    0.16K    <span class="m">587</span>       <span class="m">48</span>      4696K xfs_ili
- <span class="m">28152</span>  <span class="m">28152</span> 100%    0.12K    <span class="m">828</span>       <span class="m">34</span>      3312K kernfs_node_cache
- <span class="m">26344</span>  <span class="m">16899</span>  64%    0.21K    <span class="m">712</span>       <span class="m">37</span>      5696K vm_area_struct
- <span class="m">19278</span>  <span class="m">10360</span>  53%    0.19K    <span class="m">459</span>       <span class="m">42</span>      3672K kmalloc-192
- <span class="m">16000</span>  <span class="m">15514</span>  96%    0.03K    <span class="m">125</span>      <span class="m">128</span>       500K kmalloc-32
- <span class="m">15912</span>  <span class="m">15912</span> 100%    0.04K    <span class="m">156</span>      <span class="m">102</span>       624K selinux_inode_security
-<span class="c1"># ... 생략</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Active / Total Objects <span class="o">(</span>% used<span class="o">)</span>    : <span class="m">1718090</span> / <span class="m">1895312</span> <span class="o">(</span>90.6%<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> Active / Total Slabs <span class="o">(</span>% used<span class="o">)</span>      : <span class="m">48101</span> / <span class="m">48101</span> <span class="o">(</span>100.0%<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> Active / Total Caches <span class="o">(</span>% used<span class="o">)</span>     : <span class="m">82</span> / <span class="m">106</span> <span class="o">(</span>77.4%<span class="o">)</span>   
+</span></span><span class="line"><span class="cl"> Active / Total Size <span class="o">(</span>% used<span class="o">)</span>       : 435110.21K / 469842.19K <span class="o">(</span>92.6%<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> Minimum / Average / Maximum Object : 0.01K / 0.25K / 12.75K
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME
+</span></span><span class="line"><span class="cl"><span class="m">842205</span> <span class="m">743124</span>  88%    0.10K  <span class="m">21595</span>       <span class="m">39</span>     86380K buffer_head
+</span></span><span class="line"><span class="cl"><span class="m">382368</span> <span class="m">368286</span>  96%    0.19K   <span class="m">9104</span>       <span class="m">42</span>     72832K dentry
+</span></span><span class="line"><span class="cl"><span class="m">167216</span> <span class="m">167216</span> 100%    0.94K   <span class="m">4919</span>       <span class="m">34</span>    157408K xfs_inode
+</span></span><span class="line"><span class="cl"><span class="m">115668</span> <span class="m">111428</span>  96%    0.57K   <span class="m">4131</span>       <span class="m">28</span>     66096K radix_tree_node
+</span></span><span class="line"><span class="cl"> <span class="m">55040</span>  <span class="m">47535</span>  86%    0.06K    <span class="m">860</span>       <span class="m">64</span>      3440K kmalloc-64
+</span></span><span class="line"><span class="cl"> <span class="m">28176</span>  <span class="m">28176</span> 100%    0.16K    <span class="m">587</span>       <span class="m">48</span>      4696K xfs_ili
+</span></span><span class="line"><span class="cl"> <span class="m">28152</span>  <span class="m">28152</span> 100%    0.12K    <span class="m">828</span>       <span class="m">34</span>      3312K kernfs_node_cache
+</span></span><span class="line"><span class="cl"> <span class="m">26344</span>  <span class="m">16899</span>  64%    0.21K    <span class="m">712</span>       <span class="m">37</span>      5696K vm_area_struct
+</span></span><span class="line"><span class="cl"> <span class="m">19278</span>  <span class="m">10360</span>  53%    0.19K    <span class="m">459</span>       <span class="m">42</span>      3672K kmalloc-192
+</span></span><span class="line"><span class="cl"> <span class="m">16000</span>  <span class="m">15514</span>  96%    0.03K    <span class="m">125</span>      <span class="m">128</span>       500K kmalloc-32
+</span></span><span class="line"><span class="cl"> <span class="m">15912</span>  <span class="m">15912</span> 100%    0.04K    <span class="m">156</span>      <span class="m">102</span>       624K selinux_inode_security
+</span></span><span class="line"><span class="cl"><span class="c1"># ... 생략</span>
+</span></span></code></pre></div><ul>
 <li>buddy system : linux에서 메모리를 할당해주는 시스템. 가능한 적당하게 메모리 요청을 만족하도록 메모리를 여러 부분으로 나누는 메모리 할당 시스템.
 메모리의 크기를 절반씩 분할하면서 가장 잘 맞는 크기의 메모리를 찾아 할당해 준다. 2의 거듭제곱 값으로 메모리를 할당.</li>
 <li>slab allocator : 버디 시스템을 통해 기본 페이지 크기인 4KB 영역을 할당 받은 후에 각각의 캐시 크기에 맞게 영역을 나눠서 사용.</li>
@@ -241,7 +241,7 @@ SUnreclaim:        <span class="m">71320</span> kB
 		<div id="comments" class="thin">
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -271,7 +271,7 @@ SUnreclaim:        <span class="m">71320</span> kB
 
 
 
-	<script src="https://augustkang.com/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	<script src="https://augustkang.com/js/bundle.min.580988ed2982bcbb74a1773c7abea97b43e4c43b9324e10cda0813ec6ec4bb67.js" integrity="sha256-WAmI7SmCvLt0oXc8er6pe0PkxDuTJOEM2ggT7G7Eu2c=" crossorigin="anonymous"></script>
 	
 <script type="application/javascript">
 var doNotTrack = false;

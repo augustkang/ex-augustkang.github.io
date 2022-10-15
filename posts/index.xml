@@ -127,20 +127,20 @@
 <p>적어두고 생각 안나면 찾아보고 싶어 정리.</p>
 <h3 id="hello-라는-라인이-없을-경우에만-hello를-맨-아래에-append-하려면">hello 라는 라인이 없을 경우에만 hello를 맨 아래에 append 하려면?</h3>
 <p>아래와 같은 <code>file.txt</code> 라는 텍스트 파일을 예시로 생각해보자.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# cat file.txt
-my
-name
-is
-augustkang
-</code></pre></div><p>이 텍스트 파일에 hello 라인이 없을때만 hello 라인을 추가하려면 아래 명령어 조합을 이용하면 된다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# grep -qxF <span class="s2">&#34;hello&#34;</span> file.txt <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;hello&#34;</span> &gt;&gt; file.txt
-root@dummy-pc:~# cat file.txt
-my
-name
-is
-augustkang
-hello
-</code></pre></div><p><code>grep -qxF &quot;hello&quot; file.txt || echo &quot;hello&quot; &gt;&gt; file.txt</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@dummy-pc:~# cat file.txt
+</span></span><span class="line"><span class="cl">my
+</span></span><span class="line"><span class="cl">name
+</span></span><span class="line"><span class="cl">is
+</span></span><span class="line"><span class="cl">augustkang
+</span></span></code></pre></div><p>이 텍스트 파일에 hello 라인이 없을때만 hello 라인을 추가하려면 아래 명령어 조합을 이용하면 된다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@dummy-pc:~# grep -qxF <span class="s2">&#34;hello&#34;</span> file.txt <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;hello&#34;</span> &gt;&gt; file.txt
+</span></span><span class="line"><span class="cl">root@dummy-pc:~# cat file.txt
+</span></span><span class="line"><span class="cl">my
+</span></span><span class="line"><span class="cl">name
+</span></span><span class="line"><span class="cl">is
+</span></span><span class="line"><span class="cl">augustkang
+</span></span><span class="line"><span class="cl">hello
+</span></span></code></pre></div><p><code>grep -qxF &quot;hello&quot; file.txt || echo &quot;hello&quot; &gt;&gt; file.txt</code></p>
 <p>명령어 작동 방식</p>
 <ul>
 <li>
@@ -154,21 +154,21 @@ hello
 </li>
 </ul>
 <h3 id="텍스트-파일에-hello-라는-라인이-있을-경우엔-어떻게-될까">텍스트 파일에 hello 라는 라인이 있을 경우엔 어떻게 될까?</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# cat file.txt
-hello <span class="c1"># hello 라는 라인이 이미 있는 상황</span>
-my
-name
-is
-augustkang
-</code></pre></div><p>위 파일에 대해 똑같이 명령어를 실행해도 이미 hello가 있기 때문에 변화가 없다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@dummy-pc:~# grep -qxF <span class="s2">&#34;hello&#34;</span> file.txt <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;hello&#34;</span> &gt;&gt; file.txt
-root@dummy-pc:~# cat file.txt
-hello
-my
-name
-is
-augustkang <span class="c1"># 아래에 라인이 추가되지 않음</span>
-</code></pre></div><p>명령어 작동 방식</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@dummy-pc:~# cat file.txt
+</span></span><span class="line"><span class="cl">hello <span class="c1"># hello 라는 라인이 이미 있는 상황</span>
+</span></span><span class="line"><span class="cl">my
+</span></span><span class="line"><span class="cl">name
+</span></span><span class="line"><span class="cl">is
+</span></span><span class="line"><span class="cl">augustkang
+</span></span></code></pre></div><p>위 파일에 대해 똑같이 명령어를 실행해도 이미 hello가 있기 때문에 변화가 없다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@dummy-pc:~# grep -qxF <span class="s2">&#34;hello&#34;</span> file.txt <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;hello&#34;</span> &gt;&gt; file.txt
+</span></span><span class="line"><span class="cl">root@dummy-pc:~# cat file.txt
+</span></span><span class="line"><span class="cl">hello
+</span></span><span class="line"><span class="cl">my
+</span></span><span class="line"><span class="cl">name
+</span></span><span class="line"><span class="cl">is
+</span></span><span class="line"><span class="cl">augustkang <span class="c1"># 아래에 라인이 추가되지 않음</span>
+</span></span></code></pre></div><p>명령어 작동 방식</p>
 <ul>
 <li>
 <p><code>grep -qxF &quot;hello&quot; file.txt</code> 는 file.txt에 hello라는 라인이 있으면 true를 반환.</p>
@@ -292,139 +292,137 @@ S3 Glacier 서비스 자체가 지하 깊숙한 저장고에 보관해놨다가 
 <p>아래 예시에서는 MS Teams의 webhook을 이용해 noti를 받게 하였습니다.</p>
 <p>MS Teams가 아닌 Slack이나 다른 메신저 서비스의 경우에도 Webhook을 사용할 수 있다면 request를 날리도록 Lambda를  작성한 뒤,
 S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에서 webhook url에 request를 날리도록 하는 식으로 할 수 있습니다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># CloudFormation Parameter for MS Teams webhook URL</span><span class="w">
-</span><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">WebhookUrl</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
-</span><span class="w">    </span><span class="nt">AllowedPattern</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;.+&#34;</span><span class="w"> </span><span class="c"># Set as mandatory</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">S3Bucket</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::Bucket</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">BucketName</span><span class="p">:</span><span class="w"> </span><span class="l">my-glacier-bucket</span><span class="w">
-</span><span class="w">      </span><span class="nt">LifecycleConfiguration</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">Rules</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">Id</span><span class="p">:</span><span class="w"> </span><span class="l">DefaultAsGlacier</span><span class="w">
-</span><span class="w">          </span><span class="nt">Status</span><span class="p">:</span><span class="w"> </span><span class="l">Enabled</span><span class="w">
-</span><span class="w">          </span><span class="nt">Transitions</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="nt">TransitionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
-</span><span class="w">            </span><span class="nt">StorageClass</span><span class="p">:</span><span class="w"> </span><span class="l">GLACIER</span><span class="w"> </span><span class="c"># Objects will be stored as GLACIER Storage Class</span><span class="w">
-</span><span class="w">      </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">LambdaConfigurations</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">Event</span><span class="p">:</span><span class="w"> </span><span class="l">s3:ObjectRestore:Completed</span><span class="w">
-</span><span class="w">          </span><span class="nt">Function</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaFunction.Arn</span><span class="w">
-</span><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaPermission</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">S3BucketPolicy</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::BucketPolicy</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">Bucket</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref S3Bucket</span><span class="w">
-</span><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="c"># put bucket policies as per your requirements</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">LambdaPermission</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Permission</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l">lambda:InvokeFunction</span><span class="w">
-</span><span class="w">      </span><span class="nt">Principal</span><span class="p">:</span><span class="w"> </span><span class="l">s3.amazonaws.com</span><span class="w">
-</span><span class="w">      </span><span class="nt">SourceArn</span><span class="p">:</span><span class="w"> </span><span class="l">arn:aws:s3:::my-glacier-bucket</span><span class="w">
-</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref LambdaFunction</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">LambdaRole</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::Role</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
-</span><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
-</span><span class="w">          </span><span class="nt">Principal</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span><span class="nt">Service</span><span class="p">:</span><span class="w">
-</span><span class="w">            </span>- <span class="l">lambda.amazonaws.com</span><span class="w">
-</span><span class="w">          </span><span class="nt">Action</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span>- <span class="l">sts:AssumeRole</span><span class="w">
-</span><span class="w">      </span><span class="nt">ManagedPolicyArns</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="l">arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole</span><span class="w">
-</span><span class="w">      </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/&#34;</span><span class="w">
-</span><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaRole</span><span class="w">
-</span><span class="w">      </span><span class="nt">RoleName</span><span class="p">:</span><span class="w"> </span><span class="l">my-lambda-role</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="nt">LambdaFunction</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Function</span><span class="w">
-</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
-</span><span class="sd">          import json
-</span><span class="sd">          import os
-</span><span class="sd">          import logging
-</span><span class="sd">          import boto3
-</span><span class="sd">          from urllib.request import Request, urlopen
-</span><span class="sd">          from urllib.error import URLError, HTTPError
-</span><span class="sd">
-</span><span class="sd">          def lambda_handler(event, context):
-</span><span class="sd">              webhook_url = os.environ.get(&#39;Webhook&#39;)
-</span><span class="sd">              bucket = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;bucket&#39;][&#39;name&#39;]
-</span><span class="sd">              archive = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;key&#39;]
-</span><span class="sd">              size = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;size&#39;]
-</span><span class="sd">
-</span><span class="sd">              teams_message = {
-</span><span class="sd">                  &#34;@context&#34;: &#34;https://schema.org/extensions&#34;,
-</span><span class="sd">                  &#34;@type&#34;: &#34;MessageCard&#34;,
-</span><span class="sd">                  &#34;themeColor&#34;: &#34;64a837&#34;,
-</span><span class="sd">                  &#34;title&#34;: &#34;Glacier 객체 복원 완료&#34;,
-</span><span class="sd">                  &#34;text&#34;: f&#34;복원된 객체 정보는 아래와 같습니다.&#34;,
-</span><span class="sd">                  &#34;sections&#34;: [
-</span><span class="sd">                      {
-</span><span class="sd">                          &#34;facts&#34;: [
-</span><span class="sd">                              {
-</span><span class="sd">                                  &#34;name&#34;: &#34;Bucket&#34;,
-</span><span class="sd">                                  &#34;value&#34;: f&#34;{bucket}&#34;
-</span><span class="sd">                              },
-</span><span class="sd">                              {
-</span><span class="sd">                                  &#34;name&#34;: &#34;Archive name : &#34;,
-</span><span class="sd">                                  &#34;value&#34;: f&#34;{archive}&#34;
-</span><span class="sd">                              },
-</span><span class="sd">                              {
-</span><span class="sd">                                  &#34;name&#34;: &#34;Size: &#34;,
-</span><span class="sd">                                  &#34;value&#34;: f&#34;{size}&#34;
-</span><span class="sd">                              }
-</span><span class="sd">                          ]
-</span><span class="sd">                      }
-</span><span class="sd">                  ]
-</span><span class="sd">              }
-</span><span class="sd">              request = Request(webhook_url, json.dumps(teams_message).encode(&#39;utf-8&#39;))
-</span><span class="sd">              try:
-</span><span class="sd">                  response = urlopen(request)
-</span><span class="sd">                  response.read()
-</span><span class="sd">                  print(&#34;Success&#34;)
-</span><span class="sd">              except HTTPError as err:
-</span><span class="sd">                  print(&#34;Fail&#34;)
-</span><span class="sd">              except URLError as err:
-</span><span class="sd">                  print(&#34;Fail&#34;)</span><span class="w">          
-</span><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaWebhook</span><span class="w">
-</span><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">index.lambda_handler</span><span class="w">
-</span><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaRole.Arn</span><span class="w">
-</span><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">python3.8</span><span class="w">
-</span><span class="w">      </span><span class="nt">Environment</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w">
-</span><span class="w">          </span><span class="nt">Webhook</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref WebhookUrl</span><span class="w">
-</span><span class="w">
-</span></code></pre></div><h2 id="glacier-storage-class를-aws-cli로-이용하는-방법"><strong>Glacier storage class를 AWS CLI로 이용하는 방법</strong></h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;2010-09-09&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># CloudFormation Parameter for MS Teams webhook URL</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Parameters</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">WebhookUrl</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">String</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">AllowedPattern</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;.+&#34;</span><span class="w"> </span><span class="c"># Set as mandatory</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">Resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">S3Bucket</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::Bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">BucketName</span><span class="p">:</span><span class="w"> </span><span class="l">my-glacier-bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">LifecycleConfiguration</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Rules</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">Id</span><span class="p">:</span><span class="w"> </span><span class="l">DefaultAsGlacier</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Status</span><span class="p">:</span><span class="w"> </span><span class="l">Enabled</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Transitions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="nt">TransitionInDays</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">StorageClass</span><span class="p">:</span><span class="w"> </span><span class="l">GLACIER</span><span class="w"> </span><span class="c"># Objects will be stored as GLACIER Storage Class</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">NotificationConfiguration</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">LambdaConfigurations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">Event</span><span class="p">:</span><span class="w"> </span><span class="l">s3:ObjectRestore:Completed</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Function</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaFunction.Arn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">DependsOn</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaPermission</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">S3BucketPolicy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::S3::BucketPolicy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Bucket</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref S3Bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="c"># put bucket policies as per your requirements</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">LambdaPermission</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Permission</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="l">lambda:InvokeFunction</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Principal</span><span class="p">:</span><span class="w"> </span><span class="l">s3.amazonaws.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">SourceArn</span><span class="p">:</span><span class="w"> </span><span class="l">arn:aws:s3:::my-glacier-bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref LambdaFunction</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">LambdaRole</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::IAM::Role</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;2012-10-17&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Statement</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="l">Allow</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Principal</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">Service</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="l">lambda.amazonaws.com</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Action</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span>- <span class="l">sts:AssumeRole</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ManagedPolicyArns</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaRole</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">RoleName</span><span class="p">:</span><span class="w"> </span><span class="l">my-lambda-role</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">LambdaFunction</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l">AWS::Lambda::Function</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Code</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">ZipFile</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          import json
+</span></span></span><span class="line"><span class="cl"><span class="sd">          import os
+</span></span></span><span class="line"><span class="cl"><span class="sd">          import logging
+</span></span></span><span class="line"><span class="cl"><span class="sd">          import boto3
+</span></span></span><span class="line"><span class="cl"><span class="sd">          from urllib.request import Request, urlopen
+</span></span></span><span class="line"><span class="cl"><span class="sd">          from urllib.error import URLError, HTTPError
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          def lambda_handler(event, context):
+</span></span></span><span class="line"><span class="cl"><span class="sd">              webhook_url = os.environ.get(&#39;Webhook&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">              bucket = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;bucket&#39;][&#39;name&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="sd">              archive = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;key&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="sd">              size = event[&#39;Records&#39;][0][&#39;s3&#39;][&#39;object&#39;][&#39;size&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">              teams_message = {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;@context&#34;: &#34;https://schema.org/extensions&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;@type&#34;: &#34;MessageCard&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;themeColor&#34;: &#34;64a837&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;title&#34;: &#34;Glacier 객체 복원 완료&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;text&#34;: f&#34;복원된 객체 정보는 아래와 같습니다.&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  &#34;sections&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="sd">                      {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                          &#34;facts&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;name&#34;: &#34;Bucket&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;value&#34;: f&#34;{bucket}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              },
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;name&#34;: &#34;Archive name : &#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;value&#34;: f&#34;{archive}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              },
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              {
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;name&#34;: &#34;Size: &#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                                  &#34;value&#34;: f&#34;{size}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">                              }
+</span></span></span><span class="line"><span class="cl"><span class="sd">                          ]
+</span></span></span><span class="line"><span class="cl"><span class="sd">                      }
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  ]
+</span></span></span><span class="line"><span class="cl"><span class="sd">              }
+</span></span></span><span class="line"><span class="cl"><span class="sd">              request = Request(webhook_url, json.dumps(teams_message).encode(&#39;utf-8&#39;))
+</span></span></span><span class="line"><span class="cl"><span class="sd">              try:
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  response = urlopen(request)
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  response.read()
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  print(&#34;Success&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">              except HTTPError as err:
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  print(&#34;Fail&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">              except URLError as err:
+</span></span></span><span class="line"><span class="cl"><span class="sd">                  print(&#34;Fail&#34;)</span><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">FunctionName</span><span class="p">:</span><span class="w"> </span><span class="l">LambdaWebhook</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l">index.lambda_handler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Role</span><span class="p">:</span><span class="w"> </span>!<span class="l">GetAtt LambdaRole.Arn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l">python3.8</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">Environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">Webhook</span><span class="p">:</span><span class="w"> </span>!<span class="l">Ref WebhookUrl</span><span class="w">
+</span></span></span></code></pre></div><h2 id="glacier-storage-class를-aws-cli로-이용하는-방법"><strong>Glacier storage class를 AWS CLI로 이용하는 방법</strong></h2>
 <h3 id="버킷에-아카이브-올리는-명령어-예시">버킷에 아카이브 올리는 명령어 예시</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
-<span class="c1"># --storage-class GLACIER 옵션을 줘야 합니다.</span>
-</code></pre></div><h3 id="s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시">s3api로 Glacier에 있는 데이터를 Retrieval(반출) 요청하는 명령어 예시</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3 cp FILENAME s3://my-glacier-bucket/ --storage-class GLACIER
+</span></span><span class="line"><span class="cl"><span class="c1"># --storage-class GLACIER 옵션을 줘야 합니다.</span>
+</span></span></code></pre></div><h3 id="s3api로-glacier에-있는-데이터를-retrieval반출-요청하는-명령어-예시">s3api로 Glacier에 있는 데이터를 Retrieval(반출) 요청하는 명령어 예시</h3>
 <p><code>--restore-request</code> 옵션을 줘야 합니다. 해당 옵션에는 반출한 오브젝트가 몇 일간 필요한지를 명시하는 <code>Days</code> 와, Retrieval 옵션을 명시해줘야 합니다.</p>
 <p>retrieval option은 <code>GlacierJobParameters={&quot;Tier&quot;=&quot;Standard&quot;}</code> 형태로 명시해주면 됩니다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
-<span class="c1"># Tier를 원하는 Type으로 설정. 여기서는 Standard로 해보았습니다.</span>
-<span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Expedited&#34;}</span>
-<span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Bulk&#34;}</span>
-
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Tier를 원하는 Type으로 설정. 여기서는 Standard로 해보았습니다.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Expedited&#34;}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request Days=1,GlacierJobParameters={&#34;Tier&#34;=&#34;Bulk&#34;}</span>
+</span></span></code></pre></div><ul>
 <li>Days=1로 하면 Retrieval 처리 완료되고 하루 동안 해당 Archive를 다운 받을 수 있게됩니다. 7로 하면 일주일동안 받을 수 있게 됩니다.</li>
 <li>Tier가 위에서 설명한 Retrieval 옵션을 뜻합니다.</li>
 <li>
@@ -445,35 +443,35 @@ S3 NotificationConfiguration의 대상을 Lambda로 지정 후 해당 Lambda에�
 <li>참고 사항으로, 위 템플릿 예시에서는 Notification을 설정해서 Retrieval이 완료되면 teams로 알림을 받습니다.</li>
 </ul>
 <h3 id="실제-retrieval-요청-실행">실제 Retrieval 요청 실행</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
-</code></pre></div><h3 id="retrieval이-진행중인지-확인하는-명령어">Retrieval이 진행중인지 확인하는 명령어</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api restore-object --bucket BUCKETNAME --key FILENAME --restore-request <span class="nv">Days</span><span class="o">=</span>1,GlacierJobParameters<span class="o">={</span><span class="s2">&#34;Tier&#34;</span><span class="o">=</span><span class="s2">&#34;Standard&#34;</span><span class="o">}</span>
+</span></span></code></pre></div><h3 id="retrieval이-진행중인지-확인하는-명령어">Retrieval이 진행중인지 확인하는 명령어</h3>
 <ul>
 <li>Progress는 보여주지 않고 진행중인지 완료되었는지 여부만 보여줍니다.</li>
 <li>이런 기약없는? 불편함으로 인해 사용할 경우 Notification이 있으면 좋다고 생각합니다.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
-<span class="o">{</span>
-    <span class="s2">&#34;AcceptRanges&#34;</span>: <span class="s2">&#34;bytes&#34;</span>,
-    <span class="s2">&#34;Restore&#34;</span>: <span class="s2">&#34;ongoing-request=\&#34;true\&#34;&#34;</span>, <span class="c1"># 현재 Retrieval이 진행중이라는걸 보여줌(ongoing-request=true)</span>
-    <span class="s2">&#34;LastModified&#34;</span>: <span class="s2">&#34;2021-03-24T02:13:16+00:00&#34;</span>,
-    <span class="s2">&#34;ContentLength&#34;</span>: 3,
-    <span class="s2">&#34;ETag&#34;</span>: <span class="s2">&#34;\&#34;abcdefghijklmnopqrstuzwxyz1234567890\&#34;&#34;</span>,
-    <span class="s2">&#34;ContentType&#34;</span>: <span class="s2">&#34;text/plain&#34;</span>,
-    <span class="s2">&#34;Metadata&#34;</span>: <span class="o">{}</span>,
-    <span class="s2">&#34;StorageClass&#34;</span>: <span class="s2">&#34;GLACIER&#34;</span>
-<span class="o">}</span>
-</code></pre></div><h3 id="retrieva이-완료되었을-때-head-object-결과">Retrieva이 완료되었을 때 head-object 결과</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>august@dummy-pc ~<span class="o">]</span>$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;AcceptRanges&#34;</span>: <span class="s2">&#34;bytes&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Restore&#34;</span>: <span class="s2">&#34;ongoing-request=\&#34;true\&#34;&#34;</span>, <span class="c1"># 현재 Retrieval이 진행중이라는걸 보여줌(ongoing-request=true)</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;LastModified&#34;</span>: <span class="s2">&#34;2021-03-24T02:13:16+00:00&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ContentLength&#34;</span>: 3,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ETag&#34;</span>: <span class="s2">&#34;\&#34;abcdefghijklmnopqrstuzwxyz1234567890\&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ContentType&#34;</span>: <span class="s2">&#34;text/plain&#34;</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Metadata&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;StorageClass&#34;</span>: <span class="s2">&#34;GLACIER&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="retrieva이-완료되었을-때-head-object-결과">Retrieva이 완료되었을 때 head-object 결과</h3>
 <pre tabindex="0"><code>[august@dummy-pc ~]$ aws s3api head-object --bucket BUCKETNAME --key FIELNAME
 {
-    &quot;AcceptRanges&quot;: &quot;bytes&quot;,
+    &#34;AcceptRanges&#34;: &#34;bytes&#34;,
     # ongoing-request = false(완료됨) Expiry Date가 위에 restore-object 명령어에서 명시한 Days의 결과입니다.
-    &quot;Restore&quot;: &quot;ongoing-request=\&quot;false\&quot;, expiry-date=\&quot;Fri, 26 Mar 2021 00:00:00 GMT\&quot;&quot;,
-    &quot;LastModified&quot;: &quot;2021-03-24T02:13:16+00:00&quot;,
-    &quot;ContentLength&quot;: 3,
-    &quot;ETag&quot;: &quot;\&quot;abcdefghijklmnopqrstuzwxyz1234567890\&quot;&quot;,
-    &quot;ContentType&quot;: &quot;text/plain&quot;,
-    &quot;Metadata&quot;: {},
-    &quot;StorageClass&quot;: &quot;GLACIER&quot;
+    &#34;Restore&#34;: &#34;ongoing-request=\&#34;false\&#34;, expiry-date=\&#34;Fri, 26 Mar 2021 00:00:00 GMT\&#34;&#34;,
+    &#34;LastModified&#34;: &#34;2021-03-24T02:13:16+00:00&#34;,
+    &#34;ContentLength&#34;: 3,
+    &#34;ETag&#34;: &#34;\&#34;abcdefghijklmnopqrstuzwxyz1234567890\&#34;&#34;,
+    &#34;ContentType&#34;: &#34;text/plain&#34;,
+    &#34;Metadata&#34;: {},
+    &#34;StorageClass&#34;: &#34;GLACIER&#34;
 }
 </code></pre><h2 id="그래서-s3-glacier-flexible-retrieval-storage-class-사용하면-좋은가요">그래서 S3 Glacier Flexible Retrieval storage class 사용하면 좋은가요?</h2>
 <p>비용을 대폭 아낄 수 있습니다.</p>
@@ -539,7 +537,7 @@ DevOps Engineer Professional(DOP) 자격증은 한국에서 인기가 없는지 
 Stephane Maarek 형님께 푹 빠졌기 때문에(Linkedin follow도 함!) 스테판 형님의 강의는 믿고 들었습니다. 가격은 20$ 정도 였던 것 같네요.</p>
 <p>시험 범위에 나오는 각 도메인 별로 개념을 설명해주고, 서비스들을 어떻게 연결, 자동화 할 수 있는지 알려줍니다. 해당 서비스들을 꼭 직접 사용해보는 실습 과정도 포함되어 있습니다.</p>
 <p>강의를 전부 듣고나서는 Jon Bonso 형님의 연습문제를 풀었습니다. 가격은 14.99$ 입니다.</p>
-<p>75문제를 시험처럼 풀로 보는 Practice exam을 총 5회 제공해주고, 영역별로 나눠서 볼 수 있는 문제도 제공해니다. 구성이 재밌습니다.</p>
+<p>75문제를 시험처럼 풀로 보는 Practice exam을 총 5회 제공해주고, 영역별로 나눠서 볼 수 있는 문제도 제공해줍니다. 구성이 재밌습니다.</p>
 <ul>
 <li>시간을 재며 볼 수 있는 Timed mode 2회</li>
 <li>한 문제 한 문제 풀 때마다 바로 정답 여부를 알 수 있고 관련 개념들을 볼 수 있는 Review mode 2회</li>
@@ -576,7 +574,7 @@ Stephane Maarek 형님께 푹 빠졌기 때문에(Linkedin follow도 함!) 스�
 <li>Lambda</li>
 <li>AWS Config</li>
 </ul>
-<p>등이 기억에 남습니다. 개인차가 있겠지만 저는 SDLC 영역은 쉬웠고 Highly Available 영역이 어려웠어요.</p>
+<p>등이 기억에 남습니다. 개인차가 있겠지만 저는 SDLC 영역은 쉬웠고 High Availability 영역이 어려웠어요.</p>
 <p>Multi-region 상황에서 고가용성을 보장하면서도 RTO, RPO 낮은 Fail over 가능한 그런 야무진 구조는 무엇일까요? 같은 문제들&hellip;</p>
 <h2 id="개인적인-감상">개인적인 감상</h2>
 <p>첫 Professional 도전이였는데 이뤄내서 기분이 너무 좋아요.<del>(저는 이걸 뽕맛이라고 표현합니다)</del></p>
@@ -729,13 +727,13 @@ exception이 발생할 수 있다.</p>
 			<content type="html"><![CDATA[<p>메모리 사용 정보를 보여주는 free 명령어와 /proc/meminfo 에 대해</p>
 <p>&ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
 <h3 id="메모리-사용량-확인하기">메모리 사용량 확인하기</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# free -m
-              total        used        free      shared  buff/cache   available
-Mem:           <span class="m">8047</span>        <span class="m">6161</span>        <span class="m">1662</span>          <span class="m">17</span>         <span class="m">223</span>        <span class="m">1755</span>
-Swap:         <span class="m">24576</span>         <span class="m">214</span>       <span class="m">24361</span>
-<span class="c1"># 출력 데이터 단위에 따라 옵션이 다르다.</span>
-<span class="c1"># -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@August-PC:~# free -m
+</span></span><span class="line"><span class="cl">              total        used        free      shared  buff/cache   available
+</span></span><span class="line"><span class="cl">Mem:           <span class="m">8047</span>        <span class="m">6161</span>        <span class="m">1662</span>          <span class="m">17</span>         <span class="m">223</span>        <span class="m">1755</span>
+</span></span><span class="line"><span class="cl">Swap:         <span class="m">24576</span>         <span class="m">214</span>       <span class="m">24361</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 출력 데이터 단위에 따라 옵션이 다르다.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -b: byte 단위, -k: KB 단위, -m: MB 단위, -G: GB 단위</span>
+</span></span></code></pre></div><ul>
 <li>
 <p>total : 전체, used : 사용중, free : 사용 안하고 있는 남는 용량</p>
 </li>
@@ -748,13 +746,13 @@ Swap:         <span class="m">24576</span>         <span class="m">214</span>   
 <p>buffers/cached 영역은 원본이 원래는 디스크에 있으나 성능 이점을 위해 그 디스크 내용을 메모리에 캐싱 목적으로 올려놓은 부분이라고 한다.</p>
 <p>그럼 대체 디스크에 수많은 데이터들 중에 어떤걸 캐싱 목적으로 메모리에 올려놓는데??????</p>
 <p><code>cat /proc/meminfo</code> 로 buffers, cached를 나눠서 보면</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">august@august-PC~$ cat /proc/meminfo <span class="p">|</span> head -5
-MemTotal:        <span class="m">2035676</span> kB
-MemFree:          <span class="m">784432</span> kB
-MemAvailable:    <span class="m">1890044</span> kB
-Buffers:            <span class="m">6596</span> kB
-Cached:          <span class="m">1021344</span> kB
-</code></pre></div><p>Buffers : 좀 더 작음. Why? 디스크에 있던 File의 메타데이터(inode)를 읽어놓는 영역이다. 메타데이터는 파일의 access time, owner 등등 정보를 의미한다. 크기가 작다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">august@august-PC~$ cat /proc/meminfo <span class="p">|</span> head -5
+</span></span><span class="line"><span class="cl">MemTotal:        <span class="m">2035676</span> kB
+</span></span><span class="line"><span class="cl">MemFree:          <span class="m">784432</span> kB
+</span></span><span class="line"><span class="cl">MemAvailable:    <span class="m">1890044</span> kB
+</span></span><span class="line"><span class="cl">Buffers:            <span class="m">6596</span> kB
+</span></span><span class="line"><span class="cl">Cached:          <span class="m">1021344</span> kB
+</span></span></code></pre></div><p>Buffers : 좀 더 작음. Why? 디스크에 있던 File의 메타데이터(inode)를 읽어놓는 영역이다. 메타데이터는 파일의 access time, owner 등등 정보를 의미한다. 크기가 작다.</p>
 <p>Cached : 크기가 buffers에 비해 훨씬 크다. Why? 디스크에 있던 File의 실제 데이터 내용(data block)을 페이지 단위로 읽어놓는 영역이다.</p>
 <p>일단 buffers, cached 이 영역들은 기본적으로 원본이 이미 디스크에 있는 내용이다.</p>
 <p>성능 이점을 위해 메모리에 읽어놓은 형태이기 때문에 해제해버려도 프로그램 구동에 치명적인 위협은 되지 않는다.
@@ -778,27 +776,27 @@ Cached:          <span class="m">1021344</span> kB
 </ul>
 <p>파일 자체의 내용을 저장하는데 쓰이는 cache</p>
 <h3 id="procmeminfo-읽기">/proc/meminfo 읽기</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@August-PC ~<span class="o">]</span><span class="c1"># cat /proc/meminfo </span>
-MemTotal:        <span class="m">7957324</span> kB
-MemFree:          <span class="m">299176</span> kB
-MemAvailable:    <span class="m">4854520</span> kB
-Buffers:          <span class="m">141072</span> kB
-Cached:          <span class="m">4768400</span> kB
-SwapCached:        <span class="m">75588</span> kB
-Active:          <span class="m">4118228</span> kB
-Inactive:        <span class="m">2813128</span> kB
-Active<span class="o">(</span>anon<span class="o">)</span>:    <span class="m">1330700</span> kB
-Inactive<span class="o">(</span>anon<span class="o">)</span>:  <span class="m">1069180</span> kB
-Active<span class="o">(</span>file<span class="o">)</span>:    <span class="m">2787528</span> kB
-Inactive<span class="o">(</span>file<span class="o">)</span>:  <span class="m">1743948</span> kB
-Unevictable:           <span class="m">0</span> kB
-Mlocked:               <span class="m">0</span> kB
-SwapTotal:       <span class="m">8388604</span> kB
-SwapFree:        <span class="m">7214696</span> kB
-Dirty:               <span class="m">136</span> kB
-
-... 생략
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@August-PC ~<span class="o">]</span><span class="c1"># cat /proc/meminfo </span>
+</span></span><span class="line"><span class="cl">MemTotal:        <span class="m">7957324</span> kB
+</span></span><span class="line"><span class="cl">MemFree:          <span class="m">299176</span> kB
+</span></span><span class="line"><span class="cl">MemAvailable:    <span class="m">4854520</span> kB
+</span></span><span class="line"><span class="cl">Buffers:          <span class="m">141072</span> kB
+</span></span><span class="line"><span class="cl">Cached:          <span class="m">4768400</span> kB
+</span></span><span class="line"><span class="cl">SwapCached:        <span class="m">75588</span> kB
+</span></span><span class="line"><span class="cl">Active:          <span class="m">4118228</span> kB
+</span></span><span class="line"><span class="cl">Inactive:        <span class="m">2813128</span> kB
+</span></span><span class="line"><span class="cl">Active<span class="o">(</span>anon<span class="o">)</span>:    <span class="m">1330700</span> kB
+</span></span><span class="line"><span class="cl">Inactive<span class="o">(</span>anon<span class="o">)</span>:  <span class="m">1069180</span> kB
+</span></span><span class="line"><span class="cl">Active<span class="o">(</span>file<span class="o">)</span>:    <span class="m">2787528</span> kB
+</span></span><span class="line"><span class="cl">Inactive<span class="o">(</span>file<span class="o">)</span>:  <span class="m">1743948</span> kB
+</span></span><span class="line"><span class="cl">Unevictable:           <span class="m">0</span> kB
+</span></span><span class="line"><span class="cl">Mlocked:               <span class="m">0</span> kB
+</span></span><span class="line"><span class="cl">SwapTotal:       <span class="m">8388604</span> kB
+</span></span><span class="line"><span class="cl">SwapFree:        <span class="m">7214696</span> kB
+</span></span><span class="line"><span class="cl">Dirty:               <span class="m">136</span> kB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">... 생략
+</span></span></code></pre></div><ul>
 <li>
 <p>SwapCached: swap으로 사용된 영역 중 다시 메모리로 돌아온 영역. Swap으로 빠졌다고 돌아온 영역이 얼마나 되는지 나타냄.</p>
 </li>
@@ -829,12 +827,12 @@ Dirty:               <span class="m">136</span> kB
 </ul>
 <h3 id="slab-메모리-영역">slab 메모리 영역</h3>
 <p><code>cat /proc/meminfo</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">... 생략
-Slab:             <span class="m">473356</span> kB
-SReclaimable:     <span class="m">402036</span> kB
-SUnreclaim:        <span class="m">71320</span> kB
-... 생략
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">... 생략
+</span></span><span class="line"><span class="cl">Slab:             <span class="m">473356</span> kB
+</span></span><span class="line"><span class="cl">SReclaimable:     <span class="m">402036</span> kB
+</span></span><span class="line"><span class="cl">SUnreclaim:        <span class="m">71320</span> kB
+</span></span><span class="line"><span class="cl">... 생략
+</span></span></code></pre></div><ul>
 <li>
 <p>slab: 메모리 영역 중 커널이 직접 사용하는 영역. 여기에는 dentry cache, inode cache 등 커널이 사용하는 메모리가 포함.</p>
 </li>
@@ -845,26 +843,26 @@ SUnreclaim:        <span class="m">71320</span> kB
 <p>SUnreclaim: Slab 영역 중 재사용 될 수 없는 영역. 커널이 현재 사용중이며 해제해서 다른 용도로 쓸 수 없는 영역.</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">Active / Total Objects <span class="o">(</span>% used<span class="o">)</span>    : <span class="m">1718090</span> / <span class="m">1895312</span> <span class="o">(</span>90.6%<span class="o">)</span>
- Active / Total Slabs <span class="o">(</span>% used<span class="o">)</span>      : <span class="m">48101</span> / <span class="m">48101</span> <span class="o">(</span>100.0%<span class="o">)</span>
- Active / Total Caches <span class="o">(</span>% used<span class="o">)</span>     : <span class="m">82</span> / <span class="m">106</span> <span class="o">(</span>77.4%<span class="o">)</span>   
- Active / Total Size <span class="o">(</span>% used<span class="o">)</span>       : 435110.21K / 469842.19K <span class="o">(</span>92.6%<span class="o">)</span>
- Minimum / Average / Maximum Object : 0.01K / 0.25K / 12.75K
-
-  OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME
-<span class="m">842205</span> <span class="m">743124</span>  88%    0.10K  <span class="m">21595</span>       <span class="m">39</span>     86380K buffer_head
-<span class="m">382368</span> <span class="m">368286</span>  96%    0.19K   <span class="m">9104</span>       <span class="m">42</span>     72832K dentry
-<span class="m">167216</span> <span class="m">167216</span> 100%    0.94K   <span class="m">4919</span>       <span class="m">34</span>    157408K xfs_inode
-<span class="m">115668</span> <span class="m">111428</span>  96%    0.57K   <span class="m">4131</span>       <span class="m">28</span>     66096K radix_tree_node
- <span class="m">55040</span>  <span class="m">47535</span>  86%    0.06K    <span class="m">860</span>       <span class="m">64</span>      3440K kmalloc-64
- <span class="m">28176</span>  <span class="m">28176</span> 100%    0.16K    <span class="m">587</span>       <span class="m">48</span>      4696K xfs_ili
- <span class="m">28152</span>  <span class="m">28152</span> 100%    0.12K    <span class="m">828</span>       <span class="m">34</span>      3312K kernfs_node_cache
- <span class="m">26344</span>  <span class="m">16899</span>  64%    0.21K    <span class="m">712</span>       <span class="m">37</span>      5696K vm_area_struct
- <span class="m">19278</span>  <span class="m">10360</span>  53%    0.19K    <span class="m">459</span>       <span class="m">42</span>      3672K kmalloc-192
- <span class="m">16000</span>  <span class="m">15514</span>  96%    0.03K    <span class="m">125</span>      <span class="m">128</span>       500K kmalloc-32
- <span class="m">15912</span>  <span class="m">15912</span> 100%    0.04K    <span class="m">156</span>      <span class="m">102</span>       624K selinux_inode_security
-<span class="c1"># ... 생략</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Active / Total Objects <span class="o">(</span>% used<span class="o">)</span>    : <span class="m">1718090</span> / <span class="m">1895312</span> <span class="o">(</span>90.6%<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> Active / Total Slabs <span class="o">(</span>% used<span class="o">)</span>      : <span class="m">48101</span> / <span class="m">48101</span> <span class="o">(</span>100.0%<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> Active / Total Caches <span class="o">(</span>% used<span class="o">)</span>     : <span class="m">82</span> / <span class="m">106</span> <span class="o">(</span>77.4%<span class="o">)</span>   
+</span></span><span class="line"><span class="cl"> Active / Total Size <span class="o">(</span>% used<span class="o">)</span>       : 435110.21K / 469842.19K <span class="o">(</span>92.6%<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> Minimum / Average / Maximum Object : 0.01K / 0.25K / 12.75K
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  OBJS ACTIVE  USE OBJ SIZE  SLABS OBJ/SLAB CACHE SIZE NAME
+</span></span><span class="line"><span class="cl"><span class="m">842205</span> <span class="m">743124</span>  88%    0.10K  <span class="m">21595</span>       <span class="m">39</span>     86380K buffer_head
+</span></span><span class="line"><span class="cl"><span class="m">382368</span> <span class="m">368286</span>  96%    0.19K   <span class="m">9104</span>       <span class="m">42</span>     72832K dentry
+</span></span><span class="line"><span class="cl"><span class="m">167216</span> <span class="m">167216</span> 100%    0.94K   <span class="m">4919</span>       <span class="m">34</span>    157408K xfs_inode
+</span></span><span class="line"><span class="cl"><span class="m">115668</span> <span class="m">111428</span>  96%    0.57K   <span class="m">4131</span>       <span class="m">28</span>     66096K radix_tree_node
+</span></span><span class="line"><span class="cl"> <span class="m">55040</span>  <span class="m">47535</span>  86%    0.06K    <span class="m">860</span>       <span class="m">64</span>      3440K kmalloc-64
+</span></span><span class="line"><span class="cl"> <span class="m">28176</span>  <span class="m">28176</span> 100%    0.16K    <span class="m">587</span>       <span class="m">48</span>      4696K xfs_ili
+</span></span><span class="line"><span class="cl"> <span class="m">28152</span>  <span class="m">28152</span> 100%    0.12K    <span class="m">828</span>       <span class="m">34</span>      3312K kernfs_node_cache
+</span></span><span class="line"><span class="cl"> <span class="m">26344</span>  <span class="m">16899</span>  64%    0.21K    <span class="m">712</span>       <span class="m">37</span>      5696K vm_area_struct
+</span></span><span class="line"><span class="cl"> <span class="m">19278</span>  <span class="m">10360</span>  53%    0.19K    <span class="m">459</span>       <span class="m">42</span>      3672K kmalloc-192
+</span></span><span class="line"><span class="cl"> <span class="m">16000</span>  <span class="m">15514</span>  96%    0.03K    <span class="m">125</span>      <span class="m">128</span>       500K kmalloc-32
+</span></span><span class="line"><span class="cl"> <span class="m">15912</span>  <span class="m">15912</span> 100%    0.04K    <span class="m">156</span>      <span class="m">102</span>       624K selinux_inode_security
+</span></span><span class="line"><span class="cl"><span class="c1"># ... 생략</span>
+</span></span></code></pre></div><ul>
 <li>buddy system : linux에서 메모리를 할당해주는 시스템. 가능한 적당하게 메모리 요청을 만족하도록 메모리를 여러 부분으로 나누는 메모리 할당 시스템.
 메모리의 크기를 절반씩 분할하면서 가장 잘 맞는 크기의 메모리를 찾아 할당해 준다. 2의 거듭제곱 값으로 메모리를 할당.</li>
 <li>slab allocator : 버디 시스템을 통해 기본 페이지 크기인 4KB 영역을 할당 받은 후에 각각의 캐시 크기에 맞게 영역을 나눠서 사용.</li>
@@ -892,66 +890,66 @@ SUnreclaim:        <span class="m">71320</span> kB
 CPU 코어 갯수가 많으면 코어 갯수가 하나일 때 보다는 각 프로세스들이 여러개의 코어에 의해 더 빨리 처리될 수 있다.</li>
 </ul>
 <h3 id="load-average-계산-과정">Load average 계산 과정</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# uptime
- 21:44:37 up <span class="m">6</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# strace -s <span class="m">65535</span> -f -t -o uptime_dump uptime
- 05:36:52 up  5:31,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
-</code></pre></div><p><code>/proc/loadavg</code> -&gt; <code>/fs/proc/loadavg.c</code>에서 <code>loadavg_proc_show()</code> 함수 -&gt; <code>/kernel/sched.c</code> 에서 <code>get_avenrun()</code> 함수 -&gt; <code>avenrun[]</code> 배열 -&gt; <code>calc_global_load()</code> 함수 -&gt; <code>calc_load_account_active()</code> 함수 순으로 추적하다보면 <code>nr_active</code> 라는 변수에 <code>nr_running</code> + <code>nr_uninterruptible</code> 값들을 합하고 이를 1분, 5분, 15분 평균으로 나눠 계산하는 것을 확인할 수 있다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@August-PC:~# uptime
+</span></span><span class="line"><span class="cl"> 21:44:37 up <span class="m">6</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@August-PC:~# strace -s <span class="m">65535</span> -f -t -o uptime_dump uptime
+</span></span><span class="line"><span class="cl"> 05:36:52 up  5:31,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
+</span></span></code></pre></div><p><code>/proc/loadavg</code> -&gt; <code>/fs/proc/loadavg.c</code>에서 <code>loadavg_proc_show()</code> 함수 -&gt; <code>/kernel/sched.c</code> 에서 <code>get_avenrun()</code> 함수 -&gt; <code>avenrun[]</code> 배열 -&gt; <code>calc_global_load()</code> 함수 -&gt; <code>calc_load_account_active()</code> 함수 순으로 추적하다보면 <code>nr_active</code> 라는 변수에 <code>nr_running</code> + <code>nr_uninterruptible</code> 값들을 합하고 이를 1분, 5분, 15분 평균으로 나눠 계산하는 것을 확인할 수 있다.</p>
 <p><code>nr_running</code>은 run queue에 있는 R상태의 프로세스들의 갯수이며, <code>nr_uninterruptible</code>은 wait queue에 있는 D상태의 프로세스들의 갯수이다.</p>
 <h3 id="cpu-bound-vs-io-bound">CPU Bound vs I/O Bound</h3>
 <p>위에서 확인했듯 Load average는 cpu 사용을 기다리는 프로세스 갯수로만 계산되는 것이 아니라, 디스크/네트워크 I/O를 위해 대기중인 프로세스의 갯수도 계산에 포함된다.  즉, Load average가 높다는 것은 단순히 CPU를 사용하려는 프로세스가 많다는 의미가 아니고, I/O 병목이 생겨 I/O 작업을 대기하는 프로세스가 많을 수도 있다는 의미이다.<br>
 그러므로 Load average 숫자만 보고 시스템에 정확히 어떤 상태의 부하가 일어나고 있는지 파악하기가 어렵다.<br>
 그럼 부하의 종류를 어떻게 확인할까?</p>
 <h3 id="vmstat으로-부하의-정체-확인하기">vmstat으로 부하의 정체 확인하기</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># vmstat</span>
-procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
- r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
- <span class="m">2</span>  <span class="m">0</span> <span class="m">1211796</span> <span class="m">143872</span> <span class="m">141040</span> <span class="m">5541164</span>    <span class="m">0</span>    <span class="m">0</span>    <span class="m">15</span>    <span class="m">19</span>    <span class="m">0</span>    <span class="m">0</span> <span class="m">26</span>  <span class="m">3</span> <span class="m">69</span>  <span class="m">1</span>  <span class="m">0</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># vmstat</span>
+</span></span><span class="line"><span class="cl">procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+</span></span><span class="line"><span class="cl"> r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+</span></span><span class="line"><span class="cl"> <span class="m">2</span>  <span class="m">0</span> <span class="m">1211796</span> <span class="m">143872</span> <span class="m">141040</span> <span class="m">5541164</span>    <span class="m">0</span>    <span class="m">0</span>    <span class="m">15</span>    <span class="m">19</span>    <span class="m">0</span>    <span class="m">0</span> <span class="m">26</span>  <span class="m">3</span> <span class="m">69</span>  <span class="m">1</span>  <span class="m">0</span>
+</span></span></code></pre></div><ul>
 <li>r : The number of processes waiting for run time.<br>
 실행되기 위해 기다리는 프로세스 갯수(nr_running)</li>
 <li>b : The number of processes in uninterruptible sleep<br>
 I/O를 위해 기다리는 프로세스 갯수(nr_uninterruptible)</li>
 </ul>
 <p><code>/proc/sched_debug</code> 파일을 확인하면 각 CPU의 Run queue 상태와 스케줄링 정보를 살펴볼 수 있다.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># cat /proc/sched_debug </span>
-Sched Debug Version: v0.11, 3.10.0-862.6.3.el7.x86_64 <span class="c1">#1</span>
-ktime                                   : 31318815611.994170
-sched_clk                               : 31318700701.301538
-cpu_clk                                 : 31318700701.301627
-jiffies                                 : <span class="m">35613482909</span>
-
-...중략
-
-cpu#0, 2200.007 MHz
-  .nr_running                    : <span class="m">0</span>
-  .load                          : <span class="m">0</span>
-  .nr_switches                   : <span class="m">6296361526</span>
-  .nr_load_updates               : <span class="m">15707632257</span>
-  .nr_uninterruptible            : <span class="m">434324</span>
-  .next_balance                  : 35613.482909
-  .curr-&gt;pid                     : <span class="m">0</span>
-  .clock                         : 31318700701.633510
-  .cpu_load<span class="o">[</span>0<span class="o">]</span>                   : <span class="m">0</span>
-  .cpu_load<span class="o">[</span>1<span class="o">]</span>                   : <span class="m">0</span>
-
-...중략
-
-runnable tasks:
-            task   PID         tree-key  switches  prio     wait-time             sum-exec        sum-sleep
-----------------------------------------------------------------------------------------------------------
-     ksoftirqd/0     <span class="m">3</span> 13546607321.808677 <span class="m">190671117</span>   <span class="m">120</span>         0.000000   1013193.525038         0.000000 <span class="m">0</span> /
-    kworker/0:0H     <span class="m">5</span>       544.548835         <span class="m">6</span>   <span class="m">100</span>         0.000000         0.029044         0.000000 <span class="m">0</span> /
-      watchdog/0    <span class="m">12</span>        -3.904516   <span class="m">7829709</span>     <span class="m">0</span>         0.000000    125610.812095         0.000000 <span class="m">0</span> /
-       kdevtmpfs    <span class="m">51</span> 1877281760.662029       <span class="m">185</span>   <span class="m">120</span>         0.000000         3.293578         0.000000 <span class="m">0</span> /
-         kswapd0    <span class="m">70</span> 13546604016.431647    <span class="m">923034</span>   <span class="m">120</span>         0.000000    894054.731239         0.000000 <span class="m">0</span> /
-       scsi_eh_0   <span class="m">282</span>       485.192906         <span class="m">2</span>   <span class="m">120</span>         0.000000         0.012182         0.000000 <span class="m">0</span> /
-    kworker/0:1H   <span class="m">341</span> 13546605978.612818  <span class="m">37669618</span>   <span class="m">100</span>         0.000000    601004.086434         0.000000 <span class="m">0</span> /
-              su  <span class="m">4429</span> 13546605952.403489        <span class="m">23</span>   <span class="m">120</span>         0.000000        33.713593         0.000000 <span class="m">0</span> /
-           mysql  <span class="m">4582</span> 13546606319.488393         <span class="m">5</span>   <span class="m">120</span>         0.000000        15.271120         0.000000 <span class="m">0</span> /
-             sed  <span class="m">4708</span> 13546607347.312431         <span class="m">2</span>   <span class="m">120</span>         0.000000         1.549732         0.000000 <span class="m">0</span> /
-...생략
-</code></pre></div><p>출처</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>root@august-PC ~<span class="o">]</span><span class="c1"># cat /proc/sched_debug </span>
+</span></span><span class="line"><span class="cl">Sched Debug Version: v0.11, 3.10.0-862.6.3.el7.x86_64 <span class="c1">#1</span>
+</span></span><span class="line"><span class="cl">ktime                                   : 31318815611.994170
+</span></span><span class="line"><span class="cl">sched_clk                               : 31318700701.301538
+</span></span><span class="line"><span class="cl">cpu_clk                                 : 31318700701.301627
+</span></span><span class="line"><span class="cl">jiffies                                 : <span class="m">35613482909</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...중략
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">cpu#0, 2200.007 MHz
+</span></span><span class="line"><span class="cl">  .nr_running                    : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  .load                          : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  .nr_switches                   : <span class="m">6296361526</span>
+</span></span><span class="line"><span class="cl">  .nr_load_updates               : <span class="m">15707632257</span>
+</span></span><span class="line"><span class="cl">  .nr_uninterruptible            : <span class="m">434324</span>
+</span></span><span class="line"><span class="cl">  .next_balance                  : 35613.482909
+</span></span><span class="line"><span class="cl">  .curr-&gt;pid                     : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  .clock                         : 31318700701.633510
+</span></span><span class="line"><span class="cl">  .cpu_load<span class="o">[</span>0<span class="o">]</span>                   : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">  .cpu_load<span class="o">[</span>1<span class="o">]</span>                   : <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">...중략
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">runnable tasks:
+</span></span><span class="line"><span class="cl">            task   PID         tree-key  switches  prio     wait-time             sum-exec        sum-sleep
+</span></span><span class="line"><span class="cl">----------------------------------------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">     ksoftirqd/0     <span class="m">3</span> 13546607321.808677 <span class="m">190671117</span>   <span class="m">120</span>         0.000000   1013193.525038         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">    kworker/0:0H     <span class="m">5</span>       544.548835         <span class="m">6</span>   <span class="m">100</span>         0.000000         0.029044         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">      watchdog/0    <span class="m">12</span>        -3.904516   <span class="m">7829709</span>     <span class="m">0</span>         0.000000    125610.812095         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">       kdevtmpfs    <span class="m">51</span> 1877281760.662029       <span class="m">185</span>   <span class="m">120</span>         0.000000         3.293578         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">         kswapd0    <span class="m">70</span> 13546604016.431647    <span class="m">923034</span>   <span class="m">120</span>         0.000000    894054.731239         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">       scsi_eh_0   <span class="m">282</span>       485.192906         <span class="m">2</span>   <span class="m">120</span>         0.000000         0.012182         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">    kworker/0:1H   <span class="m">341</span> 13546605978.612818  <span class="m">37669618</span>   <span class="m">100</span>         0.000000    601004.086434         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">              su  <span class="m">4429</span> 13546605952.403489        <span class="m">23</span>   <span class="m">120</span>         0.000000        33.713593         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">           mysql  <span class="m">4582</span> 13546606319.488393         <span class="m">5</span>   <span class="m">120</span>         0.000000        15.271120         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">             sed  <span class="m">4708</span> 13546607347.312431         <span class="m">2</span>   <span class="m">120</span>         0.000000         1.549732         0.000000 <span class="m">0</span> /
+</span></span><span class="line"><span class="cl">...생략
+</span></span></code></pre></div><p>출처</p>
 <ul>
 <li><a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788966264049&amp;orderClick=LEA&amp;Kc=">DevOps와 SE를 위한 리눅스 커널 이야기</a></li>
 <li><a href="https://reallinux.co.kr/sw.html">리얼 리눅스 SW 기본반</a></li>
@@ -968,23 +966,23 @@ runnable tasks:
 			<description>top command에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;리얼 리눅스 SW 기본반&amp;</description>
 			<content type="html"><![CDATA[<p>top command에 대해 &ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&quot;에서 배운 내용을 정리하였습니다.</p>
 <h3 id="top-명령어-실행-결과">top 명령어 실행 결과</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# top -b -n <span class="m">1</span>
-top - 01:57:36 up <span class="m">58</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
-Tasks:   <span class="m">8</span> total,   <span class="m">1</span> running,   <span class="m">7</span> sleeping,   <span class="m">0</span> stopped,   <span class="m">0</span> zombie   
-%Cpu<span class="o">(</span>s<span class="o">)</span>:  9.0 us, 23.3 sy,  0.0 ni, 67.4 id,  0.0 wa,  0.3 hi,  0.0 si, 0.0 st
-KiB Mem :  <span class="m">8240388</span> total,  <span class="m">2032052</span> free,  <span class="m">5978984</span> used,   <span class="m">229352</span> buff/cache
-KiB Swap: <span class="m">25165824</span> total, <span class="m">24837212</span> free,   <span class="m">328612</span> used.  <span class="m">2127672</span> avail Mem
-
-  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+    
-    <span class="m">1</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">328</span>    <span class="m">284</span> S   0.0  0.0   0:00.07    
-  <span class="m">880</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">228</span>    <span class="m">176</span> S   0.0  0.0   0:00.01    
-  <span class="m">881</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18356</span>   <span class="m">3764</span>   <span class="m">3448</span> S   0.0  0.0   0:00.38    
- <span class="m">1074</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">232</span>    <span class="m">180</span> S   0.0  0.0   0:00.00    
- <span class="m">1075</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18224</span>   <span class="m">3492</span>   <span class="m">3364</span> S   0.0  0.0   0:00.09    
- <span class="m">1087</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">16260</span>   <span class="m">2116</span>   <span class="m">2088</span> S   0.0  0.0   0:00.01    
- <span class="m">1088</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18088</span>   <span class="m">3392</span>   <span class="m">3304</span> S   0.0  0.0   0:00.06    
- <span class="m">1104</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18780</span>   <span class="m">1888</span>   <span class="m">1420</span> R   0.0  0.0   0:00.01
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@August-PC:~# top -b -n <span class="m">1</span>
+</span></span><span class="line"><span class="cl">top - 01:57:36 up <span class="m">58</span> min,  <span class="m">0</span> users,  load average: 0.52, 0.58, 0.59
+</span></span><span class="line"><span class="cl">Tasks:   <span class="m">8</span> total,   <span class="m">1</span> running,   <span class="m">7</span> sleeping,   <span class="m">0</span> stopped,   <span class="m">0</span> zombie   
+</span></span><span class="line"><span class="cl">%Cpu<span class="o">(</span>s<span class="o">)</span>:  9.0 us, 23.3 sy,  0.0 ni, 67.4 id,  0.0 wa,  0.3 hi,  0.0 si, 0.0 st
+</span></span><span class="line"><span class="cl">KiB Mem :  <span class="m">8240388</span> total,  <span class="m">2032052</span> free,  <span class="m">5978984</span> used,   <span class="m">229352</span> buff/cache
+</span></span><span class="line"><span class="cl">KiB Swap: <span class="m">25165824</span> total, <span class="m">24837212</span> free,   <span class="m">328612</span> used.  <span class="m">2127672</span> avail Mem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+    
+</span></span><span class="line"><span class="cl">    <span class="m">1</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">328</span>    <span class="m">284</span> S   0.0  0.0   0:00.07    
+</span></span><span class="line"><span class="cl">  <span class="m">880</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">228</span>    <span class="m">176</span> S   0.0  0.0   0:00.01    
+</span></span><span class="line"><span class="cl">  <span class="m">881</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18356</span>   <span class="m">3764</span>   <span class="m">3448</span> S   0.0  0.0   0:00.38    
+</span></span><span class="line"><span class="cl"> <span class="m">1074</span> root      <span class="m">20</span>   <span class="m">0</span>    <span class="m">8916</span>    <span class="m">232</span>    <span class="m">180</span> S   0.0  0.0   0:00.00    
+</span></span><span class="line"><span class="cl"> <span class="m">1075</span> august    <span class="m">20</span>   <span class="m">0</span>   <span class="m">18224</span>   <span class="m">3492</span>   <span class="m">3364</span> S   0.0  0.0   0:00.09    
+</span></span><span class="line"><span class="cl"> <span class="m">1087</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">16260</span>   <span class="m">2116</span>   <span class="m">2088</span> S   0.0  0.0   0:00.01    
+</span></span><span class="line"><span class="cl"> <span class="m">1088</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18088</span>   <span class="m">3392</span>   <span class="m">3304</span> S   0.0  0.0   0:00.06    
+</span></span><span class="line"><span class="cl"> <span class="m">1104</span> root      <span class="m">20</span>   <span class="m">0</span>   <span class="m">18780</span>   <span class="m">1888</span>   <span class="m">1420</span> R   0.0  0.0   0:00.01
+</span></span></code></pre></div><ul>
 <li>line 1: 현재 시스템의 시간과 uptime, 그리고 load average가 나온다</li>
 </ul>
 <p><code>top - 01:57:36 up 58 min,  0 users,  load average: 0.52, 0.58, 0.59</code></p>
@@ -1044,16 +1042,16 @@ st : CPU가 처리할 일이 있는데 VM한테 CPU를 뺐겨서 일을 못한 �
 <li>0=최댓값 바탕으로 Memory commit, 1=무조건 overcommit, 2=vm.overcommit_ratio에 설정된 비율을 바탕으로 제한적으로 memory commit</li>
 </ul>
 <h4 id="커널-파라미터-보는법-sysctl">커널 파라미터 보는법? sysctl</h4>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root@August-PC:~# sysctl -a
-fs.binfmt_misc.status <span class="o">=</span> enabled
-fs.binfmt_misc.WSLInterop <span class="o">=</span> enabled
-fs.binfmt_misc.WSLInterop <span class="o">=</span> interpreter /init
-...
-...
-vm.min_free_kbytes <span class="o">=</span> <span class="m">45056</span>
-vm.overcommit_memory <span class="o">=</span> <span class="m">0</span>
-vm.swappiness <span class="o">=</span> <span class="m">60</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@August-PC:~# sysctl -a
+</span></span><span class="line"><span class="cl">fs.binfmt_misc.status <span class="o">=</span> enabled
+</span></span><span class="line"><span class="cl">fs.binfmt_misc.WSLInterop <span class="o">=</span> enabled
+</span></span><span class="line"><span class="cl">fs.binfmt_misc.WSLInterop <span class="o">=</span> interpreter /init
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">vm.min_free_kbytes <span class="o">=</span> <span class="m">45056</span>
+</span></span><span class="line"><span class="cl">vm.overcommit_memory <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">vm.swappiness <span class="o">=</span> <span class="m">60</span>
+</span></span></code></pre></div><ul>
 <li><code>sysctl -a | grep pid_max</code> 하면 현재 시스템의 생성 가능한 최대 pid 확인 가능</li>
 </ul>
 <h3 id="프로세스-상태">프로세스 상태</h3>
@@ -1107,43 +1105,43 @@ vm.swappiness <span class="o">=</span> <span class="m">60</span>
 			<content type="html"><![CDATA[<p>Linux 시스템 정보 확인 방법에 대해</p>
 <p>&ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&rdquo; 책에서 배운 내용, &ldquo;리얼 리눅스 SW 기본반&rdquo; 에서 배운 내용을 정리하였습니다.</p>
 <h3 id="커널-정보-확인하기">커널 정보 확인하기</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">uname -a <span class="c1"># 커널 버전 확인dmesg #커널 디버그 메세지</span>
-cat /boot/config-<span class="sb">`</span>uname -r<span class="sb">`</span> <span class="p">|</span> more <span class="c1"># 커널 컴파일 옵션 확인</span>
-cat /boot/config-<span class="sb">`</span>uname -r<span class="sb">`</span> <span class="p">|</span> grep -i config_function_tracer
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">uname -a <span class="c1"># 커널 버전 확인dmesg #커널 디버그 메세지</span>
+</span></span><span class="line"><span class="cl">cat /boot/config-<span class="sb">`</span>uname -r<span class="sb">`</span> <span class="p">|</span> more <span class="c1"># 커널 컴파일 옵션 확인</span>
+</span></span><span class="line"><span class="cl">cat /boot/config-<span class="sb">`</span>uname -r<span class="sb">`</span> <span class="p">|</span> grep -i config_function_tracer
+</span></span></code></pre></div><ul>
 <li>ftrace와 같은 커널 함수 레벨의 추적이 필요할 경우 CONFIG_FUNCTION_TRACER 같은 옵션이 커널 컴파일 옵션에 포함되어있어야 함</li>
 </ul>
 <h3 id="cpu-정보-확인하기">CPU 정보 확인하기</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dmidecode -t processor
-cat /proc/cpuinfo
-lscpu
-nproc <span class="c1"># core 개수</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dmidecode -t processor
+</span></span><span class="line"><span class="cl">cat /proc/cpuinfo
+</span></span><span class="line"><span class="cl">lscpu
+</span></span><span class="line"><span class="cl">nproc <span class="c1"># core 개수</span>
+</span></span></code></pre></div><ul>
 <li>socket : number of CPU</li>
 <li>core : number of cores per CPU</li>
 <li>시스템 최대 쓰레드 수 : # of socket * # of core * 2(Hyperthreading, Hyperthreading 지원 안할시 * 1)</li>
 </ul>
 <h3 id="memory-정보-확인하기">Memory 정보 확인하기</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">dmidecode -t memory
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dmidecode -t memory
+</span></span></code></pre></div><ul>
 <li>Physical memory array : 하나의 CPU socket에 함께 할당된 물리 메모리의 그룹</li>
 <li>Memory device : 실제로 시스템에 꽂혀있는 메모리.</li>
 </ul>
 <h3 id="디스크-정보-확인하기">디스크 정보 확인하기</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">df -h
-smartctl -a /dev/sda
-smartctl -a /dev/sda -d cciss,0 <span class="c1"># lsmod 를 통해 알아낸 현재 시스템 사용중인 raid 컨트롤러 드라이버를 명시</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">df -h
+</span></span><span class="line"><span class="cl">smartctl -a /dev/sda
+</span></span><span class="line"><span class="cl">smartctl -a /dev/sda -d cciss,0 <span class="c1"># lsmod 를 통해 알아낸 현재 시스템 사용중인 raid 컨트롤러 드라이버를 명시</span>
+</span></span></code></pre></div><ul>
 <li>sda : scsi 방식 또는 sata, sas 방식 같은 일반적 디스크</li>
 <li>hda : 개인용 컴퓨터용인 IDE 방식의 디스크</li>
 </ul>
 <h3 id="네트워크-정보-확인하기">네트워크 정보 확인하기</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">lspci <span class="p">|</span> grep -i ether
-ethtool eth0
-ethtool -g eth0 <span class="c1"># Ring buffer의 크기를 확인 가능, 볼땐 -g, 설정할땐 -G 옵션</span>
-ethtool -k eth0 <span class="c1"># 현재 NIC의 다양한 성능 최적화 옵션 확인, 마찬가지로 볼땐 소문자 -k, 설정할땐 -K</span>
-ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">lspci <span class="p">|</span> grep -i ether
+</span></span><span class="line"><span class="cl">ethtool eth0
+</span></span><span class="line"><span class="cl">ethtool -g eth0 <span class="c1"># Ring buffer의 크기를 확인 가능, 볼땐 -g, 설정할땐 -G 옵션</span>
+</span></span><span class="line"><span class="cl">ethtool -k eth0 <span class="c1"># 현재 NIC의 다양한 성능 최적화 옵션 확인, 마찬가지로 볼땐 소문자 -k, 설정할땐 -K</span>
+</span></span><span class="line"><span class="cl">ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
+</span></span></code></pre></div><ul>
 <li>Ring buffer : 네트워크 카드의 버퍼 공간을 의미. 크기가 maximum으로 세팅 되어있지 않으면 네트워크 성능 저하 발생 가능</li>
 <li>tcp-offload : MTU 이상의 크기를 가지는 패킷의 분할작업을 CPU 가 아닌 NIC가 직접 처리하여 CPU 성능 부담 줄이고 패킷 처리 성능 높임.</li>
 </ul>
@@ -1438,8 +1436,8 @@ ethtool -i eth0 <span class="c1"># NIC의 커널 모듈 정보 표시</span>
 			<content type="html"><![CDATA[<p>집 데탑에만 블로그 소스가 있는지라 회사 컴에서도 작성할 수 있게끔 내 블로그 repo를 clone하였다.
 근데 그냥 clone을 하니 submodule로 등록한 repo는 같이 clone이 안되더라.
 구글링을 좀 해본 결과 <a href="http://openmetric.org/til/programming/git-pull-with-submodule/">링크</a>와 같이</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git submodule update --init --recursive
-</code></pre></div><p>clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule update --init --recursive
+</span></span></code></pre></div><p>clone 이후에 해당 repo의 root에서 위 명령어를 통해 submodule을 업데이트 해주니 해결이 되었다.</p>
 ]]></content>
 		</item>
 		
