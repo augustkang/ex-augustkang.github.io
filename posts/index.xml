@@ -6,8 +6,59 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Tue, 16 Nov 2021 01:05:00 +0900</lastBuildDate>
+		<lastBuildDate>Sun, 02 Jan 2022 01:00:00 +0900</lastBuildDate>
 		<atom:link href="https://augustkang.com/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>2022년 리뷰</title>
+			<link>https://augustkang.com/posts/review/2022-review/</link>
+			<pubDate>Sun, 02 Jan 2022 01:00:00 +0900</pubDate>
+			
+			<guid>https://augustkang.com/posts/review/2022-review/</guid>
+			<description>2022년 리뷰 일 업무량으로 인해 정신없는 한 해를 보냈는데, 그래도 여러가지를 배울 수 있었던 재밌는(?) 업무가 많았다. VPC 연동을 많이 해보면서 네트워크에 익</description>
+			<content type="html"><![CDATA[<h1 id="2022년-리뷰">2022년 리뷰</h1>
+<h2 id="일">일</h2>
+<figure><img src="/images/bench.jpg"/>
+</figure>
+
+<p>업무량으로 인해 정신없는 한 해를 보냈는데, 그래도 여러가지를 배울 수 있었던 재밌는(?) 업무가 많았다.</p>
+<p>VPC 연동을 많이 해보면서 네트워크에 익숙해졌다.</p>
+<p>상반기에는 회사에 적응을 완전히 할 수 있었고, 하반기부터는 일을 잘 쳐냈던 것 같다. 초반에는 엔지니어링에 집착했었는데, 비즈니스가 나아가는 속도를 더디게 하는 과한 엔지니어링은 조직에 도움이 되지 않는다는 것을 깨닫게 된 것이 큰 소득이였다.</p>
+<h3 id="1월">1월</h3>
+<p><a href="https://aws.amazon.com/what-is/opensearch/">Amazon OpenSearch</a> 구성이나 <a href="https://aws.amazon.com/iam/identity-center/">AWS IAM Identity Center(구 AWS SSO)</a>, <a href="https://aws.amazon.com/controltower/">AWS Control Tower</a> 등 안써봤던 서비스들을 많이 써보면서 배웠다.
+`</p>
+<h3 id="2월">2월</h3>
+<p>Datadog과 친해지기 시작했다. 기능이 많아 정신이 없긴 했는데 가격이 비싼 대신 시간을 아껴주는 서비스라는 것은 확실히 알게 되었다.</p>
+<h3 id="3월--4월">3월 ~ 4월</h3>
+<p>프론트엔드 개발자분들과 많은 협업을 하기 시작했다. SSR(Server side rendering)을 처음 알게 되었다. Next.js 기반 워크로드를 ECS에 구성하고 CI/CD 구성도 하면서 정말 많이 배웠다. GitHub의 여러 기능들 그리고 GitHub Actions와 조금씩 친해지기 시작했다.</p>
+<p>VPC 연동들을 많이 하면서 네트워크에 자신이 붙었다.</p>
+<h3 id="5월">5월</h3>
+<p>GCP와 친해져야 한다는 것을 알게 되었다.</p>
+<p>규모에 비해 <a href="https://audition.kakaoent.com/apply">꽤 오래 낑낑대던 프로젝트</a>가 오픈했다. 성취감을 느꼈다.</p>
+<h3 id="6월--7월">6월 ~ 7월</h3>
+<p>GCP와 친해지기 시작했다.</p>
+<p>DB 접근제어부터 서버 접근제어까지 다양한 접근제어 솔루션들을 검토했다. 개인적으로 Teleport와 Querypie 경험이 좋았다.</p>
+<h3 id="8월--9월-처음으로-외부-스타트업과-협업을-했다">8월 ~ 9월 처음으로 외부 스타트업과 협업을 했다.</h3>
+<blockquote>
+<p>지인이 일하는 스타트업과 협업을 시작했다.</p>
+</blockquote>
+<p>지인이 일하고 있는 스타트업 <a href="https://mirakle.mk.co.kr/view.php?year=2022&amp;no=614950">해처리</a>와 협업을 했다. 회사와 관련된건 아니고 순수하게 개인적으로 협업을 하게 되었다.</p>
+<p>생각없이 엔터프라이즈에서 하던대로 구성, 운영하려다가 비용 이슈도 고려하게 되다보니 배우는 것이 많았다.</p>
+<h3 id="10월-데이터센터-화재">10월 데이터센터 화재</h3>
+<p>데이터센터 화재로 인해 정신이 없었다. 살면서 겪을 수 있는 최고(?)의 장애 경험이 아닐까 싶다.</p>
+<h3 id="11월-피날레">11월 피날레</h3>
+<figure><img src="/images/2022reinvent.png"/>
+</figure>
+
+<p>업무적으로는 GCP 마이그레이션 업무가 많아서 정신이 없었다.</p>
+<p>2022 리인벤트 참석을 위해 베가스에 다녀왔다. SpaceX 후드 집업을 입고 다닌 날이 있었는데 옷 멋지다고 말을 걸어준 사람이 있었다. 한국에서 왔다고 하니 와본적이 있다며 좋아했다. 이전에 AWS SA였고, 지금은 스타트업에서 개발자로 일한다고. 신기한 경험이였다. 다양한 세션들에 참석하며 자극을 많이 받을 수 있었다.</p>
+<p>그리고 비슷한 시기에 합류하셨던, 많이 배웠던 동료분이 퇴사하셨다. 나는 도움을 줄 수 있는 좋은 동료였는가 생각해보게 되었다.</p>
+<h3 id="12월-조용한-한해-마무리">12월 조용한 한해 마무리</h3>
+<p>업무상 큰 변경이 없어 조용하게 한 해를 마무리했다.</p>
+<h2 id="개인">개인</h2>
+<p>실력이 느는게 재밌어서 일 외적으로는 소홀했었는데 연말에 여자친구를 만나며 일 외적으로도 한 해의 마무리를 행복하게 할 수 있었다. 앞으로도 즐거운 추억을 많이 쌓아가고 싶다.</p>
+]]></content>
+		</item>
 		
 		<item>
 			<title>AWS DNA 3기 후기</title>

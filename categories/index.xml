@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 16 Nov 2021 01:05:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 01:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>review</title>
+      <link>https://augustkang.com/categories/review/</link>
+      <pubDate>Sun, 02 Jan 2022 01:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/categories/review/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>aws</title>
       <link>https://augustkang.com/categories/aws/</link>
@@ -23,15 +32,6 @@
       <pubDate>Tue, 03 Aug 2021 15:00:00 +0900</pubDate>
       
       <guid>https://augustkang.com/categories/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>review</title>
-      <link>https://augustkang.com/categories/review/</link>
-      <pubDate>Sat, 15 May 2021 01:10:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/categories/review/</guid>
       <description></description>
     </item>
     

@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 16 Nov 2021 01:05:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 01:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/review/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2022년 리뷰</title>
+      <link>https://augustkang.com/posts/review/2022-review/</link>
+      <pubDate>Sun, 02 Jan 2022 01:00:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/review/2022-review/</guid>
+      <description>2022년 리뷰 일 업무량으로 인해 정신없는 한 해를 보냈는데, 그래도 여러가지를 배울 수 있었던 재밌는(?) 업무가 많았다. VPC 연동을 많이 해보면서 네트워크에 익</description>
+    </item>
+    
     <item>
       <title>AWS DNA 3기 후기</title>
       <link>https://augustkang.com/posts/review/aws-dna-3th-review/</link>
