@@ -17,7 +17,6 @@
 <meta property="og:url" content="https://augustkang.com/posts/aws/vpc-dns-configuration/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-30T14:20:00+09:00" />
 <meta property="article:modified_time" content="2021-04-30T14:20:00+09:00" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[AWS] Default DNS Configuration of VPC(DHCP Options Set)"/>
 <meta name="twitter:description" content="깡통 EC2 인스턴스 기본 설정을 살펴보다가 /etc/resolv.conf 에 10.101.1.2 라는 ip가 nameserver로 설정되어 있는걸 보고 &ldquo;이게 뭘까 난 이런걸 넣어주질 않았는데. A"/>
@@ -88,7 +87,7 @@ For example, the DNS Server on a 10.0.0.0/16 network is located at 10.0.0.2.
 For VPCs with multiple IPv4 CIDR blocks, the DNS server IP address is located in the primary CIDR block.
 The DNS server does not reside within a specific subnet or Availability Zone in a VPC</p>
 </blockquote>
-<p>DHCP Options Set 항목 중 제공되는 <em>AmazonProvidedDNS</em> 라는 항목이 AWS에서(Route53) VPC에 제공해주는 DNS 서버의 IP이고(VPC의 CIDR에서 2번 ip를 써서 제공)
+<p>DHCP Options Set 항목 중 제공되는 <em>AmazonProvidedDNS</em> 라는 항목이 AWS에서(Route53) VPC에 제공해주는 DNS 서버의 IP이고(VPC의 CIDR에서 +2 한 ip를 써서 제공)
 이 DNS 서버 제공 덕분에 ec2에서 dns 질의를 할 수 있게 된다는 내용입니다.</p>
 <p>(Route53 콘솔에서 보면 Resolver항목에 Internet Resolver들이 VPC와 연결된 것을 볼 수 있는데, VPC 생성할때 여기에 자동으로 규칙이 생성되는 걸 볼 수 있어요!)</p>
 <p>저는 정말 모르는게 너무 많은 것 같아요. 열심히 공부해야겠습니다!</p>
