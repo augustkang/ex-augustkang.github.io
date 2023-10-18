@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2023 on augustkang</title>
+    <link>https://augustkang.com/tags/2023/</link>
+    <description>Recent content in 2023 on augustkang</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 17 Oct 2023 12:22:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/2023/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023 Books I Read</title>
+      <link>https://augustkang.com/posts/book/2023-books-i-read/</link>
+      <pubDate>Tue, 17 Oct 2023 12:22:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/book/2023-books-i-read/</guid>
+      <description>2023년에 읽은 책들(업데이트중) 2023-10-18 재수사(장강명)</description>
+    </item>
+    
+  </channel>
+</rss>

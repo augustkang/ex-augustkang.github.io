@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 02 Jan 2022 01:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Oct 2023 12:22:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023</title>
+      <link>https://augustkang.com/tags/2023/</link>
+      <pubDate>Tue, 17 Oct 2023 12:22:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>book</title>
+      <link>https://augustkang.com/tags/book/</link>
+      <pubDate>Tue, 17 Oct 2023 12:22:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/tags/book/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>life</title>
       <link>https://augustkang.com/tags/life/</link>
@@ -77,24 +95,6 @@
       <pubDate>Tue, 03 Aug 2021 15:00:00 +0900</pubDate>
       
       <guid>https://augustkang.com/tags/shell-script/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>glacier</title>
-      <link>https://augustkang.com/tags/glacier/</link>
-      <pubDate>Thu, 17 Jun 2021 12:10:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/glacier/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>s3</title>
-      <link>https://augustkang.com/tags/s3/</link>
-      <pubDate>Thu, 17 Jun 2021 12:10:00 +0900</pubDate>
-      
-      <guid>https://augustkang.com/tags/s3/</guid>
       <description></description>
     </item>
     

@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 02 Jan 2022 01:00:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Oct 2023 12:22:00 +0900</lastBuildDate><atom:link href="https://augustkang.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2023 Books I Read</title>
+      <link>https://augustkang.com/posts/book/2023-books-i-read/</link>
+      <pubDate>Tue, 17 Oct 2023 12:22:00 +0900</pubDate>
+      
+      <guid>https://augustkang.com/posts/book/2023-books-i-read/</guid>
+      <description>2023년에 읽은 책들(업데이트중) 2023-10-18 재수사(장강명)</description>
+    </item>
+    
     <item>
       <title>2022년 리뷰</title>
       <link>https://augustkang.com/posts/review/2022-review/</link>
@@ -87,15 +96,6 @@
       
       <guid>https://augustkang.com/posts/linux/free-command/</guid>
       <description>메모리 사용 정보를 보여주는 free 명령어와 /proc/meminfo 에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;</description>
-    </item>
-    
-    <item>
-      <title>Load average</title>
-      <link>https://augustkang.com/posts/linux/load-average-calculation/</link>
-      <pubDate>Sun, 17 Jan 2021 01:06:58 +0900</pubDate>
-      
-      <guid>https://augustkang.com/posts/linux/load-average-calculation/</guid>
-      <description>Load average에 대해 &amp;ldquo;DevOps와 SE를 위한 리눅스 커널 이야기&amp;rdquo; 책에서 배운 내용, &amp;ldquo;리얼 리눅스 SW 기본반&amp;</description>
     </item>
     
   </channel>
